@@ -1616,7 +1616,8 @@ BOOL CWTLfcData::GiveUp()
 	if (m_pOps->empty() || GameOver()) return true;
 	//否则要提醒玩家是否放弃当前局
 	//return IDYES == AtlMessageBox((HWND)_Module.get_m_hInst(),TEXT("放弃当前游戏？"), MB_YESNO);
-	return IDYES == AtlMessageBox(g_pView->m_hWnd, TEXT("放弃当前游戏？"), MB_YESNO);
+	//return IDYES == AtlMessageBox(g_pView->m_hWnd, TEXT("放弃当前游戏？"), MB_YESNO);
+	return IDYES == ::MessageBox(g_pView->m_hWnd, TEXT("放弃当前游戏？"), TEXT("WTLfc"), MB_YESNO);
 }
 
 //随机开局，但不再产生已经出现过的局
