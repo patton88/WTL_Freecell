@@ -13,13 +13,464 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// Chinese (Simplified, PRC) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\WTLfc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "游戏(&G)"
+    BEGIN
+        MENUITEM "随机(&M)\tF2",                  IDM_RAND
+        MENUITEM "上一局(&P)\tF3",                 IDM_PREV_GAME
+        MENUITEM "下一局(&N)\tF4",                 IDM_NEXT_GAME
+        MENUITEM "选局(&G)...",                   IDM_SELECTGAMENUMBER
+        MENUITEM SEPARATOR
+        MENUITEM "重玩(&R)",                      IDM_AGAIN
+        MENUITEM "战况(&C)...",                   IDM_SCORE
+        MENUITEM SEPARATOR
+        MENUITEM "读档(&L)",                      IDM_LOAD
+        MENUITEM "存档(&S)",                      IDM_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                      ID_APP_EXIT
+    END
+    POPUP "设置(&S)"
+    BEGIN
+        MENUITEM "选项(&O)...\tF5",               IDM_SETTING
+        MENUITEM SEPARATOR
+        MENUITEM "牌面底色(&C)...",                 IDM_CARD_COLOR
+        MENUITEM "背景颜色(&B)...",                 IDM_BK_COLOR
+        MENUITEM SEPARATOR
+        MENUITEM "自定义牌局(&E)...\tF6",            IDB_EDIT
+        MENUITEM SEPARATOR
+        MENUITEM "窗口大小(&S)\tF7",                ID_WND_SIZE
+        MENUITEM "窗口还原(&R)\tF8",                ID_WND_RESTORE
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "提示(&H)\tF1",                  IDM_HELP_NEXTSTEP
+        MENUITEM "自动解答(&T)...\tF9",             IDM_AI
+        MENUITEM SEPARATOR
+        MENUITEM "撤销(&U)\tF10",                 IDM_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "关于(&A)...",                   ID_APP_ABOUT
+    END
+    MENUITEM "窗口大小(F7)",                    ID_WND_SIZE_TOP
+    MENUITEM "窗口还原(F8)",                    ID_WND_RESTORE_TOP
+    MENUITEM "撤销(F10)",                     IDM_UNDO
+    MENUITEM "随机(F2)",                      IDM_RAND
+END
+
+IDR_MENU_DEF_GAME MENU
+BEGIN
+    MENUITEM "新局(&N)",                      IDM_NEW_DEF
+    MENUITEM "读档(&L)",                      IDM_LOAD_DEF
+    MENUITEM "保存(&S)",                      IDM_SAVE_DEF
+    MENUITEM "另存为(&A)",                     IDM_SAVE_DEF_AS
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    VK_F1,          IDM_HELP_NEXTSTEP,      VIRTKEY, NOINVERT
+    VK_F10,         IDM_UNDO,               VIRTKEY, NOINVERT
+    VK_F2,          IDM_RAND,               VIRTKEY, NOINVERT
+    VK_F3,          IDM_PREV_GAME,          VIRTKEY, NOINVERT
+    VK_F4,          IDM_NEXT_GAME,          VIRTKEY, NOINVERT
+    VK_F5,          IDM_SETTING,            VIRTKEY, NOINVERT
+    VK_F6,          IDB_EDIT,               VIRTKEY, NOINVERT
+    VK_F7,          ID_WND_SIZE,            VIRTKEY, NOINVERT
+    VK_F8,          ID_WND_RESTORE,         VIRTKEY, NOINVERT
+    VK_F9,          IDM_AI,                 VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG 0, 0, 233, 105
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于..."
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,7,7,21,21
+    DEFPUSHBUTTON   "确定",IDOK,173,84,50,14,BS_FLAT | WS_GROUP
+    LISTBOX         IDLB_ABOUT,33,7,190,73,LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | WS_TABSTOP
+END
+
+IDD_SELGAME DIALOGEX 0, 0, 153, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "选局"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,96,12,50,14,BS_FLAT
+    PUSHBUTTON      "取消",IDCANCEL,96,28,50,14,BS_FLAT
+    EDITTEXT        IDC_EDIT_GAMENUMBER,20,24,50,14,ES_CENTER | ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    GROUPBOX        "选择:",IDC_STATIC,7,7,76,41,BS_LEFT
+END
+
+IDD_WND_SIZE DIALOGEX 0, 0, 188, 114
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "设置窗口大小"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,33,77,50,14,BS_FLAT
+    PUSHBUTTON      "取消",IDCANCEL,105,77,50,14,BS_FLAT
+    EDITTEXT        IDC_EDIT_WIDTH,82,22,77,14,ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    RTEXT           "用户视窗宽度：",IDC_STATIC,12,25,68,14
+    EDITTEXT        IDC_EDIT_HEIGHT,82,49,77,14,ES_NUMBER | NOT WS_BORDER,WS_EX_CLIENTEDGE
+    RTEXT           "用户视窗高度：",IDC_STATIC,12,51,68,14
+END
+
+IDD_SETTING DIALOG 0, 0, 203, 91
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "设置"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,146,6,50,14,BS_FLAT
+    PUSHBUTTON      "取消",IDCANCEL,146,22,50,14,BS_FLAT
+    CONTROL         "违规时提醒",IDCHK_CHECKALERT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,29,55,10
+    CONTROL         "双击后纸牌自动移到空档",IDCHK_ENABLELBDCLICK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,6,102,10
+    CONTROL         "快速移动(无动画)",IDCHK_CHECKQUICKLY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,41,80,10
+    CONTROL         "每次移动尽可能多的牌",IDCHK_MOVEMAX,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,18,102,10
+    CONTROL         "Slider1",IDSLI_DDASPEED,"msctls_trackbar32",TBS_AUTOTICKS | WS_TABSTOP,37,67,129,13
+    CTEXT           "快速",IDC_STATIC,172,68,16,12,SS_CENTERIMAGE
+    CTEXT           "平滑",IDC_STATIC,15,68,16,12,SS_CENTERIMAGE
+    GROUPBOX        "动画效果",IDC_STATIC,7,56,189,27,BS_CENTER
+END
+
+IDD_AI_SHOW DIALOGEX 0, 0, 121, 13
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "回放(&A)",IDB_AUTO_PLAY,0,0,50,14
+    PUSHBUTTON      "<<",IDB_FIRST,50,0,18,14,BS_FLAT,WS_EX_STATICEDGE
+    PUSHBUTTON      "<",IDB_PREV,67,0,18,14,BS_FLAT,WS_EX_STATICEDGE
+    PUSHBUTTON      ">",IDB_NEXT,85,0,18,14,BS_FLAT,WS_EX_STATICEDGE
+    PUSHBUTTON      ">>",IDB_LAST,103,0,18,14,BS_FLAT,WS_EX_STATICEDGE
+END
+
+#if defined(APSTUDIO_INVOKED) || defined(_DEBUG)
+#if defined(APSTUDIO_INVOKED)
+IDD_MSGDLG$(_DEBUG) DIALOGEX 0, 0, 310, 18
+#else
+IDD_MSGDLG DIALOGEX 0, 0, 310, 18
+#endif
+STYLE DS_SETFONT | WS_POPUP
+EXSTYLE WS_EX_TRANSPARENT
+FONT 10, "宋体", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "提示",IDOK,0,0,310,18,BS_LEFT | BS_VCENTER,WS_EX_TRANSPARENT
+END
+#endif
+
+IDD_AICAL DIALOG 0, 0, 130, 36
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "自动解答进度"
+FONT 9, "Arial"
+BEGIN
+    DEFPUSHBUTTON   "停止",IDB_STOP,42,20,45,12,BS_FLAT
+    CONTROL         "快速解答",IDCHK_MAX_SPEED,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,4,10,43,9
+    PUSHBUTTON      "确定",IDOK,4,25,6,7,NOT WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "取消",IDCANCEL,118,25,7,7,NOT WS_VISIBLE | WS_DISABLED
+    CONTROL         "Progress1",IDC_PROGRESS_STATUS,"msctls_progress32",0x0,4,4,121,6
+END
+
+IDD_PASSED DIALOGEX 0, 0, 203, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "通过"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "随机开局",IDB_RAND,6,37,62,20,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "<<上一局",IDB_PREV_GAME,70,37,62,20,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "下一局>>",IDB_NEXT_GAME,134,37,62,20,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "重玩",IDB_AGAIN,6,59,62,17,BS_FLAT
+    PUSHBUTTON      "存档",IDB_SAVE,70,59,62,17,BS_FLAT
+    PUSHBUTTON      "回放",IDB_SHOW,134,59,62,17,BS_FLAT
+    LTEXT           "恭喜，恭喜！您已玩通此局！",IDC_STATIC,50,12,105,8
+    GROUPBOX        "",IDC_STATIC,2,29,199,51
+    ICON            IDR_MAINFRAME,IDC_STATIC,17,6,20,20
+END
+
+IDD_DEF_GAME DIALOGEX 0, 0, 409, 266
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CLIENTEDGE
+CAPTION "自定义牌局"
+MENU IDR_MENU_DEF_GAME
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+END
+
+IDD_SCORE DIALOGEX 0, 0, 327, 209
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "战况..."
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    CONTROL         "List2",IDLC_SCORE,"SysListView32",LVS_REPORT | WS_TABSTOP,101,0,225,209,WS_EX_CLIENTEDGE
+    CONTROL         "List1",IDLC_SCORE_INFO,"SysListView32",LVS_REPORT | WS_TABSTOP,0,0,99,209,WS_EX_CLIENTEDGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 98
+    END
+
+    IDD_SELGAME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 146
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_WND_SIZE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 181
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 107
+    END
+
+    IDD_SETTING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 196
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 84
+    END
+
+    "IDD_MSGDLG$(_DEBUG)", DIALOG
+    BEGIN
+        RIGHTMARGIN, 228
+    END
+
+    IDD_AICAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 125
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 32
+    END
+
+    IDD_PASSED, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 201
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 80
+    END
+
+    IDD_SCORE, DIALOG
+    BEGIN
+        RIGHTMARGIN, 326
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDCSR_DOWN_ARROW        CURSOR                  "res\\cursor1.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// BIN
+//
+
+IDR_BIN_ZIP_BMP         BIN                     "res\\bin.bin"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "WTLfc Module"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "WTLfc"
+            VALUE "LegalCopyright", "Copyright 2016"
+            VALUE "OriginalFilename", "WTLfc.exe"
+            VALUE "ProductName", "WTLfc Module"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_JL_SUB              BITMAP                  "res\\JL_SUB.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "WTLfc中文"
+END
+
+STRINGTABLE
+BEGIN
+    IDM_HELP_NEXTSTEP       "提示下一步"
+    IDS_RESON_UNEDITABLE    "这是一个自定义牌局的存档文件，但是由于已经走过了\n几步，牌面不包含全部的52张牌，请将其撤销到开局状\n态并存档，然后再进行编辑"
+END
+
+STRINGTABLE
+BEGIN
+    IDM_AI                  "自动解答此局"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ATL_IDS_SCSIZE          "Change the window size"
+    ATL_IDS_SCMOVE          "Change the window position"
+    ATL_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    ATL_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    ATL_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    ATL_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    ATL_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    ATL_IDS_SCRESTORE       "Restore the window to normal size"
+    ATL_IDS_SCTASKLIST      "Activate Task List"
+    ATL_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE
+BEGIN
+    ATL_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE
+BEGIN
+    ATL_IDS_MRU_FILE        "Open this document"
+END
+
+#endif    // Chinese (Simplified, PRC) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -45,238 +496,7 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Menu
-//
-
-IDR_MAINFRAME MENU 
-BEGIN
-    POPUP "&File"
-    BEGIN
-        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
-        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
-        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
-        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
-        MENUITEM SEPARATOR
-        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
-        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
-        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
-        MENUITEM SEPARATOR
-        MENUITEM "E&xit",                       ID_APP_EXIT
-    END
-    POPUP "&Edit"
-    BEGIN
-        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
-        MENUITEM SEPARATOR
-        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
-        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
-        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
-    END
-    POPUP "&Help"
-    BEGIN
-        MENUITEM "&About WTLfc",              ID_APP_ABOUT
-    END
-END
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Icon
-//
-
-// Icon with lowest ID value placed first to ensure application icon
-// remains consistent on all systems.
-IDR_MAINFRAME           ICON                    "res\\WTLfc.ico"
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog
-//
-
-IDD_ABOUTBOX DIALOG  0, 0, 187, 102
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About"
-FONT 8, "MS Shell Dlg"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,130,81,50,14
-    CTEXT           "WTLfc Application v1.0\n\n(c) Copyright 2016",IDC_STATIC,25,57,78,
-                    32
-    ICON            IDR_MAINFRAME,IDC_STATIC,55,26,18,20
-    GROUPBOX        "",IDC_STATIC,7,7,115,88
-END
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// DESIGNINFO
-//
-
-#ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
-BEGIN
-    IDD_ABOUTBOX, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 180
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 95
-    END
-END
-#endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Accelerator
-//
-
-IDR_MAINFRAME ACCELERATORS 
-BEGIN
-    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
-    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
-    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
-    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
-    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
-    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
-    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
-    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
-    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
-    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
-    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
-    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
-    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
-    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Version
-//
-
-VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,1
- PRODUCTVERSION 1,0,0,1
- FILEFLAGSMASK 0x3fL
-#ifdef _DEBUG
- FILEFLAGS 0x1L
-#else
- FILEFLAGS 0x0L
-#endif
- FILEOS 0x4L
- FILETYPE 0x2L
- FILESUBTYPE 0x0L
-BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "040904B0"
-        BEGIN
-            VALUE "CompanyName", "\0"
-            VALUE "FileDescription", "WTLfc Module\0"
-            VALUE "FileVersion", "1, 0, 0, 1\0"
-            VALUE "InternalName", "WTLfc\0"
-            VALUE "LegalCopyright", "Copyright 2016\0"
-            VALUE "OriginalFilename", "WTLfc.exe\0"
-            VALUE "ProductName", "WTLfc Module\0"
-            VALUE "ProductVersion", "1, 0, 0, 1\0"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x0409, 0x04B0
-    END
-END
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// String Table
-//
-
-STRINGTABLE 
-BEGIN
-    IDR_MAINFRAME	"WTLfc"
-END
-
-STRINGTABLE 
-BEGIN
-    ID_FILE_NEW             "Create a new document\nNew"
-    ID_FILE_OPEN            "Open an existing document\nOpen"
-    ID_FILE_CLOSE           "Close the active document\nClose"
-    ID_FILE_SAVE            "Save the active document\nSave"
-    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
-    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
-    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
-    ID_FILE_PRINT           "Print the active document\nPrint"
-    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
-END
-
-STRINGTABLE 
-BEGIN
-    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
-    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
-END
-
-STRINGTABLE 
-BEGIN
-    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
-    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
-END
-
-STRINGTABLE 
-BEGIN
-    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
-    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
-    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
-    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
-    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
-    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
-END
-
-STRINGTABLE 
-BEGIN
-    ID_EDIT_CLEAR           "Erase the selection\nErase"
-    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
-    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
-    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
-    ID_EDIT_FIND            "Find the specified text\nFind"
-    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
-    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
-    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
-    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
-    ID_EDIT_UNDO            "Undo the last action\nUndo"
-    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
-END
-
-STRINGTABLE 
-BEGIN
-    ATL_IDS_SCSIZE          "Change the window size"
-    ATL_IDS_SCMOVE          "Change the window position"
-    ATL_IDS_SCMINIMIZE      "Reduce the window to an icon"
-    ATL_IDS_SCMAXIMIZE      "Enlarge the window to full size"
-    ATL_IDS_SCNEXTWINDOW    "Switch to the next document window"
-    ATL_IDS_SCPREVWINDOW    "Switch to the previous document window"
-    ATL_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
-END
-
-STRINGTABLE 
-BEGIN
-    ATL_IDS_SCRESTORE       "Restore the window to normal size"
-    ATL_IDS_SCTASKLIST      "Activate Task List"
-    ATL_IDS_MDICHILD        "Activate this window"
-END
-
-STRINGTABLE 
-BEGIN
-    ATL_IDS_IDLEMESSAGE     "Ready"
-    ATL_IDS_MRU_FILE        "Open this document"
-END
-
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
-#ifndef APSTUDIO_INVOKED
-#endif    // not APSTUDIO_INVOKED

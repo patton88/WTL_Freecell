@@ -21,6 +21,28 @@ extern CAppModule _Module;
 #include <atlframe.h>
 #include <atlctrls.h>
 #include <atldlgs.h>
+#include <atlcrack.h>
+#include <atlmisc.h>
+#include <atlddx.h>
+
+#undef BEGIN_MSG_MAP
+#define BEGIN_MSG_MAP(x) BEGIN_MSG_MAP_EX(x)
+
+// jl 所需头文件
+#include "CardSize.h"
+#include "WTLfcData.h"
+#include "Datatype.h"
+
+#include "WTLfcView.h"		// 这里包含会有问题，可能出现交叉包含问题
+//#include "MainFrm.h"		// 这里包含会有问题，可能出现交叉包含问题
+class CMainFrame;
+
+// 全局变量在 WTLfc.cpp 中定义。在这里进行声明
+extern CCardSize g_jlCcs;
+extern CWTLfcData g_jlData;
+extern CWTLfcView* g_pView;
+extern CMainFrame* g_pMain;
+extern bool g_bMaxOnly;
 
 #if defined _M_IX86
   #pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")

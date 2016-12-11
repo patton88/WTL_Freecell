@@ -26,8 +26,15 @@ public:
 		COMMAND_ID_HANDLER(ID_APP_EXIT, OnFileExit)
 		COMMAND_ID_HANDLER(ID_FILE_NEW, OnFileNew)
 		COMMAND_ID_HANDLER(ID_APP_ABOUT, OnAppAbout)
+		COMMAND_ID_HANDLER_EX(ID_WND_RESTORE, OnWndRestore)
+		COMMAND_ID_HANDLER_EX(ID_WND_RESTORE_TOP, OnWndRestore)
+		COMMAND_ID_HANDLER_EX(ID_WND_SIZE, OnWndSize)
+		COMMAND_ID_HANDLER_EX(ID_WND_SIZE_TOP, OnWndSize)
+		//MESSAGE_HANDLER(WM_SIZE, OnSize)
 		CHAIN_MSG_MAP(CUpdateUI<CMainFrame>)
 		CHAIN_MSG_MAP(CFrameWindowImpl<CMainFrame>)
+		CHAIN_COMMANDS_MEMBER(m_view)	//客户区是多窗口情况，使用这种方式可正常运行
+		MESSAGE_HANDLER(WM_MOVE, OnMove)
 	END_MSG_MAP()
 
 // Handler prototypes (uncomment arguments if needed):
@@ -35,9 +42,13 @@ public:
 //	LRESULT CommandHandler(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 //	LRESULT NotifyHandler(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled*/)
 
+//	LRESULT OnSize(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled);
 	LRESULT OnFileExit(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnFileNew(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnAppAbout(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	void OnWndRestore(UINT uNotifyCode, int nID, CWindow wndCtl);
+	void OnWndSize(UINT uNotifyCode, int nID, CWindow wndCtl);
+	LRESULT OnMove(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 };

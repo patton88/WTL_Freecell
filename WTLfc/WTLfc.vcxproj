@@ -105,19 +105,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AboutDlg.cpp" />
+    <ClCompile Include="CardSize.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WndSizeDlg.cpp" />
     <ClCompile Include="WTLfc.cpp" />
+    <ClCompile Include="WTLfcData.cpp" />
     <ClCompile Include="WTLfcView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AboutDlg.h" />
+    <ClInclude Include="CardSize.h" />
+    <ClInclude Include="Datatype.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="WndSizeDlg.h" />
+    <ClInclude Include="WTLfc.h" />
+    <ClInclude Include="WTLfcData.h" />
     <ClInclude Include="WTLfcView.h" />
   </ItemGroup>
   <ItemGroup>
