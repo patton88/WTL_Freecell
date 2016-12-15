@@ -79,8 +79,8 @@ void CDlgAICal::OnTimer(UINT nIDEvent)
 	//CJLDoc *pDoc = AfxGetDocument();
 	//实时显示计算到了哪一步，通常成功的解答步数介于30-70步之间
 	//如果接近80步说明此局可能解不开，玩家可停止自动解答
-	if (!g_fcData.m_pOps->empty()) {
-		int cnt = g_fcData.m_pOps->size();
+	if (!g_fcData.m_OpsList.empty()) {
+		int cnt = g_fcData.m_OpsList.size();
 		m_ctrlProgress.SetPos(1+cnt%100);
 	}
 	//CDialog::OnTimer(nIDEvent);

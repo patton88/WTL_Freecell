@@ -93,28 +93,6 @@ public:
 	CMyObject() {}
 	// 基类析构函数若需要delete的，务必定义为virtual，否则可能导致无能delete
 	virtual ~CMyObject() {}
-
-	////////////////////////////////////////////////////////////
-	// 获取STL list中的指定元素只能用遍历了
-	CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
-	{
-		list<CMyObject*>::iterator it = pList->begin();
-		for (unsigned i = 0; i < n; i++)
-			it++;
-
-		return *it;
-	}
-
-	// 获取STL list中的指定元素只能用遍历了。在头文件中定义的模板函数不好实例化
-	//template <typename T>
-	//T listget(list<T>* pList, unsigned n)
-	//{
-	//	list<T>::iterator it = pList.begin();
-	//	for (unsigned i = 0; i < n; i++)
-	//		it++;
-	//	
-	//	return *it;
-	//}
 };
 ////////////////////////////////////////////////////////////
 class COperation : public CMyObject	// CObject 都替换为 CMyObject
@@ -186,46 +164,93 @@ class COperations : public CMyObject
 public:
 	COperations() 
 	{	
-		m_pObjlist = new list<CMyObject*>;		// CObList 都替换为STL的 list<CMyObject*>
+		//m_pObjlist = new list<CMyObject*>;		// CObList 都替换为STL的 list<CMyObject*>
 	}
 
-	COperations(UINT des,UINT src,UINT n) 
+	//list<CMyObject*> *m_pObjlist;
+	list<COperation> m_OpList;
+
+	COperations(UINT des, UINT src, UINT n)
 	{
-		m_pObjlist = new list<CMyObject*>;
+		//m_pObjlist = new list<CMyObject*>;
 		//pOps->AddHead(new COperation(des,src,n)); 
-		m_pObjlist->push_front(new COperation(des, src, n));
+		//m_pObjlist->push_front(new COperation(des, src, n));
+		m_OpList.push_front(COperation(des, src, n));
 	}
 
 	void AddOperation(UINT des,UINT src,UINT n)
 	{ 
 		//pOps->AddHead(new COperation(des,src,n)); 
-		m_pObjlist->push_front(new COperation(des, src, n));
+		//m_pObjlist->push_front(new COperation(des, src, n));
+		m_OpList.push_front(COperation(des, src, n));
 	}
 
-	void ClrOps()
+	////////////////////////////////////////////////////////////
+	// 获取STL list中的指定元素只能用遍历了
+	//CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
+	template <typename T>
+	T* getAt(list<T>& opList, unsigned n)
 	{
-		// 与vector不同， list不能用list[i]随机访问list中间的元素，只能从两端访问。所以只能用iterator
-		for (list<CMyObject*>::iterator it = m_pObjlist->begin(); it != m_pObjlist->end(); ++it)
-		{
-			COperation *pOp = (COperation *)(*it);
-			delete pOp;
-		}
-		m_pObjlist->clear();
+		list<T>::iterator it = opList.begin();
+		for (unsigned i = 0; i < n; i++)
+			it++;
 
-		//POSITION p = pOps->GetHeadPosition();
-		//while(p) {
-		//	COperation *pOp = (COperation *)pOps->GetNext(p);
-		//	delete pOp;
-		//}
-		//pOps->RemoveAll();
+		return &(*it);
 	}
+
+	//COperation* getAt(list<COperation>& opList, unsigned n)
+	//{
+	//	list<COperation>::iterator it = opList.begin();
+	//	for (unsigned i = 0; i < n; i++)
+	//		it++;
+
+	//	return &(*it);
+	//}
+
+	//COperations* getAt(list<COperations>& opsList, unsigned n)
+	//{
+	//	list<COperations>::iterator it = opsList.begin();
+	//	for (unsigned i = 0; i < n; i++)
+	//		it++;
+
+	//	return &(*it);
+	//}
+
+	// 获取STL list中的指定元素只能用遍历了。在头文件中定义的模板函数不好实例化
+	//template <typename T>
+	//T listget(list<T>* pList, unsigned n)
+	//{
+	//	list<T>::iterator it = pList.begin();
+	//	for (unsigned i = 0; i < n; i++)
+	//		it++;
+	//	
+	//	return *it;
+	//}
+
+	//void ClrOps()
+	//{
+	//	// 与vector不同， list不能用list[i]随机访问list中间的元素，只能从两端访问。所以只能用iterator
+	//	for (list<CMyObject*>::iterator it = m_pObjlist->begin(); it != m_pObjlist->end(); ++it)
+	//	{
+	//		COperation *pOp = (COperation *)(*it);
+	//		delete pOp;
+	//	}
+	//	m_pObjlist->clear();
+
+	//	//POSITION p = pOps->GetHeadPosition();
+	//	//while(p) {
+	//	//	COperation *pOp = (COperation *)pOps->GetNext(p);
+	//	//	delete pOp;
+	//	//}
+	//	//pOps->RemoveAll();
+	//}
 
 	// 基类析构函数若需要delete的，务必定义为virtual，否则可能导致无能delete
-	virtual ~COperations()
-	{ 
-		ClrOps();
-		delete m_pObjlist;
-	}
+	//virtual ~COperations()
+	//{ 
+	//	ClrOps();
+	//	delete m_pObjlist;
+	//}
 
 	//void Serialize(CArchive &ar)
 	//{
@@ -234,7 +259,6 @@ public:
 	//	pOps->Serialize(ar);
 	//}
 
-	list<CMyObject*> *m_pObjlist;
 	//DECLARE_SERIAL(COperations)
 };
 
@@ -298,12 +322,15 @@ public:
 	//
 	const COperation* NextHint(void)
 	{
-		ATLASSERT(!m_pObjlist->empty());
-		int cnt = m_pObjlist->size();
+		//ATLASSERT(!m_pObjlist->empty());
+		//int cnt = m_pObjlist->size();
+		ATLASSERT(!m_OpList.empty());
+		int cnt = m_OpList.size();
 		if(curHint >= cnt) { curHint = 0; }
 
 		//最先提示链尾的动作
-		const COperation* pOp = (const COperation*)getAt(m_pObjlist, cnt - ++curHint);
+		//const COperation* pOp = (const COperation*)getAt(m_pObjlist, cnt - ++curHint);
+		const COperation* pOp = getAt(m_OpList, cnt - ++curHint);
 		
 		//(const COperation*)m_pObjlist->GetAt(m_pObjlist->FindIndex(cnt - ++curHint));
 		// GetAt 获取指定位置的元素
@@ -315,13 +342,14 @@ public:
 
 	void ClrHints(void)
 	{
-		ClrOps();
+		//ClrOps();
 		curHint = 0;
 	}
 
 	BOOL IsEmpty()
 	{
-		return m_pObjlist->empty();
+		//return m_pObjlist->empty();
+		return m_OpList.empty();
 	}
 };
 

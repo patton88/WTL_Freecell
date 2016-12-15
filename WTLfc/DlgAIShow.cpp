@@ -93,17 +93,17 @@ LRESULT CDlgAIShow::OnNext(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	CancelCurMv();
 
 	//CJLDoc *pDoc = AfxGetDocument();
-	if(g_fcData.m_pOps->empty())
+	if (g_fcData.m_OpsList.empty())
 		return 0;
 
 	COperations *pOpsCur = NULL;
-	unsigned cnt = g_fcData.m_pOps->size();
+	unsigned cnt = g_fcData.m_OpsList.size();
 	if(m_pCurPos < cnt) {
 		//取出当前的操作记录
 		//指向下一个操作记录
 		//POSITION posCur = g_fcData.m_pOps->FindIndex(m_pCurPos);
 		//pOpsCur = (COperations*)pDoc->m_pOps->GetAt(posCur);
-		pOpsCur = (COperations*)g_fcData.getAt(g_fcData.m_pOps, m_pCurPos);
+		pOpsCur = g_fcData.getAt(g_fcData.m_OpsList, m_pCurPos);
 		++m_pCurPos;
 	}
 
@@ -115,12 +115,12 @@ LRESULT CDlgAIShow::OnNext(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//}
 
 	// STL-list从尾部遍历-OK
-	list<CMyObject*>* pOps = pOpsCur->m_pObjlist;
-	for (list<CMyObject*>::iterator it = pOps->end(); it != pOps->begin();)
+	list<COperation>& ops = pOpsCur->m_OpList;
+	for (list<COperation>::iterator it = ops.end(); it != ops.begin();)
 	{
 		it--;
-		COperation *pOp = (COperation*)(*it);
-		g_fcData.MoveCards(pOp->des, pOp->src, pOp->cnt);
+		COperation & op = *it;
+		g_fcData.MoveCards(op.des, op.src, op.cnt);
 	}
 
 
@@ -156,7 +156,7 @@ LRESULT CDlgAIShow::OnPrev(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//CJLDoc *pDoc = AfxGetDocument();
 	//if(pDoc->m_pOps->IsEmpty())
 	//	return;
-	if (g_fcData.m_pOps->empty())
+	if (g_fcData.m_OpsList.empty())
 		return 0;
 
 	COperations *pOpsCur = NULL;
@@ -167,7 +167,7 @@ LRESULT CDlgAIShow::OnPrev(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 		//POSITION posCur = pDoc->m_pOps->FindIndex(m_pCurPos);
 		//pOpsCur = (COperations*)pDoc->m_pOps->GetAt(posCur);
 		//CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
-		pOpsCur = (COperations*)g_fcData.getAt(g_fcData.m_pOps, m_pCurPos);
+		pOpsCur = (COperations*)g_fcData.getAt(g_fcData.m_OpsList, m_pCurPos);
 	}
 
 	//CObList *pOps= pOpsCur->pOps;
@@ -177,12 +177,11 @@ LRESULT CDlgAIShow::OnPrev(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//	pDoc->MoveCards(pOp->src,pOp->des,pOp->cnt);
 	//}
 
-	list<CMyObject*> *pOps = pOpsCur->m_pObjlist;
-	COperation *pOp;
-	for (list<CMyObject*>::iterator it = pOps->begin(); it != pOps->end(); it++)
+	list<COperation>& ops = pOpsCur->m_OpList;
+	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); it++)
 	{
-		pOp = (COperation*)(*it);
-		g_fcData.MoveCards(pOp->src, pOp->des, pOp->cnt);
+		COperation& op = *it;
+		g_fcData.MoveCards(op.src, op.des, op.cnt);
 	}
 
 	//CObList
@@ -224,7 +223,7 @@ void CDlgAIShow::ShowStepInfo()
 	CString step_info;
 	step_info.Format(TEXT("进度【 %d / %d 】"),
 		m_pCurPos,
-		g_fcData.m_pOps->size());
+		g_fcData.m_OpsList.size());
 	SetWindowText(step_info);
 }
  
@@ -243,7 +242,7 @@ LRESULT CDlgAIShow::OnLast(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	// TODO: Add your control notification handler code here
 	//CJLDoc *pDoc = AfxGetDocument();
 	BOOL b;
-	while (m_pCurPos < g_fcData.m_pOps->size()) OnNext(NULL, NULL, NULL, b);
+	while (m_pCurPos < g_fcData.m_OpsList.size()) OnNext(NULL, NULL, NULL, b);
 	return 0;
 }
 
@@ -283,7 +282,7 @@ void CDlgAIShow::OnTimer(UINT uTimerID)
 
 	BOOL b;
 	//CJLDoc *pDoc = AfxGetDocument();
-	if(m_pCurPos == g_fcData.m_pOps->size()) {
+	if(m_pCurPos == g_fcData.m_OpsList.size()) {
 		m_bPlaying = 0; //设置暂停标志
 		SetDlgItemText(IDB_AUTO_PLAY, TEXT("回放(&A)"));
 	}
@@ -294,31 +293,31 @@ void CDlgAIShow::OnTimer(UINT uTimerID)
 	else if(m_bPlaying < 5){
 		//CJLDoc *pDoc = AfxGetDocument();
 		COperations *pOpsCur = NULL;
-		int cnt = g_fcData.m_pOps->size();
+		int cnt = g_fcData.m_OpsList.size();
 
 		//取出当前的操作记录
 		//POSITION posCur = pDoc->m_pOps->FindIndex(m_pCurPos);//位置
 		//pOpsCur = (COperations*)pDoc->m_pOps->GetAt(posCur);//指针
-		pOpsCur = (COperations*)g_fcData.getAt(g_fcData.m_pOps, m_pCurPos);
+		pOpsCur = (COperations*)g_fcData.getAt(g_fcData.m_OpsList, m_pCurPos);
 
-		list<CMyObject*>* pOps = pOpsCur->m_pObjlist;
+		list<COperation>& ops = pOpsCur->m_OpList;
 		//CObList *pOps= pOpsCur->pOps;//步骤链
 		//此链记录了移动动作和自动扔牌动作
 		//最末尾的数据记录的是移动动作
 		//POSITION pos = pOps->GetTailPosition();
 		//COperation *pOp = (COperation*)pOps->GetPrev(pos);
 		//COperation *pOp = (COperation*)g_fcData.getAt(g_fcData.m_pOps, m_pCurPos);
-		list<CMyObject*>::iterator it = pOps->end();
+		list<COperation>::iterator it = ops.end();
 		it--;
-		COperation *pOp = (COperation*)*it;
+		COperation& op = *it;
 
 		//对将要移动的牌进行反色，明确提示玩家下一步的动作
 		//CClientDC cdc(AfxGetView());
 		CClientDC cdc(g_pView->m_hWnd);
-		int nSrc = g_fcData.CntCardsIn(pOp->src);
-		cdc.InvertRect(g_fcData.RectOf(pOp->src, nSrc - pOp->cnt + 1, pOp->cnt));
-		int nDes = g_fcData.CntCardsIn(pOp->des);
-		cdc.InvertRect(g_fcData.RectOf(pOp->des, max(nDes, 1), 1));
+		int nSrc = g_fcData.CntCardsIn(op.src);
+		cdc.InvertRect(g_fcData.RectOf(op.src, nSrc - op.cnt + 1, op.cnt));
+		int nDes = g_fcData.CntCardsIn(op.des);
+		cdc.InvertRect(g_fcData.RectOf(op.des, max(nDes, 1), 1));
 		//状态计数
 		m_bPlaying++;
 	} else {

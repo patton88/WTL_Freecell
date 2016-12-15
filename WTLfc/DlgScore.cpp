@@ -217,7 +217,7 @@ void CDlgScore::UpdateScore()
 		g_fcData.GameOver() ? CScore::gamePassed :
 		g_fcData.m_Hints.IsEmpty() ? CScore::gameDead :
 		CScore::gameGiveUp;
-	p->steps = g_fcData.m_pOps->size();
+	p->steps = g_fcData.m_OpsList.size();
 }
 
 void CDlgScore::InitScore()

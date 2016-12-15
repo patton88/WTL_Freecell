@@ -28,7 +28,9 @@ public:
 
 	int m_nCurGameNumber;
 	//CObList *m_pOps;
-	list<CMyObject*>* m_pOps;
+	//list<CMyObject*>* m_pOps;
+	list<COperations> m_OpsList;
+
 	UINT m_iCards[8][20];//6+13=19
 	UINT m_iBuffer[4];
 	UINT m_iRecycle[4][14];
@@ -46,7 +48,8 @@ public:
 	void BackHome();
 	BOOL GiveUp();
 	CRect RectOfStep();
-	void Record(CMyObject * thisStep);
+	//void Record(CMyObject * thisStep);
+	void Record(UINT des, UINT src, UINT n);
 	void InvalidateRect(CRect r);
 	UINT FindEmptyBuf();
 	bool IsCard(UINT card);
@@ -94,7 +97,7 @@ public:
 	bool Splite();
 	bool Combine();
 	bool AICal();
-	void ClrOpsRecords(void);
+	//void ClrOpsRecords(void);
 	UINT GetCard(UINT col, UINT idx);
 	CRect RectOf(UINT col, UINT idx, UINT nCards);
 
@@ -102,14 +105,34 @@ public:
 
 	////////////////////////////////////////////////////////////
 	// 获取STL list中的指定元素只能用遍历了
-	CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
+	//CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
+	template <typename T>
+	T* getAt(list<T>& opList, unsigned n)
 	{
-		list<CMyObject*>::iterator it = pList->begin();
+		list<T>::iterator it = opList.begin();
 		for (unsigned i = 0; i < n; i++)
 			it++;
 
-		return *it;
+		return &(*it);
 	}
+
+	//COperation* getAt(list<COperation>& opList, unsigned n)
+	//{
+	//	list<COperation>::iterator it = opList.begin();
+	//	for (unsigned i = 0; i < n; i++)
+	//		it++;
+
+	//	return &(*it);
+	//}
+
+	//COperations* getAt(list<COperations>& opsList, unsigned n)
+	//{
+	//	list<COperations>::iterator it = opsList.begin();
+	//	for (unsigned i = 0; i < n; i++)
+	//		it++;
+
+	//	return &(*it);
+	//}
 
 	// 获取STL list中的指定元素只能用遍历了。在头文件中定义的模板函数不好实例化
 	//template <typename T>

@@ -173,9 +173,11 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	CString strSteps;
 	CRect r = g_fcData.RectOfStep();
 	// ...
-	if (!g_fcData.m_pOps->empty()) {
-		strSteps.Format(TEXT("%d"), g_fcData.m_pOps->size());
-
+	//if (!g_fcData.m_pOps->empty()) {
+	//	strSteps.Format(TEXT("%d"), g_fcData.m_pOps->size());
+	if (!g_fcData.m_OpsList.empty())
+	{
+		strSteps.Format(TEXT("%d"), g_fcData.m_OpsList.size());
 		CFont font;
 		//font.CreatePointFont(ccs.stepFont * 10, "Arial", pDC);
 		font.CreatePointFont(g_fcCcs.stepFont * 6, TEXT("Arial"), dc);
@@ -1068,7 +1070,8 @@ void CWTLfcView::HitAt(CPoint point)
 		//导致g_fcData.m_nSel为0，这样Record中就不能正确记录当前选中列
 	Move:		UINT colSel = g_fcData.m_nSel;
 		g_fcData.MoveCards(hit, colSel, nMv);
-		g_fcData.Record(new COperations(hit, colSel, nMv));
+		//g_fcData.Record(new COperations(hit, colSel, nMv));
+		g_fcData.Record(hit, colSel, nMv);
 	}
 	//本次单击之前已经选中某列，现在击中回收列
 	else if ((nMv = g_fcData.CntMaxMv(hit, g_fcData.m_nSel)) == 1) {
@@ -1348,8 +1351,11 @@ LRESULT CWTLfcView::OnAgain(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/
 	if (g_fcData.m_nCurGameNumber > 0) {
 		g_fcData.StartGame(g_fcData.m_nCurGameNumber);
 	}
-	else {
-		while (!g_fcData.m_pOps->empty()) {
+	else
+	{
+		//while (!g_fcData.m_pOps->empty())
+		while (!g_fcData.m_OpsList.empty())
+		{
 			g_fcData.Undo();//撤销到开头
 		}
 	}

@@ -23,7 +23,7 @@ CWTLfcData::CWTLfcData()
 {
 	m_nSel = 0;
 	//m_pOps = new CObList;
-	m_pOps = new list<CMyObject*>;
+	//m_pOps = new list<CMyObject*>;
 	m_Hints.ClrHints();
 
 	srand(UINT(time(NULL)));
@@ -40,8 +40,8 @@ CWTLfcData::CWTLfcData()
 
 CWTLfcData::~CWTLfcData()
 {
-	ClrOpsRecords();
-	delete m_pOps;
+	//ClrOpsRecords();
+	//delete m_pOps;
 }
 
 
@@ -342,14 +342,17 @@ void CWTLfcData::AutoThrow()
 		}
 		MoveCards(colDes, colSrc, 1);
 
-		if (m_pOps->empty())
+		//if (m_pOps->empty())
+		if (m_OpsList.empty())
 		{
-			Record(new COperations(colDes, colSrc, 1));
+			//Record(new COperations(colDes, colSrc, 1));
+			Record(colDes, colSrc, 1);
 		}
 		else
 		{ //扔牌后的自动扔牌动作必须和扔牌动作放在一起
 			// GetTail	返回列表中的尾元素（列表不能为空）
-			((COperations*)m_pOps->back())->AddOperation(colDes, colSrc, 1);
+			//((COperations*)m_pOps->back())->AddOperation(colDes, colSrc, 1);
+			m_OpsList.back().AddOperation(colDes, colSrc, 1);
 		}
 	}
 }
@@ -482,10 +485,13 @@ void CWTLfcData::InvalidateRect(CRect r)
 	SendMessage(g_pView->m_hWnd, WM_PAINT, 0, 0);
 }
 
-void CWTLfcData::Record(CMyObject *thisStep)
+// Record(new COperations(colDes, colSrc, 1));
+//void CWTLfcData::Record(CMyObject *thisStep)
+void CWTLfcData::Record(UINT des, UINT src, UINT n)
 {
 	//增加一步记录并刷新步数信息
-	m_pOps->push_back(thisStep);
+	//m_pOps->push_back(thisStep);
+	m_OpsList.push_back(COperations(des, src, n));
 	InvalidateRect(RectOfStep());
 }
 
@@ -500,22 +506,23 @@ void CWTLfcData::Undo()
 {
 	//::MessageBoxW(NULL, L"Undo Test", NULL, NULL);
 	//if (m_pOps->IsEmpty()) return;
-	if (m_pOps->empty()) return;
+	if (m_OpsList.empty()) return;
 
 	//撤销一步
-	COperations *pOpsLast = (COperations*)m_pOps->back();
+	//COperations *pOpsLast = (COperations*)m_pOps->back();
+	COperations& OpsLast = m_OpsList.back();
 	// GetTail	返回列表中的尾元素（列表不能为空）
-	list<CMyObject*>* pOps = pOpsLast->m_pObjlist;
+	//list<CMyObject*>* pOps = pOpsLast->m_pObjlist;
+	list<COperation>& ops = OpsLast.m_OpList;
 
-	list<CMyObject*>::iterator it = pOps->begin();
-	for (; it != pOps->end(); it++)
+	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); it++)
 	{
-		COperation *pOp = (COperation*)(*it);
-		MoveCards(pOp->src, pOp->des, pOp->cnt);
+		COperation& op = *it;
+		MoveCards(op.src, op.des, op.cnt);
 	}
-	pOpsLast->ClrOps();
-	delete pOpsLast;
-	m_pOps->pop_back();
+	//pOpsLast->ClrOps();
+	//delete pOpsLast;
+	m_OpsList.pop_back();
 
 	InvalidateRect(RectOfStep());
 
@@ -543,19 +550,19 @@ void CWTLfcData::Undo()
 //游戏返回到开头但是保留步骤记录，准备回放
 void CWTLfcData::BackHome()
 {
-	int nSteps = m_pOps->size();
+	int nSteps = m_OpsList.size();
 
 	//还原牌局但保留步骤记录
 	while (nSteps > 0)
 	{
-		COperations *pOpsLast = (COperations*)getAt(m_pOps, --nSteps);
-		list<CMyObject*>* pOps = pOpsLast->m_pObjlist;
+		COperations *pOpsLast = getAt(m_OpsList, --nSteps);
+		list<COperation>& Ops = pOpsLast->m_OpList;
 
-		list<CMyObject*>::iterator it = pOps->begin();
-		for (; it != pOps->end(); it++)
+		list<COperation>::iterator it = Ops.begin();
+		for (; it != Ops.end(); it++)
 		{
-			COperation *pOp = (COperation*)(*it);
-			MoveCards(pOp->src, pOp->des, pOp->cnt);
+			COperation& op = *it;
+			MoveCards(op.src, op.des, op.cnt);
 		}
 		InvalidateRect(RectOfStep());
 	}
@@ -774,18 +781,18 @@ UINT CWTLfcData::GetCard(UINT col, UINT idx)
 //	CheckGame();//看看此局是否已经结束
 //}
 
-void CWTLfcData::ClrOpsRecords()
-{
-	if (m_pOps == NULL) return;
-	////////////////////////////////
-	//清除原来的操作记录
-	while (!m_pOps->empty())
-	{
-		delete m_pOps->front();
-		m_pOps->pop_front();
-	}
-	m_pOps->clear();
-}
+//void CWTLfcData::ClrOpsRecords()
+//{
+//	if (m_pOps == NULL) return;
+//	////////////////////////////////
+//	//清除原来的操作记录
+//	while (!m_pOps->empty())
+//	{
+//		delete m_pOps->front();
+//		m_pOps->pop_front();
+//	}
+//	m_pOps->clear();
+//}
 //自动解答
 //void WTLfcData::OnAi()
 //{
@@ -833,7 +840,7 @@ bool CWTLfcData::AICal()
 	}
 	//自动解答得到的步数超过正常值，尽快结束这种局面
 	//此局很可能导致算法无限死循环
-	if (!m_pOps->empty() && m_pOps->size() > 200) {
+	if (!m_OpsList.empty() && m_OpsList.size() > 200) {
 		//g_bStopAICal = true;
 		return false;
 	}
@@ -1014,7 +1021,8 @@ bool CWTLfcData::CombimeCol(UINT col)
 	return false;
 doAI:	//有牌可以移动哦
 MoveCards(desCol, srcCol, cntCards);//移动
-Record(new COperations(desCol, srcCol, cntCards));//记录移动动作
+//Record(new COperations(desCol, srcCol, cntCards));//记录移动动作
+Record(desCol, srcCol, cntCards);//记录移动动作
 AutoThrow();//自动扔牌（自动记录动作）
 if (AICal())return true;//成功解答
 Undo();
@@ -1049,7 +1057,8 @@ bool CWTLfcData::SpliteCol(UINT col)
 		ShowMessage("拆缓存列，有牌能合并到它上面", col, empCardCol, 1);
 #endif
 		MoveCards(empCardCol, col, 1);//记录移动动作
-		Record(new COperations(empCardCol, col, 1));
+		//Record(new COperations(empCardCol, col, 1));
+		Record(empCardCol, col, 1);
 		if (AICal())return true;
 		Undo();
 		return false;
@@ -1071,7 +1080,8 @@ bool CWTLfcData::SpliteCol(UINT col)
 #endif
 			//非完全序列牌列的全部序列牌直接移到空牌列
 			MoveCards(empCardCol, col, nMovableCards);
-			Record(new COperations(empCardCol, col, nMovableCards));
+			//Record(new COperations(empCardCol, col, nMovableCards));
+			Record(empCardCol, col, nMovableCards);
 			if (AICal())return true;
 			Undo();
 			return false;
@@ -1111,7 +1121,8 @@ bool CWTLfcData::SpliteCol(UINT col)
 			ShowMessage("拆序列牌到牌列，空列及空档！", col, tarCol, n);
 #endif
 			MoveCards(tarCol, col, n);//记录移动动作
-			Record(new COperations(tarCol, col, n));
+			//Record(new COperations(tarCol, col, n));
+			Record(tarCol, col, n);
 			nMoved += n;//计算移走的牌数
 			inUse[steps++] = tarCol;//记录当前使用的目标列
 			//退出循环时，step记录使用了多少空间
@@ -1583,7 +1594,7 @@ int CWTLfcData::Random(void)
 BOOL CWTLfcData::GiveUp()
 {
 	//当本局为新局或已结束的时候，可以开始下一局
-	if (m_pOps->empty() || GameOver()) return true;
+	if (m_OpsList.empty() || GameOver()) return true;
 	//否则要提醒玩家是否放弃当前局
 	//return IDYES == AtlMessageBox((HWND)_Module.get_m_hInst(),TEXT("放弃当前游戏？"), MB_YESNO);
 	//return IDYES == AtlMessageBox(g_pView->m_hWnd, TEXT("放弃当前游戏？"), MB_YESNO);
@@ -1650,7 +1661,7 @@ void CWTLfcData::StartGame(int gameNumber)
 {
 	m_dlgScore.UpdateScore();//记录战况
 
-	ClrOpsRecords();			//清除动作记录
+	//ClrOpsRecords();			//清除动作记录
 	UnselectCardCol();		//清除选中标志
 	m_Hints.ClrHints();		//清除提示
 
