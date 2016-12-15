@@ -9,6 +9,7 @@
 
 #include "resource.h"
 #include "Datatype.h"
+class CScore;
 
 /////////////////////////////////////////////////////////////////////////////
 // CDlgScore dialog
@@ -25,7 +26,8 @@ public:
 	//list<CMyObject*>* m_pOps;
 
 	//CObList m_score;
-	list<CMyObject*> m_score;
+	//list<CMyObject*> m_score;
+	list<CScore> m_score;
 
 	//CDlgScore(CWnd* pParent = NULL);   // standard constructor
 	CDlgScore();
