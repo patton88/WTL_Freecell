@@ -6,6 +6,8 @@
 
 #include "WTLfcView.h"
 #include "MainFrm.h"
+#include "DlgAICal.h"
+#include "DlgSelGame.h"
 
 BOOL CWTLfcView::PreTranslateMessage(MSG* pMsg)
 {
@@ -123,7 +125,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 		m_nFirst++;
 		g_pMain->GetWindowRect(m_rectOrg);
 		CRect vcr; GetClientRect(vcr);
-		g_jlCcs.m_nWinWidth = vcr.Width();
+		g_fcCcs.m_nWinWidth = vcr.Width();
 	}
 
 	CRect wr, cr;
@@ -132,8 +134,8 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	int ww = wr.Width();
 	int cw = cr.Width();
 
-	//g_jlCcs.SetCardSize(wr.Width());	// 在 OnSize消息响应函数中，g_pView->GetClientRect(wr)数值不准确
-	g_jlCcs.SetCardSize(cr.Width());		// 放到这里，g_pView->GetClientRect(wr)数值是准确的
+	//g_fcCcs.SetCardSize(wr.Width());	// 在 OnSize消息响应函数中，g_pView->GetClientRect(wr)数值不准确
+	g_fcCcs.SetCardSize(cr.Width());		// 放到这里，g_pView->GetClientRect(wr)数值是准确的
 
 
 	//bool b = g_pMain->IsZoomed();
@@ -169,14 +171,14 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 
 	// 1、显示步数信息
 	CString strSteps;
-	CRect r = g_jlData.RectOfStep();
+	CRect r = g_fcData.RectOfStep();
 	// ...
-	if (!g_jlData.m_pOps->empty()) {
-		strSteps.Format(TEXT("%d"), g_jlData.m_pOps->size());
+	if (!g_fcData.m_pOps->empty()) {
+		strSteps.Format(TEXT("%d"), g_fcData.m_pOps->size());
 
 		CFont font;
 		//font.CreatePointFont(ccs.stepFont * 10, "Arial", pDC);
-		font.CreatePointFont(g_jlCcs.stepFont * 6, TEXT("Arial"), dc);
+		font.CreatePointFont(g_fcCcs.stepFont * 6, TEXT("Arial"), dc);
 		HFONT prevFont = dc.SelectFont(font);
 		int prevMode = dc.SetBkMode(TRANSPARENT);
 
@@ -195,7 +197,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	p.x -= 23;
 	//p.y += 16;
 	//p.y += 30;
-	p.y += int(30 * g_jlCcs.dRate);
+	p.y += int(30 * g_fcCcs.dRate);
 	dc.DrawIcon(p, m_hIcon);
 
 	// 3、绘制牌面提示按钮(8*12)   A-K
@@ -210,14 +212,14 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	brush.CreateSolidBrush(RGB(0, 255, 0));
 
 	for (UINT c = 1; c <= 13; c++) {
-		CRect r = g_jlData.RectOf(c);
+		CRect r = g_fcData.RectOf(c);
 		dc.FrameRect(r, brush);
 		CPoint p = r.CenterPoint();
 		//p.x -= 5; p.y -= 5;
-		p.x -= int(2.2 * g_jlCcs.dRate); p.y -= int(4 * g_jlCcs.dRate);
+		p.x -= int(2.2 * g_fcCcs.dRate); p.y -= int(4 * g_fcCcs.dRate);
 		//pDC->BitBlt(p.x,p.y,8,12,&memDC,(c-1)*8+32,0,SRCAND);
 		//pDC->BitBlt(p.x,p.y,8,12,&memDC,(c-1)*8+32,0,NOTSRCCOPY | SRCAND);
-		dc.StretchBlt(p.x, p.y, int(5 * g_jlCcs.dRate), int(8 * g_jlCcs.dRate), dcCard, (c - 1) * 8 + 32, 0, 8, 12, NOTSRCCOPY | SRCAND);
+		dc.StretchBlt(p.x, p.y, int(5 * g_fcCcs.dRate), int(8 * g_fcCcs.dRate), dcCard, (c - 1) * 8 + 32, 0, 8, 12, NOTSRCCOPY | SRCAND);
 	}
 	//memDC.SelectObject(poldbmp);
 	dcCard.SelectBitmap(hBmpOld);
@@ -226,7 +228,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	p.x = p.y = 0;
 	for (UINT i = 1; i <= 16; i++)
 	{
-		UINT nCards = g_jlData.CntCardsIn(i);
+		UINT nCards = g_fcData.CntCardsIn(i);
 		if (!nCards && i > 8)	//此列没有牌则只绘制方框，只绘制空档列和回收列方框
 		{
 			//HPEN penBlack = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
@@ -239,7 +241,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 			//CBrush *pPrevBrush = pDC->SelectObject(&m_brushBkgnd);
 			CBrush brushOld = dc.SelectBrush(m_brushBkgnd);
 			//pDC->RoundRect(pDoc->RectOf(i,1,1),CPoint(0,0));
-			dc.Rectangle(g_jlData.RectOf(i, 1, 1));
+			dc.Rectangle(g_fcData.RectOf(i, 1, 1));
 			dc.SelectBrush(brushOld);
 			//pDC->SelectObject(&brush);
 
@@ -250,8 +252,8 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 			dc.SelectPen(penBlack2);
 
 			CPoint p;
-			CPoint pTopLeft = g_jlData.RectOf(i, 1, 1).TopLeft();
-			CPoint BottomRight = g_jlData.RectOf(i, 1, 1).BottomRight();
+			CPoint pTopLeft = g_fcData.RectOf(i, 1, 1).TopLeft();
+			CPoint BottomRight = g_fcData.RectOf(i, 1, 1).BottomRight();
 			p.x = pTopLeft.x;
 			p.y = BottomRight.y;
 
@@ -269,11 +271,11 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 		{
 			for (UINT j = 1; j <= nCards; j++)
 			{
-				UINT card = g_jlData.GetCard(i, j);
+				UINT card = g_fcData.GetCard(i, j);
 				if (card == 0) continue;		//这里本不该出现牌点数为 0 的情况，都是多线程惹的祸
-				r = g_jlData.RectOf(i, j, 1);
+				r = g_fcData.RectOf(i, j, 1);
 				DrawCard(r.TopLeft(), card, &dc);
-				if (g_jlData.m_nSel == i && j == nCards)		 //被选中列的底牌需要反色
+				if (g_fcData.m_nSel == i && j == nCards)		 //被选中列的底牌需要反色
 				{
 					dc.InvertRect(r);
 				}
@@ -281,9 +283,9 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 		}
 		else		//绘制空档列和回收列
 		{
-			r = g_jlData.RectOf(i, 1, 1);
-			DrawCard(r.TopLeft(), g_jlData.BottCard(i), &dc);
-			if (g_jlData.m_nSel == i)	 //如果此列是被选中状态，则此列牌被反色
+			r = g_fcData.RectOf(i, 1, 1);
+			DrawCard(r.TopLeft(), g_fcData.BottCard(i), &dc);
+			if (g_fcData.m_nSel == i)	 //如果此列是被选中状态，则此列牌被反色
 			{
 				dc.InvertRect(r);
 			}
@@ -426,14 +428,14 @@ void CWTLfcView::AdjustFrameToFixedSize()
 		int xEdge = (wr.Width() - cr.Width()) / 2 + 1;
 		int yEdge = (wr.Height() - cr.Height()) / 2;
 
-		CRect r = g_jlData.RectOf(8, 1, 1);//第八列第一张
+		CRect r = g_fcData.RectOf(8, 1, 1);//第八列第一张
 		ClientToScreen(r);
 
 		//GetSystemMetrics(SM_CXFRAME)
 		//GetSystemMetrics(SM_CYFRAME)
 		//wr.left = wr.top = 0;
-		wr.right = r.right + g_jlCcs.CARD_INT + g_jlCcs.ptOrg.x + xEdge;
-		wr.bottom = r.top + g_jlCcs.CARD_UNCOVER * 11 + g_jlCcs.CARD_HEI + xEdge;
+		wr.right = r.right + g_fcCcs.CARD_INT + g_fcCcs.ptOrg.x + xEdge;
+		wr.bottom = r.top + g_fcCcs.CARD_UNCOVER * 11 + g_fcCcs.CARD_HEI + xEdge;
 
 		//pWnd->MoveWindow(wr);
 		//pWnd->CenterWindow();
@@ -507,18 +509,18 @@ BOOL CWTLfcView::MyCenterWindow(CRect rcDlg)
 //	// 窗口左右两个边的宽度和上下边框的高度
 //	//int edge = (wr.Width() - cr.Width()) / 2 + 1;
 //
-//	CRect r = g_jlData.RectOf(8, 1, 1);//得到第八列第一张的客户区矩形。第八列也即最后、最右面一列
+//	CRect r = g_fcData.RectOf(8, 1, 1);//得到第八列第一张的客户区矩形。第八列也即最后、最右面一列
 //	//ClientToScreen(r);		// 这种方式从类外调用时，会有问题
 //	//g_pMain->ClientToScreen(r);	// 这种方式是错误的
 //	//g_pView->ClientToScreen(r);		// 这种方式才是正确的
 //
-//	// g_jlCcs.CARD_INT 是两列牌之间的间隔，g_jlCcs.ptOrg.x 是左右两边牌列离客户区边框的距离
-//	//wr.right = r.right + g_jlCcs.CARD_INT + g_jlCcs.ptOrg.x + edge;
-//	//wr.bottom = r.top + g_jlCcs.CARD_UNCOVER*12 + g_jlCcs.CARD_HEI + edge;
-//	//wr.bottom = r.top + g_jlCcs.CARD_UNCOVER * 11 + g_jlCcs.CARD_HEI + edge;
+//	// g_fcCcs.CARD_INT 是两列牌之间的间隔，g_fcCcs.ptOrg.x 是左右两边牌列离客户区边框的距离
+//	//wr.right = r.right + g_fcCcs.CARD_INT + g_fcCcs.ptOrg.x + edge;
+//	//wr.bottom = r.top + g_fcCcs.CARD_UNCOVER*12 + g_fcCcs.CARD_HEI + edge;
+//	//wr.bottom = r.top + g_fcCcs.CARD_UNCOVER * 11 + g_fcCcs.CARD_HEI + edge;
 //	wr.top = wr.left = 0;
-//	wr.right = r.right + g_jlCcs.CARD_INT + g_jlCcs.ptOrg.x + 2 * (GetSystemMetrics(SM_CXFRAME)) + 1;
-//	wr.bottom = r.top + g_jlCcs.CARD_UNCOVER * 13 + g_jlCcs.CARD_HEI + 2 * (GetSystemMetrics(SM_CYFRAME)) + 1;
+//	wr.right = r.right + g_fcCcs.CARD_INT + g_fcCcs.ptOrg.x + 2 * (GetSystemMetrics(SM_CXFRAME)) + 1;
+//	wr.bottom = r.top + g_fcCcs.CARD_UNCOVER * 13 + g_fcCcs.CARD_HEI + 2 * (GetSystemMetrics(SM_CYFRAME)) + 1;
 //
 //	//CRect rcArea;
 //	//rcArea.left = rcArea.top = 0;
@@ -582,8 +584,8 @@ LRESULT CWTLfcView::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/
 	// TODO: Add your message handler code here and/or call default
 
 	//如果没有文档打开就自动设置牌局
-	//if (g_jlData.GetPathName().IsEmpty())
-	{ g_jlData.OnRand(); }
+	//if (g_fcData.GetPathName().IsEmpty())
+	{ g_fcData.OnRand(); }
 
 	//AdjustFrameToFixedSize();	//调整窗口到合适的大小
 
@@ -662,7 +664,7 @@ CBitmap* CWTLfcView::replaceColor(CBitmap *pBmpBefore, COLORREF res, COLORREF ai
 void CWTLfcView::DrawCard(CPoint point, UINT card, CDC *pDC)
 {
 	//CJLDoc* pDoc = GetDocument();
-	ATLASSERT(g_jlData.IsCard(card));
+	ATLASSERT(g_fcData.IsCard(card));
 
 	//HPEN penBlack = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
 	CPen penBlack;
@@ -670,7 +672,7 @@ void CWTLfcView::DrawCard(CPoint point, UINT card, CDC *pDC)
 
 	HPEN penOld = pDC->SelectPen(penBlack);
 	CBrush brushOld = pDC->SelectBrush(m_brushBk);
-	CRect r(point, CSize(g_jlCcs.CARD_WID, g_jlCcs.CARD_HEI));
+	CRect r(point, CSize(g_fcCcs.CARD_WID, g_fcCcs.CARD_HEI));
 	pDC->RoundRect(r, CPoint(5, 5));//画牌的背景与边框
 	pDC->SelectPen(penOld);
 	pDC->SelectBrush(brushOld);
@@ -690,26 +692,26 @@ void CWTLfcView::DrawCard(CPoint point, UINT card, CDC *pDC)
 
 	//基本思路和模式，是将调用StretchBlt函数时，前4个参数末尾的数字 * ccs.dRate。一般每个参数只最末数字乘1次
 	//将运算结果强制转int，以免警告。warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-	int nEdg = int(4.5*g_jlCcs.dRate);
-	pDC->StretchBlt(r.left + nEdg, r.top + nEdg, int(8.8*g_jlCcs.dRate), int(13.2*g_jlCcs.dRate), memDC, idxUL * 8 + 32, 0, 8, 12, SRCAND);
-	pDC->StretchBlt(int(r.right - nEdg - 8.5*g_jlCcs.dRate), int(r.bottom - nEdg - 13 * g_jlCcs.dRate), int(8.8*g_jlCcs.dRate), int(13.2*g_jlCcs.dRate), memDC, idxBR * 8 + 32, 0, 8, 12, SRCAND);
+	int nEdg = int(4.5*g_fcCcs.dRate);
+	pDC->StretchBlt(r.left + nEdg, r.top + nEdg, int(8.8*g_fcCcs.dRate), int(13.2*g_fcCcs.dRate), memDC, idxUL * 8 + 32, 0, 8, 12, SRCAND);
+	pDC->StretchBlt(int(r.right - nEdg - 8.5*g_fcCcs.dRate), int(r.bottom - nEdg - 13 * g_fcCcs.dRate), int(8.8*g_fcCcs.dRate), int(13.2*g_fcCcs.dRate), memDC, idxBR * 8 + 32, 0, 8, 12, SRCAND);
 	//下面两行作了特殊处理，是画左上角 & 右下角图标的(8*8)的
-	pDC->StretchBlt(int(r.left + nEdg + 1.5*g_jlCcs.dRate), int(r.top + nEdg + 15 * g_jlCcs.dRate + 1 * g_jlCcs.dRate), int(8 * g_jlCcs.dRate), int(8 * g_jlCcs.dRate), memDC, g_jlCcs.clr[g_jlCcs.SML][type][0][0], g_jlCcs.clr[g_jlCcs.SML][type][0][1], 8, 8, SRCAND);
-	pDC->StretchBlt(int(r.right - nEdg - 8.5*g_jlCcs.dRate), int(r.bottom - nEdg - 12 * g_jlCcs.dRate - 1 * g_jlCcs.dRate - 10.5*g_jlCcs.dRate), int(8 * g_jlCcs.dRate), int(8 * g_jlCcs.dRate), memDC, g_jlCcs.clr[g_jlCcs.SML][type][1][0], g_jlCcs.clr[g_jlCcs.SML][type][1][1], 8, 8, SRCAND);
+	pDC->StretchBlt(int(r.left + nEdg + 1.5*g_fcCcs.dRate), int(r.top + nEdg + 15 * g_fcCcs.dRate + 1 * g_fcCcs.dRate), int(8 * g_fcCcs.dRate), int(8 * g_fcCcs.dRate), memDC, g_fcCcs.clr[g_fcCcs.SML][type][0][0], g_fcCcs.clr[g_fcCcs.SML][type][0][1], 8, 8, SRCAND);
+	pDC->StretchBlt(int(r.right - nEdg - 8.5*g_fcCcs.dRate), int(r.bottom - nEdg - 12 * g_fcCcs.dRate - 1 * g_fcCcs.dRate - 10.5*g_fcCcs.dRate), int(8 * g_fcCcs.dRate), int(8 * g_fcCcs.dRate), memDC, g_fcCcs.clr[g_fcCcs.SML][type][1][0], g_fcCcs.clr[g_fcCcs.SML][type][1][1], 8, 8, SRCAND);
 
 	//在牌的主要部分画花色
-	const UCHAR *p, *data[] = { g_jlCcs.cA, g_jlCcs.c2, g_jlCcs.c3, g_jlCcs.c4, g_jlCcs.c5, g_jlCcs.c6, g_jlCcs.c7, g_jlCcs.c8, g_jlCcs.c9, g_jlCcs.c10 };
+	const UCHAR *p, *data[] = { g_fcCcs.cA, g_fcCcs.c2, g_fcCcs.c3, g_fcCcs.c4, g_fcCcs.c5, g_fcCcs.c6, g_fcCcs.c7, g_fcCcs.c8, g_fcCcs.c9, g_fcCcs.c10 };
 	if (num <= 10) {
-		p = (card == CARD(8, 3) ? g_jlCcs.c8FK : data[num - 1]);
+		p = (card == CARD(8, 3) ? g_fcCcs.c8FK : data[num - 1]);
 		UINT n = num * 3;
 		for (UINT j = 0; j < n; j += 3) {
 			//pDC->BitBlt(point.x + p[j] - 8, point.y + p[j+1] - 8, 16, 16, &memDC, clr[BIG][type][!p[j+2]][0], clr[BIG][type][!p[j+2]][1], SRCAND);
 			//原来时原始大小绘制牌片，不用缩放，所以用BitBlt，参数为8个。注意这里用的是MFC的CDC成员函数BitBlt，而非平台SDK API的BitBlt(参数为9个，多第一个HDC)
 			//这里需要进行缩放，所以用StretchBlt，参数为10个。注意这里用的是MFC的CDC成员函数StretchBlt，而非平台SDK API的StretchBlt(参数为11个，多第一个HDC)
-			pDC->StretchBlt(int(point.x + p[j] - 5.5*g_jlCcs.dRate), int(point.y + p[j + 1] - 7 * g_jlCcs.dRate), int(12 * g_jlCcs.dRate), int(16 * g_jlCcs.dRate), memDC,
-				g_jlCcs.clr[g_jlCcs.BIG][type][!p[j + 2]][0], g_jlCcs.clr[g_jlCcs.BIG][type][!p[j + 2]][1], 16, 16, SRCAND);
+			pDC->StretchBlt(int(point.x + p[j] - 5.5*g_fcCcs.dRate), int(point.y + p[j + 1] - 7 * g_fcCcs.dRate), int(12 * g_fcCcs.dRate), int(16 * g_fcCcs.dRate), memDC,
+				g_fcCcs.clr[g_fcCcs.BIG][type][!p[j + 2]][0], g_fcCcs.clr[g_fcCcs.BIG][type][!p[j + 2]][1], 16, 16, SRCAND);
 
-			//pDC->StretchBlt(int(point.x + p[j] - 12*g_jlCcs.fRate), int(point.y + p[j+1] - 16*g_jlCcs.fRate), int(26*g_jlCcs.fRate), int(32*g_jlCcs.fRate), &memDC, 
+			//pDC->StretchBlt(int(point.x + p[j] - 12*g_fcCcs.fRate), int(point.y + p[j+1] - 16*g_fcCcs.fRate), int(26*g_fcCcs.fRate), int(32*g_fcCcs.fRate), &memDC, 
 			//	ccs.clr[ccs.BIG][type][!p[j+2]][0], ccs.clr[ccs.BIG][type][!p[j+2]][1], 16, 16, SRCAND);
 
 
@@ -718,7 +720,7 @@ void CWTLfcView::DrawCard(CPoint point, UINT card, CDC *pDC)
 	else { //画J Q K
 		CPoint p = r.CenterPoint();
 		//pDC->BitBlt(p.x-23, p.y-37, 47, 74, &memDC, ( (num-11)*4 + type )*47 + 32, 12, SRCAND);
-		pDC->StretchBlt(int(p.x - 20 * g_jlCcs.dRate), int(p.y - 33 * g_jlCcs.dRate), int(41 * g_jlCcs.dRate), int(67 * g_jlCcs.dRate), memDC, ((num - 11) * 4 + type) * 47 + 32, 12, 47, 74, SRCAND);
+		pDC->StretchBlt(int(p.x - 20 * g_fcCcs.dRate), int(p.y - 33 * g_fcCcs.dRate), int(41 * g_fcCcs.dRate), int(67 * g_fcCcs.dRate), memDC, ((num - 11) * 4 + type) * 47 + 32, 12, 47, 74, SRCAND);
 
 	}
 	memDC.SelectBitmap(bmpOld);
@@ -818,7 +820,7 @@ void CWTLfcView::DrawCard(CPoint point, UINT card, CDC *pDC)
 //	//}
 //
 //	////if (wr.Width() > 1195 || wr.Width() < 1185)		// 为避免计算误差，设置取值范围
-//	//g_jlCcs.SetCardSize(wr.Width());	// 在 OnSize消息响应函数中，g_pView->GetClientRect(wr)数值不准确
+//	//g_fcCcs.SetCardSize(wr.Width());	// 在 OnSize消息响应函数中，g_pView->GetClientRect(wr)数值不准确
 //	////AdjustFrameToFixedSize();
 //
 //	return 0;
@@ -974,30 +976,30 @@ void CWTLfcView::OnLButtonDblClk(UINT nFlags, CPoint point)
 	//POINT ptMouse = { nXPos, nYPos };
 
 	//允许双击功能且有空档则双击有效
-	if (g_jlData.m_bEnableDbClick)
+	if (g_fcData.m_bEnableDbClick)
 	{
 		//取消选中列
-		g_jlData.UnselectCardCol();
+		g_fcData.UnselectCardCol();
 		//测试击中哪列
 		UINT curHit = CardColHitTest(point), emptyCol;
 		if (
-			g_jlData.ColInBuf(curHit)
+			g_fcData.ColInBuf(curHit)
 			&&
-			g_jlData.ColInCard(emptyCol = g_jlData.FindEmptyCardCol())
+			g_fcData.ColInCard(emptyCol = g_fcData.FindEmptyCardCol())
 
 			||
 
-			g_jlData.ColInCard(curHit)
+			g_fcData.ColInCard(curHit)
 			&&
 			(
-			g_jlData.ColInBuf(emptyCol = g_jlData.FindEmptyBuf())
+			g_fcData.ColInBuf(emptyCol = g_fcData.FindEmptyBuf())
 			||
-			g_jlData.ColInCard(emptyCol = g_jlData.FindEmptyCardCol())
+			g_fcData.ColInCard(emptyCol = g_fcData.FindEmptyCardCol())
 			)
 			)
 		{
 			HitAt(point);//假设发生两个单击动作，第一个动作击中当前双击的地方
-			HitAt(g_jlData.RectOf(emptyCol, 1, 1).CenterPoint());//第二个单击动作击中某空档中央
+			HitAt(g_fcData.RectOf(emptyCol, 1, 1).CenterPoint());//第二个单击动作击中某空档中央
 		}
 	}
 
@@ -1008,7 +1010,7 @@ void CWTLfcView::OnLButtonDblClk(UINT nFlags, CPoint point)
 UINT CWTLfcView::CardColHitTest(const CPoint &point)
 {
 	for (UINT i = 1; i <= 16; i++)
-		if (g_jlData.RectOf(i, 1, 19).PtInRect(point))
+		if (g_fcData.RectOf(i, 1, 19).PtInRect(point))
 			return i;
 	return 0;
 }
@@ -1026,22 +1028,22 @@ void CWTLfcView::HitAt(CPoint point)
 		goto ret;//没有击中任何一列
 
 	//本次单击之前未选中任何列
-	if (!g_jlData.m_nSel) {
-		if (hit <= 12 && g_jlData.CntCardsIn(hit))//击中牌列或缓冲区且该列非空
-			g_jlData.SelectCardCol(hit);//选中此列
+	if (!g_fcData.m_nSel) {
+		if (hit <= 12 && g_fcData.CntCardsIn(hit))//击中牌列或缓冲区且该列非空
+			g_fcData.SelectCardCol(hit);//选中此列
 		goto ret;
 	}
 	//已经选中某列，击中缓存列或牌列
 	if (hit <= 12) {
-		if (hit == g_jlData.m_nSel) { //单击了被选中列则取消当前选中
-			g_jlData.UnselectCardCol();
+		if (hit == g_fcData.m_nSel) { //单击了被选中列则取消当前选中
+			g_fcData.UnselectCardCol();
 			goto ret;
 		}
 		//单击的列不是选中列，可以移动几张？
-		if (!(nMv = g_jlData.CntMaxMv(hit, g_jlData.m_nSel))) {
-			if (!g_jlData.m_bEnableAlert) {
+		if (!(nMv = g_fcData.CntMaxMv(hit, g_fcData.m_nSel))) {
+			if (!g_fcData.m_bEnableAlert) {
 				//选中当前被击中的列（此列必定非空）
-				g_jlData.SelectCardCol(hit);
+				g_fcData.SelectCardCol(hit);
 			}
 			else {
 				MessageBox(TEXT("可能空档不够或不合规则。"),
@@ -1053,27 +1055,27 @@ void CWTLfcView::HitAt(CPoint point)
 		//可以移动若干张到目标列，目标列可以是空列也可以不是，源列正确性
 		//（源列中一定有牌）这一点由SelectCardCol和CntMaxMv保证
 		//=================================-============================
-		if (g_jlData.ColInCard(g_jlData.m_nSel) && //选中牌列
-			g_jlData.ColInCard(hit) &&
-			g_jlData.IsEmptyCol(hit) && //击中空牌列
+		if (g_fcData.ColInCard(g_fcData.m_nSel) && //选中牌列
+			g_fcData.ColInCard(hit) &&
+			g_fcData.IsEmptyCol(hit) && //击中空牌列
 			nMv > 1) { //可移动多张
 			//如果没有设置“尽可能移动多的牌”选项就询问
-			if (!g_jlData.m_bMaxMove && IDCANCEL == MessageBox(
+			if (!g_fcData.m_bMaxMove && IDCANCEL == MessageBox(
 				TEXT("整列牌都移到此处？"), TEXT("移动"), MB_OKCANCEL))
 				nMv = 1;
 		}
-		//一定要备份g_jlData.m_nSel，因为MoveCards会清除当前选中标记，
-		//导致g_jlData.m_nSel为0，这样Record中就不能正确记录当前选中列
-	Move:		UINT colSel = g_jlData.m_nSel;
-		g_jlData.MoveCards(hit, colSel, nMv);
-		g_jlData.Record(new COperations(hit, colSel, nMv));
+		//一定要备份g_fcData.m_nSel，因为MoveCards会清除当前选中标记，
+		//导致g_fcData.m_nSel为0，这样Record中就不能正确记录当前选中列
+	Move:		UINT colSel = g_fcData.m_nSel;
+		g_fcData.MoveCards(hit, colSel, nMv);
+		g_fcData.Record(new COperations(hit, colSel, nMv));
 	}
 	//本次单击之前已经选中某列，现在击中回收列
-	else if ((nMv = g_jlData.CntMaxMv(hit, g_jlData.m_nSel)) == 1) {
+	else if ((nMv = g_fcData.CntMaxMv(hit, g_fcData.m_nSel)) == 1) {
 		goto Move;
 	}
-ret:	g_jlData.AutoThrow();//自动扔牌
-	g_jlData.CheckGame();//游戏是否结束？
+ret:	g_fcData.AutoThrow();//自动扔牌
+	g_fcData.CheckGame();//游戏是否结束？
 	//Invalidate();		// 有效，有闪烁
 	//UpdateWindow();	// 无效
 }
@@ -1089,13 +1091,13 @@ void CWTLfcView::OnLButtonDown(UINT nFlags, CPoint point)
 	UINT hit = CardLabelHitTest(point);
 	if (hit) {
 		//CJLDoc *pDoc = GetDocument();
-		CARD_POS pos[5], *p = pos, *pEnd = g_jlData.FindCardForLabel(hit, pos);
+		CARD_POS pos[5], *p = pos, *pEnd = g_fcData.FindCardForLabel(hit, pos);
 		if (p < pEnd) { //如果有牌对应牌标
 			SetCapture();//捕获鼠标输入
 			m_nCardLabelHit = hit;//记录此牌标
 
 			CClientDC cdc(m_hWnd);
-			cdc.InvertRect(g_jlData.RectOf(hit));//牌标反色
+			cdc.InvertRect(g_fcData.RectOf(hit));//牌标反色
 
 			//让反色牌标图形中的文字醒目
 			CDC memDC;
@@ -1107,17 +1109,17 @@ void CWTLfcView::OnLButtonDown(UINT nFlags, CPoint point)
 			CBrush brush;
 			brush.CreateSolidBrush(RGB(0, 255, 0));
 
-			CRect r = g_jlData.RectOf(hit);
+			CRect r = g_fcData.RectOf(hit);
 			cdc.FrameRect(r, brush);
 			CPoint pt = r.CenterPoint();
 			//pt.x -= 5; pt.y -= 7;
 			//cdc.StretchBlt(pt.x,pt.y,9,15,&memDC,(hit-1)*8+32,0,8,12,NOTSRCCOPY | SRCAND);
 
-			pt.x -= int(2.2 * g_jlCcs.dRate); pt.y -= int(4 * g_jlCcs.dRate);
+			pt.x -= int(2.2 * g_fcCcs.dRate); pt.y -= int(4 * g_fcCcs.dRate);
 			//pDC->BitBlt(p.x,p.y,8,12,&memDC,(c-1)*8+32,0,SRCAND);
 			//pDC->BitBlt(p.x,p.y,8,12,&memDC,(c-1)*8+32,0,NOTSRCCOPY | SRCAND);
 			//pDC->StretchBlt(p.x,p.y,int(5 * ccs.dRate),int(10 * ccs.dRate),&memDC,(c-1)*8+32,0,8,12,NOTSRCCOPY | SRCAND);
-			cdc.StretchBlt(pt.x, pt.y, int(5 * g_jlCcs.dRate), int(8 * g_jlCcs.dRate), memDC, (hit - 1) * 8 + 32, 0, 8, 12, NOTSRCCOPY | SRCAND);
+			cdc.StretchBlt(pt.x, pt.y, int(5 * g_fcCcs.dRate), int(8 * g_fcCcs.dRate), memDC, (hit - 1) * 8 + 32, 0, 8, 12, NOTSRCCOPY | SRCAND);
 
 			memDC.SelectBitmap(hBmpOld);
 
@@ -1135,8 +1137,8 @@ void CWTLfcView::OnLButtonDown(UINT nFlags, CPoint point)
 			//WTL中必须在此定义
 			CBrush hBr;
 			while (p < pEnd) { //将与此牌标对应的牌显示出来并反色
-				CRect r = g_jlData.RectOf(p->col, p->idx, 1);
-				UINT card = g_jlData.GetCard(p->col, p->idx);
+				CRect r = g_fcData.RectOf(p->col, p->idx, 1);
+				UINT card = g_fcData.GetCard(p->col, p->idx);
 				DrawCard(r.TopLeft(), card, &cdc);
 
 				//WTL中这样定义，只会初始化一次，重新赋值会导致hBr失效
@@ -1171,10 +1173,10 @@ void CWTLfcView::OnLButtonUp(UINT nFlags, CPoint point)
 	if (hit) {
 		ReleaseCapture();
 		//CJLDoc *pDoc = GetDocument();
-		InvalidateRect(g_jlData.RectOf(hit));//牌标反色
-		CARD_POS pos[5], *p = pos, *pEnd = g_jlData.FindCardForLabel(hit, pos);
+		InvalidateRect(g_fcData.RectOf(hit));//牌标反色
+		CARD_POS pos[5], *p = pos, *pEnd = g_fcData.FindCardForLabel(hit, pos);
 		while (p < pEnd) { //将与此牌标对应的牌正常显示出来
-			CRect r = g_jlData.RectOf(p->col, p->idx, 1);
+			CRect r = g_fcData.RectOf(p->col, p->idx, 1);
 			InvalidateRect(r);
 			++p;
 		}
@@ -1192,13 +1194,13 @@ void CWTLfcView::OnMouseMove(UINT nFlags, CPoint point)
 	UINT curHit = CardColHitTest(point);
 	if
 		(	//有选中列
-		g_jlData.IsCol(g_jlData.m_nSel)
+		g_fcData.IsCol(g_fcData.m_nSel)
 		//在牌列上移动
-		&& g_jlData.IsCol(curHit)
+		&& g_fcData.IsCol(curHit)
 		//被选中的牌列不是目前光标所在的列
-		&& g_jlData.m_nSel != curHit
+		&& g_fcData.m_nSel != curHit
 		//空档足够则设置光标以提示可以移动若干张到目标列
-		&& g_jlData.CntMaxMv(curHit, g_jlData.m_nSel)
+		&& g_fcData.CntMaxMv(curHit, g_fcData.m_nSel)
 		)
 	{
 		SetCursor(m_hDown);
@@ -1211,7 +1213,7 @@ void CWTLfcView::OnMouseMove(UINT nFlags, CPoint point)
 UINT CWTLfcView::CardLabelHitTest(const CPoint &point)
 {
 	for (UINT i = 1; i <= 13; i++)
-		if (g_jlData.RectOf(i).PtInRect(point))
+		if (g_fcData.RectOf(i).PtInRect(point))
 			return i;
 	return 0;
 }
@@ -1225,14 +1227,14 @@ void CWTLfcView::OnRButtonDown(UINT nFlags, CPoint point)
 	//测试点了哪张牌
 	UINT hit = CardColHitTest(point);
 	//击中牌列
-	if (g_jlData.ColInCard(hit)) {
-		for (UINT idx = 1; idx < g_jlData.CntCardsIn(hit); idx++) {
+	if (g_fcData.ColInCard(hit)) {
+		for (UINT idx = 1; idx < g_fcData.CntCardsIn(hit); idx++) {
 			//击中被压住的牌
-			if (g_jlData.RectOf(hit, idx, 1).PtInRect(point) &&
-				!g_jlData.RectOf(hit, idx + 1, 1).PtInRect(point)) {
-				m_rectRBDown = g_jlData.RectOf(hit, idx, 1);
+			if (g_fcData.RectOf(hit, idx, 1).PtInRect(point) &&
+				!g_fcData.RectOf(hit, idx + 1, 1).PtInRect(point)) {
+				m_rectRBDown = g_fcData.RectOf(hit, idx, 1);
 				CClientDC cdc(m_hWnd);
-				DrawCard(m_rectRBDown.TopLeft(), g_jlData.GetCard(hit, idx), &cdc);
+				DrawCard(m_rectRBDown.TopLeft(), g_fcData.GetCard(hit, idx), &cdc);
 				SetCapture();
 				break;
 			}
@@ -1262,8 +1264,8 @@ LRESULT CWTLfcView::OnUndo(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 {
 	// TODO: Add your message handler code here and/or call default
 
-	g_jlData.Undo();
-	g_jlData.GetHints();
+	g_fcData.Undo();
+	g_fcData.GetHints();
 
 	return 0;
 }
@@ -1272,10 +1274,146 @@ LRESULT CWTLfcView::OnRand(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 {
 	// TODO: Add your command handler code here
 
-	if (!g_jlData.GiveUp()) return 0;
-	int nUniqueGame = g_jlData.Random();
+	if (!g_fcData.GiveUp()) return 0;
+	int nUniqueGame = g_fcData.Random();
 	//while (m_dlgScore.IsOldGameNumber(nUniqueGame = Random()));
-	g_jlData.StartGame(nUniqueGame);
+	g_fcData.StartGame(nUniqueGame);
+
+	return 0;
+}
+
+//自动解答
+LRESULT CWTLfcView::OnAi(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// TODO: Add your command handler code here
+	g_fcData.UnselectCardCol();//取消选中状态
+	g_fcData.m_Hints.ClrHints();//清除提示的记录
+
+	CDlgAICal dlgAICal;//自动解答
+	dlgAICal.DoModal();
+	//UpdateAllViews(NULL);//可能使用了快速解答，所以要刷新界面
+	g_pView->RedrawWindow();
+
+	if (!dlgAICal.m_bSuccess) {
+		//AfxMessageBox(TEXT("抱歉，自动解答未能成功!"));
+		::MessageBox(g_pView->m_hWnd, TEXT("抱歉，自动解答未能成功!"), TEXT("WTLfc"), MB_OK);
+	}
+	g_fcData.CheckGame();//答案已经找到，从头开始演示
+
+	return 0;
+}
+
+//自动解答
+//void WTLfcData::OnAi()
+//{
+//	// TODO: Add your command handler code here
+//	UnselectCardCol();//取消选中状态
+//	m_Hints.ClrHints();//清除提示的记录
+//
+//	CDlgAICal dlgAICal;//自动解答
+//	dlgAICal.DoModal();
+//	UpdateAllViews(NULL);//可能使用了快速解答，所以要刷新界面
+//
+//	if (!dlgAICal.m_bSuccess) {
+//		AfxMessageBox(TEXT("抱歉，自动解答未能成功!"));
+//	}
+//	CheckGame();//答案已经找到，从头开始演示
+//}
+
+//上一局
+//void CWTLfcView::OnPrevGame()
+LRESULT CWTLfcView::OnPrevGame(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// TODO: Add your command handler code here
+	if (!g_fcData.GiveUp()) return 0;
+	g_fcData.StartGame(max(g_fcData.m_nCurGameNumber - 1, MIN_GAME_NUMBER));
+	return 0;
+}
+
+//下一局
+//void CWTLfcView::OnNextGame()
+LRESULT CWTLfcView::OnNextGame(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	if (!g_fcData.GiveUp()) return 0;
+	g_fcData.StartGame(min(g_fcData.m_nCurGameNumber + 1, MAX_GAME_NUMBER));
+	return 0;
+}
+
+//重玩
+//void CWTLfcView::OnAgain()
+LRESULT CWTLfcView::OnAgain(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// TODO: Add your command handler code here
+	if (!g_fcData.GiveUp()) return 0;
+	if (g_fcData.m_nCurGameNumber > 0) {
+		g_fcData.StartGame(g_fcData.m_nCurGameNumber);
+	}
+	else {
+		while (!g_fcData.m_pOps->empty()) {
+			g_fcData.Undo();//撤销到开头
+		}
+	}
+	return 0;
+}
+
+//战况
+//void WTLfcData::OnScore()
+LRESULT CWTLfcView::OnScore(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	g_fcData.m_dlgScore.DoModal();
+	return 0;
+}
+
+LRESULT CWTLfcView::OnEdit(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	return 0;
+}
+
+//选局
+LRESULT CWTLfcView::OnSelectgamenumber(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	if (!g_fcData.GiveUp()) return 0;
+
+	CDlgSelGame dlg;
+	dlg.m_nGameNumber = g_fcData.m_nCurGameNumber;
+	if (dlg.DoModal() != IDOK) return 0;
+
+	g_fcData.StartGame(dlg.m_nGameNumber);
+
+	return 0;
+}
+
+//提示下一步
+//void CWTLfcView::OnHelpNextstep()
+LRESULT CWTLfcView::OnHelpNextstep(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// TODO: Add your command handler code here
+	if (g_fcData.m_Hints.IsEmpty()) return 0;
+
+	//提示前取消选中状态
+	g_fcData.UnselectCardCol();
+
+	//取出下一步动做的记录并提示玩家
+	const COperation *pOp = g_fcData.m_Hints.NextHint();
+
+	UINT cntSrc = g_fcData.CntCardsIn(pOp->src);
+	UINT cntDes = g_fcData.CntCardsIn(pOp->des);
+	CRect sR = g_fcData.RectOf(pOp->src, cntSrc - pOp->cnt + 1, pOp->cnt);
+	CRect dR = g_fcData.RectOf(pOp->des, max(cntDes, 1), 1);
+
+	//CJLView *pView = GetView();
+	CClientDC cdc(g_pView->m_hWnd);
+	//提示过程就是闪烁源列和目列的牌
+	cdc.InvertRect(sR); cdc.InvertRect(dR);//反色
+	SendMessage(g_pView->m_hWnd, WM_PAINT, 0, 0);
+	::Sleep(200);
+	cdc.InvertRect(sR); cdc.InvertRect(dR);//还原
+	SendMessage(g_pView->m_hWnd, WM_PAINT, 0, 0);
+	::Sleep(200);
+	cdc.InvertRect(sR); cdc.InvertRect(dR);//反色
+	SendMessage(g_pView->m_hWnd, WM_PAINT, 0, 0);
+	::Sleep(200);
+	cdc.InvertRect(sR); cdc.InvertRect(dR);//还原
 
 	return 0;
 }

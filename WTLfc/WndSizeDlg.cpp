@@ -44,7 +44,7 @@ LRESULT CWndSizeDlg::OnOKCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, B
 	//if (nWidth != m_nWidth || nHight != m_nHeight)
 	if (abs(nWidth - m_nWidth) > 5 || abs(nHight - m_nHeight) > 5)		// 为避免计算误差，设置取值范围
 	{
-		g_jlCcs.SetCardSize(m_nWidth);
+		g_fcCcs.SetCardSize(m_nWidth);
 		g_pView->m_bWndRestored = false;		// 否则AdjustFrameToFixedSize()会将窗口设置为缺省大小
 		g_pView->AdjustFrameToFixedSize();
 	}

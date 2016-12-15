@@ -4,7 +4,7 @@
 
 #pragma once
 
-//#include "DlgScore.h"
+#include "DlgScore.h"
 #include <list>
 using namespace std;
 #include "Datatype.h"
@@ -70,7 +70,7 @@ public:
 	void MoveCards(UINT des, UINT src, UINT n);
 	virtual ~CWTLfcData();
 
-	//CDlgScore m_dlgScore;
+	CDlgScore m_dlgScore;
 	void Undo();
 	CARD_POS * FindCardForLabel(UINT cardLabel, CARD_POS * pos);
 	CRect RectOf(UINT card);

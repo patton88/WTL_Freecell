@@ -10,8 +10,8 @@
 #include "MainFrm.h"
 
 CAppModule _Module;
-CCardSize g_jlCcs;
-CWTLfcData g_jlData;
+CCardSize g_fcCcs;
+CWTLfcData g_fcData;
 CWTLfcView* g_pView;
 CMainFrame* g_pMain;
 bool g_bMaxOnly = false;

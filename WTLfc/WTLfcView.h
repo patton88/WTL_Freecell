@@ -35,8 +35,33 @@ public:
 		MSG_WM_RBUTTONDOWN(OnRButtonDown)
 		MSG_WM_RBUTTONUP(OnRButtonUp)
 		COMMAND_ID_HANDLER(IDM_UNDO, OnUndo)		// 需要在CMainFrame.h中加入CHAIN_COMMANDS_MEMBER(m_view)才行
+		COMMAND_ID_HANDLER(IDM_AI, OnAi)
 		COMMAND_ID_HANDLER(IDM_RAND, OnRand)
+
+		COMMAND_ID_HANDLER(IDM_PREV_GAME, OnPrevGame)
+		COMMAND_ID_HANDLER(IDM_NEXT_GAME, OnNextGame)
+		COMMAND_ID_HANDLER(IDM_AGAIN, OnAgain)
+		COMMAND_ID_HANDLER(IDB_EDIT, OnEdit)
+		COMMAND_ID_HANDLER(IDM_SCORE, OnScore)
+		COMMAND_ID_HANDLER(IDM_SELECTGAMENUMBER, OnSelectgamenumber)
+		COMMAND_ID_HANDLER(IDM_HELP_NEXTSTEP, OnHelpNextstep)
+
 	END_MSG_MAP()
+
+	LRESULT OnSelectgamenumber(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnPrevGame(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnNextGame(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnAgain(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnEdit(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnScore(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnHelpNextstep(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+
+	//ON_COMMAND(IDM_RAND, OnRand)
+	//ON_COMMAND(IDM_PREV_GAME, OnPrevGame)
+	//ON_COMMAND(IDM_NEXT_GAME, OnNextGame)
+	//ON_COMMAND(IDM_AGAIN, OnAgain)
+	//ON_COMMAND(IDB_EDIT, OnEdit)
+	//ON_COMMAND(IDM_SCORE, OnScore)
 
 	CWTLfcView();
 
@@ -86,4 +111,5 @@ public:
 	void OnRButtonUp(UINT nFlags, CPoint point);
 	LRESULT OnUndo(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnRand(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnAi(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 };

@@ -38,8 +38,8 @@ extern CAppModule _Module;
 class CMainFrame;
 
 // 全局变量在 WTLfc.cpp 中定义。在这里进行声明
-extern CCardSize g_jlCcs;
-extern CWTLfcData g_jlData;
+extern CCardSize g_fcCcs;
+extern CWTLfcData g_fcData;
 extern CWTLfcView* g_pView;
 extern CMainFrame* g_pMain;
 extern bool g_bMaxOnly;

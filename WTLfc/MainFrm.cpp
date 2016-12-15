@@ -85,9 +85,9 @@ void CMainFrame::OnWndRestore(UINT uNotifyCode, int nID, CWindow wndCtl)
 
 	//CRect wr;
 	//GetWindowRect(wr);
-	//if (abs(wr.Width() - g_jlCcs.m_nWinWidth) > 10)
+	//if (abs(wr.Width() - g_fcCcs.m_nWinWidth) > 10)
 	//{
-	//	g_jlCcs.SetCardSize();
+	//	g_fcCcs.SetCardSize();
 	//}
 
 	//g_pView->AdjustFrameToFixedSize();
@@ -101,7 +101,7 @@ void CMainFrame::OnWndRestore(UINT uNotifyCode, int nID, CWindow wndCtl)
 		g_pView->m_bWndRestored = true;
 		//g_pMain->GetMenu()->ModifyMenu(ID_WND_RESTORE, MF_BYCOMMAND, ID_WND_RESTORE, _T("窗口最大化(F8)"));
 		//g_pMain->DrawMenuBar();
-		g_jlCcs.SetCardSize();
+		g_fcCcs.SetCardSize();
 		g_pView->AdjustFrameToFixedSize();
 	}
 	else

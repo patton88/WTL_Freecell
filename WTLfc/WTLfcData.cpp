@@ -7,6 +7,8 @@
 #include "Datatype.h"
 #include <time.h>
 #include "WTLfcView.h"
+#include "DlgPassed.h"
+#include "DlgAIShow.h"
 
 //用于支持洗牌的函数
 #include <algorithm>
@@ -336,7 +338,7 @@ void CWTLfcData::AutoThrow()
 			CRect rs = RectOf(colSrc, CntCardsIn(colSrc), 1);
 			CRect rd = RectOf(colDes, 1, 1);
 			::LineDDA(rs.left, rs.top, rd.left, rd.top, LineDDACallback, cardSrc);
-			// 动画很慢死锁的原因是 g_jlData.m_nDDASpeed 没有初始化
+			// 动画很慢死锁的原因是 g_fcData.m_nDDASpeed 没有初始化
 		}
 		MoveCards(colDes, colSrc, 1);
 
@@ -517,6 +519,12 @@ void CWTLfcData::Undo()
 
 	InvalidateRect(RectOfStep());
 
+	//CObList
+	//GetHeadPosition返回的是链表头元素的位置
+	//CObList..GetNext(pos)先返回链表中pos所指元素，然后将pos指向下一个元素。调用GetNext后pos的值就改变了
+	//微软脑壳有包！
+		
+
 	////撤销一步
 	//COperations *pOpsLast = (COperations*)m_pOps->GetTail();
 	//CObList *pOps = pOpsLast->pOps;
@@ -589,37 +597,37 @@ void CWTLfcData::BackHome()
 CRect CWTLfcData::RectOf(UINT col, UINT idx, UINT nCards)
 {
 	ATLASSERT(IsCol(col));
-	CPoint org = g_jlCcs.ptOrg;
+	CPoint org = g_fcCcs.ptOrg;
 
 	CRect r;
 	if (col <= 8) {
-		org.x += g_jlCcs.CARD_INT;
-		org.y += g_jlCcs.CARD_HEI + g_jlCcs.PILE_VINT;
-		r.left = org.x + (g_jlCcs.CARD_WID + g_jlCcs.CARD_INT)*(col - 1);
-		r.right = r.left + g_jlCcs.CARD_WID;
+		org.x += g_fcCcs.CARD_INT;
+		org.y += g_fcCcs.CARD_HEI + g_fcCcs.PILE_VINT;
+		r.left = org.x + (g_fcCcs.CARD_WID + g_fcCcs.CARD_INT)*(col - 1);
+		r.right = r.left + g_fcCcs.CARD_WID;
 		//超过十三张牌后每增加一张牌，露出部分的高度就减少1个象素
 		int n = m_iCards[col - 1][19] - 13;
 		if (n > 0)			//超过十三张牌后每增加一张牌，露出部分的高度就减少2*ccs.dRate个象素
 		{
-			n = int((n + 1) * g_jlCcs.dRate);
+			n = int((n + 1) * g_fcCcs.dRate);
 		}
-		int h = g_jlCcs.CARD_UNCOVER - max(n, 0);
+		int h = g_fcCcs.CARD_UNCOVER - max(n, 0);
 		r.top = org.y + (idx - 1)*h;
-		r.bottom = r.top + (nCards - 1)*h + g_jlCcs.CARD_HEI;
+		r.bottom = r.top + (nCards - 1)*h + g_fcCcs.CARD_HEI;
 	}
 	else if (col <= 12) {
-		r.left = org.x + (col - 9)*g_jlCcs.CARD_WID;
+		r.left = org.x + (col - 9)*g_fcCcs.CARD_WID;
 		r.top = org.y;
-		r.right = r.left + g_jlCcs.CARD_WID;
-		r.bottom = r.top + g_jlCcs.CARD_HEI;
+		r.right = r.left + g_fcCcs.CARD_WID;
+		r.bottom = r.top + g_fcCcs.CARD_HEI;
 	}
 	else {
-		org.x += 4 * g_jlCcs.CARD_WID + g_jlCcs.PILE_HINT;
+		org.x += 4 * g_fcCcs.CARD_WID + g_fcCcs.PILE_HINT;
 
-		r.left = org.x + (col - 13)*g_jlCcs.CARD_WID;
+		r.left = org.x + (col - 13)*g_fcCcs.CARD_WID;
 		r.top = org.y;
-		r.right = r.left + g_jlCcs.CARD_WID;
-		r.bottom = r.top + g_jlCcs.CARD_HEI;
+		r.right = r.left + g_fcCcs.CARD_WID;
+		r.bottom = r.top + g_fcCcs.CARD_HEI;
 	}
 	return r;
 }
@@ -642,7 +650,7 @@ VOID CALLBACK LineDDACallback(int x, int y, LPARAM lparam)
 	static CRect rbk(0, 0, 0, 0);//用于记录上次绘制的位置
 
 	//当前位置
-	CRect r(x, y, x + g_jlCcs.CARD_WID, y + g_jlCcs.CARD_HEI), R, rInter;
+	CRect r(x, y, x + g_fcCcs.CARD_WID, y + g_fcCcs.CARD_HEI), R, rInter;
 
 	//第一点处不绘制牌面，只记录位置
 	if (rbk.IsRectEmpty()) {
@@ -661,8 +669,8 @@ VOID CALLBACK LineDDACallback(int x, int y, LPARAM lparam)
 	//
 	//上次绘制与本次绘制的两个矩形的重叠区域
 
-#define SquareIsOK(a,b) (a*b <= g_jlCcs.CARD_WID*g_jlCcs.CARD_HEI*(1-g_jlData.m_nDDASpeed/100.))
-	// 很慢死锁的原因是 g_jlData.m_nDDASpeed 没有初始化
+#define SquareIsOK(a,b) (a*b <= g_fcCcs.CARD_WID*g_fcCcs.CARD_HEI*(1-g_fcData.m_nDDASpeed/100.))
+	// 很慢死锁的原因是 g_fcData.m_nDDASpeed 没有初始化
 
 	rInter.IntersectRect(r, rbk);//重叠矩形肯定不为空
 	if (SquareIsOK(rInter.Width(), rInter.Height())) { //满足面积关系
@@ -679,7 +687,7 @@ VOID CALLBACK LineDDACallback(int x, int y, LPARAM lparam)
 		rbk = r;
 	}
 	//接近回收处时可能在最后一点前不再绘制
-	R = g_jlData.RectOf(TYPE(card) + 13, 1, 1);
+	R = g_fcData.RectOf(TYPE(card) + 13, 1, 1);
 	rInter.IntersectRect(rbk, R);
 	if (!SquareIsOK(R.Width(), R.Height())) {
 		g_pView->InvalidateRect(rbk);//擦去上次的绘制
@@ -1231,45 +1239,6 @@ void CWTLfcData::ShowMessage(char* pMsg, int src, int des, int cnt)
 }
 #endif
 
-//提示下一步
-//void WTLfcData::OnHelpNextstep()
-//{
-//	// TODO: Add your command handler code here
-//	if (m_Hints.IsEmpty()) return;
-//
-//	//提示前取消选中状态
-//	UnselectCardCol();
-//
-//	//取出下一步动做的记录并提示玩家
-//	const COperation *pOp = m_Hints.NextHint();
-//
-//	UINT cntSrc = CntCardsIn(pOp->src);
-//	UINT cntDes = CntCardsIn(pOp->des);
-//	CRect sR = RectOf(pOp->src, cntSrc - pOp->cnt + 1, pOp->cnt);
-//	CRect dR = RectOf(pOp->des, max(cntDes, 1), 1);
-//
-//	CJLView *pView = GetView();
-//	CClientDC cdc(pView);
-//	//提示过程就是闪烁源列和目列的牌
-//	cdc.InvertRect(sR); cdc.InvertRect(dR);//反色
-//	SendMessage(pView->m_hWnd, WM_PAINT, 0, 0);
-//	::Sleep(200);
-//	cdc.InvertRect(sR); cdc.InvertRect(dR);//还原
-//	SendMessage(pView->m_hWnd, WM_PAINT, 0, 0);
-//	::Sleep(200);
-//	cdc.InvertRect(sR); cdc.InvertRect(dR);//反色
-//	SendMessage(pView->m_hWnd, WM_PAINT, 0, 0);
-//	::Sleep(200);
-//	cdc.InvertRect(sR); cdc.InvertRect(dR);//还原
-//}
-//
-//CJLView* WTLfcData::GetView()
-//{
-//	POSITION pos = GetFirstViewPosition();
-//	CJLView *pView = (CJLView *)GetNextView(pos);
-//	ATLASSERT(pView);
-//	return pView;
-//}
 //检查游戏是否结束
 //如果没有结束则计算提示步骤
 //否则就让玩家选择是否开局或回放存档
@@ -1287,24 +1256,25 @@ void CWTLfcData::CheckGame()
 	}
 	//本局结束了
 
-//	CPassedDlg dlg;
-//choice:	if (IDCANCEL == dlg.DoModal())
-//	return;
-//		switch (dlg.m_nChoice)
-//		{
-//		case RandGame:	OnRand();     break;
-//		case PrevGame:	OnPrevGame(); break;
-//		case NextGame:	OnNextGame(); break;
-//		case ThisGame:  OnAgain();    break;
-//		case SaveGame:	OnSave();     goto choice;
-//		case PlayShow:
-//			游戏返回到开头但是保留步骤记录
-//			BackHome();
-//
-//			CDlgAIShow dlgAIShow;
-//			dlgAIShow.DoModal();//回放对话框
-//			goto choice;
-//		}
+	CDlgPassed dlg;
+	BOOL b;
+choice:	if (IDCANCEL == dlg.DoModal())
+	return;
+		switch (dlg.m_nChoice)
+		{
+		case RandGame:	OnRand();     break;
+		case PrevGame:	g_pView->OnPrevGame(NULL, NULL, NULL, b); break;
+		case NextGame:	g_pView->OnNextGame(NULL, NULL, NULL, b); break;
+		case ThisGame:  g_pView->OnAgain(NULL, NULL, NULL, b);    break;
+		//case SaveGame:	g_pView->OnSave(NULL, NULL, NULL, b);     goto choice;
+		case PlayShow:
+			//游戏返回到开头但是保留步骤记录
+			BackHome();
+
+			CDlgAIShow dlgAIShow;
+			dlgAIShow.DoModal();//回放对话框
+			goto choice;
+		}
 }
 
 //执行自动解答
@@ -1336,8 +1306,8 @@ CRect CWTLfcData::RectOfStep()
 	CRect r;
 	r.UnionRect(RectOf(12, 1, 1), RectOf(13, 1, 1));
 
-	int inflateY = r.Height() - g_jlCcs.stepFont * 4 / 3;
-	r.InflateRect(-g_jlCcs.CARD_WID - 1, 0, -g_jlCcs.CARD_WID - 1, -inflateY);
+	int inflateY = r.Height() - g_fcCcs.stepFont * 4 / 3;
+	r.InflateRect(-g_fcCcs.CARD_WID - 1, 0, -g_fcCcs.CARD_WID - 1, -inflateY);
 	return r;
 }
 
@@ -1347,13 +1317,13 @@ CRect CWTLfcData::RectOf(UINT card)
 	CRect r, r11, r14;
 	r11 = RectOf(11, 1, 1);
 	r14 = RectOf(14, 1, 1);
-	r.left = r11.left + g_jlCcs.CARD_WID / 2;
+	r.left = r11.left + g_fcCcs.CARD_WID / 2;
 
-	UINT rWid = (r14.right - r11.left - g_jlCcs.CARD_WID) / 13;
+	UINT rWid = (r14.right - r11.left - g_fcCcs.CARD_WID) / 13;
 	r.left += (13 - NUM(card))*rWid;
 	r.right = r.left + rWid + 1;
 	r.top = 0;
-	r.bottom = g_jlCcs.ptOrg.y - 1;
+	r.bottom = g_fcCcs.ptOrg.y - 1;
 	return r;
 }
 
@@ -1626,25 +1596,25 @@ void CWTLfcData::OnRand()
 	// TODO: Add your command handler code here
 	if (!GiveUp()) return;
 	int nUniqueGame = Random();
-	//while (m_dlgScore.IsOldGameNumber(nUniqueGame = Random()));
+	while (m_dlgScore.IsOldGameNumber(nUniqueGame = Random()));
 	StartGame(nUniqueGame);
 }
 
 ////上一局
-//void WTLfcData::OnPrevGame()
+//void CWTLfcData::OnPrevGame()
 //{
 //	// TODO: Add your command handler code here
 //	if (!GiveUp()) return;
 //	StartGame(max(m_nCurGameNumber - 1, MIN_GAME_NUMBER));
 //}
 ////下一局
-//void WTLfcData::OnNextGame()
+//void CWTLfcData::OnNextGame()
 //{
 //	if (!GiveUp()) return;
 //	StartGame(min(m_nCurGameNumber + 1, MAX_GAME_NUMBER));
 //}
 ////重玩
-//void WTLfcData::OnAgain()
+//void CWTLfcData::OnAgain()
 //{
 //	// TODO: Add your command handler code here
 //	if (!GiveUp()) return;
@@ -1678,7 +1648,7 @@ void CWTLfcData::OnRand()
 //根据给定的牌局代号开始此局
 void CWTLfcData::StartGame(int gameNumber)
 {
-	//m_dlgScore.UpdateScore();//记录战况
+	m_dlgScore.UpdateScore();//记录战况
 
 	ClrOpsRecords();			//清除动作记录
 	UnselectCardCol();		//清除选中标志
@@ -1694,7 +1664,7 @@ void CWTLfcData::StartGame(int gameNumber)
 	title.Format(TEXT("%10d"), m_nCurGameNumber);
 	//SetTitle(title);
 
-	//m_dlgScore.InitScore();//记录战况
+	m_dlgScore.InitScore();//记录战况
 }
 
 //根据给定的标签搜索此标签指定的牌

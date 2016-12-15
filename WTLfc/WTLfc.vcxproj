@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling />
       <DebugInformationFormat />
       <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -106,6 +106,11 @@
   <ItemGroup>
     <ClCompile Include="AboutDlg.cpp" />
     <ClCompile Include="CardSize.cpp" />
+    <ClCompile Include="DlgAICal.cpp" />
+    <ClCompile Include="DlgAIShow.cpp" />
+    <ClCompile Include="DlgPassed.cpp" />
+    <ClCompile Include="DlgScore.cpp" />
+    <ClCompile Include="DlgSelGame.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -120,6 +125,11 @@
     <ClInclude Include="AboutDlg.h" />
     <ClInclude Include="CardSize.h" />
     <ClInclude Include="Datatype.h" />
+    <ClInclude Include="DlgAICal.h" />
+    <ClInclude Include="DlgAIShow.h" />
+    <ClInclude Include="DlgPassed.h" />
+    <ClInclude Include="DlgScore.h" />
+    <ClInclude Include="DlgSelGame.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -132,10 +142,20 @@
     <ResourceCompile Include="WTLfc.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\JL_SUB.bmp" />
     <Image Include="res\toolbar.bmp" />
     <Image Include="res\WTLfc.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\bin.bin" />
+    <None Include="res\cursor1.cur" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="WTLfc.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
