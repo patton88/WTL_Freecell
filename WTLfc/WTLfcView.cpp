@@ -1468,21 +1468,21 @@ LRESULT CWTLfcView::OnSetting(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 
 	CDlgSettings dlg;
 	//set values of settings
-	dlg.m_bEnableAlert = m_bEnableAlert;
-	dlg.m_bEnableDBClick = m_bEnableDbClick;
-	dlg.m_bQuickMove = m_bQuickMove;
-	dlg.m_bMaxMove = m_bMaxMove;
-	dlg.m_nDDASpeed = m_nDDASpeed;
+	dlg.m_bEnableAlert = g_fcData.m_bEnableAlert;
+	dlg.m_bEnableDBClick = g_fcData.m_bEnableDbClick;
+	dlg.m_bQuickMove = g_fcData.m_bQuickMove;
+	dlg.m_bMaxMove = g_fcData.m_bMaxMove;
+	dlg.m_nDDASpeed = g_fcData.m_nDDASpeed;
 
 	//prompt
 	dlg.DoModal();
 
 	//get settings
-	m_bEnableAlert = dlg.m_bEnableAlert;
-	m_bEnableDbClick = dlg.m_bEnableDBClick;
-	m_bQuickMove = dlg.m_bQuickMove;
-	m_bMaxMove = dlg.m_bMaxMove;
-	m_nDDASpeed = dlg.m_nDDASpeed;
+	g_fcData.m_bEnableAlert = dlg.m_bEnableAlert;
+	g_fcData.m_bEnableDbClick = dlg.m_bEnableDBClick;
+	g_fcData.m_bQuickMove = dlg.m_bQuickMove;
+	g_fcData.m_bMaxMove = dlg.m_bMaxMove;
+	g_fcData.m_nDDASpeed = dlg.m_nDDASpeed;
 
 	return 0;
 }

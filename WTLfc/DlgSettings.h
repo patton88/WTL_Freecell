@@ -31,6 +31,7 @@ public:
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 		COMMAND_ID_HANDLER(IDOK, OnOKCmd)
 		COMMAND_ID_HANDLER(IDCANCEL, OnCloseCmd)
+		REFLECT_NOTIFICATIONS()			//必须启用该句，否则不能响应CheckBox点击消息
 	END_MSG_MAP()
 
 	BEGIN_DDX_MAP(CDlgSettings)
@@ -47,10 +48,11 @@ public:
 		//DDX_Check(pDX, IDCHK_MOVEMAX, m_bMaxMove);
 		//DDX_Slider(pDX, IDSLI_DDASPEED, m_nDDASpeed);
 
-		DDX_INT(IDCHK_CHECKALERT, m_bEnableAlert);
-		DDX_INT(IDCHK_CHECKQUICKLY, m_bQuickMove);
-		DDX_INT(IDCHK_ENABLELBDCLICK, m_bEnableDBClick);
-		DDX_INT(IDCHK_MOVEMAX, m_bMaxMove);
+		DDX_CHECK(IDCHK_CHECKALERT, m_bEnableAlert);
+		DDX_CHECK(IDCHK_CHECKQUICKLY, m_bQuickMove);
+		DDX_CHECK(IDCHK_ENABLELBDCLICK, m_bEnableDBClick);
+		DDX_CHECK(IDCHK_MOVEMAX, m_bMaxMove);
+		//DDX_CONTROL(IDC_REC_NOFULLKBCONTROL, m_chkRecNofullkbcontrol);
 
 		//DDX_CONTROL_HANDLE(IDSLI_DDASPEED, m_sliDDASpeed);
 		//DDX_Slider(IDSLI_DDASPEED, m_nDDASpeed);	// WTL 中没有对应命令

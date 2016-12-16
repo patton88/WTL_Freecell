@@ -50,6 +50,17 @@ LRESULT CDlgSettings::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lP
 	// First DDX call, hooks up variables to controls.
 	DoDataExchange(false);
 
+	//------------------------------------------------------
+	//处理 m_strRecNofullkbcontrol 信息
+	//m_chkRecNofullkbcontrol.SetCheck(FALSE);
+	//m_strRecNofullkbcontrol.MakeLower();
+
+	//if (L"nofullkbcontrol" == m_strRecNofullkbcontrol)	//不区分大小写
+	//	m_chkRecNofullkbcontrol.SetCheck(TRUE);
+
+	//------------------------------------------------------
+
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
 }

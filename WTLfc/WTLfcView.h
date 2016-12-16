@@ -77,11 +77,11 @@ public:
 	LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 
 public:
-	BOOL m_bEnableAlert;
-	BOOL m_bEnableDbClick;
-	BOOL m_bQuickMove;
-	BOOL m_bMaxMove;
-	int m_nDDASpeed;
+	//BOOL m_bEnableAlert;
+	//BOOL m_bEnableDbClick;
+	//BOOL m_bQuickMove;
+	//BOOL m_bMaxMove;
+	//int m_nDDASpeed;
 
 	CBitmap* replaceColor(CBitmap *pBmpBefore, COLORREF res, COLORREF aim, CClientDC *dc);
 	UINT CardLabelHitTest(const CPoint &point);
