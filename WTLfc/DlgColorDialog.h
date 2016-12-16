@@ -61,10 +61,12 @@ public:
 
 	//}
 
-	LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+	LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 	{
 		//CDialog::OnInitDialog();
 		CenterWindow(GetParent());
-		return 0;
+
+		bHandled = false;	// 让基类继续处理
+		return false;
 	}
 };
