@@ -45,6 +45,8 @@ public:
 		COMMAND_ID_HANDLER(IDM_SCORE, OnScore)
 		COMMAND_ID_HANDLER(IDM_SELECTGAMENUMBER, OnSelectgamenumber)
 		COMMAND_ID_HANDLER(IDM_HELP_NEXTSTEP, OnHelpNextstep)
+		COMMAND_ID_HANDLER(IDM_BK_COLOR, OnBkColor)
+		COMMAND_ID_HANDLER(IDM_CARD_COLOR, OnCardColor)
 
 	END_MSG_MAP()
 
@@ -55,6 +57,8 @@ public:
 	LRESULT OnEdit(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnScore(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnHelpNextstep(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBkColor(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnCardColor(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
 	//ON_COMMAND(IDM_RAND, OnRand)
 	//ON_COMMAND(IDM_PREV_GAME, OnPrevGame)

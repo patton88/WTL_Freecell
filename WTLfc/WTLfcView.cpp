@@ -1423,3 +1423,31 @@ LRESULT CWTLfcView::OnHelpNextstep(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hW
 
 	return 0;
 }
+
+//根据给定的颜色绘制窗口背景
+//void CJLView::OnBkColor()
+LRESULT CWTLfcView::OnBkColor(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	CColorDialog dlg(RGB(0, 128, 0), CC_FULLOPEN);
+	if (dlg.DoModal() != IDOK) return 0;
+
+	m_brushBkgnd.DeleteObject();
+	m_brushBkgnd.CreateSolidBrush(dlg.GetColor());
+	InvalidateRect(NULL);
+
+	return 0;
+}
+
+//根据给定的颜色绘制牌面背景
+//void CJLView::OnCardColor()
+LRESULT CWTLfcView::OnCardColor(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	CColorDialog dlg(RGB(255, 255, 255), CC_FULLOPEN);
+	if (dlg.DoModal() != IDOK) return 0;
+
+	m_brushBk.DeleteObject();
+	m_brushBk.CreateSolidBrush(dlg.GetColor());
+	InvalidateRect(NULL);
+
+	return 0;
+}
