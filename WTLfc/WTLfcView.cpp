@@ -8,6 +8,7 @@
 #include "MainFrm.h"
 #include "DlgAICal.h"
 #include "DlgSelGame.h"
+#include "DlgSettings.h"
 
 BOOL CWTLfcView::PreTranslateMessage(MSG* pMsg)
 {
@@ -1456,6 +1457,32 @@ LRESULT CWTLfcView::OnCardColor(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndC
 	m_brushBk.DeleteObject();
 	m_brushBk.CreateSolidBrush(dlg.GetColor());
 	InvalidateRect(NULL);
+
+	return 0;
+}
+
+//void WTLfcData::OnSetting()
+LRESULT CWTLfcView::OnSetting(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// TODO: Add your command handler code here
+
+	CDlgSettings dlg;
+	//set values of settings
+	dlg.m_bEnableAlert = m_bEnableAlert;
+	dlg.m_bEnableDBClick = m_bEnableDbClick;
+	dlg.m_bQuickMove = m_bQuickMove;
+	dlg.m_bMaxMove = m_bMaxMove;
+	dlg.m_nDDASpeed = m_nDDASpeed;
+
+	//prompt
+	dlg.DoModal();
+
+	//get settings
+	m_bEnableAlert = dlg.m_bEnableAlert;
+	m_bEnableDbClick = dlg.m_bEnableDBClick;
+	m_bQuickMove = dlg.m_bQuickMove;
+	m_bMaxMove = dlg.m_bMaxMove;
+	m_nDDASpeed = dlg.m_nDDASpeed;
 
 	return 0;
 }

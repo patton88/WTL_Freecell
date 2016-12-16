@@ -568,29 +568,7 @@ void CWTLfcData::BackHome()
 	}
 }
 
-//void WTLfcData::OnSetting()
-//{
-//	// TODO: Add your command handler code here
-//
-//	CDlgSettings dlg;
-//	//set values of settings
-//	dlg.m_bEnableAlert = m_bEnableAlert;
-//	dlg.m_bEnableDBClick = m_bEnableDbClick;
-//	dlg.m_bQuickMove = m_bQuickMove;
-//	dlg.m_bMaxMove = m_bMaxMove;
-//	dlg.m_nDDASpeed = m_nDDASpeed;
-//
-//	//prompt
-//	dlg.DoModal();
-//
-//	//get settings
-//	m_bEnableAlert = dlg.m_bEnableAlert;
-//	m_bEnableDbClick = dlg.m_bEnableDBClick;
-//	m_bQuickMove = dlg.m_bQuickMove;
-//	m_bMaxMove = dlg.m_bMaxMove;
-//	m_nDDASpeed = dlg.m_nDDASpeed;
-//}
-//
+
 //void WTLfcData::DeleteContents()
 //{
 //	// TODO: Add your specialized code here and/or call the base class

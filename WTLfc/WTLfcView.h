@@ -47,7 +47,7 @@ public:
 		COMMAND_ID_HANDLER(IDM_HELP_NEXTSTEP, OnHelpNextstep)
 		COMMAND_ID_HANDLER(IDM_BK_COLOR, OnBkColor)
 		COMMAND_ID_HANDLER(IDM_CARD_COLOR, OnCardColor)
-
+		COMMAND_ID_HANDLER(IDM_SETTING, OnSetting)
 	END_MSG_MAP()
 
 	LRESULT OnSelectgamenumber(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
@@ -77,6 +77,12 @@ public:
 	LRESULT OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 
 public:
+	BOOL m_bEnableAlert;
+	BOOL m_bEnableDbClick;
+	BOOL m_bQuickMove;
+	BOOL m_bMaxMove;
+	int m_nDDASpeed;
+
 	CBitmap* replaceColor(CBitmap *pBmpBefore, COLORREF res, COLORREF aim, CClientDC *dc);
 	UINT CardLabelHitTest(const CPoint &point);
 	void AdjustFrameToFixedSize();
@@ -116,4 +122,5 @@ public:
 	LRESULT OnUndo(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnRand(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnAi(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnSetting(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 };
