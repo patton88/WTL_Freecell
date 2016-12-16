@@ -108,6 +108,7 @@
     <ClCompile Include="CardSize.cpp" />
     <ClCompile Include="DlgAICal.cpp" />
     <ClCompile Include="DlgAIShow.cpp" />
+    <ClCompile Include="DlgColorDialog.cpp" />
     <ClCompile Include="DlgPassed.cpp" />
     <ClCompile Include="DlgScore.cpp" />
     <ClCompile Include="DlgSelGame.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="Datatype.h" />
     <ClInclude Include="DlgAICal.h" />
     <ClInclude Include="DlgAIShow.h" />
+    <ClInclude Include="DlgColorDialog.h" />
     <ClInclude Include="DlgPassed.h" />
     <ClInclude Include="DlgScore.h" />
     <ClInclude Include="DlgSelGame.h" />
