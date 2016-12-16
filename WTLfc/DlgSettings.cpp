@@ -43,8 +43,8 @@ LRESULT CDlgSettings::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lP
 {
 	CenterWindow(GetParent());
 	
-	// WTL 不支持 CTrackBarCtrl DDX，所以只能手工绑定和设置
-	CTrackBarCtrl m_sliDDASpeed = (CTrackBarCtrl)GetDlgItem(IDSLI_DDASPEED);
+	//// WTL 不支持 CTrackBarCtrl DDX，所以只能手工绑定和设置
+	m_sliDDASpeed = (CTrackBarCtrl)GetDlgItem(IDSLI_DDASPEED);
 
 	//m_sliDDASpeed.ModifyStyle(WS_BORDER, NULL, SWP_DRAWFRAME);
 	//m_sliDDASpeed.ModifyStyle(NULL, WS_BORDER, SWP_DRAWFRAME);
@@ -52,6 +52,7 @@ LRESULT CDlgSettings::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lP
 	m_sliDDASpeed.SetPageSize(9);
 	m_sliDDASpeed.SetTicFreq(9);
 	m_sliDDASpeed.SetPos(m_nDDASpeed);
+	//// WTL 不支持 CTrackBarCtrl DDX，所以只能手工绑定和设置
 
 	// First DDX call, hooks up variables to controls.
 	DoDataExchange(false);
@@ -79,6 +80,10 @@ LRESULT CDlgSettings::OnCloseCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*
 
 LRESULT CDlgSettings::OnOKCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
+	//// WTL 不支持 CTrackBarCtrl DDX，所以只能手工绑定和设置
+	m_nDDASpeed = m_sliDDASpeed.GetPos();
+	//// WTL 不支持 CTrackBarCtrl DDX，所以只能手工绑定和设置
+
 	// First DDX call, hooks up controls to variables.
 	DoDataExchange(true);
 
