@@ -31,7 +31,8 @@ public:
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 		COMMAND_ID_HANDLER(IDOK, OnOKCmd)
 		COMMAND_ID_HANDLER(IDCANCEL, OnCloseCmd)
-		REFLECT_NOTIFICATIONS()			//必须启用该句，否则不能响应CheckBox点击消息
+		COMMAND_ID_HANDLER(ID_DEFAULT, OnBnClickedDefault)
+		//REFLECT_NOTIFICATIONS()			//必须启用该句，否则不能响应CheckBox点击消息
 	END_MSG_MAP()
 
 	BEGIN_DDX_MAP(CDlgSettings)
@@ -61,6 +62,7 @@ public:
 	LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnOKCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnCloseCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBnClickedDefault(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
 // Overrides
 	// ClassWizard generated virtual function overrides
@@ -77,6 +79,7 @@ protected:
 	//virtual BOOL OnInitDialog();
 	//}}AFX_MSG
 	//DECLARE_MESSAGE_MAP()
+public:
 };
 
 //{{AFX_INSERT_LOCATION}}

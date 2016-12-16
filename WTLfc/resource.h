@@ -2,6 +2,8 @@
 // Microsoft Visual C++ generated include file.
 // Used by WTLfc.rc
 //
+#define IDCANCEL2                       3
+#define ID_DEFAULT                      3
 #define IDD_ABOUTBOX                    100
 #define IDB_SHOW                        101
 #define IDB_AGAIN                       102

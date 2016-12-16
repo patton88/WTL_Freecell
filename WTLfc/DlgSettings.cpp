@@ -90,3 +90,23 @@ LRESULT CDlgSettings::OnOKCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 	EndDialog(wID);
 	return 0;
 }
+
+
+LRESULT CDlgSettings::OnBnClickedDefault(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// TODO: Add your control notification handler code here
+
+	m_bEnableAlert = false;
+	m_bQuickMove = false;
+	m_bMaxMove = true;
+	m_nDDASpeed = 75;
+
+	//// WTL 不支持 CTrackBarCtrl DDX，所以只能手工绑定和设置
+	m_sliDDASpeed.SetPos(m_nDDASpeed);
+	//// WTL 不支持 CTrackBarCtrl DDX，所以只能手工绑定和设置
+
+	// First DDX call, hooks up variables to controls.
+	DoDataExchange(false);
+
+	return 0;
+}
