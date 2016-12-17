@@ -35,7 +35,9 @@ public:
 	int gameNumber;
 	int steps;
 	CTime tmStart, tmEnd;
-	enum { gameInit = 0, gamePassed, gameGiveUp, gameDead } gameStatus;
+	//enum { gameInit = 0, gamePassed, gameGiveUp, gameDead } gameStatus;
+	static const int gameInit = 0, gamePassed = 1, gameGiveUp = 2, gameDead = 3;
+	int gameStatus;
 
 	void Serialize(CXArchive &ar)	// 类的串行化支持都先注释掉
 	{
@@ -43,10 +45,11 @@ public:
 		//CObject::Serialize(ar);
 		__time64_t llStart, llEnd;	// long long
 		if (ar.IsStoring()) {
-			ar << gameNumber << steps << tmStart.GetTime() << tmEnd.GetTime();
+			ar << gameNumber << steps << tmStart.GetTime() << tmEnd.GetTime() << gameStatus;
+
 		}
 		else {
-			ar >> gameNumber >> steps >> llStart >> llEnd;
+			ar >> gameNumber >> steps >> llStart >> llEnd >> gameStatus;
 			tmStart = CTime(llStart);	tmEnd = CTime(llEnd);
 		}
 	}

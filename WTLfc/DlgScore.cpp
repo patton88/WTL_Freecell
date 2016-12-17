@@ -118,7 +118,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		s.Format(TEXT("%d"), cs.steps);
 		m_lcScore.SetItemText(i, 1, s);
 
-		m_lcScore.SetItemText(i, 2, statusStr[cs.gameStatus]);
+		m_lcScore.SetItemText(i, 2, statusStr[cs.gameStatus]);	// ∏√æ‰±®¥Ì÷’÷π
 
 		CTimeSpan ts = cs.tmEnd - cs.tmStart;	// #include <atltime.h>
 		s.Format(TEXT("%2dm%2ds"), ts.GetMinutes(), ts.GetSeconds());
