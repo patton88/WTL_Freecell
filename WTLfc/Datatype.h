@@ -463,6 +463,7 @@ public:
 	void ClrHints(void)
 	{
 		//ClrOps();
+		m_opList.m_tList.clear();
 		curHint = 0;
 	}
 

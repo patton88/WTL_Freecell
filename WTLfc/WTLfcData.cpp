@@ -1642,6 +1642,7 @@ void CWTLfcData::Serialize(CXArchive& ar)
 	else {
 		ar >> m_nCurGameNumber;//读取本局代号
 		//ClrOpsRecords();//清除步骤记录，准备读档 
+		m_OpsList.m_tList.clear();	//清除步骤记录，准备读档 
 		m_OpsList.Serialize(ar);//读取步骤记录
 		for (UINT k = 0; k < 3; ++k)//读取牌局
 			for (UINT i = 0; i < cols[k].size; i++)
