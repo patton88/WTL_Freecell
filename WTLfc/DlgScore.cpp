@@ -147,8 +147,8 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	m_lcScoreInfo.SetTextColor(RGB(218, 218, 218));
 
 	// 用空格代替\t吧这个问题第2个回答：	listbox好像是这样，但是取出来的内容还是正确的、
-	m_lcScoreInfo.InsertColumn(0, TEXT("项目"), LVCFMT_LEFT, charWid * 14);
-	m_lcScoreInfo.InsertColumn(1, TEXT("统计"), LVCFMT_LEFT, charWid * 12);
+	m_lcScoreInfo.InsertColumn(0, TEXT("项目"), LVCFMT_LEFT, charWid * 13);
+	m_lcScoreInfo.InsertColumn(1, TEXT("统计"), LVCFMT_LEFT, charWid * 15);
 	m_lcScoreInfo.InsertItem(0, TEXT("总计(局) ："));
 	m_lcScoreInfo.InsertItem(1, TEXT("通过(局) ："));
 	m_lcScoreInfo.InsertItem(2, TEXT("胜率     ："));
