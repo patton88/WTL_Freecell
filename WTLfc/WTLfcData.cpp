@@ -699,66 +699,6 @@ UINT CWTLfcData::GetCard(UINT col, UINT idx)
 	}
 }
 
-
-//存档
-//void WTLfcData::OnSave()
-//{
-//	// TODO: Add your command handler code here
-//	CFileDialog dlg(FALSE, TEXT("rep"), GetTitle(), dwFlags, filter);
-//	if (dlg.DoModal() == IDCANCEL) return;
-//	CFile file(dlg.GetPathName(), modeCrWr);
-//	CArchive ar(&file, CArchive::store);
-//	Serialize(ar);
-//	ar.Close();
-//	file.Close();
-//}
-//
-////读档
-//void WTLfcData::OnLoad()
-//{
-//	// TODO: Add your command handler code here
-//	if (!GiveUp()) return;
-//
-//	//选择文件
-//	CFileDialog dlg(TRUE, TEXT("rep"), NULL, dwFlags, filter);
-//	if (dlg.DoModal() == IDCANCEL) return;
-//	CFile file(dlg.GetPathName(), modeRead);
-//
-//	/////////////////////////////////////////////////////////////////
-//	//考虑存档文件有可能是一个不完整的自定义牌局
-//	int nGameNumber;
-//	file.Read(&nGameNumber, sizeof(int));
-//	if (nGameNumber == -1) {
-//		AfxMessageBox("请将自定义牌局【" + dlg.GetFileName() + "】编辑完整！\n");
-//		return;
-//	}
-//	file.SeekToBegin();
-//	/////////////////////////////////////////////////////////////////
-//	m_dlgScore.UpdateScore();//记录战况
-//
-//	//读档
-//	CArchive ar(&file, CArchive::load);
-//	Serialize(ar);
-//	ar.Close();
-//	file.Close();
-//
-//	//刷新牌局
-//	UpdateAllViews(NULL);
-//
-//	//设置窗框标题为当前牌局代号或自定义牌局的文件名
-//	CString title;
-//	if (m_nCurGameNumber > 0) {
-//		title.Format(TEXT("%d"), m_nCurGameNumber);
-//		SetTitle(title);
-//	}
-//	else {
-//		SetTitle(dlg.GetFileName());
-//	}
-//
-//	m_dlgScore.InitScore();//记录战况
-//	CheckGame();//看看此局是否已经结束
-//}
-
 //void CWTLfcData::ClrOpsRecords()
 //{
 //	if (m_pOps == NULL) return;

@@ -1487,3 +1487,102 @@ LRESULT CWTLfcView::OnSetting(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 
 	return 0;
 }
+
+//存档
+//void WTLfcData::OnSave()
+//{
+//	// TODO: Add your command handler code here
+//	CFileDialog dlg(FALSE, TEXT("rep"), GetTitle(), dwFlags, filter);
+//	if (dlg.DoModal() == IDCANCEL) return;
+//	CFile file(dlg.GetPathName(), modeCrWr);
+//	CArchive ar(&file, CArchive::store);
+//	Serialize(ar);
+//	ar.Close();
+//	file.Close();
+//}
+//
+//存档
+//void WTLfcData::OnSave()
+LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// TODO: Add your command handler code here
+
+	// The parameter that specifies what type of dialog box to create.
+	// Set it to TRUE to construct a File Open dialog box.
+	// Set it to FALSE to construct a File Save As dialog box.
+	CFileDialog fd(FALSE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
+		L"Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0\0", m_hWnd);
+	fd.m_ofn.lpstrTitle = L"SaveFileTest";
+	fd.m_ofn.lpstrInitialDir = L".";
+
+	if (IDOK == fd.DoModal(*this))
+	{
+	}
+
+	return 0;
+}
+
+//读档
+//void WTLfcData::OnLoad()
+LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	// The parameter that specifies what type of dialog box to create.
+	// Set it to TRUE to construct a File Open dialog box.
+	// Set it to FALSE to construct a File Save As dialog box.
+	CFileDialog fd(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
+		L"Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0\0", m_hWnd);
+	fd.m_ofn.lpstrTitle = L"OpenFileTest";
+	fd.m_ofn.lpstrInitialDir = L".";
+
+	if (IDOK == fd.DoModal(*this))
+	{
+	}
+
+	return 0;
+}
+
+////读档
+//void WTLfcData::OnLoad()
+//{
+//	// TODO: Add your command handler code here
+//	if (!GiveUp()) return;
+//
+//	//选择文件
+//	CFileDialog dlg(TRUE, TEXT("rep"), NULL, dwFlags, filter);
+//	if (dlg.DoModal() == IDCANCEL) return;
+//	CFile file(dlg.GetPathName(), modeRead);
+//
+//	/////////////////////////////////////////////////////////////////
+//	//考虑存档文件有可能是一个不完整的自定义牌局
+//	int nGameNumber;
+//	file.Read(&nGameNumber, sizeof(int));
+//	if (nGameNumber == -1) {
+//		AfxMessageBox("请将自定义牌局【" + dlg.GetFileName() + "】编辑完整！\n");
+//		return;
+//	}
+//	file.SeekToBegin();
+//	/////////////////////////////////////////////////////////////////
+//	m_dlgScore.UpdateScore();//记录战况
+//
+//	//读档
+//	CArchive ar(&file, CArchive::load);
+//	Serialize(ar);
+//	ar.Close();
+//	file.Close();
+//
+//	//刷新牌局
+//	UpdateAllViews(NULL);
+//
+//	//设置窗框标题为当前牌局代号或自定义牌局的文件名
+//	CString title;
+//	if (m_nCurGameNumber > 0) {
+//		title.Format(TEXT("%d"), m_nCurGameNumber);
+//		SetTitle(title);
+//	}
+//	else {
+//		SetTitle(dlg.GetFileName());
+//	}
+//
+//	m_dlgScore.InitScore();//记录战况
+//	CheckGame();//看看此局是否已经结束
+//}

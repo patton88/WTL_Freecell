@@ -48,7 +48,14 @@ public:
 		COMMAND_ID_HANDLER(IDM_BK_COLOR, OnBkColor)
 		COMMAND_ID_HANDLER(IDM_CARD_COLOR, OnCardColor)
 		COMMAND_ID_HANDLER(IDM_SETTING, OnSetting)
+
+		COMMAND_ID_HANDLER(IDM_SAVE, OnSave)
+		COMMAND_ID_HANDLER(IDM_LOAD, OnLoad)
+
 	END_MSG_MAP()
+
+	LRESULT OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
 	LRESULT OnSelectgamenumber(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnPrevGame(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
