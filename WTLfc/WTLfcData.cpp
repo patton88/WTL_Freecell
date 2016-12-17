@@ -1635,6 +1635,8 @@ void CWTLfcData::Serialize(CXArchive& ar)
 		for (UINT k = 0; k < 3; ++k)//保存牌局
 			for (UINT i = 0; i < cols[k].size; i++)
 				ar << cols[k].pAddr[i];
+
+		m_dlgScore.m_score.Serialize(ar);//保存战况记录
 	}
 	else {
 		ar >> m_nCurGameNumber;//读取本局代号
@@ -1643,6 +1645,8 @@ void CWTLfcData::Serialize(CXArchive& ar)
 		for (UINT k = 0; k < 3; ++k)//读取牌局
 			for (UINT i = 0; i < cols[k].size; i++)
 				ar >> cols[k].pAddr[i];
+
+		m_dlgScore.m_score.Serialize(ar);//读取战况记录
 	}
 }
 

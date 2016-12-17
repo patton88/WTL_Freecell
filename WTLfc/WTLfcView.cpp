@@ -1510,12 +1510,14 @@ LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	// The parameter that specifies what type of dialog box to create.
 	// Set it to TRUE to construct a File Open dialog box.
 	// Set it to FALSE to construct a File Save As dialog box.
-	CFileDialog fd(FALSE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
+	// CFileDialog的第二个参数".txt"就是系统当你没输入扩展名时为你自动添加的扩展名。
+	CFileDialog fd(FALSE, L"txt", NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
 		L"Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0\0", m_hWnd);
 	fd.m_ofn.lpstrTitle = L"SaveFileTest";
 	fd.m_ofn.lpstrInitialDir = L".";
 
 	if (fd.DoModal() == IDCANCEL) return 0;
+
 
 	// Storing
 	CXFile file1;
@@ -1545,7 +1547,8 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	// The parameter that specifies what type of dialog box to create.
 	// Set it to TRUE to construct a File Open dialog box.
 	// Set it to FALSE to construct a File Save As dialog box.
-	CFileDialog fd(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
+	// CFileDialog的第二个参数".txt"就是系统当你没输入扩展名时为你自动添加的扩展名。
+	CFileDialog fd(TRUE, L"txt", NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
 		L"Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0\0", m_hWnd);
 	fd.m_ofn.lpstrTitle = L"OpenFileTest";
 	fd.m_ofn.lpstrInitialDir = L".";

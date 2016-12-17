@@ -41,13 +41,13 @@ public:
 	{
 		//CObject does not serialize anything by default
 		//CObject::Serialize(ar);
-		long long llStart, llEnd;
+		__time64_t llStart, llEnd;	// long long
 		if (ar.IsStoring()) {
 			ar << gameNumber << steps << tmStart.GetTime() << tmEnd.GetTime();
 		}
 		else {
 			ar >> gameNumber >> steps >> llStart >> llEnd;
-			tmStart = llStart;	tmEnd = llEnd;
+			tmStart = CTime(llStart);	tmEnd = CTime(llEnd);
 		}
 	}
 };
