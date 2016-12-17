@@ -122,6 +122,8 @@
     <ClCompile Include="WTLfc.cpp" />
     <ClCompile Include="WTLfcData.cpp" />
     <ClCompile Include="WTLfcView.cpp" />
+    <ClCompile Include="WTLSerialize\Archive.cpp" />
+    <ClCompile Include="WTLSerialize\File.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AboutDlg.h" />
@@ -141,6 +143,9 @@
     <ClInclude Include="WTLfc.h" />
     <ClInclude Include="WTLfcData.h" />
     <ClInclude Include="WTLfcView.h" />
+    <ClInclude Include="WTLSerialize\Archive.h" />
+    <ClInclude Include="WTLSerialize\Exception.h" />
+    <ClInclude Include="WTLSerialize\File.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WTLfc.rc" />

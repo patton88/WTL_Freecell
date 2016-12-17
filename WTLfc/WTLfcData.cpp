@@ -343,7 +343,7 @@ void CWTLfcData::AutoThrow()
 		MoveCards(colDes, colSrc, 1);
 
 		//if (m_pOps->empty())
-		if (m_OpsList.empty())
+		if (m_OpsList.m_opsList.empty())
 		{
 			//Record(new COperations(colDes, colSrc, 1));
 			Record(colDes, colSrc, 1);
@@ -352,7 +352,7 @@ void CWTLfcData::AutoThrow()
 		{ //扔牌后的自动扔牌动作必须和扔牌动作放在一起
 			// GetTail	返回列表中的尾元素（列表不能为空）
 			//((COperations*)m_pOps->back())->AddOperation(colDes, colSrc, 1);
-			m_OpsList.back().AddOperation(colDes, colSrc, 1);
+			m_OpsList.m_opsList.back().AddOperation(colDes, colSrc, 1);
 		}
 	}
 }
@@ -491,7 +491,7 @@ void CWTLfcData::Record(UINT des, UINT src, UINT n)
 {
 	//增加一步记录并刷新步数信息
 	//m_pOps->push_back(thisStep);
-	m_OpsList.push_back(COperations(des, src, n));
+	m_OpsList.m_opsList.push_back(COperations(des, src, n));
 	InvalidateRect(RectOfStep());
 }
 
@@ -506,14 +506,14 @@ void CWTLfcData::Undo()
 {
 	//::MessageBoxW(NULL, L"Undo Test", NULL, NULL);
 	//if (m_pOps->IsEmpty()) return;
-	if (m_OpsList.empty()) return;
+	if (m_OpsList.m_opsList.empty()) return;
 
 	//撤销一步
 	//COperations *pOpsLast = (COperations*)m_pOps->back();
-	COperations& OpsLast = m_OpsList.back();
+	COperations& OpsLast = m_OpsList.m_opsList.back();
 	// GetTail	返回列表中的尾元素（列表不能为空）
 	//list<CMyObject*>* pOps = pOpsLast->m_pObjlist;
-	list<COperation>& ops = OpsLast.m_opList;
+	list<COperation>& ops = OpsLast.m_opList.m_opList;
 
 	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); it++)
 	{
@@ -522,7 +522,7 @@ void CWTLfcData::Undo()
 	}
 	//pOpsLast->ClrOps();
 	//delete pOpsLast;
-	m_OpsList.pop_back();
+	m_OpsList.m_opsList.pop_back();
 
 	InvalidateRect(RectOfStep());
 
@@ -550,13 +550,13 @@ void CWTLfcData::Undo()
 //游戏返回到开头但是保留步骤记录，准备回放
 void CWTLfcData::BackHome()
 {
-	int nSteps = m_OpsList.size();
+	int nSteps = m_OpsList.m_opsList.size();
 
 	//还原牌局但保留步骤记录
 	while (nSteps > 0)
 	{
-		COperations *pOpsLast = getAt(m_OpsList, --nSteps);
-		list<COperation>& Ops = pOpsLast->m_opList;
+		COperations* pOpsLast = getAt(m_OpsList.m_opsList, --nSteps);
+		list<COperation>& Ops = pOpsLast->m_opList.m_opList;
 
 		list<COperation>::iterator it = Ops.begin();
 		for (; it != Ops.end(); it++)
@@ -758,7 +758,7 @@ bool CWTLfcData::AICal()
 	}
 	//自动解答得到的步数超过正常值，尽快结束这种局面
 	//此局很可能导致算法无限死循环
-	if (!m_OpsList.empty() && m_OpsList.size() > 200) {
+	if (!m_OpsList.m_opsList.empty() && m_OpsList.m_opsList.size() > 200) {
 		//g_bStopAICal = true;
 		return false;
 	}
@@ -1512,7 +1512,7 @@ int CWTLfcData::Random(void)
 BOOL CWTLfcData::GiveUp()
 {
 	//当本局为新局或已结束的时候，可以开始下一局
-	if (m_OpsList.empty() || GameOver()) return true;
+	if (m_OpsList.m_opsList.empty() || GameOver()) return true;
 	//否则要提醒玩家是否放弃当前局
 	//return IDYES == AtlMessageBox((HWND)_Module.get_m_hInst(),TEXT("放弃当前游戏？"), MB_YESNO);
 	//return IDYES == AtlMessageBox(g_pView->m_hWnd, TEXT("放弃当前游戏？"), MB_YESNO);
@@ -1638,8 +1638,8 @@ void CWTLfcData::Serialize(CXArchive& ar)
 	}
 	else {
 		ar >> m_nCurGameNumber;//读取本局代号
-		ClrOpsRecords();//清除步骤记录，准备读档 
-		m_pOps->Serialize(ar);//读取步骤记录
+		//ClrOpsRecords();//清除步骤记录，准备读档 
+		m_OpsList.Serialize(ar);//读取步骤记录
 		for (UINT k = 0; k < 3; ++k)//读取牌局
 			for (UINT i = 0; i < cols[k].size; i++)
 				ar >> cols[k].pAddr[i];

@@ -13,6 +13,9 @@
 #include <list>
 using namespace std;
 
+#include "WTLSerialize/File.h"
+#include "WTLSerialize/Archive.h"
+
 /*
 const CPoint ptOrg(1,17);//牌局左上角
 
@@ -133,6 +136,7 @@ public:
 	//		ar>>src>>des>>cnt;
 	//	}
 	//}
+
 	void Serialize(CXArchive &ar)	// 类的串行化支持都先注释掉
 	{
 		//CObject does not serialize anything by default
@@ -404,13 +408,13 @@ public:
 	{
 		//ATLASSERT(!m_pObjlist->empty());
 		//int cnt = m_pObjlist->size();
-		ATLASSERT(!m_OpList.empty());
-		int cnt = m_OpList.size();
+		ATLASSERT(!m_opList.m_opList.empty());
+		int cnt = m_opList.m_opList.size();
 		if(curHint >= cnt) { curHint = 0; }
 
 		//最先提示链尾的动作
 		//const COperation* pOp = (const COperation*)getAt(m_pObjlist, cnt - ++curHint);
-		const COperation* pOp = getAt(m_OpList, cnt - ++curHint);
+		const COperation* pOp = getAt(m_opList.m_opList, cnt - ++curHint);
 		
 		//(const COperation*)m_pObjlist->GetAt(m_pObjlist->FindIndex(cnt - ++curHint));
 		// GetAt 获取指定位置的元素
@@ -429,7 +433,7 @@ public:
 	BOOL IsEmpty()
 	{
 		//return m_pObjlist->empty();
-		return m_OpList.empty();
+		return m_opList.m_opList.empty();
 	}
 };
 

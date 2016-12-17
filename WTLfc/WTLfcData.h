@@ -8,7 +8,6 @@
 #include <list>
 using namespace std;
 #include "Datatype.h"
-#include "WTLSerialize/Archive.h"
 
 VOID CALLBACK LineDDACallback(int x, int y, LPARAM lparam);
 //class HINTS;
@@ -30,7 +29,8 @@ public:
 	int m_nCurGameNumber;
 	//CObList *m_pOps;
 	//list<CMyObject*>* m_pOps;
-	list<COperations> m_OpsList;
+	//list<COperations> m_OpsList;
+	CMyOpsList m_OpsList;
 
 	UINT m_iCards[8][20];//6+13=19
 	UINT m_iBuffer[4];
@@ -109,9 +109,9 @@ public:
 	// 获取STL list中的指定元素只能用遍历了
 	//CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
 	template <typename T>
-	T* getAt(list<T>& opList, unsigned n)
+	T* getAt(list<T>& xList, unsigned n)
 	{
-		list<T>::iterator it = opList.begin();
+		list<T>::iterator it = xList.begin();
 		for (unsigned i = 0; i < n; i++)
 			it++;
 
