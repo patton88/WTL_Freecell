@@ -1580,6 +1580,7 @@ void CWTLfcData::StartGame(int gameNumber)
 	m_dlgScore.UpdateScore();//记录战况
 
 	//ClrOpsRecords();			//清除动作记录
+	m_OpsList.m_tList.clear();	//清除动作记录
 	UnselectCardCol();		//清除选中标志
 	m_Hints.ClrHints();		//清除提示
 
@@ -1589,7 +1590,7 @@ void CWTLfcData::StartGame(int gameNumber)
 	//UpdateAllViews(NULL);	//绘制界面
 	g_pView->RedrawWindow();
 
-	WTL::CString title;			//设置窗框标题为当前牌局代号
+	WTL::CString title;		//设置窗框标题为当前牌局代号
 	title.Format(TEXT("%10d"), m_nCurGameNumber);
 	//SetTitle(title);
 
