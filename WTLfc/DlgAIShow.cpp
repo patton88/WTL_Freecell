@@ -115,7 +115,7 @@ LRESULT CDlgAIShow::OnNext(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//}
 
 	// STL-list从尾部遍历-OK
-	list<COperation>& ops = pOpsCur->m_OpList;
+	list<COperation>& ops = pOpsCur->m_opList;
 	for (list<COperation>::iterator it = ops.end(); it != ops.begin();)
 	{
 		it--;
@@ -177,7 +177,7 @@ LRESULT CDlgAIShow::OnPrev(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//	pDoc->MoveCards(pOp->src,pOp->des,pOp->cnt);
 	//}
 
-	list<COperation>& ops = pOpsCur->m_OpList;
+	list<COperation>& ops = pOpsCur->m_opList;
 	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); it++)
 	{
 		COperation& op = *it;
@@ -300,7 +300,7 @@ void CDlgAIShow::OnTimer(UINT uTimerID)
 		//pOpsCur = (COperations*)pDoc->m_pOps->GetAt(posCur);//指针
 		pOpsCur = (COperations*)g_fcData.getAt(g_fcData.m_OpsList, m_pCurPos);
 
-		list<COperation>& ops = pOpsCur->m_OpList;
+		list<COperation>& ops = pOpsCur->m_opList;
 		//CObList *pOps= pOpsCur->pOps;//步骤链
 		//此链记录了移动动作和自动扔牌动作
 		//最末尾的数据记录的是移动动作

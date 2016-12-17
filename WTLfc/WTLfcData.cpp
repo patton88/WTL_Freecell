@@ -513,7 +513,7 @@ void CWTLfcData::Undo()
 	COperations& OpsLast = m_OpsList.back();
 	// GetTail	返回列表中的尾元素（列表不能为空）
 	//list<CMyObject*>* pOps = pOpsLast->m_pObjlist;
-	list<COperation>& ops = OpsLast.m_OpList;
+	list<COperation>& ops = OpsLast.m_opList;
 
 	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); it++)
 	{
@@ -556,7 +556,7 @@ void CWTLfcData::BackHome()
 	while (nSteps > 0)
 	{
 		COperations *pOpsLast = getAt(m_OpsList, --nSteps);
-		list<COperation>& Ops = pOpsLast->m_OpList;
+		list<COperation>& Ops = pOpsLast->m_opList;
 
 		list<COperation>::iterator it = Ops.begin();
 		for (; it != Ops.end(); it++)
@@ -1616,4 +1616,60 @@ CARD_POS * CWTLfcData::FindCardForLabel(UINT cardLabel, CARD_POS * pos)
 //{
 //	CDlgDefGame dlg;
 //	dlg.DoModal();
+//}
+
+/////////////////////////////////////////////////////////////////////////////
+// CWTLfcData serialization
+void CWTLfcData::Serialize(CXArchive& ar)
+{
+	struct SIZE_INF { UINT size, *pAddr; };
+	const SIZE_INF cols[3] = {
+		{ sizeof(m_iCards) / sizeof(UINT), &m_iCards[0][0] },
+		{ sizeof(m_iBuffer) / sizeof(UINT), &m_iBuffer[0] },
+		{ sizeof(m_iRecycle) / sizeof(UINT), &m_iRecycle[0][0] },
+	};
+
+	if (ar.IsStoring()) {
+		ar << m_nCurGameNumber;//保存本局代号
+		m_OpsList.Serialize(ar);//保存步骤记录
+		for (UINT k = 0; k < 3; ++k)//保存牌局
+			for (UINT i = 0; i < cols[k].size; i++)
+				ar << cols[k].pAddr[i];
+	}
+	else {
+		ar >> m_nCurGameNumber;//读取本局代号
+		ClrOpsRecords();//清除步骤记录，准备读档 
+		m_pOps->Serialize(ar);//读取步骤记录
+		for (UINT k = 0; k < 3; ++k)//读取牌局
+			for (UINT i = 0; i < cols[k].size; i++)
+				ar >> cols[k].pAddr[i];
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CJLDoc serialization
+//void CJLDoc::Serialize(CArchive& ar)
+//{
+//	struct SIZE_INF { UINT size, *pAddr; };
+//	const SIZE_INF cols[3] = {
+//		{ sizeof(m_iCards) / sizeof(UINT), &m_iCards[0][0] },
+//		{ sizeof(m_iBuffer) / sizeof(UINT), &m_iBuffer[0] },
+//		{ sizeof(m_iRecycle) / sizeof(UINT), &m_iRecycle[0][0] },
+//	};
+//
+//	if (ar.IsStoring()) {
+//		ar << m_nCurGameNumber;//保存本局代号
+//		m_pOps->Serialize(ar);//保存步骤记录
+//		for (UINT k = 0; k < 3; ++k)//保存牌局
+//			for (UINT i = 0; i < cols[k].size; i++)
+//				ar << cols[k].pAddr[i];
+//	}
+//	else {
+//		ar >> m_nCurGameNumber;//读取本局代号
+//		ClrOpsRecords();//清除步骤记录，准备读档 
+//		m_pOps->Serialize(ar);//读取步骤记录
+//		for (UINT k = 0; k < 3; ++k)//读取牌局
+//			for (UINT i = 0; i < cols[k].size; i++)
+//				ar >> cols[k].pAddr[i];
+//	}
 //}

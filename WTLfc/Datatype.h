@@ -119,6 +119,16 @@ public:
 	//		ar>>src>>des>>cnt;
 	//	}
 	//}
+	void Serialize(CXArchive &ar)	// 类的串行化支持都先注释掉
+	{
+		//CObject does not serialize anything by default
+		//CObject::Serialize(ar);
+		if(ar.IsStoring()) { 
+			ar<<src<<des<<cnt;
+		} else {
+			ar>>src>>des>>cnt;
+		}
+	}
 };
 ////////////////////////////////////////////////////////////
 //class COperation : public CObject
@@ -147,6 +157,30 @@ public:
 //	}
 //};
 
+//////////////////////////////////////////////////////////////
+// CMyOpList用于实现 list<COperation> m_opList; 的串行化
+class CMyOpList : public CMyObject
+{
+public:
+	list<COperation> m_opList;
+	CMyOpList(int n = 0) { m_opList.resize(n); }
+
+	void Serialize(CXArchive& ar)
+	{
+		if (ar.IsStoring())
+		{
+			ar << m_opList.size();
+		}
+		else
+		{
+			int n;	ar >> n;	m_opList.resize(n);
+		}
+
+		for (list<COperation>::iterator it = m_opList.begin(); it != m_opList.end(); it++)
+			(*it).Serialize(ar);
+	}
+};
+
 //在MFC中CObList类型定义的变量可存储类对象，但是该类需要继承CObject类。因为CObList存放CObject类对象的指针。
 //示例：CObList list[num];
 //取出list中的元素时，取出的是指针，需要对CObject类型的指针进行类型转换如下：
@@ -168,21 +202,29 @@ public:
 	}
 
 	//list<CMyObject*> *m_pObjlist;
-	list<COperation> m_OpList;
+	//list<COperation> m_opList;
+	CMyOpList m_opList;
+
+	void Serialize(CXArchive &ar)
+	{
+		//CObject does not serialize anything by default
+		//CObject::Serialize(ar);
+		m_opList.Serialize(ar);
+	}
 
 	COperations(UINT des, UINT src, UINT n)
 	{
 		//m_pObjlist = new list<CMyObject*>;
 		//pOps->AddHead(new COperation(des,src,n)); 
 		//m_pObjlist->push_front(new COperation(des, src, n));
-		m_OpList.push_front(COperation(des, src, n));
+		m_opList.m_opList.push_front(COperation(des, src, n));
 	}
 
 	void AddOperation(UINT des,UINT src,UINT n)
 	{ 
 		//pOps->AddHead(new COperation(des,src,n)); 
 		//m_pObjlist->push_front(new COperation(des, src, n));
-		m_OpList.push_front(COperation(des, src, n));
+		m_opList.m_opList.push_front(COperation(des, src, n));
 	}
 
 	////////////////////////////////////////////////////////////
@@ -305,6 +347,30 @@ public:
 //	DECLARE_SERIAL(COperations)
 //};
 //
+
+//////////////////////////////////////////////////////////////
+// CMyOpsList用于实现 list<COperations> m_opsList; 的串行化
+class CMyOpsList : public CMyObject
+{
+public:
+	list<COperations> m_opsList;
+	CMyOpsList(int n = 0) { m_opsList.resize(n); }
+
+	void Serialize(CXArchive& ar)
+	{
+		if (ar.IsStoring())
+		{
+			ar << m_opsList.size();
+		}
+		else
+		{
+			int n;	ar >> n;	m_opsList.resize(n);
+		}
+
+		for (list<COperations>::iterator it = m_opsList.begin(); it != m_opsList.end(); it++)
+			(*it).Serialize(ar);
+	}
+};
 
 ////////////////////////////////////////////////////////////
 //记录下一步的所有可能的移动步骤用于提示

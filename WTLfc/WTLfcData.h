@@ -8,6 +8,7 @@
 #include <list>
 using namespace std;
 #include "Datatype.h"
+#include "WTLSerialize/Archive.h"
 
 VOID CALLBACK LineDDACallback(int x, int y, LPARAM lparam);
 //class HINTS;
@@ -45,6 +46,7 @@ public:
 
 // Implementation
 public:
+	void Serialize(CXArchive& ar);
 	void BackHome();
 	BOOL GiveUp();
 	CRect RectOfStep();
