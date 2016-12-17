@@ -1475,7 +1475,8 @@ LRESULT CWTLfcView::OnSetting(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 	dlg.m_nDDASpeed = g_fcData.m_nDDASpeed;
 
 	//prompt
-	dlg.DoModal();
+	//dlg.DoModal();
+	if (dlg.DoModal() == IDCANCEL) return 0;
 
 	//get settings
 	g_fcData.m_bEnableAlert = dlg.m_bEnableAlert;
