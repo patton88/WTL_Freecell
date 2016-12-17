@@ -1515,9 +1515,22 @@ LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	fd.m_ofn.lpstrTitle = L"SaveFileTest";
 	fd.m_ofn.lpstrInitialDir = L".";
 
-	if (IDOK == fd.DoModal(*this))
-	{
-	}
+	if (fd.DoModal() == IDCANCEL) return 0;
+
+	// Storing
+	CXFile file1;
+	file1.Open(fd.m_szFileName,					// file name
+		GENERIC_WRITE | GENERIC_READ,			// access mode 
+		FILE_SHARE_READ | FILE_SHARE_WRITE,		// share mode 
+		NULL,									// no security 
+		CREATE_ALWAYS,							// create a new file, overwrite if it exists
+		FILE_ATTRIBUTE_NORMAL,					// file attributes
+		NULL);									// no template file
+
+	CXArchive ar1(&file1, CXArchive::store);
+	g_fcData.Serialize(ar1);
+	ar1.Close();
+	// CXFile file1 由 ~CXFile 关闭
 
 	return 0;
 }
@@ -1526,6 +1539,9 @@ LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 //void WTLfcData::OnLoad()
 LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
+	if (!g_fcData.GiveUp()) return 0;
+	
+	//选择文件
 	// The parameter that specifies what type of dialog box to create.
 	// Set it to TRUE to construct a File Open dialog box.
 	// Set it to FALSE to construct a File Save As dialog box.
@@ -1534,9 +1550,54 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	fd.m_ofn.lpstrTitle = L"OpenFileTest";
 	fd.m_ofn.lpstrInitialDir = L".";
 
-	if (IDOK == fd.DoModal(*this))
+	if (fd.DoModal() == IDCANCEL) return 0;
+
+	// Loading
+	CXFile file2;
+	file2.Open(fd.m_szFileName,					// file name
+		GENERIC_WRITE | GENERIC_READ,			// access mode 
+		FILE_SHARE_READ | FILE_SHARE_WRITE,		// share mode 
+		NULL,									// no security 
+		//CREATE_ALWAYS,							// create a new file, overwrite if it exists
+		OPEN_EXISTING,							// open the file, if it exists
+		FILE_ATTRIBUTE_NORMAL,					// file attributes
+		NULL);									// no template file
+
+	/////////////////////////////////////////////////////////////////
+	//考虑存档文件有可能是一个不完整的自定义牌局
+	int nGameNumber;
+	file2.Read(&nGameNumber, sizeof(int));
+	if (nGameNumber == -1)
 	{
+		MessageBox(L"请将自定义牌局【" + CString(fd.m_szFileName) + L"】编辑完整！\n");
+		return 0;
 	}
+	file2.SeekToBegin();
+	/////////////////////////////////////////////////////////////////
+	g_fcData.m_dlgScore.UpdateScore();//记录战况
+	
+	//读档
+	CXArchive ar2(&file2, CXArchive::load);
+	g_fcData.Serialize(ar2);
+	ar2.Close();
+	// CXFile file2 由 ~CXFile 关闭
+
+	//刷新牌局
+	//UpdateAllViews(NULL);
+	g_pView->RedrawWindow();
+	
+	//设置窗框标题为当前牌局代号或自定义牌局的文件名
+	CString title;
+	if (g_fcData.m_nCurGameNumber > 0) {
+		title.Format(TEXT("%d"), g_fcData.m_nCurGameNumber);
+		//SetTitle(title);
+	}
+	else {
+		//SetTitle(dlg.GetFileName());
+	}
+	
+	g_fcData.m_dlgScore.InitScore();//记录战况
+	g_fcData.CheckGame();//看看此局是否已经结束
 
 	return 0;
 }
