@@ -93,6 +93,20 @@ public:
 	CMyObject() {}
 	// 基类析构函数若需要delete的，务必定义为virtual，否则可能导致无能delete
 	virtual ~CMyObject() {}
+
+	////////////////////////////////////////////////////////////
+	// 获取STL list中的指定元素只能用遍历了
+	//CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
+	template <typename T>
+	T* getAt(list<T>& xList, unsigned n)
+	{
+		list<T>::iterator it = xList.begin();
+		for (unsigned i = 0; i < n; i++)
+			it++;
+
+		return &(*it);
+	}
+
 };
 ////////////////////////////////////////////////////////////
 class COperation : public CMyObject	// CObject 都替换为 CMyObject
@@ -173,7 +187,7 @@ public:
 		}
 		else
 		{
-			int n;	ar >> n;	m_opList.resize(n);
+			int n;	ar >> n;		m_opList.resize(n);
 		}
 
 		for (list<COperation>::iterator it = m_opList.begin(); it != m_opList.end(); it++)
@@ -227,18 +241,18 @@ public:
 		m_opList.m_opList.push_front(COperation(des, src, n));
 	}
 
-	////////////////////////////////////////////////////////////
-	// 获取STL list中的指定元素只能用遍历了
-	//CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
-	template <typename T>
-	T* getAt(list<T>& opList, unsigned n)
-	{
-		list<T>::iterator it = opList.begin();
-		for (unsigned i = 0; i < n; i++)
-			it++;
+	//////////////////////////////////////////////////////////////
+	//// 获取STL list中的指定元素只能用遍历了
+	////CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
+	//template <typename T>
+	//T* getAt(list<T>& opList, unsigned n)
+	//{
+	//	list<T>::iterator it = opList.begin();
+	//	for (unsigned i = 0; i < n; i++)
+	//		it++;
 
-		return &(*it);
-	}
+	//	return &(*it);
+	//}
 
 	//COperation* getAt(list<COperation>& opList, unsigned n)
 	//{
@@ -364,7 +378,7 @@ public:
 		}
 		else
 		{
-			int n;	ar >> n;	m_opsList.resize(n);
+			int n;	ar >> n;		m_opsList.resize(n);
 		}
 
 		for (list<COperations>::iterator it = m_opsList.begin(); it != m_opsList.end(); it++)
