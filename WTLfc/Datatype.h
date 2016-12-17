@@ -89,6 +89,37 @@ const UINT stepFont = 22;
 ////解码
 //void Decoding(CFile & desFile, CFile & srcFile);
 //
+
+//////////////////////////////////////////////////////////////
+// CTList用于实现 list<T> m_tList; 的串行化
+
+template <typename T>
+class CTList : public CMyObject
+{
+public:
+	list<T> m_tList;
+	CTList(int n = 0) { m_tList.resize(n); }
+
+	void Serialize(CXArchive& ar)
+	{
+		if (ar.IsStoring())
+		{
+			ar << m_tList.size();
+		}
+		else
+		{
+			int n;	ar >> n;		m_tList.resize(n);
+		}
+
+		for (list<T>::iterator it = m_tList.begin(); it != m_tList.end(); it++)
+			(*it).Serialize(ar);
+	}
+};
+
+// CTList用于实现 list<T> m_tList; 的串行化
+//////////////////////////////////////////////////////////////
+
+
 ////////////////////////////////////////////////////////////
 class CMyObject
 {
@@ -176,28 +207,30 @@ public:
 //};
 
 //////////////////////////////////////////////////////////////
-// CMyOpList用于实现 list<COperation> m_opList; 的串行化
-class CMyOpList : public CMyObject
-{
-public:
-	list<COperation> m_opList;
-	CMyOpList(int n = 0) { m_opList.resize(n); }
-
-	void Serialize(CXArchive& ar)
-	{
-		if (ar.IsStoring())
-		{
-			ar << m_opList.size();
-		}
-		else
-		{
-			int n;	ar >> n;		m_opList.resize(n);
-		}
-
-		for (list<COperation>::iterator it = m_opList.begin(); it != m_opList.end(); it++)
-			(*it).Serialize(ar);
-	}
-};
+// 已用CTList<T>替代。用于实现 list<T> m_tList; 的串行化
+////////////////////////////////////////////////////////////////
+//// CMyOpList用于实现 list<COperation> m_opList; 的串行化
+//class CMyOpList : public CMyObject
+//{
+//public:
+//	list<COperation> m_opList;
+//	CMyOpList(int n = 0) { m_opList.resize(n); }
+//
+//	void Serialize(CXArchive& ar)
+//	{
+//		if (ar.IsStoring())
+//		{
+//			ar << m_opList.size();
+//		}
+//		else
+//		{
+//			int n;	ar >> n;		m_opList.resize(n);
+//		}
+//
+//		for (list<COperation>::iterator it = m_opList.begin(); it != m_opList.end(); it++)
+//			(*it).Serialize(ar);
+//	}
+//};
 
 //在MFC中CObList类型定义的变量可存储类对象，但是该类需要继承CObject类。因为CObList存放CObject类对象的指针。
 //示例：CObList list[num];
@@ -221,7 +254,8 @@ public:
 
 	//list<CMyObject*> *m_pObjlist;
 	//list<COperation> m_opList;
-	CMyOpList m_opList;
+	//CMyOpList m_opList;
+	CTList<COperation> m_opList;
 
 	void Serialize(CXArchive &ar)
 	{
@@ -235,14 +269,14 @@ public:
 		//m_pObjlist = new list<CMyObject*>;
 		//pOps->AddHead(new COperation(des,src,n)); 
 		//m_pObjlist->push_front(new COperation(des, src, n));
-		m_opList.m_opList.push_front(COperation(des, src, n));
+		m_opList.m_tList.push_front(COperation(des, src, n));
 	}
 
 	void AddOperation(UINT des,UINT src,UINT n)
 	{ 
 		//pOps->AddHead(new COperation(des,src,n)); 
 		//m_pObjlist->push_front(new COperation(des, src, n));
-		m_opList.m_opList.push_front(COperation(des, src, n));
+		m_opList.m_tList.push_front(COperation(des, src, n));
 	}
 
 	//////////////////////////////////////////////////////////////
@@ -367,28 +401,30 @@ public:
 //
 
 //////////////////////////////////////////////////////////////
-// CMyOpsList用于实现 list<COperations> m_opsList; 的串行化
-class CMyOpsList : public CMyObject
-{
-public:
-	list<COperations> m_opsList;
-	CMyOpsList(int n = 0) { m_opsList.resize(n); }
-
-	void Serialize(CXArchive& ar)
-	{
-		if (ar.IsStoring())
-		{
-			ar << m_opsList.size();
-		}
-		else
-		{
-			int n;	ar >> n;		m_opsList.resize(n);
-		}
-
-		for (list<COperations>::iterator it = m_opsList.begin(); it != m_opsList.end(); it++)
-			(*it).Serialize(ar);
-	}
-};
+// 已用CTList<T>替代。用于实现 list<T> m_tList; 的串行化
+////////////////////////////////////////////////////////////////
+//// CMyOpsList用于实现 list<COperations> m_opsList; 的串行化
+//class CMyOpsList : public CMyObject
+//{
+//public:
+//	list<COperations> m_opsList;
+//	CMyOpsList(int n = 0) { m_opsList.resize(n); }
+//
+//	void Serialize(CXArchive& ar)
+//	{
+//		if (ar.IsStoring())
+//		{
+//			ar << m_opsList.size();
+//		}
+//		else
+//		{
+//			int n;	ar >> n;		m_opsList.resize(n);
+//		}
+//
+//		for (list<COperations>::iterator it = m_opsList.begin(); it != m_opsList.end(); it++)
+//			(*it).Serialize(ar);
+//	}
+//};
 
 ////////////////////////////////////////////////////////////
 //记录下一步的所有可能的移动步骤用于提示
@@ -408,13 +444,13 @@ public:
 	{
 		//ATLASSERT(!m_pObjlist->empty());
 		//int cnt = m_pObjlist->size();
-		ATLASSERT(!m_opList.m_opList.empty());
-		int cnt = m_opList.m_opList.size();
+		ATLASSERT(!m_opList.m_tList.empty());
+		int cnt = m_opList.m_tList.size();
 		if(curHint >= cnt) { curHint = 0; }
 
 		//最先提示链尾的动作
 		//const COperation* pOp = (const COperation*)getAt(m_pObjlist, cnt - ++curHint);
-		const COperation* pOp = getAt(m_opList.m_opList, cnt - ++curHint);
+		const COperation* pOp = getAt(m_opList.m_tList, cnt - ++curHint);
 		
 		//(const COperation*)m_pObjlist->GetAt(m_pObjlist->FindIndex(cnt - ++curHint));
 		// GetAt 获取指定位置的元素
@@ -433,7 +469,7 @@ public:
 	BOOL IsEmpty()
 	{
 		//return m_pObjlist->empty();
-		return m_opList.m_opList.empty();
+		return m_opList.m_tList.empty();
 	}
 };
 

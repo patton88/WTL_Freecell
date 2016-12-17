@@ -176,9 +176,9 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	// ...
 	//if (!g_fcData.m_pOps->empty()) {
 	//	strSteps.Format(TEXT("%d"), g_fcData.m_pOps->size());
-	if (!g_fcData.m_OpsList.m_opsList.empty())
+	if (!g_fcData.m_OpsList.m_tList.empty())
 	{
-		strSteps.Format(TEXT("%d"), g_fcData.m_OpsList.m_opsList.size());
+		strSteps.Format(TEXT("%d"), g_fcData.m_OpsList.m_tList.size());
 		CFont font;
 		//font.CreatePointFont(ccs.stepFont * 10, "Arial", pDC);
 		font.CreatePointFont(g_fcCcs.stepFont * 6, TEXT("Arial"), dc);
@@ -1355,7 +1355,7 @@ LRESULT CWTLfcView::OnAgain(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/
 	else
 	{
 		//while (!g_fcData.m_pOps->empty())
-		while (!g_fcData.m_OpsList.m_opsList.empty())
+		while (!g_fcData.m_OpsList.m_tList.empty())
 		{
 			g_fcData.Undo();//撤销到开头
 		}

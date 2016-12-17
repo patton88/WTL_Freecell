@@ -9,7 +9,6 @@
 
 #include "resource.h"
 #include "Datatype.h"
-class CScore;
 #include <atltime.h>
 
 /*
@@ -55,30 +54,32 @@ public:
 	}
 };
 
-// 1>g:\myvccode3\wtlfc\wtlfc\dlgscore.h(32): error C2079: 'CDlgScore::m_score' uses undefined class 'CScoreList'
 //////////////////////////////////////////////////////////////
-// CScoreList用于实现 list<CScore> m_scList; 的串行化
-class CScoreList : public CMyObject
-{
-public:
-	list<CScore> m_scList;
-	CScoreList(int n = 0) { m_scList.resize(n); }
-
-	void Serialize(CXArchive& ar)
-	{
-		if (ar.IsStoring())
-		{
-			ar << m_scList.size();
-		}
-		else
-		{
-			int n;	ar >> n;		m_scList.resize(n);
-		}
-
-		for (list<CScore>::iterator it = m_scList.begin(); it != m_scList.end(); it++)
-			(*it).Serialize(ar);
-	}
-};
+// 已用CTList<T>替代。用于实现 list<T> m_tList; 的串行化
+//// 1>g:\myvccode3\wtlfc\wtlfc\dlgscore.h(32): error C2079: 'CDlgScore::m_score' uses undefined class 'CScoreList'
+////////////////////////////////////////////////////////////////
+//// CScoreList用于实现 list<CScore> m_scList; 的串行化
+//class CScoreList : public CMyObject
+//{
+//public:
+//	list<CScore> m_scList;
+//	CScoreList(int n = 0) { m_scList.resize(n); }
+//
+//	void Serialize(CXArchive& ar)
+//	{
+//		if (ar.IsStoring())
+//		{
+//			ar << m_scList.size();
+//		}
+//		else
+//		{
+//			int n;	ar >> n;		m_scList.resize(n);
+//		}
+//
+//		for (list<CScore>::iterator it = m_scList.begin(); it != m_scList.end(); it++)
+//			(*it).Serialize(ar);
+//	}
+//};
 /////////////////////////////////////////////////////////////////////////////
 // CDlgScore dialog
 
@@ -96,7 +97,8 @@ public:
 	//CObList m_score;
 	//list<CMyObject*> m_score;
 	//list<CScore> m_score;
-	CScoreList m_score;
+	//CScoreList m_score;
+	CTList<CScore> m_score;
 
 	//CDlgScore(CWnd* pParent = NULL);   // standard constructor
 	CDlgScore();

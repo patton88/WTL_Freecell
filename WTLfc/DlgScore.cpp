@@ -101,16 +101,16 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 
 	// list<CMyObject*> m_score;
 	//for (POSITION pos = m_score.GetTailPosition(); pos != NULL; ++i )
-	for (list<CScore>::iterator it = m_score.m_scList.end(); it != m_score.m_scList.begin(); i++)
+	for (list<CScore>::iterator it = m_score.m_tList.end(); it != m_score.m_tList.begin(); i++)
 	{
 		//最后一局还没有解，所以状态不必显示
 		it--;	//	必须放在这里，否则运行报错终止。COblist 与 STL list的不同
-		//if(pos == m_score.m_scList.GetHeadPosition()) break;
-		if (m_score.m_scList.begin() == it)
+		//if(pos == m_score.m_tList.GetHeadPosition()) break;
+		if (m_score.m_tList.begin() == it)
 			break;
 
-		//CScore *p = (CScore*)m_score.m_scList.GetPrev(pos);
-		CScore& cs = *it;	// it = m_score.m_scList.end()，必须先it--，才能*it，否则运行时报错终止
+		//CScore *p = (CScore*)m_score.m_tList.GetPrev(pos);
+		CScore& cs = *it;	// it = m_score.m_tList.end()，必须先it--，才能*it，否则运行时报错终止
 
 		s.Format(TEXT("%d"), cs.gameNumber);
 		m_lcScore.InsertItem(i, s);
@@ -190,16 +190,16 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 //更新战况
 void CDlgScore::UpdateScore()
 {
-	if (m_score.m_scList.empty()) return;
+	if (m_score.m_tList.empty()) return;
 
-	//CScore *p = (CScore*)m_score.m_scList.GetHead();
-	CScore& cs = m_score.m_scList.front();
+	//CScore *p = (CScore*)m_score.m_tList.GetHead();
+	CScore& cs = m_score.m_tList.front();
 	cs.tmEnd = CTime::GetCurrentTime();
 
 	//十五秒以内解开的局认为是使用了自动解答的帮助，将不予记录
 	if ((cs.tmEnd - cs.tmStart).GetTotalSeconds() < 15) {
 		//m_score.RemoveHead();
-		m_score.m_scList.pop_front();
+		m_score.m_tList.pop_front();
 		//delete p;
 		return;
 	}
@@ -209,7 +209,7 @@ void CDlgScore::UpdateScore()
 		g_fcData.GameOver() ? CScore::gamePassed :
 		g_fcData.m_Hints.IsEmpty() ? CScore::gameDead :
 		CScore::gameGiveUp;
-	cs.steps = g_fcData.m_OpsList.m_opsList.size();
+	cs.steps = g_fcData.m_OpsList.m_tList.size();
 }
 
 void CDlgScore::InitScore()
@@ -217,13 +217,13 @@ void CDlgScore::InitScore()
 	//CScore *p = new CScore;
 	//CScore *p = new CScore;
 	//ATLASSERT(p);
-	m_score.m_scList.push_front(CScore());
+	m_score.m_tList.push_front(CScore());
 
 	//CJLDoc *pDoc = AfxGetDocument();
 
 	// STL list front() 返回第一个元素的引用，back() 返回最后一元素的引用
-	m_score.m_scList.front().gameNumber = g_fcData.m_nCurGameNumber;
-	m_score.m_scList.front().tmStart = CTime::GetCurrentTime();
+	m_score.m_tList.front().gameNumber = g_fcData.m_nCurGameNumber;
+	m_score.m_tList.front().tmStart = CTime::GetCurrentTime();
 }
 
 //看看此局是否曾经玩过
@@ -232,7 +232,7 @@ bool CDlgScore::IsOldGameNumber(int gameNum)
 	//for(POSITION pos = m_score.GetHeadPosition(); pos != NULL; )
 	//	if(gameNum == ((CScore*)m_score.GetNext(pos))->gameNumber)
 	//		return true;
-	for (list<CScore>::iterator it = m_score.m_scList.begin(); it != m_score.m_scList.begin(); it++)
+	for (list<CScore>::iterator it = m_score.m_tList.begin(); it != m_score.m_tList.begin(); it++)
 	{
 		if (gameNum == (*it).gameNumber)
 			return true;

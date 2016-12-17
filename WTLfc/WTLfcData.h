@@ -30,7 +30,8 @@ public:
 	//CObList *m_pOps;
 	//list<CMyObject*>* m_pOps;
 	//list<COperations> m_OpsList;
-	CMyOpsList m_OpsList;
+	//CMyOpsList m_OpsList;
+	CTList<COperations> m_OpsList;
 
 	UINT m_iCards[8][20];//6+13=19
 	UINT m_iBuffer[4];

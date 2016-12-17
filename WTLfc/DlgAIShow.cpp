@@ -93,17 +93,17 @@ LRESULT CDlgAIShow::OnNext(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	CancelCurMv();
 
 	//CJLDoc *pDoc = AfxGetDocument();
-	if (g_fcData.m_OpsList.m_opsList.empty())
+	if (g_fcData.m_OpsList.m_tList.empty())
 		return 0;
 
 	COperations *pOpsCur = NULL;
-	unsigned cnt = g_fcData.m_OpsList.m_opsList.size();
+	unsigned cnt = g_fcData.m_OpsList.m_tList.size();
 	if(m_pCurPos < cnt) {
 		//取出当前的操作记录
 		//指向下一个操作记录
 		//POSITION posCur = g_fcData.m_pOps->FindIndex(m_pCurPos);
 		//pOpsCur = (COperations*)pDoc->m_pOps->GetAt(posCur);
-		pOpsCur = g_fcData.getAt(g_fcData.m_OpsList.m_opsList, m_pCurPos);
+		pOpsCur = g_fcData.getAt(g_fcData.m_OpsList.m_tList, m_pCurPos);
 		++m_pCurPos;
 	}
 
@@ -115,7 +115,7 @@ LRESULT CDlgAIShow::OnNext(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//}
 
 	// STL-list从尾部遍历-OK
-	list<COperation>& ops = pOpsCur->m_opList.m_opList;
+	list<COperation>& ops = pOpsCur->m_opList.m_tList;
 	for (list<COperation>::iterator it = ops.end(); it != ops.begin();)
 	{
 		it--;
@@ -156,7 +156,7 @@ LRESULT CDlgAIShow::OnPrev(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//CJLDoc *pDoc = AfxGetDocument();
 	//if(pDoc->m_pOps->IsEmpty())
 	//	return;
-	if (g_fcData.m_OpsList.m_opsList.empty())
+	if (g_fcData.m_OpsList.m_tList.empty())
 		return 0;
 
 	COperations *pOpsCur = NULL;
@@ -167,7 +167,7 @@ LRESULT CDlgAIShow::OnPrev(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 		//POSITION posCur = pDoc->m_pOps->FindIndex(m_pCurPos);
 		//pOpsCur = (COperations*)pDoc->m_pOps->GetAt(posCur);
 		//CMyObject* getAt(list<CMyObject*>* pList, unsigned n)
-		pOpsCur = (COperations*)g_fcData.getAt(g_fcData.m_OpsList.m_opsList, m_pCurPos);
+		pOpsCur = (COperations*)g_fcData.getAt(g_fcData.m_OpsList.m_tList, m_pCurPos);
 	}
 
 	//CObList *pOps= pOpsCur->pOps;
@@ -177,7 +177,7 @@ LRESULT CDlgAIShow::OnPrev(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//	pDoc->MoveCards(pOp->src,pOp->des,pOp->cnt);
 	//}
 
-	list<COperation>& ops = pOpsCur->m_opList.m_opList;
+	list<COperation>& ops = pOpsCur->m_opList.m_tList;
 	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); it++)
 	{
 		COperation& op = *it;
@@ -223,7 +223,7 @@ void CDlgAIShow::ShowStepInfo()
 	WTL::CString step_info;
 	step_info.Format(TEXT("进度【 %d / %d 】"),
 		m_pCurPos,
-		g_fcData.m_OpsList.m_opsList.size());
+		g_fcData.m_OpsList.m_tList.size());
 	SetWindowText(step_info);
 }
  
@@ -242,7 +242,7 @@ LRESULT CDlgAIShow::OnLast(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	// TODO: Add your control notification handler code here
 	//CJLDoc *pDoc = AfxGetDocument();
 	BOOL b;
-	while (m_pCurPos < g_fcData.m_OpsList.m_opsList.size()) OnNext(NULL, NULL, NULL, b);
+	while (m_pCurPos < g_fcData.m_OpsList.m_tList.size()) OnNext(NULL, NULL, NULL, b);
 	return 0;
 }
 
@@ -282,7 +282,7 @@ void CDlgAIShow::OnTimer(UINT uTimerID)
 
 	BOOL b;
 	//CJLDoc *pDoc = AfxGetDocument();
-	if (m_pCurPos == g_fcData.m_OpsList.m_opsList.size()) {
+	if (m_pCurPos == g_fcData.m_OpsList.m_tList.size()) {
 		m_bPlaying = 0; //设置暂停标志
 		SetDlgItemText(IDB_AUTO_PLAY, TEXT("回放(&A)"));
 	}
@@ -292,14 +292,14 @@ void CDlgAIShow::OnTimer(UINT uTimerID)
 	}
 	else if(m_bPlaying < 5){
 		//CJLDoc *pDoc = AfxGetDocument();
-		int cnt = g_fcData.m_OpsList.m_opsList.size();
+		int cnt = g_fcData.m_OpsList.m_tList.size();
 
 		//取出当前的操作记录
 		//POSITION posCur = pDoc->m_pOps->FindIndex(m_pCurPos);//位置
 		//pOpsCur = (COperations*)pDoc->m_pOps->GetAt(posCur);//指针
-		COperations* pOpsCur = g_fcData.getAt(g_fcData.m_OpsList.m_opsList, m_pCurPos);
+		COperations* pOpsCur = g_fcData.getAt(g_fcData.m_OpsList.m_tList, m_pCurPos);
 
-		list<COperation>& ops = pOpsCur->m_opList.m_opList;
+		list<COperation>& ops = pOpsCur->m_opList.m_tList;
 		//CObList *pOps= pOpsCur->pOps;//步骤链
 		//此链记录了移动动作和自动扔牌动作
 		//最末尾的数据记录的是移动动作
