@@ -35,7 +35,7 @@ public:
 	// Reading and writing strings
 	void WriteString(LPCTSTR lpsz);
 	LPTSTR ReadString(LPTSTR lpsz, UINT nMax) throw(CXArchiveException);
-	BOOL ReadString(CString& rString);
+	BOOL ReadString(WTL::CString& rString);
 
 	// Insertion operations
 	CXArchive& operator<<(BYTE by);

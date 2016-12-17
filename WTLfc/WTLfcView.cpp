@@ -171,7 +171,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	//dcMem.SelectBitmap(hBmpOld);
 
 	// 1、显示步数信息
-	CString strSteps;
+	WTL::CString strSteps;
 	CRect r = g_fcData.RectOfStep();
 	// ...
 	//if (!g_fcData.m_pOps->empty()) {
@@ -1569,7 +1569,7 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	file2.Read(&nGameNumber, sizeof(int));
 	if (nGameNumber == -1)
 	{
-		MessageBox(L"请将自定义牌局【" + CString(fd.m_szFileName) + L"】编辑完整！\n");
+		MessageBox(L"请将自定义牌局【" + WTL::CString(fd.m_szFileName) + L"】编辑完整！\n");
 		return 0;
 	}
 	file2.SeekToBegin();
@@ -1587,7 +1587,7 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	g_pView->RedrawWindow();
 	
 	//设置窗框标题为当前牌局代号或自定义牌局的文件名
-	CString title;
+	WTL::CString title;
 	if (g_fcData.m_nCurGameNumber > 0) {
 		title.Format(TEXT("%d"), g_fcData.m_nCurGameNumber);
 		//SetTitle(title);
@@ -1596,7 +1596,8 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 		//SetTitle(dlg.GetFileName());
 	}
 	
-	g_fcData.m_dlgScore.InitScore();//记录战况
+	//g_fcData.m_dlgScore.InitScore();	//记录战况
+	//g_fcData.m_dlgScore.UpdateScore();	//
 	g_fcData.CheckGame();//看看此局是否已经结束
 
 	return 0;

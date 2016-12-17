@@ -1589,7 +1589,7 @@ void CWTLfcData::StartGame(int gameNumber)
 	//UpdateAllViews(NULL);	//绘制界面
 	g_pView->RedrawWindow();
 
-	CString title;			//设置窗框标题为当前牌局代号
+	WTL::CString title;			//设置窗框标题为当前牌局代号
 	title.Format(TEXT("%10d"), m_nCurGameNumber);
 	//SetTitle(title);
 

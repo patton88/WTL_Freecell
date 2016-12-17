@@ -10,7 +10,72 @@
 #include "resource.h"
 #include "Datatype.h"
 class CScore;
+#include <atltime.h>
 
+/*
+CTime与DWORD之间的转换
+2010-04-07 11:02:33
+标签：CTime DWORD office，word 休闲 职场
+原创作品，允许转载，转载时请务必以超链接形式标明文章 原始出处 、作者信息和本声明。否则将追究法律责任。
+http://wanxin.blog.51cto.com/966660/291927
+CTime t(2009,7,1,16,58,50); //时间类型赋值
+DWORD dwTime = t.GetTime(); //将CTime状换为DWORD类型
+CTime time(dwTime);//将DWORD转换为CTime
+time.GetDay();
+time.GetYear();
+.......................
+time.Format("%Y %M %M %H %M %S",t.GetYear(), ........);
+//时间类型的赋值
+本文出自 “数据恢复技术-Thinking..” 博客，请务必保留此出处http://wanxin.blog.51cto.com/966660/291927
+*/
+
+class CScore : public CMyObject
+{
+public:
+	int gameNumber;
+	int steps;
+	CTime tmStart, tmEnd;
+	enum { gameInit = 0, gamePassed, gameGiveUp, gameDead } gameStatus;
+
+	void Serialize(CXArchive &ar)	// 类的串行化支持都先注释掉
+	{
+		//CObject does not serialize anything by default
+		//CObject::Serialize(ar);
+		long long llStart, llEnd;
+		if (ar.IsStoring()) {
+			ar << gameNumber << steps << tmStart.GetTime() << tmEnd.GetTime();
+		}
+		else {
+			ar >> gameNumber >> steps >> llStart >> llEnd;
+			tmStart = llStart;	tmEnd = llEnd;
+		}
+	}
+};
+
+// 1>g:\myvccode3\wtlfc\wtlfc\dlgscore.h(32): error C2079: 'CDlgScore::m_score' uses undefined class 'CScoreList'
+//////////////////////////////////////////////////////////////
+// CScoreList用于实现 list<CScore> m_scList; 的串行化
+class CScoreList : public CMyObject
+{
+public:
+	list<CScore> m_scList;
+	CScoreList(int n = 0) { m_scList.resize(n); }
+
+	void Serialize(CXArchive& ar)
+	{
+		if (ar.IsStoring())
+		{
+			ar << m_scList.size();
+		}
+		else
+		{
+			int n;	ar >> n;		m_scList.resize(n);
+		}
+
+		for (list<CScore>::iterator it = m_scList.begin(); it != m_scList.end(); it++)
+			(*it).Serialize(ar);
+	}
+};
 /////////////////////////////////////////////////////////////////////////////
 // CDlgScore dialog
 
@@ -27,7 +92,8 @@ public:
 
 	//CObList m_score;
 	//list<CMyObject*> m_score;
-	list<CScore> m_score;
+	//list<CScore> m_score;
+	CScoreList m_score;
 
 	//CDlgScore(CWnd* pParent = NULL);   // standard constructor
 	CDlgScore();
