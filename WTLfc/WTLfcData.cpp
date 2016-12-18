@@ -1612,12 +1612,7 @@ CARD_POS * CWTLfcData::FindCardForLabel(UINT cardLabel, CARD_POS * pos)
 	}
 	return pos;
 }
-////自定义牌局
-//void CWTLfcData::OnEdit()
-//{
-//	CDlgDefGame dlg;
-//	dlg.DoModal();
-//}
+
 
 /////////////////////////////////////////////////////////////////////////////
 // CWTLfcData serialization
@@ -1631,24 +1626,24 @@ void CWTLfcData::Serialize(CXArchive& ar)
 	};
 
 	if (ar.IsStoring()) {
-		ar << m_nCurGameNumber;//保存本局代号
-		m_OpsList.Serialize(ar);//保存步骤记录
-		for (UINT k = 0; k < 3; ++k)//保存牌局
+		ar << m_nCurGameNumber;			//1、保存本局代号
+		m_OpsList.Serialize(ar);			//2、保存步骤记录
+		for (UINT k = 0; k < 3; ++k)		//3、保存牌局
 			for (UINT i = 0; i < cols[k].size; i++)
 				ar << cols[k].pAddr[i];
 
-		m_dlgScore.m_score.Serialize(ar);//保存战况记录
+		m_dlgScore.m_score.Serialize(ar);//4、保存战况记录
 	}
 	else {
-		ar >> m_nCurGameNumber;//读取本局代号
+		ar >> m_nCurGameNumber;			//1、读取本局代号
 		//ClrOpsRecords();//清除步骤记录，准备读档 
-		m_OpsList.m_tList.clear();	//清除步骤记录，准备读档 
-		m_OpsList.Serialize(ar);//读取步骤记录
-		for (UINT k = 0; k < 3; ++k)//读取牌局
+		m_OpsList.m_tList.clear();		//清除步骤记录，准备读档 
+		m_OpsList.Serialize(ar);			//2、读取步骤记录
+		for (UINT k = 0; k < 3; ++k)		//3、读取牌局
 			for (UINT i = 0; i < cols[k].size; i++)
 				ar >> cols[k].pAddr[i];
 
-		m_dlgScore.m_score.Serialize(ar);//读取战况记录
+		m_dlgScore.m_score.Serialize(ar);//4、读取战况记录
 	}
 }
 

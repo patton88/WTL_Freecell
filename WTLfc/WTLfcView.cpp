@@ -9,6 +9,8 @@
 #include "DlgAICal.h"
 #include "DlgSelGame.h"
 #include "DlgSettings.h"
+#include "DlgDefGame.h"
+
 
 BOOL CWTLfcView::PreTranslateMessage(MSG* pMsg)
 {
@@ -1371,11 +1373,6 @@ LRESULT CWTLfcView::OnScore(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/
 	return 0;
 }
 
-LRESULT CWTLfcView::OnEdit(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
-{
-	return 0;
-}
-
 //选局
 LRESULT CWTLfcView::OnSelectgamenumber(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
@@ -1550,7 +1547,7 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	// CFileDialog的第二个参数".txt"就是系统当你没输入扩展名时为你自动添加的扩展名。
 	CFileDialog fd(TRUE, L"txt", NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
 		L"Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0\0", m_hWnd);
-	fd.m_ofn.lpstrTitle = L"OpenFileTest";
+	fd.m_ofn.lpstrTitle = L"ReadFileTest";
 	fd.m_ofn.lpstrInitialDir = L".";
 
 	if (fd.DoModal() == IDCANCEL) return 0;
@@ -1651,3 +1648,14 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 //	m_dlgScore.InitScore();//记录战况
 //	CheckGame();//看看此局是否已经结束
 //}
+
+//自定义牌局
+//void CWTLfcData::OnEdit()
+LRESULT CWTLfcView::OnEdit(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	CDlgDefGame dlg;
+	dlg.DoModal();
+
+	return 0;
+}
+
