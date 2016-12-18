@@ -116,7 +116,7 @@ LRESULT CDGWnd::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOO
 	}
 	dcMem.SelectBitmap(hBmpOld);
 	//绘制桌面
-	CBrush OldBrush = dc.SelectBrush(g_pView->m_brushBkgnd);
+	//CBrush OldBrush = dc.SelectBrush(g_pView->m_brushBkgnd);
 	//共八列牌，前四列每列七张，后四列每列六张，共计52张
 	for (int i = 1; i <= 8; i++) {
 		UINT m = (i <= 4 ? 7 : 6);
@@ -136,7 +136,7 @@ LRESULT CDGWnd::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOO
 			}
 		}
 	}
-	dc.SelectBrush(OldBrush);
+	//dc.SelectBrush(OldBrush);
 
 	return 0;
 }
