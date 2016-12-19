@@ -12,7 +12,7 @@ public:
 	CBrush      m_brushBkgnd;    //±³¾°É«,
 	COLORREF    m_clrText;       //ÎÄ×ÖÑÕÉ«
 
-	CAboutDlg(COLORREF clrText = RGB(0, 0, 255));
+	CAboutDlg(COLORREF clrText = RGB(218, 218, 218));
 
 	BEGIN_MSG_MAP(CAboutDlg)
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)

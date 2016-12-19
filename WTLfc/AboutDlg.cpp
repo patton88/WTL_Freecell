@@ -12,7 +12,8 @@ CAboutDlg::CAboutDlg(COLORREF clrText)
 	//Ä¬ÈÏÑÕÉ«
 	//m_brushBkgnd.CreateSolidBrush(::GetSysColor(COLOR_BTNFACE));
 	//m_brushBkgnd.CreateSolidBrush(RGB(218, 218, 218));
-	m_brushBkgnd.CreateSolidBrush(::GetSysColor(COLOR_BTNFACE));
+	//m_brushBkgnd.CreateSolidBrush(::GetSysColor(COLOR_BTNFACE));
+	m_brushBkgnd.CreateSolidBrush(RGB(0, 128, 0));
 	m_clrText = clrText;
 }
 
