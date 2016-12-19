@@ -116,7 +116,6 @@ LRESULT CDGWnd::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOO
 	}
 	dcMem.SelectBitmap(hBmpOld);
 	//绘制桌面
-	//CBrush OldBrush = dc.SelectBrush(g_pView->m_brushBkgnd);
 	//共八列牌，前四列每列七张，后四列每列六张，共计52张
 	for (int i = 1; i <= 8; i++) {
 		UINT m = (i <= 4 ? 7 : 6);
@@ -126,17 +125,17 @@ LRESULT CDGWnd::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOO
 			//如果无牌就画空框
 			if (!card) {
 				if (j < m) r.bottom += 5;
+				CBrush OldBrush = dc.SelectBrush(g_pView->m_brushBkgnd);		// 画刷的变换放在这里，问题解决
 				dc.RoundRect(r, CPoint(5, 5));
-
+				dc.SelectBrush(OldBrush);	// 画刷的变换放在这里，问题解决
 			}
 			//否则绘制此牌 
 			else {
-				g_pView->DrawCard(r.TopLeft(), card, &dc);
+				g_pView->DrawCard(r.TopLeft(), card, &dc);	 // 变换画刷导致该句调用始终报错。所以在前面进行画刷变换
 				if (m_iSrcCol == idx) dc.InvertRect(r);
 			}
 		}
 	}
-	//dc.SelectBrush(OldBrush);
 
 	return 0;
 }
