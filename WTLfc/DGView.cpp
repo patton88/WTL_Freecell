@@ -616,7 +616,7 @@ bool CDGWnd::GameIsValid()
 BOOL CDGWnd::GiveUp()
 {
 	return !m_bModified || IDYES ==
-		MessageBox(L"", TEXT("牌局已经更改，尚未存档，要放弃它吗？"), MB_YESNO);
+		MessageBox(L"牌局已经更改，尚未存档，要放弃它吗？", L"自定义牌局", MB_YESNO);
 }
 //清除步骤记录
 //void CDGWnd::ClrOpsRecords(CObList *pList)

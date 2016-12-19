@@ -5,7 +5,6 @@
 //#include "JL.h"
 //#include "JLDoc.h"
 #include "DlgDefGame.h"
-#include "DGView.h"
 
 
 //#ifdef _DEBUG
@@ -30,13 +29,13 @@ CDlgDefGame::CDlgDefGame()
 		// NOTE: the ClassWizard will add member initialization here
 	//}}AFX_DATA_INIT
 	//在客户区创建一个窗口用于编辑牌局，所有的编辑功能都由此窗口完成
-	m_pDGWnd = new CDGWnd;
+	//m_pDGWnd = new CDGWnd;
 }
 
 //删除窗口
 CDlgDefGame::~CDlgDefGame()
 {
-	delete m_pDGWnd;
+	//delete m_pDGWnd;
 }
 
 
@@ -93,7 +92,7 @@ LRESULT CDlgDefGame::OnSetFocus(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& b
 	//CDialog::OnSetFocus(pOldWnd);
 	
 	// TODO: Add your message handler code here
-	m_pDGWnd->SetFocus(); 
+	m_DGWnd.SetFocus(); 
 
 	return 0;
 }
@@ -106,7 +105,7 @@ LRESULT CDlgDefGame::OnSizeing(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bH
 	// TODO: Add your message handler code here
 	CRect r;
 	GetClientRect(r);
-	m_pDGWnd->MoveWindow(r);
+	m_DGWnd.MoveWindow(r);
 
 	return 0;
 }
@@ -120,7 +119,7 @@ LRESULT CDlgDefGame::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPa
 	CRect r;
 	GetClientRect(r);
 	//m_pDGWnd->Create(NULL,NULL,WS_CHILD|WS_VISIBLE,r,this,210);
-	m_pDGWnd->Create(m_hWnd, r, NULL, WS_CHILD | WS_VISIBLE, WS_EX_CLIENTEDGE);
+	m_DGWnd.Create(m_hWnd, r, NULL, WS_CHILD | WS_VISIBLE, WS_EX_CLIENTEDGE);
 	//m_view.Create(m_hWnd, rcDefault, NULL, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN, WS_EX_CLIENTEDGE);
 
 
@@ -132,7 +131,7 @@ LRESULT CDlgDefGame::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPa
 	MoveWindow(r);
 
 	GetClientRect(r);
-	m_pDGWnd->MoveWindow(r);
+	m_DGWnd.MoveWindow(r);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	              // EXCEPTION: OCX Property Pages should return FALSE
@@ -142,7 +141,7 @@ LRESULT CDlgDefGame::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPa
 LRESULT CDlgDefGame::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
 	// TODO: Add your message handler code here and/or call default
-	if (!m_pDGWnd->GiveUp()) return 0;
+	if (!m_DGWnd.GiveUp()) return 0;
 
 	EndDialog(0);
 	//CDialog::OnClose();
@@ -153,7 +152,7 @@ LRESULT CDlgDefGame::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/
 //void CDlgDefGame::OnSaveDef() 
 LRESULT CDlgDefGame::OnSaveDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	m_pDGWnd->SaveDefGame();
+	m_DGWnd.SaveDefGame();
 
 	return 0;
 }
@@ -161,7 +160,7 @@ LRESULT CDlgDefGame::OnSaveDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bH
 //void CDlgDefGame::OnLoadDef() 
 LRESULT CDlgDefGame::OnLoadDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
-	m_pDGWnd->LoadDefGame();
+	m_DGWnd.LoadDefGame();
 
 	return 0;
 }
@@ -169,7 +168,7 @@ LRESULT CDlgDefGame::OnLoadDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bH
 //void CDlgDefGame::OnSaveDefAs() 
 LRESULT CDlgDefGame::OnSaveDefAs(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
-	m_pDGWnd->SaveDefGameAs();
+	m_DGWnd.SaveDefGameAs();
 
 	return 0;
 }
@@ -177,7 +176,7 @@ LRESULT CDlgDefGame::OnSaveDefAs(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPar
 //void CDlgDefGame::OnNewDef() 
 LRESULT CDlgDefGame::OnNewDef(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
-	m_pDGWnd->NewDefGame();
+	m_DGWnd.NewDefGame();
 
 	return 0;
 }

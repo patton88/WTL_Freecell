@@ -6,6 +6,7 @@
 #endif // _MSC_VER > 1000
 // DlgDefGame.h : header file
 //
+#include "DGView.h"
 
 /////////////////////////////////////////////////////////////////////////////
 class CDGWnd;
@@ -14,7 +15,7 @@ class CDlgDefGame : public CDialogImpl<CDlgDefGame>
 {
 // Construction
 public:
-	CDGWnd *m_pDGWnd;
+	CDGWnd m_DGWnd;
 	//CDlgDefGame(CWnd* pParent = NULL);   // standard constructor
 	CDlgDefGame();
 	~CDlgDefGame();
@@ -39,6 +40,7 @@ public:
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 		COMMAND_ID_HANDLER(IDOK, OnOKCmd)
 		COMMAND_ID_HANDLER(IDCANCEL, OnCloseCmd)
+		CHAIN_COMMANDS_MEMBER(m_DGWnd)	//客户区是多窗口情况，使用这种方式可正常运行
 	END_MSG_MAP()
 
 	LRESULT OnSetFocus(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
