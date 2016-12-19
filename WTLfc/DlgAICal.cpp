@@ -55,7 +55,7 @@ unsigned __stdcall AICalThread(void * para)
 	pDlg->m_bSuccess = g_fcData.DoAICal();
 
 	pDlg->KillTimer(pDlg->m_nTimer);
-	//pDlg->EndDialog(0);
+	pDlg->EndDialog(0);
 	//pDlg->EndDialog(0);
 
 	return 0;
@@ -73,7 +73,7 @@ LRESULT CDlgAICal::OnStop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, 
 	return 0;
 }
 
-void CDlgAICal::OnTimer(UINT nIDEvent) 
+void CDlgAICal::OnTimer(UINT nIDEvent)
 {
 	// TODO: Add your message handler code here and/or call default
 	//CJLDoc *pDoc = AfxGetDocument();
@@ -81,7 +81,7 @@ void CDlgAICal::OnTimer(UINT nIDEvent)
 	//如果接近80步说明此局可能解不开，玩家可停止自动解答
 	if (!g_fcData.m_OpsList.m_tList.empty()) {
 		int cnt = g_fcData.m_OpsList.m_tList.size();
-		m_ctrlProgress.SetPos(1+cnt%100);
+		m_ctrlProgress.SetPos(1 + cnt % 100);
 	}
 	//CDialog::OnTimer(nIDEvent);
 }
@@ -99,10 +99,10 @@ void CDlgAICal::StartThread()
 		0,	// so we can later call ResumeThread()
 		&uiThread2ID);
 
-	WaitForSingleObject(hth1, INFINITE);
+	//WaitForSingleObject(hth1, INFINITE);	// 该句会阻塞程序
 
-	DWORD   dwExitCode;
-	GetExitCodeThread(hth1, &dwExitCode);
+	//DWORD   dwExitCode;
+	//GetExitCodeThread(hth1, &dwExitCode);
 
 	// The handle returned by _beginthreadex() has to be closed
 	// by the caller of _beginthreadex().
@@ -120,9 +120,9 @@ LRESULT CDlgAICal::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	DoDataExchange(false);
 
 	////进度每秒刷新5次
-	m_nTimer = SetTimer(ID_TIMER_STEP,1000/5,NULL);
+	m_nTimer = SetTimer(ID_TIMER_STEP, 1000 / 5, NULL);
 	////通常不会超过100步
-	m_ctrlProgress.SetRange(1,100);
+	m_ctrlProgress.SetRange(1, 100);
 	////默认打开“快速解答”选项
 	m_chkMaxSpeed.SetCheck(1);
 	BOOL b;
@@ -130,7 +130,7 @@ LRESULT CDlgAICal::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 
 	StartThread();
 	//m_hCalThread = AfxBeginThread(AICalThread,this,THREAD_PRIORITY_LOWEST,0,0);
-	EndDialog(0);
+	//EndDialog(0);
 
 	return TRUE;
 }

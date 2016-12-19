@@ -24,6 +24,7 @@ public:
 		COMMAND_ID_HANDLER(IDCHK_MAX_SPEED, OnMaxSpeed)
 		COMMAND_ID_HANDLER(IDB_STOP, OnStop)
 		//ON_WM_TIMER()
+		MSG_WM_TIMER(OnTimer)
 	END_MSG_MAP()
 
 	//WTL 7.1中添加的一个新特性是DDX_CONTROL_HANDLE宏。在WTL 7.0里，如果你想对一个单纯的窗口接口类使用
