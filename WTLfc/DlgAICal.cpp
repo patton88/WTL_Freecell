@@ -113,6 +113,8 @@ void CDlgAICal::StartThread()
 //BOOL CDlgAICal::OnInitDialog() 
 LRESULT CDlgAICal::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
+	CenterWindow(GetParent());
+
 	//CDialog::OnInitDialog();
 	// First DDX call, hooks up variables to controls.
 	DoDataExchange(false);
