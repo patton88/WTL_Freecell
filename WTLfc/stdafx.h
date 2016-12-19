@@ -28,7 +28,7 @@ extern CAppModule _Module;
 #undef BEGIN_MSG_MAP
 #define BEGIN_MSG_MAP(x) BEGIN_MSG_MAP_EX(x)
 
-// jl 所需头文件
+// Freecell 所需头文件
 #include "CardSize.h"
 #include "WTLfcData.h"
 #include "Datatype.h"

@@ -8,7 +8,7 @@
 #define IDB_SHOW                        101
 #define IDB_AGAIN                       102
 #define IDR_MAINFRAME                   128
-#define IDR_JLTYPE                      129
+#define IDR_FCTYPE                      129
 #define IDD_SELGAME                     131
 #define IDD_SETTING                     132
 #define IDD_CHECKGAME                   133
@@ -40,7 +40,7 @@
 #define IDR_MENU_DEF_GAME               197
 #define IDD_SCORE                       201
 #define IDD_WND_SIZE                    202
-#define IDB_JL_SUB                      203
+#define IDB_FC_SUB                      203
 #define IDC_EDIT_GAMENUMBER             1001
 #define IDCHK_CHECKALERT                1002
 #define IDCHK_ENABLELBDCLICK            1003

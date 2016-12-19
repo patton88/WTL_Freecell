@@ -155,7 +155,7 @@
     <ResourceCompile Include="WTLfc.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\JL_SUB.bmp" />
+    <Image Include="res\FC_SUB.bmp" />
     <Image Include="res\toolbar.bmp" />
     <Image Include="res\WTLfc.ico" />
   </ItemGroup>

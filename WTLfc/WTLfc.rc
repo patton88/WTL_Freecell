@@ -361,7 +361,7 @@ END
 // Bitmap
 //
 
-IDB_JL_SUB              BITMAP                  "res\\JL_SUB.bmp"
+IDB_FC_SUB              BITMAP                  "res\\FC_SUB.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //

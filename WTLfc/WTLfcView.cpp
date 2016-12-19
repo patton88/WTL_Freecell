@@ -35,11 +35,11 @@ CWTLfcView::CWTLfcView()
 	//HANDLE bmp_Fixed = ::LoadImage(pApp->m_hInstance, name, IMAGE_BITMAP, 596, 86, LR_LOADFROMFILE);
 	//m_AllBmps.Attach(bmp);
 	//m_AllBmps_Fixed.Attach(bmp_Fixed);
-	m_AllBmps.LoadBitmapW(IDB_JL_SUB);
-	m_AllBmps_Fixed.LoadBitmapW(IDB_JL_SUB);
+	m_AllBmps.LoadBitmapW(IDB_FC_SUB);
+	m_AllBmps_Fixed.LoadBitmapW(IDB_FC_SUB);
 
 	// 另一种方式：可用全局函数加载位图
-	//m_AllBmps_Fixed = LoadBitmap(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDB_JL_SUB));
+	//m_AllBmps_Fixed = LoadBitmap(_Module.GetResourceInstance(), MAKEINTRESOURCE(IDB_FC_SUB));
 
 	m_nCardLabelHit = 0;
 	m_nFirst = 0;
