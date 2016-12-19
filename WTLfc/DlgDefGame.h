@@ -26,34 +26,33 @@ public:
 		// NOTE: the ClassWizard will add data members here
 	//}}AFX_DATA
 
-	BEGIN_MSG_MAP(CWndSizeDlg)
+	BEGIN_MSG_MAP(CDlgDefGame)
 		MESSAGE_HANDLER(WM_SETFOCUS, OnSetFocus)
 		MESSAGE_HANDLER(WM_SIZING, OnSizeing)
 		MESSAGE_HANDLER(WM_CREATE, OnCreate)
 		MESSAGE_HANDLER(WM_CLOSE, OnClose)
-
-		MESSAGE_HANDLER(IDM_SAVE_DEF, OnSaveDef)
-		MESSAGE_HANDLER(IDM_LOAD_DEF, OnLoadDef)
-		MESSAGE_HANDLER(IDM_SAVE_DEF_AS, OnSaveDefAs)
-		MESSAGE_HANDLER(IDM_NEW_DEF, OnNewDef)
-
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
+
+		COMMAND_ID_HANDLER(IDM_SAVE_DEF, OnSaveDef)
+		COMMAND_ID_HANDLER(IDM_LOAD_DEF, OnLoadDef)
+		COMMAND_ID_HANDLER(IDM_SAVE_DEF_AS, OnSaveDefAs)
+		COMMAND_ID_HANDLER(IDM_NEW_DEF, OnNewDef)
+
 		COMMAND_ID_HANDLER(IDOK, OnOKCmd)
 		COMMAND_ID_HANDLER(IDCANCEL, OnCloseCmd)
-		CHAIN_COMMANDS_MEMBER(m_DGWnd)	//客户区是多窗口情况，使用这种方式可正常运行
 	END_MSG_MAP()
 
 	LRESULT OnSetFocus(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	LRESULT OnSizeing(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	LRESULT OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
-
-	LRESULT OnSaveDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-	LRESULT OnLoadDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-	LRESULT OnSaveDefAs(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
-	LRESULT OnNewDef(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
-
 	LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+
+	LRESULT OnSaveDef(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnLoadDef(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnSaveDefAs(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnNewDef(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+
 	LRESULT OnOKCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnCloseCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 

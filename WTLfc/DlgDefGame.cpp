@@ -133,7 +133,7 @@ LRESULT CDlgDefGame::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPa
 	GetClientRect(r);
 	m_DGWnd.MoveWindow(r);
 
-	return TRUE;  // return TRUE unless you set the focus to a control
+	return FALSE;  // return TRUE unless you set the focus to a control
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
 
@@ -150,7 +150,7 @@ LRESULT CDlgDefGame::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/
 }
 
 //void CDlgDefGame::OnSaveDef() 
-LRESULT CDlgDefGame::OnSaveDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+LRESULT CDlgDefGame::OnSaveDef(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	m_DGWnd.SaveDefGame();
 
@@ -158,7 +158,7 @@ LRESULT CDlgDefGame::OnSaveDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bH
 }
 
 //void CDlgDefGame::OnLoadDef() 
-LRESULT CDlgDefGame::OnLoadDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+LRESULT CDlgDefGame::OnLoadDef(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	m_DGWnd.LoadDefGame();
 
@@ -166,7 +166,7 @@ LRESULT CDlgDefGame::OnLoadDef(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bH
 }
 
 //void CDlgDefGame::OnSaveDefAs() 
-LRESULT CDlgDefGame::OnSaveDefAs(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+LRESULT CDlgDefGame::OnSaveDefAs(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	m_DGWnd.SaveDefGameAs();
 
@@ -174,7 +174,7 @@ LRESULT CDlgDefGame::OnSaveDefAs(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPar
 }
 
 //void CDlgDefGame::OnNewDef() 
-LRESULT CDlgDefGame::OnNewDef(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+LRESULT CDlgDefGame::OnNewDef(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	m_DGWnd.NewDefGame();
 
