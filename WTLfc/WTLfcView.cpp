@@ -112,6 +112,24 @@ LRESULT CWTLfcView::OnEraseBkgnd(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/
 	return TRUE;
 }
 
+BOOL CWTLfcView::MyDrawIcon(CDC& dc, POINT& point, HICON& hIcon)
+{
+	double rate = g_fcCcs.dRate * 0.531;	// 缺省时期望比率rate接近1
+	int width = int(GetSystemMetrics(SM_CXICON) * rate);
+	int height = int(GetSystemMetrics(SM_CYICON) * rate);
+	int px = int(GetSystemMetrics(SM_CXICON) * (1 - rate) / 2);
+	int py = int(GetSystemMetrics(SM_CYICON) * (1 - rate) / 2);
+
+	DrawIconEx(dc, point.x + px, point.y + py, hIcon, width, height, 0, NULL, DI_NORMAL);
+	//原来，DrawIcon绘制出的图标大小是GetSystemMetrics(SM_CXICON)，GetSystemMetrics(SM_CYICON)得到的大小，
+	//	如果想要绘制自定义大小的图标，就不能调用DrawIcon了，可以调用这个函数：
+	//BOOL DrawIconEx(HDC hdc, int xLeft, int yTop, HICON hIcon, int cxWidth, int cyWidth, 
+	//		UINT istepIfAniCur,	HBRUSH hbrFlickerFreeDraw,UINT diFlags);
+	//如::DrawIconEx(pDCMem->m_hDC, 0, 0, hIcon, 16, 16, 0, NULL, DI_NORMAL); 绘制了一个16x16大小的图标
+
+	return TRUE;
+}
+
 LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
 	CPaintDC dc(m_hWnd);
@@ -206,7 +224,8 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	//p.y += 16;
 	//p.y += 30;
 	p.y += int(25 * g_fcCcs.dRate);
-	dc.DrawIcon(p, m_hIcon);
+	//dc.DrawIcon(p, m_hIcon);
+	MyDrawIcon(dc, p, m_hIcon);
 
 	//return 0;
 
