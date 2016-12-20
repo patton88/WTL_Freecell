@@ -189,6 +189,9 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 
 		dc.SetTextColor(RGB(0, 255, 0));
 		r.left -= 3;
+		//r.top += 20;
+		//r.bottom += 20;
+		int rw = r.Width(), rh = r.Height();
 		//	int DrawText(LPTSTR lpstrText, int cchText, LPRECT lpRect, UINT uFormat)
 		dc.DrawText(strSteps, strSteps.GetLength(), r, DT_CENTER);
 
@@ -202,8 +205,10 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	p.x -= 23;
 	//p.y += 16;
 	//p.y += 30;
-	p.y += int(30 * g_fcCcs.dRate);
+	p.y += int(25 * g_fcCcs.dRate);
 	dc.DrawIcon(p, m_hIcon);
+
+	//return 0;
 
 	// 3、绘制牌面提示按钮(8*12)   A-K
 	CDC dcCard;

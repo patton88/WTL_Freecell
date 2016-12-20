@@ -1237,8 +1237,20 @@ CRect CWTLfcData::RectOfStep()
 
 	int inflateY = r.Height() - g_fcCcs.stepFont * 4 / 3;
 	r.InflateRect(-g_fcCcs.CARD_WID - 1, 0, -g_fcCcs.CARD_WID - 1, -inflateY);
+
+	r.top += int(15 * g_fcCcs.dRate);
+	r.bottom += int(15 * g_fcCcs.dRate);
 	return r;
 }
+
+//void InflateRect(int l, int t, int r, int b)
+//{
+//	left -= l;
+//	top -= t;
+//	right += r;
+//	bottom += b;
+//}
+
 
 //牌索引按钮的矩形位置
 CRect CWTLfcData::RectOf(UINT card)
