@@ -196,6 +196,9 @@ void CDlgScore::UpdateScore()
 	CScore& cs = m_score.m_tList.front();
 	cs.tmEnd = CTime::GetCurrentTime();
 
+	//WTL::CString str = cs.tmStart.Format(fmts) + TEXT("/") + cs.tmEnd.Format(fmts);
+	//::MessageBox(NULL, str, L"", NULL);
+
 	//十五秒以内解开的局认为是使用了自动解答的帮助，将不予记录
 	if ((cs.tmEnd - cs.tmStart).GetTotalSeconds() < 15) {
 		//m_score.RemoveHead();
