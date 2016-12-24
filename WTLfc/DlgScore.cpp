@@ -10,6 +10,7 @@
 
 static const wchar_t * statusStr[4] = { TEXT("未玩"), TEXT("通过"), TEXT("放弃"), TEXT("挂了") };
 static const wchar_t * fmts = TEXT("%H:%M:%S");
+static const wchar_t * fmtsYMD = TEXT("%Y.%m.%d - %H:%M:%S");
 
 /////////////////////////////////////////////////////////////////////////////
 // CDlgScore dialog
@@ -83,11 +84,11 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	m_lcScore.SetTextColor(RGB(218, 218, 218));
 
 	int charWid = m_lcScore.GetStringWidth(TEXT("9"));
-	m_lcScore.InsertColumn(0, TEXT("牌局"), LVCFMT_LEFT, charWid * (11 + 2));
-	m_lcScore.InsertColumn(1, TEXT("步数"), LVCFMT_LEFT, charWid * (4 + 2));
-	m_lcScore.InsertColumn(2, TEXT("状态"), LVCFMT_LEFT, charWid * (4 + 2));
-	m_lcScore.InsertColumn(3, TEXT("耗时"), LVCFMT_LEFT, charWid * (8 + 2));
-	m_lcScore.InsertColumn(4, TEXT("时间"), LVCFMT_LEFT, charWid * (20 + 2));
+	m_lcScore.InsertColumn(0, TEXT("牌局"), LVCFMT_LEFT, charWid * (13 + 2));
+	m_lcScore.InsertColumn(1, TEXT("步数"), LVCFMT_LEFT, charWid * (5 + 2));
+	m_lcScore.InsertColumn(2, TEXT("状态"), LVCFMT_LEFT, charWid * (5 + 2));
+	m_lcScore.InsertColumn(3, TEXT("耗时"), LVCFMT_LEFT, charWid * (9 + 2));
+	m_lcScore.InsertColumn(4, TEXT("时间"), LVCFMT_LEFT, charWid * (33 + 2));
 
 	int nTotal = 0;
 	int nPassed = 0;
@@ -131,7 +132,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		m_lcScore.SetItemText(i, 3, s);
 
 		m_lcScore.SetItemText(i, 4,
-			cs.tmStart.Format(fmts) + TEXT("/") + cs.tmEnd.Format(fmts));
+			cs.tmStart.Format(fmtsYMD) + TEXT("/") + cs.tmEnd.Format(fmts));
 
 		++nTotal;
 
