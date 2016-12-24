@@ -101,13 +101,19 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 
 	// list<CMyObject*> m_score;
 	//for (POSITION pos = m_score.GetTailPosition(); pos != NULL; ++i )
-	for (list<CScore>::iterator it = m_score.m_tList.end(); it != m_score.m_tList.begin(); i++)
+	//for (list<CScore>::iterator it = m_score.m_tList.end(); it != m_score.m_tList.begin(); i++)
+	//战况从最后一局开始显示
+	for (list<CScore>::iterator it = m_score.m_tList.begin(); ;i++)
 	{
-		//最后一局还没有解，所以状态不必显示
-		it--;	//	必须放在这里，否则运行报错终止。COblist 与 STL list的不同
-		//if(pos == m_score.m_tList.GetHeadPosition()) break;
-		if (m_score.m_tList.begin() == it)
+		// m_score.m_tList.begin()存放的最后一局还没有解，所以状态不必显示
+		it++;	//	必须放在这里，否则运行报错终止。跳过 m_score.m_tList.begin()
+		if (m_score.m_tList.end() == it)
 			break;
+
+		//it--;	//	必须放在这里，否则运行报错终止。COblist 与 STL list的不同
+		////if(pos == m_score.m_tList.GetHeadPosition()) break;
+		//if (m_score.m_tList.begin() == it)
+		//	break;
 
 		//CScore *p = (CScore*)m_score.m_tList.GetPrev(pos);
 		CScore& cs = *it;	// it = m_score.m_tList.end()，必须先it--，才能*it，否则运行时报错终止
