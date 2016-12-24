@@ -393,16 +393,9 @@ void CDGWnd::SaveDefGame()
 	//CArchive ar(&file, CArchive::store);
 
 	// Storing
-	CXFile file1;
-	file1.Open(wstring(m_strFile),						// file name
-		GENERIC_WRITE | GENERIC_READ,			// access mode 
-		FILE_SHARE_READ | FILE_SHARE_WRITE,		// share mode 
-		NULL,									// no security 
-		CREATE_ALWAYS,							// create a new file, overwrite if it exists
-		FILE_ATTRIBUTE_NORMAL,					// file attributes
-		NULL);									// no template file
-
-	CXArchive ar1(&file1, CXArchive::store);
+	FILE* pFile1 = _wfopen(m_strFile, L"wb");		// 改用C语言的文件访问方式实现串行化
+	
+	CXArchive ar1(pFile1, CXArchive::store);
 	g_fcData.Serialize(ar1);
 
 	CTList<COperations> ops;
@@ -441,7 +434,7 @@ void CDGWnd::SaveDefGame()
 	//file.Close();
 
 	ar1.Close();
-	// CXFile file1 由 ~CXFile 关闭
+	// FILE* pFile1 由 ar1.Close() 关闭
 
 	m_bModified = false;
 
@@ -480,17 +473,9 @@ void CDGWnd::LoadDefGame()
 	//CArchive ar(&file, CArchive::load);
 
 	// Loading
-	CXFile file2;
-	file2.Open(fd.m_szFileName,					// file name
-		GENERIC_WRITE | GENERIC_READ,			// access mode 
-		FILE_SHARE_READ | FILE_SHARE_WRITE,		// share mode 
-		NULL,									// no security 
-		//CREATE_ALWAYS,							// create a new file, overwrite if it exists
-		OPEN_EXISTING,							// open the file, if it exists
-		FILE_ATTRIBUTE_NORMAL,					// file attributes
-		NULL);									// no template file
+	FILE* pFile2 = _wfopen(fd.m_szFileName, L"rb");		// 改用C语言的文件访问方式实现串行化
 
-	CXArchive ar2(&file2, CXArchive::load);
+	CXArchive ar2(pFile2, CXArchive::load);
 
 	CTList<COperations> ops;
 	CDlgScore dlgScore;
@@ -559,7 +544,7 @@ void CDGWnd::LoadDefGame()
 	//file.Close();
 
 	ar2.Close();
-	// CXFile file2 由 ~CXFile 关闭
+	// FILE* pFile2 由 ar2.Close() 关闭
 
 	m_strFile = fd.m_szFileName;
 	m_bGameIsValid = GameIsValid();

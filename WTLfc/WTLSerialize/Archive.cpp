@@ -3,9 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "File.h"
 #include "Archive.h"
-#include "Exception.h"
 
 // Minimum buffer size
 enum { nBufSizeMin = 128 };
@@ -21,10 +19,10 @@ BOOL IsValidAddress(void* lp, UINT nBytes, BOOL bWrite = TRUE)
 		return IsBadReadPtr(lp, nBytes);
 }
 
-CXArchive::CXArchive(CXFile* pFile, UINT nMode, int nBufSize, void* lpBuf) :
-					m_strFileName(pFile->GetFilePath())
+CXArchive::CXArchive(FILE* pFile, UINT nMode, int nBufSize, void* lpBuf)
+// : m_strFileName(pFile->GetFilePath())
 {
-	_ASSERT(pFile->m_hFile && ((pFile->m_hFile) != INVALID_HANDLE_VALUE));
+	_ASSERT(pFile);
 
 	// Initialize members not dependent on allocated buffer
 	m_nMode = nMode;
@@ -34,7 +32,7 @@ CXArchive::CXArchive(CXFile* pFile, UINT nMode, int nBufSize, void* lpBuf) :
 	m_lpBufStart = (BYTE*)lpBuf;
 	m_bUserBuf = TRUE;
 	m_bDirectBuffer = FALSE;
-	m_bBlocking = m_pFile->GetBufferPtr(CXFile::bufferCheck) & CXFile::bufferBlocking;
+	m_bBlocking = GetBufferPtr(bufferCheck) & bufferBlocking;
 
 	if (nBufSize < nBufSizeMin)
 	{
@@ -49,7 +47,7 @@ CXArchive::CXArchive(CXFile* pFile, UINT nMode, int nBufSize, void* lpBuf) :
 	if (m_lpBufStart == NULL)
 	{
 		// Check for CFile providing buffering support
-		m_bDirectBuffer = m_pFile->GetBufferPtr(CXFile::bufferCheck) & CXFile::bufferDirect;
+		m_bDirectBuffer = GetBufferPtr(bufferCheck) & bufferDirect;
 		if (!m_bDirectBuffer)
 		{
 			// No support for direct buffering, allocate new buffer
@@ -103,15 +101,17 @@ void CXArchive::Abort()
 
 void CXArchive::Close()
 {
-	_ASSERT(m_pFile->m_hFile && ((m_pFile->m_hFile) != INVALID_HANDLE_VALUE));
+	_ASSERT(m_pFile);
 
 	Flush();
+
+	fclose(m_pFile);
 	m_pFile = NULL;
 }
 
 UINT CXArchive::Read(void* lpBuf, UINT nMax)
 {
-	_ASSERT(m_pFile->m_hFile && ((m_pFile->m_hFile) != INVALID_HANDLE_VALUE));
+	_ASSERT(m_pFile);
 
 	if (nMax == 0)
 		return 0;
@@ -146,7 +146,8 @@ UINT CXArchive::Read(void* lpBuf, UINT nMax)
 		UINT nBytes;
 		do
 		{
-			nBytes = m_pFile->Read(lpBuf, nLeft);
+			//nBytes = m_pFile->Read(lpBuf, nLeft);
+			nBytes = fread(lpBuf, 1, nLeft, m_pFile);
 			lpBuf = (BYTE*)lpBuf + nBytes;
 			nRead += nBytes;
 			nLeft -= nBytes;
@@ -177,7 +178,8 @@ UINT CXArchive::Read(void* lpBuf, UINT nMax)
 					nRead = 0;
 					do
 					{
-						nBytes = m_pFile->Read(lpTemp, nLeft);
+						//nBytes = m_pFile->Read(lpTemp, nLeft);
+						nBytes = fread(lpTemp, 1, nLeft, m_pFile);
 						lpTemp = lpTemp + nBytes;
 						nRead += nBytes;
 						nLeft -= nBytes;
@@ -189,8 +191,7 @@ UINT CXArchive::Read(void* lpBuf, UINT nMax)
 				}
 				else
 				{
-					nRead = m_pFile->GetBufferPtr(CXFile::bufferRead, m_nBufSize,
-						(void**)&m_lpBufStart, (void**)&m_lpBufMax);
+					nRead = GetBufferPtr(bufferRead, m_nBufSize, (void**)&m_lpBufStart, (void**)&m_lpBufMax);
 					_ASSERT(nRead == size_t( m_lpBufMax-m_lpBufStart ));
 					m_lpBufCur = m_lpBufStart;
 				}
@@ -209,7 +210,7 @@ UINT CXArchive::Read(void* lpBuf, UINT nMax)
 
 void CXArchive::Write(const void* lpBuf, UINT nMax)
 {
-	_ASSERT(m_pFile->m_hFile && ((m_pFile->m_hFile) != INVALID_HANDLE_VALUE));
+	_ASSERT(m_pFile);
 
 	if (nMax == 0)
 		return;
@@ -237,15 +238,15 @@ void CXArchive::Write(const void* lpBuf, UINT nMax)
 
 		// Write rest of buffer size chunks
 		nTemp = nMax - (nMax % m_nBufSize);
-		m_pFile->Write(lpBuf, nTemp);
+		//m_pFile->Write(lpBuf, nTemp);
+		fwrite(lpBuf, 1, nTemp, m_pFile);
 		lpBuf = (BYTE*)lpBuf + nTemp;
 		nMax -= nTemp;
 
 		if (m_bDirectBuffer)
 		{
 			// Sync up direct mode buffer to new file position
-			m_pFile->GetBufferPtr(CXFile::bufferWrite, m_nBufSize,
-								(void**)&m_lpBufStart, (void**)&m_lpBufMax);
+			GetBufferPtr(bufferWrite, m_nBufSize, (void**)&m_lpBufStart, (void**)&m_lpBufMax);
 			_ASSERT((UINT)m_nBufSize == (UINT)(m_lpBufMax - m_lpBufStart));
 			m_lpBufCur = m_lpBufStart;
 		}
@@ -260,7 +261,7 @@ void CXArchive::Write(const void* lpBuf, UINT nMax)
 
 void CXArchive::Flush()
 {
-	_ASSERT(m_pFile->m_hFile && ((m_pFile->m_hFile) != INVALID_HANDLE_VALUE));
+	_ASSERT(m_pFile);
 	_ASSERT(m_bDirectBuffer || m_lpBufStart != NULL);
 	_ASSERT(m_bDirectBuffer || m_lpBufCur != NULL);
 	_ASSERT(m_lpBufStart == NULL ||
@@ -272,7 +273,8 @@ void CXArchive::Flush()
 	{
 		// Unget the characters in the buffer, seek back unused amount
 		if (m_lpBufMax != m_lpBufCur)
-			m_pFile->Seek(-(int(m_lpBufMax - m_lpBufCur)), CXFile::current);
+			//m_pFile->Seek(-(int(m_lpBufMax - m_lpBufCur)), CXFile::current);
+			fseek(m_pFile, -(int(m_lpBufMax - m_lpBufCur)), SEEK_CUR);
 		m_lpBufCur = m_lpBufMax;    // empty
 	}
 	else
@@ -281,16 +283,16 @@ void CXArchive::Flush()
 		{
 			// Write out the current buffer to file
 			if (m_lpBufCur != m_lpBufStart)
-				m_pFile->Write(m_lpBufStart, ULONG(m_lpBufCur - m_lpBufStart));
+				//m_pFile->Write(m_lpBufStart, ULONG(m_lpBufCur - m_lpBufStart));
+				fwrite(m_lpBufStart, 1, ULONG(m_lpBufCur - m_lpBufStart), m_pFile);
 		}
 		else
 		{
 			// Commit current buffer
 			if (m_lpBufCur != m_lpBufStart)
-				m_pFile->GetBufferPtr(CXFile::bufferCommit, ULONG(m_lpBufCur - m_lpBufStart));
+				GetBufferPtr(bufferCommit, ULONG(m_lpBufCur - m_lpBufStart));
 			// Get next buffer
-			m_pFile->GetBufferPtr(CXFile::bufferWrite, m_nBufSize,
-								(void**)&m_lpBufStart, (void**)&m_lpBufMax);
+			GetBufferPtr(bufferWrite, m_nBufSize, (void**)&m_lpBufStart, (void**)&m_lpBufMax);
 			_ASSERT((UINT)m_nBufSize == (UINT)(m_lpBufMax - m_lpBufStart));
 		}
 		m_lpBufCur = m_lpBufStart;
@@ -299,7 +301,8 @@ void CXArchive::Flush()
 
 void CXArchive::FillBuffer(UINT nBytesNeeded)
 {
-	_ASSERT(m_pFile->m_hFile && ((m_pFile->m_hFile) != INVALID_HANDLE_VALUE));
+	//_ASSERT(m_pFile->m_hFile && ((m_pFile->m_hFile) != INVALID_HANDLE_VALUE));
+	_ASSERT(m_pFile);
 	_ASSERT(IsLoading());
 	_ASSERT(m_bDirectBuffer || m_lpBufStart != NULL);
 	_ASSERT(m_bDirectBuffer || m_lpBufCur != NULL);
@@ -344,7 +347,8 @@ void CXArchive::FillBuffer(UINT nBytesNeeded)
 			BYTE* lpTemp = m_lpBufStart + nUnused;
 			do
 			{
-				nBytes = m_pFile->Read(lpTemp, nLeft);
+				//nBytes = m_pFile->Read(lpTemp, nLeft);
+				nBytes = fread(lpTemp, 1, nLeft, m_pFile);
 				lpTemp = lpTemp + nBytes;
 				nRead += nBytes;
 				nLeft -= nBytes;
@@ -359,9 +363,9 @@ void CXArchive::FillBuffer(UINT nBytesNeeded)
 	{
 		// Seek to unused portion and get the buffer starting there
 		if (nUnused != 0)
-			m_pFile->Seek(-(LONG)nUnused, CXFile::current);
-		UINT nActual = m_pFile->GetBufferPtr(CXFile::bufferRead, m_nBufSize,
-							(void**)&m_lpBufStart, (void**)&m_lpBufMax);
+			//m_pFile->Seek(-(LONG)nUnused, CXFile::current);
+			fseek(m_pFile, -(LONG)nUnused, SEEK_CUR);
+		UINT nActual = GetBufferPtr(bufferRead, m_nBufSize, (void**)&m_lpBufStart, (void**)&m_lpBufMax);
 		_ASSERT(nActual == (UINT)(m_lpBufMax - m_lpBufStart));
 		m_lpBufCur = m_lpBufStart;
 	}
@@ -369,7 +373,8 @@ void CXArchive::FillBuffer(UINT nBytesNeeded)
 	// Not enough data to fill request?
 	if ((ULONG)(m_lpBufMax - m_lpBufCur) < nTotalNeeded)
 	{
-		CXArchiveException ex(CXArchiveException::endOfFile, m_pFile->GetFileName());
+		//CXArchiveException ex(CXArchiveException::endOfFile, m_pFile->GetFileName());
+		CXArchiveException ex(CXArchiveException::endOfFile, L"");
 		throw ex;
 	}
 }
@@ -428,7 +433,7 @@ LPTSTR CXArchive::ReadString(LPTSTR lpsz, UINT nMax)
 
 BOOL CXArchive::ReadString(WTL::CString& rString)
 {
-	rString = _T("");    // empty wstring without deallocating
+	rString = L"";    // empty wstring without deallocating
 	const int nMaxSize = 128;
 	LPTSTR lpsz = rString.GetBuffer(nMaxSize);
 	LPTSTR lpszResult;
@@ -467,7 +472,7 @@ BOOL CXArchive::IsStoring() const
 	return (m_nMode & CXArchive::load) == 0; 
 }
 
-CXFile* CXArchive::GetFile() const
+FILE* CXArchive::GetFile() const
 { 
 	return m_pFile; 
 }
@@ -706,7 +711,7 @@ CXArchive& CXArchive::operator>>(double& d)
 	return *this; 
 }
 
- CXArchive& CXArchive::operator>>(LONG& l)
+CXArchive& CXArchive::operator>>(LONG& l)
 { 
 	if (m_lpBufCur + sizeof(LONG) > m_lpBufMax)
 		FillBuffer((UINT)(sizeof(LONG) - (m_lpBufMax - m_lpBufCur)));
@@ -717,4 +722,13 @@ CXArchive& CXArchive::operator>>(double& d)
 	return *this; 
 }
 
+//-----------------------------------------------------------------------------
+// CXFile does not support direct buffering
+//-----------------------------------------------------------------------------
+UINT CXArchive::GetBufferPtr(UINT nCommand, UINT nCount, void** ppBufStart, void** ppBufMax)
+{
+	 _ASSERT(nCommand == bufferCheck);
+	 
+	 return 0;   // no support
+}
 /////////////////////////////////////////////////////////////////////////////

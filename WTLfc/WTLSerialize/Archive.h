@@ -5,6 +5,9 @@
 #if !defined ARCHIVE_WTL_H
 #define ARCHIVE_WTL_H
 
+#pragma warning (disable:4290)
+#include "Exception.h"
+
 //-----------------------------------------------------------------------------
 // Class CXArchive implements a serialization logic to save and load a large
 // number of objects to and from a disk storage that persists after those
@@ -16,14 +19,14 @@ public:
 	// Flag values
 	enum Mode { store = 0, load = 1, bNoFlushOnDelete = 2 };
 
-	CXArchive(CXFile* pFile, UINT nMode, int nBufSize = 4096, void* lpBuf = NULL);
+	CXArchive(FILE* pFile, UINT nMode, int nBufSize = 4096, void* lpBuf = NULL);
 	~CXArchive();
 
 	// These functions access the mode to determine the state of the CXArchive object
 	BOOL IsLoading() const;
 	BOOL IsStoring() const;
 
-	CXFile* GetFile() const;
+	FILE* GetFile() const;
 
 	// Operations
 	UINT Read(void* lpBuf, UINT nMax);
@@ -31,10 +34,15 @@ public:
 	void Flush();
 	void Close();
 	void Abort();   // close and shutdown without exceptions
+	UINT GetBufferPtr(UINT nCommand, UINT nCount = 0, void** ppBufStart = NULL, void** ppBufMax = NULL);
 
 	// Reading and writing strings
 	void WriteString(LPCTSTR lpsz);
+
 	LPTSTR ReadString(LPTSTR lpsz, UINT nMax) throw(CXArchiveException);
+	//在函数声明前添加加：#pragma warning (disable:4290)，可屏蔽warning C4290，但并不能保证编译器接受异常规范
+	//warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+
 	BOOL ReadString(WTL::CString& rString);
 
 	// Insertion operations
@@ -80,7 +88,7 @@ protected:
 
 	void FillBuffer(UINT nBytesNeeded) throw(CXArchiveException);
 
-	CXFile * m_pFile;
+	FILE* m_pFile;
 	wstring m_strFileName;
 
 	BOOL m_bDirectBuffer;   // TRUE if m_pFile supports direct buffering
@@ -92,6 +100,16 @@ protected:
 	BYTE * m_lpBufCur;
 	BYTE * m_lpBufMax;
 	BYTE * m_lpBufStart;
+
+	enum BufferCommand { 
+			bufferRead, 
+			bufferWrite, 
+			bufferCommit, 
+			bufferCheck, 
+			bufferBlocking,
+			bufferDirect
+	};
+
 };
 
 #endif	// !defined ARCHIVE_WTL_H

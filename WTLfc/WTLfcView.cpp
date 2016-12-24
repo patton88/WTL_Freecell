@@ -1541,19 +1541,14 @@ LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 
 
 	// Storing
-	CXFile file1;
-	file1.Open(fd.m_szFileName,					// file name
-		GENERIC_WRITE | GENERIC_READ,			// access mode 
-		FILE_SHARE_READ | FILE_SHARE_WRITE,		// share mode 
-		NULL,									// no security 
-		CREATE_ALWAYS,							// create a new file, overwrite if it exists
-		FILE_ATTRIBUTE_NORMAL,					// file attributes
-		NULL);									// no template file
+	FILE* pFile1 = _wfopen(fd.m_szFileName, L"wb");		// 改用C语言的文件访问方式实现串行化
+	// 项目->属性->配置属性->C/C++->预处理器->预处理器定义，添加“_CRT_SECURE_NO_WARNINGS”，
+	// 屏蔽警告 warning C4996: '_wfopen': This function or variable may be unsafe.
 
-	CXArchive ar1(&file1, CXArchive::store);
+	CXArchive ar1(pFile1, CXArchive::store);
 	g_fcData.Serialize(ar1);
 	ar1.Close();
-	// CXFile file1 由 ~CXFile 关闭
+	// FILE* pFile1 由 ar1.Close() 关闭
 
 	return 0;
 }
@@ -1577,34 +1572,26 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	if (fd.DoModal() == IDCANCEL) return 0;
 
 	// Loading
-	CXFile file2;
-	file2.Open(fd.m_szFileName,					// file name
-		GENERIC_WRITE | GENERIC_READ,			// access mode 
-		FILE_SHARE_READ | FILE_SHARE_WRITE,		// share mode 
-		NULL,									// no security 
-		//CREATE_ALWAYS,							// create a new file, overwrite if it exists
-		OPEN_EXISTING,							// open the file, if it exists
-		FILE_ATTRIBUTE_NORMAL,					// file attributes
-		NULL);									// no template file
+	FILE* pFile2 = _wfopen(fd.m_szFileName, L"rb");		// 改用C语言的文件访问方式实现串行化
 
 	/////////////////////////////////////////////////////////////////
 	//考虑存档文件有可能是一个不完整的自定义牌局
 	int nGameNumber;
-	file2.Read(&nGameNumber, sizeof(int));
+	fread(&nGameNumber, 1, sizeof(int), pFile2);			// 改用C语言的文件访问方式实现串行化
 	if (nGameNumber == -1)
 	{
 		MessageBox(L"请将自定义牌局【" + WTL::CString(fd.m_szFileName) + L"】编辑完整！\n");
 		return 0;
 	}
-	file2.SeekToBegin();
+	rewind(pFile2);
 	/////////////////////////////////////////////////////////////////
 	g_fcData.m_dlgScore.UpdateScore();//记录战况
 	
 	//读档
-	CXArchive ar2(&file2, CXArchive::load);
+	CXArchive ar2(pFile2, CXArchive::load);
 	g_fcData.Serialize(ar2);
 	ar2.Close();
-	// CXFile file2 由 ~CXFile 关闭
+	// FILE* pFile2 由 ar2.Close() 关闭
 
 	//刷新牌局
 	//UpdateAllViews(NULL);

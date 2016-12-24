@@ -13,7 +13,6 @@
 #include <list>
 using namespace std;
 
-#include "WTLSerialize/File.h"
 #include "WTLSerialize/Archive.h"
 
 /*
