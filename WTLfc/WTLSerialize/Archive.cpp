@@ -240,6 +240,8 @@ void CXArchive::Write(const void* lpBuf, UINT nMax)
 		nTemp = nMax - (nMax % m_nBufSize);
 		//m_pFile->Write(lpBuf, nTemp);
 		fwrite(lpBuf, 1, nTemp, m_pFile);
+		fflush(m_pFile);		// 及时将文件缓冲区写入磁盘，以免数据意外丢失
+
 		lpBuf = (BYTE*)lpBuf + nTemp;
 		nMax -= nTemp;
 
@@ -283,8 +285,11 @@ void CXArchive::Flush()
 		{
 			// Write out the current buffer to file
 			if (m_lpBufCur != m_lpBufStart)
+			{
 				//m_pFile->Write(m_lpBufStart, ULONG(m_lpBufCur - m_lpBufStart));
 				fwrite(m_lpBufStart, 1, ULONG(m_lpBufCur - m_lpBufStart), m_pFile);
+				fflush(m_pFile);		// 及时将文件缓冲区写入磁盘，以免数据意外丢失
+			}
 		}
 		else
 		{
