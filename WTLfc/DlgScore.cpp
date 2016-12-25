@@ -84,11 +84,20 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	m_lcScore.SetTextColor(RGB(218, 218, 218));
 
 	int charWid = m_lcScore.GetStringWidth(TEXT("9"));
-	m_lcScore.InsertColumn(0, TEXT("牌局"), LVCFMT_LEFT, charWid * (13 + 2));
-	m_lcScore.InsertColumn(1, TEXT("步数"), LVCFMT_LEFT, charWid * (5 + 2));
-	m_lcScore.InsertColumn(2, TEXT("状态"), LVCFMT_LEFT, charWid * (5 + 2));
-	m_lcScore.InsertColumn(3, TEXT("耗时"), LVCFMT_LEFT, charWid * (17 + 2));
-	m_lcScore.InsertColumn(4, TEXT("时间"), LVCFMT_LEFT, charWid * (43 + 2));
+	m_lcScore.InsertColumn(0, TEXT("序号"), LVCFMT_RIGHT, charWid * (13 + 2));	// 这种方式设置0列对齐不行
+	m_lcScore.InsertColumn(1, TEXT("牌局"), LVCFMT_RIGHT, charWid * (13 + 2));
+	m_lcScore.InsertColumn(2, TEXT("步数"), LVCFMT_RIGHT, charWid * (5 + 2));
+	m_lcScore.InsertColumn(3, TEXT("状态"), LVCFMT_RIGHT, charWid * (5 + 2));
+	m_lcScore.InsertColumn(4, TEXT("耗时"), LVCFMT_LEFT, charWid * (17 + 2));
+	m_lcScore.InsertColumn(5, TEXT("时间"), LVCFMT_LEFT, charWid * (43 + 2));
+
+	// 设置0列对齐，需要使用这种方式
+	LVCOLUMN colTest;
+	colTest.mask = LVCF_FMT;
+	m_lcScore.GetColumn(0, &colTest);
+	colTest.fmt = LVCFMT_RIGHT;
+	m_lcScore.SetColumn(0, &colTest);
+	// 设置0列对齐，需要使用这种方式
 
 	int nTotal = 0;
 	int nPassed = 0;
@@ -100,6 +109,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	ATL::CString s;		//ATL::CString.Format 支持 %f
 	ATL::CString st;	
 	int i = 0;
+	int nSize = m_score.m_tList.size();
 
 	// list<CMyObject*> m_score;
 	//for (POSITION pos = m_score.GetTailPosition(); pos != NULL; ++i )
@@ -120,13 +130,16 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		//CScore *p = (CScore*)m_score.m_tList.GetPrev(pos);
 		CScore& cs = *it;	// it = m_score.m_tList.end()，必须先it--，才能*it，否则运行时报错终止
 
-		s.Format(TEXT("%d"), cs.gameNumber);
+		s.Format(TEXT("%d"), nSize - (i + 1));	// 当前一局没有战况信息，所以要多减1
 		m_lcScore.InsertItem(i, s);
 
-		s.Format(TEXT("%d"), cs.steps);
+		s.Format(TEXT("%d"), cs.gameNumber);
 		m_lcScore.SetItemText(i, 1, s);
 
-		m_lcScore.SetItemText(i, 2, statusStr[cs.gameStatus]);	// 该句报错终止
+		s.Format(TEXT("%d"), cs.steps);
+		m_lcScore.SetItemText(i, 2, s);
+
+		m_lcScore.SetItemText(i, 3, statusStr[cs.gameStatus]);	// 该句报错终止
 
 		CTimeSpan ts = cs.tmEnd - cs.tmStart;	// #include <atltime.h>
 		//s.Format(TEXT("%2dm%2ds"), ts.GetMinutes(), ts.GetSeconds());
@@ -140,9 +153,9 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		s += st;
 		st.Format(TEXT("%2dm%2ds"), ts.GetMinutes(), ts.GetSeconds());
 		s += st;
-		m_lcScore.SetItemText(i, 3, s);
+		m_lcScore.SetItemText(i, 4, s);
 
-		m_lcScore.SetItemText(i, 4,
+		m_lcScore.SetItemText(i, 5,
 			cs.tmStart.Format(fmtsYMD) + TEXT(" / ") + cs.tmEnd.Format(fmtsYMD));
 
 		++nTotal;
