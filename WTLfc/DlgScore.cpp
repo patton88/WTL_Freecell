@@ -87,8 +87,8 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	m_lcScore.InsertColumn(0, TEXT("牌局"), LVCFMT_LEFT, charWid * (13 + 2));
 	m_lcScore.InsertColumn(1, TEXT("步数"), LVCFMT_LEFT, charWid * (5 + 2));
 	m_lcScore.InsertColumn(2, TEXT("状态"), LVCFMT_LEFT, charWid * (5 + 2));
-	m_lcScore.InsertColumn(3, TEXT("耗时"), LVCFMT_LEFT, charWid * (9 + 2));
-	m_lcScore.InsertColumn(4, TEXT("时间"), LVCFMT_LEFT, charWid * (33 + 2));
+	m_lcScore.InsertColumn(3, TEXT("耗时"), LVCFMT_LEFT, charWid * (15 + 2));
+	m_lcScore.InsertColumn(4, TEXT("时间"), LVCFMT_LEFT, charWid * (45 + 2));
 
 	int nTotal = 0;
 	int nPassed = 0;
@@ -98,6 +98,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 
 	//WTL::CString s;	//WTL::CString.Format 不支持 %f
 	ATL::CString s;		//ATL::CString.Format 支持 %f
+	ATL::CString st;	
 	int i = 0;
 
 	// list<CMyObject*> m_score;
@@ -128,11 +129,21 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		m_lcScore.SetItemText(i, 2, statusStr[cs.gameStatus]);	// 该句报错终止
 
 		CTimeSpan ts = cs.tmEnd - cs.tmStart;	// #include <atltime.h>
-		s.Format(TEXT("%2dm%2ds"), ts.GetMinutes(), ts.GetSeconds());
+		//s.Format(TEXT("%2dm%2ds"), ts.GetMinutes(), ts.GetSeconds());
+
+		// 按照这种方式不能正确获取。可能是ATL::CString.Format函数的毛病
+		//s.Format(TEXT("%2dD%2dh%2dm%2ds"), ts.GetDays(), ts.GetHours(), ts.GetMinutes(), ts.GetSeconds());
+
+		// 必须按照这样的方式才能正确获取，否则不对。可能是ATL::CString.Format函数的毛病
+		s.Format(TEXT("%3dD"), ts.GetDays());
+		st.Format(TEXT("%2dh - "), ts.GetHours());
+		s += st;
+		st.Format(TEXT("%2dm%2ds"), ts.GetMinutes(), ts.GetSeconds());
+		s += st;
 		m_lcScore.SetItemText(i, 3, s);
 
 		m_lcScore.SetItemText(i, 4,
-			cs.tmStart.Format(fmtsYMD) + TEXT("/") + cs.tmEnd.Format(fmts));
+			cs.tmStart.Format(fmtsYMD) + TEXT("/") + cs.tmEnd.Format(fmtsYMD));
 
 		++nTotal;
 

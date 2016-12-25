@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CAboutDlg" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAEAAgEAAABAAAAAAAAAAgAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>AboutDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CCardSize" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IASAAAAAQABOAiBAQAgAQAAAQ2SBRgCAIYhAAACgECQ=</HashCode>
+      <FileName>CardSize.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CTList&lt;T&gt;" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAgAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CMyObject" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAEAAIAAAAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COperation" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAQAAAAAgAAAACAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COperations" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIICAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HINTS" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAACAAAAAAAAAAAAAAAAAABAAAAAAIAAAgAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDGWnd" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkDICAEEAAFBRBhAAQCAACAEAEAAAACQEAECUAAwMAA=</HashCode>
+      <FileName>DGView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgAICal" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgAGAAAAAAAAABIAAAAAQAAAAEAAAAGAAAAgAAAA=</HashCode>
+      <FileName>DlgAICal.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgAIShow" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBAQAEAYAAAAAAAAIAAAAIAAAAAAAAAAEAAAAAAMCg=</HashCode>
+      <FileName>DlgAIShow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgColorDialog" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DlgColorDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgDefGame" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABICAEAAAAgABAAAAAAgAAAACAAAAgAAAIAAIAQEAg=</HashCode>
+      <FileName>DlgDefGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgPassed" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABAAgEAAAAACAAAAAAAABAAgAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DlgPassed.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CScore" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAiAAAACQAAAAQAAgAAAEACEA=</HashCode>
+      <FileName>DlgScore.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgScore" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AApMAAEAAAAAAgAAAAIAAAAgIAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>DlgScore.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgSelGame" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAAEAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>DlgSelGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgSettings" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAAEAAAAAACIAAAAAAAAAAAAAAAIAgAAQAAAAABA=</HashCode>
+      <FileName>DlgSettings.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CMainFrame" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAAAIAgAAAAAAAAAACAAkAAAAAQBABAAgAA=</HashCode>
+      <FileName>MainFrm.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWndSizeDlg" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAAEAAAAAAAAAAAAEAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>WndSizeDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWTLfcData" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KsAIgABEAAIBzhOAAQCOADVgQCAgJApzBQAR0EEGFJA=</HashCode>
+      <FileName>WTLfcData.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWTLfcView" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FBCwEgEAAAkBKAgAACAAAhBGGjjAEQAEMAgBABAQAAI=</HashCode>
+      <FileName>WTLfcView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CXArchive" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAggAIACAAEgSABgAhAAAAAQAAESIkCAGsAAI=</HashCode>
+      <FileName>WTLSerialize\Archive.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CXException" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQCAAAAABAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>WTLSerialize\Exception.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CXArchiveException" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAAAAAQCAAAAAAAAAAAAAAAAABAAAAAEAIAAAAAAAA=</HashCode>
+      <FileName>WTLSerialize\Exception.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="COL_INF" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAAAAAAABAAAAAAAAQAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WTLfcData.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CARD_POS" Collapsed="true">
+    <Position X="10" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="__unnamed_enum_0025_1" Collapsed="true">
+    <Position X="11.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WTLSerialize\Archive.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_enum_0011_1" Collapsed="true">
+    <Position X="10" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAQAAAAAAAAAAAAAAAQAAAEEAAAAAAAgAA=</HashCode>
+      <FileName>DlgPassed.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="SimSun" Size="9.26" />
+</ClassDiagram>
