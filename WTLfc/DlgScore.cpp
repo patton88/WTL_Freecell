@@ -87,7 +87,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	m_lcScore.InsertColumn(0, TEXT("牌局"), LVCFMT_LEFT, charWid * (13 + 2));
 	m_lcScore.InsertColumn(1, TEXT("步数"), LVCFMT_LEFT, charWid * (5 + 2));
 	m_lcScore.InsertColumn(2, TEXT("状态"), LVCFMT_LEFT, charWid * (5 + 2));
-	m_lcScore.InsertColumn(3, TEXT("耗时"), LVCFMT_LEFT, charWid * (15 + 2));
+	m_lcScore.InsertColumn(3, TEXT("耗时"), LVCFMT_LEFT, charWid * (17 + 2));
 	m_lcScore.InsertColumn(4, TEXT("时间"), LVCFMT_LEFT, charWid * (45 + 2));
 
 	int nTotal = 0;
@@ -136,7 +136,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 
 		// 必须按照这样的方式才能正确获取，否则不对。可能是ATL::CString.Format函数的毛病
 		s.Format(TEXT("%3dD"), ts.GetDays());
-		st.Format(TEXT("%2dh - "), ts.GetHours());
+		st.Format(TEXT("%2dH - "), ts.GetHours());
 		s += st;
 		st.Format(TEXT("%2dm%2ds"), ts.GetMinutes(), ts.GetSeconds());
 		s += st;
