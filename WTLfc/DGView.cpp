@@ -80,6 +80,10 @@ CDGWnd::~CDGWnd()
 LRESULT CDGWnd::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 //void CDGWnd::OnPaint()
 {
+	CRect wr, cr;
+	GetClientRect(cr);
+	g_fcCcs.SetCardSize(cr.Width());		// 放到这里，g_pView->GetClientRect(wr)数值是准确的
+
 	//CPaintDC dc(this);
 	//CJLView *pView = AfxGetView();
 	CPaintDC dc(m_hWnd);
