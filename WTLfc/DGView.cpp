@@ -130,7 +130,15 @@ LRESULT CDGWnd::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOO
 			if (!card) {
 				if (j < m) r.bottom += 5;
 				CBrush OldBrush = dc.SelectBrush(g_pView->m_brushBkgnd);		// 画刷的变换放在这里，问题解决
+
+				CPen penBlack;
+				penBlack.CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+				HPEN penOld = dc.SelectPen(penBlack);
+
 				dc.RoundRect(r, CPoint(5, 5));
+
+				dc.SelectPen(penOld);
+
 				dc.SelectBrush(OldBrush);	// 画刷的变换放在这里，问题解决
 			}
 			//否则绘制此牌 
