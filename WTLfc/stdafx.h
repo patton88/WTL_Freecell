@@ -43,6 +43,7 @@ extern CWTLfcData g_fcData;
 extern CWTLfcView* g_pView;
 extern CMainFrame* g_pMain;
 extern bool g_bMaxOnly;
+const WTL::CString g_strWndTitle = L"WTL_Freecell";		//主窗口标题
 
 #if defined _M_IX86
   #pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")

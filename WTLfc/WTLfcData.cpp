@@ -9,6 +9,7 @@
 #include "WTLfcView.h"
 #include "DlgPassed.h"
 #include "DlgAIShow.h"
+#include "MainFrm.h"
 
 //用于支持洗牌的函数
 #include <algorithm>
@@ -1602,11 +1603,21 @@ void CWTLfcData::StartGame(int gameNumber)
 	//UpdateAllViews(NULL);	//绘制界面
 	g_pView->RedrawWindow();
 
-	WTL::CString title;		//设置窗框标题为当前牌局代号
-	title.Format(TEXT("%10d"), m_nCurGameNumber);
 	//SetTitle(title);
+	wtlSetTitle();
 
 	m_dlgScore.InitScore();//记录战况
+}
+
+void CWTLfcData::wtlSetTitle(WTL::CString strTitle)
+{
+	if (L"" == strTitle)
+	{
+		strTitle.Format(TEXT("%d"), m_nCurGameNumber);		//设置窗框标题为当前牌局代号
+		//title.TrimLeft();
+	}
+	strTitle = g_strWndTitle + L" - " + strTitle;
+	::SetWindowText(g_pMain->m_hWnd, strTitle);
 }
 
 //根据给定的标签搜索此标签指定的牌

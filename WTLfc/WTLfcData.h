@@ -47,6 +47,7 @@ public:
 
 // Implementation
 public:
+	void wtlSetTitle(WTL::CString strTitle = L"");
 	void Serialize(CXArchive& ar);
 	void BackHome();
 	BOOL GiveUp();

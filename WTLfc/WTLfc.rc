@@ -370,7 +370,7 @@ IDB_FC_SUB              BITMAP                  "res\\FC_SUB.bmp"
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "WTLfcÖÐÎÄ"
+    IDR_MAINFRAME           "WTL Freecell"
 END
 
 STRINGTABLE
