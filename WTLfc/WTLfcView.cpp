@@ -1601,7 +1601,7 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	WTL::CString title;
 	if (g_fcData.m_nCurGameNumber > 0) {
 		title.Format(TEXT("%d"), g_fcData.m_nCurGameNumber);
-		//SetTitle(title);
+		g_fcData.wtlSetTitle();
 	}
 	else {
 		//SetTitle(dlg.GetFileName());
