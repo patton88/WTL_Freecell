@@ -332,6 +332,10 @@ void CDlgScore::resize()
 
 	Newp.x = recta.right - recta.left;
 	Newp.y = recta.bottom - recta.top;
+
+	// 避免 Newp.x 或 Newp.y 为 0 后，下次窗口放大后，控件无法恢复
+	if (0 == Newp.x) Newp.x = 10;	if (0 == Newp.y) Newp.y = 10;
+
 	fsp[0] = (float)Newp.x / Old.x;
 	fsp[1] = (float)Newp.y / Old.y;
 
@@ -400,5 +404,6 @@ void CDlgScore::resize()
 
 	//	hwndChild = ::GetWindow(hwndChild, GW_HWNDNEXT);	// 取下一个控件句柄
 	//}
+
 	Old = Newp;
 }
