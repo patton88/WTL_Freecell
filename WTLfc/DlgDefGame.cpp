@@ -98,7 +98,7 @@ LRESULT CDlgDefGame::OnSetFocus(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& b
 }
 
 //void CDlgDefGame::OnSizing(UINT fwSide, LPRECT pRect) 
-LRESULT CDlgDefGame::OnSizeing(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+LRESULT CDlgDefGame::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	//CDialog::OnSizing(fwSide, pRect);
 	
