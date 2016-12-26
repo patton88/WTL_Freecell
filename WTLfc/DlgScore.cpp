@@ -368,7 +368,7 @@ void CDlgScore::resize()
 
 	OldBRPoint = Rect.BottomRight();
 	//BRPoint.x = long(OldBRPoint.x *fsp[0]);// 计算出空间新位置的右下角
-	BRPoint.x = recta.right;					// 这样更准确。计算出空间新位置的右下角
+	BRPoint.x = recta.right - 2;				// 这样更准确。计算出空间新位置的右下角
 	BRPoint.y = long(OldBRPoint.y *fsp[1]);
 
 	Rect.SetRect(TLPoint, BRPoint);			// 设置新位置
