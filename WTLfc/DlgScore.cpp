@@ -344,7 +344,8 @@ void CDlgScore::resize()
 	ScreenToClient(&Rect);
 
 	OldTLPoint = Rect.TopLeft();
-	TLPoint.x = long(OldTLPoint.x*fsp[0]);	// 计算出空间新位置的左上角
+	//TLPoint.x = long(OldTLPoint.x*fsp[0]);	// 计算出空间新位置的左上角
+	TLPoint.x = recta.left;					// 这样更准确。计算出空间新位置的左上角
 	TLPoint.y = long(OldTLPoint.y*fsp[1]);
 
 	OldBRPoint = Rect.BottomRight();
@@ -357,7 +358,7 @@ void CDlgScore::resize()
 	//::InvalidateRect(GetDlgItem(idWoc), Rect, TRUE);
 
 
-	m_lcScore.GetWindowRect(Rect);		// 取得控件原来的位置 
+	m_lcScore.GetWindowRect(Rect);			// 取得控件原来的位置 
 	ScreenToClient(&Rect);
 
 	OldTLPoint = Rect.TopLeft();
@@ -366,7 +367,8 @@ void CDlgScore::resize()
 	TLPoint.y = long(OldTLPoint.y*fsp[1]);
 
 	OldBRPoint = Rect.BottomRight();
-	BRPoint.x = long(OldBRPoint.x *fsp[0]);	// 计算出空间新位置的右下角
+	//BRPoint.x = long(OldBRPoint.x *fsp[0]);// 计算出空间新位置的右下角
+	BRPoint.x = recta.right;					// 这样更准确。计算出空间新位置的右下角
 	BRPoint.y = long(OldBRPoint.y *fsp[1]);
 
 	Rect.SetRect(TLPoint, BRPoint);			// 设置新位置
