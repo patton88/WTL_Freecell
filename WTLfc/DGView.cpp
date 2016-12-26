@@ -269,6 +269,8 @@ CRect CDGWnd::RectOf(UINT pos)
 {
 	CRect cr;
 	GetClientRect(cr);
+	g_fcCcs.SetCardSize(cr.Width());		// 放到这里，g_pView->GetClientRect(wr)数值是准确的
+
 	int wid = cr.Width() / 13;
 	int hei = (cr.Height() - g_fcCcs.CARD_HEI) / (6 + 4 + 1);
 	//牌盒子中的牌每张所在的矩形
