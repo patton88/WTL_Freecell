@@ -110,11 +110,18 @@ public:
 	CListViewCtrl	m_lcScore;
 	//}}AFX_DATA
 
+	POINT Old;
+	int ww;
+
 	BEGIN_MSG_MAP(CDlgScore)
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 		COMMAND_ID_HANDLER(IDOK, OnOKCmd)
 		COMMAND_ID_HANDLER(IDCANCEL, OnCloseCmd)
+		MESSAGE_HANDLER(WM_SIZE, OnSize)
 	END_MSG_MAP()
+
+	LRESULT OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	void resize();
 
 	BEGIN_DDX_MAP(CDlgScore)
 		//DDV_MinMaxUInt(m_nGameNumber, 1, 2147483647);
