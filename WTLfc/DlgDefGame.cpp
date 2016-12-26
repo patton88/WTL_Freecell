@@ -105,7 +105,9 @@ LRESULT CDlgDefGame::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHand
 	// TODO: Add your message handler code here
 	CRect r;
 	GetClientRect(r);
+	g_fcCcs.SetCardSize(r.Width());		// 放到这里，g_pView->GetClientRect(wr)数值是准确的
 	m_DGWnd.MoveWindow(r);
+	m_DGWnd.Invalidate();
 
 	return 0;
 }
