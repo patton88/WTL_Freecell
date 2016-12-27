@@ -105,13 +105,14 @@ public:
 	~CDlgScore();
 // Dialog Data
 	//{{AFX_DATA(CDlgScore)
+	//}}AFX_DATA
 	enum { IDD = IDD_SCORE };
+
 	CListViewCtrl	m_lcScoreInfo;
 	CListViewCtrl	m_lcScore;
-	//}}AFX_DATA
 
-	POINT Old;
-	int ww;
+	double m_dScale;		// m_lcScore 控件宽度占窗口客户区宽度的比例
+	int m_nInterval;		// m_lcScoreInfo、m_lcScore 控件之间的间隔宽度
 
 	BEGIN_MSG_MAP(CDlgScore)
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)

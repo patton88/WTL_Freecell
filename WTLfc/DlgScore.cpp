@@ -223,15 +223,33 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	s.Format(TEXT("%d"), nDead);
 	m_lcScoreInfo.SetItemText(5, 1, s);
 
-	CRect rect;
-	GetClientRect(&rect);	//取客户区大小  
-	Old.x = rect.right - rect.left;
-	Old.y = rect.bottom - rect.top;
+	// 用于实现战况窗口缩放时，控件自动
 
+	//CRect rect1, rect2, rect3;
+	//GetClientRect(&rect1);		// 取客户区大小  
+
+	//m_lcScoreInfo.GetWindowRect(&rect2);
+	//ScreenToClient(rect2);
+
+	//m_lcScore.GetWindowRect(&rect3);
+	//ScreenToClient(rect3);
+
+	//+ rect1{ top = 0 bottom = 495 left = 0 right = 943 }	WTL::CRect
+	//+ rect2{ top = 0 bottom = 495 left = 0 right = 259 }	WTL::CRect
+	//+ rect3{ top = 0 bottom = 495 left = 266 right = 941 }	WTL::CRect
+
+
+	CRect rect;
 	m_lcScore.GetWindowRect(&rect);
-	ww = rect.left;
+	m_nInterval = rect.left;
 	m_lcScoreInfo.GetWindowRect(&rect);
-	ww -= rect.right;			// 得到中间分隔栏宽度
+	m_nInterval -= rect.right;	// 得到m_lcScoreInfo、m_lcScore 控件之间的间隔宽度
+
+	m_dScale = rect.Width();		// 得到 m_lcScoreInfo 的窗口宽度
+	GetClientRect(&rect);		// 取客户区大小  
+	m_dScale /= rect.Width();	// 得到 m_lcScore 控件宽度占窗口客户区宽度的比例
+
+	// 用于实现战况窗口缩放时，控件自动
 
 	return TRUE;
 }
@@ -325,85 +343,16 @@ LRESULT CDlgScore::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandle
 
 void CDlgScore::resize()
 {
-	float fsp[2];
-	POINT Newp; //获取现在对话框的大小
-	CRect recta;
-	GetClientRect(&recta);     //取客户区大小  
+	CRect rectc;
+	GetClientRect(&rectc);     //取客户区大小  
 
-	Newp.x = recta.right - recta.left;
-	Newp.y = recta.bottom - recta.top;
+	CRect rect(0, 0, int(rectc.right * m_dScale), rectc.bottom);
+	::MoveWindow(m_lcScoreInfo.m_hWnd, rect.left, rect.top, rect.Width(), rect.Height(), TRUE);	// 移动控件
 
-	// 避免 Newp.x 或 Newp.y 为 0 后，下次窗口放大后，控件无法恢复
-	if (0 == Newp.x) Newp.x = 10;	if (0 == Newp.y) Newp.y = 10;
+	rect.left = rect.right + m_nInterval;
+	rect.top = 0;
+	rect.right = rectc.right - 2;
+	rect.bottom = rectc.bottom;
+	::MoveWindow(m_lcScore.m_hWnd, rect.left, rect.top, rect.Width(), rect.Height(), TRUE);		// 移动控件
 
-	fsp[0] = (float)Newp.x / Old.x;
-	fsp[1] = (float)Newp.y / Old.y;
-
-	CRect Rect;
-	//int idWoc;		// woc ID of Window of Control
-	CPoint OldTLPoint, TLPoint; //左上角
-	CPoint OldBRPoint, BRPoint; //右下角
-
-	m_lcScoreInfo.GetWindowRect(Rect);		// 取得控件原来的位置 
-	ScreenToClient(&Rect);
-
-	OldTLPoint = Rect.TopLeft();
-	//TLPoint.x = long(OldTLPoint.x*fsp[0]);	// 计算出空间新位置的左上角
-	TLPoint.x = recta.left;					// 这样更准确。计算出空间新位置的左上角
-	TLPoint.y = long(OldTLPoint.y*fsp[1]);
-
-	OldBRPoint = Rect.BottomRight();
-	BRPoint.x = long(OldBRPoint.x *fsp[0]);	// 计算出空间新位置的右下角
-	BRPoint.y = long(OldBRPoint.y *fsp[1]);
-
-	Rect.SetRect(TLPoint, BRPoint);			// 设置新位置
-	//Invalidate();
-	::MoveWindow(m_lcScoreInfo.m_hWnd, Rect.left, Rect.top, Rect.Width(), Rect.Height(), TRUE);	// 移动控件
-	//::InvalidateRect(GetDlgItem(idWoc), Rect, TRUE);
-
-
-	m_lcScore.GetWindowRect(Rect);			// 取得控件原来的位置 
-	ScreenToClient(&Rect);
-
-	OldTLPoint = Rect.TopLeft();
-	//TLPoint.x = long(OldTLPoint.x*fsp[0]);	// 计算出空间新位置的左上角
-	TLPoint.x = BRPoint.x + ww;				// 计算出空间新位置的左上角
-	TLPoint.y = long(OldTLPoint.y*fsp[1]);
-
-	OldBRPoint = Rect.BottomRight();
-	//BRPoint.x = long(OldBRPoint.x *fsp[0]);// 计算出空间新位置的右下角
-	BRPoint.x = recta.right - 2;				// 这样更准确。计算出空间新位置的右下角
-	BRPoint.y = long(OldBRPoint.y *fsp[1]);
-
-	Rect.SetRect(TLPoint, BRPoint);			// 设置新位置
-	//Invalidate();
-	::MoveWindow(m_lcScore.m_hWnd, Rect.left, Rect.top, Rect.Width(), Rect.Height(), TRUE);	// 移动控件
-	//::InvalidateRect(GetDlgItem(idWoc), Rect, TRUE);
-
-	//HWND  hwndChild = ::GetWindow(m_hWnd, GW_CHILD);		//列出所有控件  
-	//while (hwndChild)
-	//{
-	//	idWoc = ::GetDlgCtrlID(hwndChild);				// 取得控件ID
-	//	//if ( IDC_LIST1 == idWoc ) break;
-
-	//	::GetWindowRect(GetDlgItem(idWoc), Rect);		// 取得控件原来的位置 
-	//	ScreenToClient(&Rect);
-
-	//	OldTLPoint = Rect.TopLeft();
-	//	TLPoint.x = long(OldTLPoint.x*fsp[0]);			// 计算出空间新位置的左上角
-	//	TLPoint.y = long(OldTLPoint.y*fsp[1]);
-
-	//	OldBRPoint = Rect.BottomRight();
-	//	BRPoint.x = long(OldBRPoint.x *fsp[0]);			// 计算出空间新位置的右下角
-	//	BRPoint.y = long(OldBRPoint.y *fsp[1]);
-
-	//	Rect.SetRect(TLPoint, BRPoint);					// 设置新位置
-	//	Invalidate();
-	//	::MoveWindow(GetDlgItem(idWoc), Rect.left, Rect.top, Rect.Width(), Rect.Height(), TRUE);	// 移动控件
-	//	//::InvalidateRect(GetDlgItem(idWoc), Rect, TRUE);
-
-	//	hwndChild = ::GetWindow(hwndChild, GW_HWNDNEXT);	// 取下一个控件句柄
-	//}
-
-	Old = Newp;
 }
