@@ -135,4 +135,6 @@ public:
 	LRESULT OnSetting(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
 	BOOL MyDrawIcon(CDC& dc, POINT& point, HICON& hIcon);
+
+	WTL::CString itos(int i);		// ½«int×ª»»³ÉCString
 };

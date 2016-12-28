@@ -1509,6 +1509,16 @@ LRESULT CWTLfcView::OnSetting(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 	return 0;
 }
 
+WTL::CString CWTLfcView::itos(int i)		// 将int转换成CString
+{
+	//wchar_t str[50];	//不用sstream库函数，编译出的exe文件减小300K
+	//_itow(i, str, 10);
+
+	WTL::CString str;
+	str.Format(L"%d", i);
+	return str;
+}
+
 //存档
 //void WTLfcData::OnSave()
 //{
@@ -1539,9 +1549,47 @@ LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 
 	if (fd.DoModal() == IDCANCEL) return 0;
 
+	WTL::CString strFileName = fd.m_szFileName, strOld, strNew;
+
+	if (strFileName.IsEmpty()) return 0;
+
+	//// 处理备份文件改名
+	if (0 == _waccess(strFileName, 0))		//文件存在_waccess返回0，否则返回-1
+	{
+		//查看该文件strOldName是否存在，若存在则更名为临时备份文件，以免在处理过程中掉电或异常导致记录数据丢失
+		//用_waccess(需包含io.h)代替fopen判断文件是否存在，用fopen若文件不可读会误判
+		//_wrename重命名文件：
+		//	如果newname指定的文件存在，则更名失败。必须先删除newname，才能成功更名。
+		//	如果newname与oldname不在一个目录下，则相当于移动文件。
+
+		//删除第6个备份文件
+		strNew = strFileName.Left(strFileName.GetLength() - 4) + L"-" + itos(6) + strFileName.Right(4);
+		if (0 == _waccess(strNew, 0))		//文件存在_waccess返回0，否则返回-1
+			_wremove(strNew);
+
+		int n = 5;	// 保留以前的5个备份
+		for (int i = 5; i > 0; i--)
+		{
+			strOld = strFileName.Left(strFileName.GetLength() - 4) + L"-" + itos(i) + strFileName.Right(4);
+			if (0 == _waccess(strOld, 0))		//文件存在_waccess返回0，否则返回-1
+			{
+				strNew = strFileName.Left(strFileName.GetLength() - 4) + L"-" + itos(i + 1) + strFileName.Right(4);
+				_wrename(strOld, strNew);
+			}
+		}
+		strNew = strFileName.Left(strFileName.GetLength() - 4) + L"-" + itos(1) + strFileName.Right(4);
+		_wrename(strFileName, strNew);
+
+		//删除第6个备份文件
+		strNew = strFileName.Left(strFileName.GetLength() - 4) + L"-" + itos(6) + strFileName.Right(4);
+		if (0 == _waccess(strNew, 0))		//文件存在_waccess返回0，否则返回-1
+			_wremove(strNew);
+	}
+
+	//// 处理备份文件改名
 
 	// Storing
-	FILE* pFile1 = _wfopen(fd.m_szFileName, L"wb");		// 改用C语言的文件访问方式实现串行化
+	FILE* pFile1 = _wfopen(strFileName, L"wb");		// 改用C语言的文件访问方式实现串行化
 	// 项目->属性->配置属性->C/C++->预处理器->预处理器定义，添加“_CRT_SECURE_NO_WARNINGS”，
 	// 屏蔽警告 warning C4996: '_wfopen': This function or variable may be unsafe.
 
