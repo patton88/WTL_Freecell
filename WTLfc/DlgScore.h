@@ -114,12 +114,26 @@ public:
 	double m_dScale;		// m_lcScore 控件宽度占窗口客户区宽度的比例
 	int m_nInterval;		// m_lcScoreInfo、m_lcScore 控件之间的间隔宽度
 
+	//m_sortstyl == 1 升序排列，m_sortstyl == -1 降序排列。每次排序后都反转排序类型
+	int	m_sortstyl;		//ListView 列排序类型
+	int m_selectCol;		//单击的表头列号
+
+
 	BEGIN_MSG_MAP(CDlgScore)
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 		COMMAND_ID_HANDLER(IDOK, OnOKCmd)
 		COMMAND_ID_HANDLER(IDCANCEL, OnCloseCmd)
 		MESSAGE_HANDLER(WM_SIZE, OnSize)
+
+		//REFLECTED_NOTIFY_CODE_HANDLER(LVN_COLUMNCLICK, OnColumnClick)	//在View类中处理通知消息必须用REFLECTED_打头的消息宏
+		//DEFAULT_REFLECTION_HANDLER()	//在子窗口中添加，确保将未被处理的反射消息交DefWindowProc()处理
+		//这里不要使用消息反射
+		NOTIFY_CODE_HANDLER(LVN_COLUMNCLICK, OnColumnClick)	//在View类中处理通知消息必须用REFLECTED_打头的消息宏
 	END_MSG_MAP()
+
+	//单击列表框列表头排序
+	//LRESULT OnLVItemDblclk(int idCtrl, LPNMHDR pnmh, BOOL& bHandled);
+	LRESULT OnColumnClick(int /*idCtrl*/, LPNMHDR pnmh, BOOL& /*bHandled*/);
 
 	LRESULT OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	void resize();
@@ -141,6 +155,17 @@ public:
 	LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
 	LRESULT OnOKCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnCloseCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+
+	// 将int转换成CString
+	WTL::CString itos(int i)
+	{
+		//wchar_t str[50];	//不用sstream库函数，编译出的exe文件减小300K
+		//_itow(i, str, 10);
+
+		WTL::CString str;
+		str.Format(L"%d", i);
+		return str;
+	}
 
 // Overrides
 	// ClassWizard generated virtual function overrides

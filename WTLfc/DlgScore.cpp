@@ -251,6 +251,9 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 
 	// 用于实现战况窗口缩放时，控件自动
 
+	m_sortstyl = 1;
+	m_selectCol = -1;
+
 	return TRUE;
 }
 
@@ -356,3 +359,470 @@ void CDlgScore::resize()
 	::MoveWindow(m_lcScore.m_hWnd, rect.left, rect.top, rect.Width(), rect.Height(), TRUE);		// 移动控件
 
 }
+
+//-------------------------------------------------------------------
+//单击列表框列表头排序
+LRESULT CDlgScore::OnColumnClick(int/*idCtrl*/, LPNMHDR pnmh, BOOL&/*bHandled*/)
+{
+	NM_LISTVIEW* pNMListView = (NM_LISTVIEW*)pnmh;
+	//NM_LISTVIEW* pNMListView = (NM_LISTVIEW*)pNMHDR;
+	//MessageBox(L"Test");
+
+	/*
+	VC CListCtrl控件单击列排序  2009-09-24 14:26:07|  分类： VC技术 |  标签： |字号大中小 订阅
+	http://alifens198345.blog.163.com/blog/static/11679917720098242267804/
+	网上很多都是调用了自己写的回调函数后排序的！我这个是直接响应单击列消息来进行排序，本来也是网上找的一段代码！
+	但是只能做字符串的排序！如果是字符串数字，比如“10”，“1”“2”“3”“11”按数字大小排序就不正确了！
+	显示为1，10，11，2，3的顺序！但是实际顺序应该是1，2，3，10，11。我自己修改了一下，
+	现在字符串和字符串数字都能正确排序了!只要把下面的代码贴到OnColumnclickList()函数里就可以了！
+
+	2010-09-03 11:37sd
+	double dbStrA = atof(strA);//这个地方有问题(其中strA是CString类型)不信，你自己可以试一下，
+	顺便说一句，我用的是visual studio 2010。谢谢回复
+	2010-11-14 22:54有个贱人在我身边 回复 sd
+	atof((LPSTR)(LPCTSTR)strA);
+	编译器不同,编码也不同,自己转一下就好了.不能凡事靠别人.回复
+	*/
+
+	SetRedraw(FALSE);
+
+	int selectCol = pNMListView->iSubItem;
+	int listRows, listColumns, i, j, n;
+	//DWORD ddA, ddB;
+
+	if (m_selectCol != selectCol)	// 若不是上次单击的表头列，便重设排序为升序
+		m_sortstyl = 1;
+
+	m_selectCol = selectCol;			// 保存单击的表头列
+
+	//取得控件的行数和列数
+	//listRows = GetItemCount() - m_nTreeRec;
+	listRows = m_score.m_tList.size() - 1;	// 当前一局没有战况信息，所以要多减1
+	listColumns = m_lcScore.GetHeader().GetItemCount();
+	WTL::CString strA, strB;
+	double dbStrA, dbStrB;
+	wchar_t *wpSrc, *wpEnd;
+
+	//m_bSortStatusOfLV = (100 + selectCol) * m_sortstyl;
+	//if (g_pMainFrame->m_bSaveSortStatusOfLV)
+	//{
+	//	g_pMainFrame->m_bSaveSortStatusOfLV = m_bSortStatusOfLV;
+	//	WritePrivateProfileStringW(L"Main", L"SaveSortStatusOfLV", itos(m_bSortStatusOfLV), g_pMainFrame->m_wzIniName);
+	//}
+
+	//构造函数中m_sortstyl = 1。每次改变目录后初始化排序类型为升序排列m_sortstyl = 1
+	//m_sortstyl == 1 升序排列，m_sortstyl == -1 降序排列。每次排序后都反转排序类型
+	if (m_sortstyl == 1)
+	{
+		for (j = 1; j <= listRows; j++)
+		{
+			for (i = 0; i < listRows - j; i++)
+			{
+				m_lcScore.GetItemText(i, selectCol, strA.GetBuffer(255), 255); //m_List2为控件绑定的变量，根据自己的修改
+				m_lcScore.GetItemText(i + 1, selectCol, strB.GetBuffer(255), 255);
+				strA.ReleaseBuffer();
+				strB.ReleaseBuffer();
+
+				wpSrc = strA.GetBuffer(strA.GetLength());	//由于WTL中，m_lcScore.GetItemText使用CString最方便，所以这里还是用strA
+				dbStrA = wcstod(wpSrc, &wpEnd);
+				strA.ReleaseBuffer();
+
+				wpSrc = strB.GetBuffer(strB.GetLength());
+				dbStrB = wcstod(wpSrc, &wpEnd);
+				strB.ReleaseBuffer();
+
+				//根据返回值判断是字符串还是字符串数字
+				if (dbStrA != dbStrB && dbStrA != 0 && dbStrB != 0)		//若是字符串数字
+				{
+					if (dbStrA > dbStrB)
+					{
+						for (n = 0; n < listColumns; n++)
+						{
+							m_lcScore.GetItemText(i, n, strA.GetBuffer(255), 255);
+							m_lcScore.GetItemText(i + 1, n, strB.GetBuffer(255), 255);
+							strA.ReleaseBuffer();
+							strB.ReleaseBuffer();
+
+							m_lcScore.SetItemText(i, n, strB);
+							m_lcScore.SetItemText(i + 1, n, strA);
+						}
+
+						//保存在记录附加数据中的nRecNO只需交换1次
+						//ddA = GetItemData(i);
+						//ddB = GetItemData(i + 1);
+						//SetItemData(i, ddB);
+						//SetItemData(i + 1, ddA);
+
+						//m_lcScore.SetItemText(m, 2, itos(ddB));		//测试用，Show Data
+						//m_lcScore.SetItemText(m + 1, 2, itos(ddA));	//测试用，Show Data
+					}
+				}
+				else
+				{
+					if (strA > strB)							//若是字符串
+					{
+						for (n = 0; n < listColumns; n++)		//12为你控件的列的数量，根据自己的实际情况修改
+						{
+							m_lcScore.GetItemText(i, n, strA.GetBuffer(255), 255);
+							m_lcScore.GetItemText(i + 1, n, strB.GetBuffer(255), 255);
+							strA.ReleaseBuffer();
+							strB.ReleaseBuffer();
+
+							m_lcScore.SetItemText(i, n, strB);
+							m_lcScore.SetItemText(i + 1, n, strA);
+						}
+
+						//保存在记录附加数据中的iRecNO只需交换1次
+						//ddA = GetItemData(i);
+						//ddB = GetItemData(i + 1);
+						//SetItemData(i, ddB);
+						//SetItemData(i + 1, ddA);
+
+						//m_lcScore.SetItemText(m, 2, itos(ddB));		//测试用，Show Data
+						//m_lcScore.SetItemText(m + 1, 2, itos(ddA));	//测试用，Show Data
+					}
+				}
+
+			}
+		}
+	}
+	//构造函数中m_sortstyl = 1。每次改变目录后初始化排序类型为升序排列m_sortstyl = 1
+	//m_sortstyl == 1 升序排列，m_sortstyl == -1 降序排列。每次排序后都反转排序类型
+	else if (m_sortstyl == -1)
+	{
+		for (j = 1; j <= listRows; j++)
+		{
+			for (i = 0; i < listRows - j; i++)
+			{
+				m_lcScore.GetItemText(i, selectCol, strA.GetBuffer(255), 255);
+				m_lcScore.GetItemText(i + 1, selectCol, strB.GetBuffer(255), 255);
+				strA.ReleaseBuffer();
+				strB.ReleaseBuffer();
+
+				wpSrc = strA.GetBuffer(strA.GetLength());
+				dbStrA = wcstod(wpSrc, &wpEnd);
+				strA.ReleaseBuffer();
+
+				wpSrc = strB.GetBuffer(strB.GetLength());
+				dbStrB = wcstod(wpSrc, &wpEnd);
+				strB.ReleaseBuffer();
+
+				if (dbStrA != dbStrB && dbStrA != 0 && dbStrB != 0)
+				{
+					if (dbStrB > dbStrA)
+					{
+						for (n = 0; n < listColumns; n++)
+						{
+							m_lcScore.GetItemText(i, n, strA.GetBuffer(255), 255);
+							m_lcScore.GetItemText(i + 1, n, strB.GetBuffer(255), 255);
+							strA.ReleaseBuffer();
+							strB.ReleaseBuffer();
+
+							m_lcScore.SetItemText(i, n, strB);
+							m_lcScore.SetItemText(i + 1, n, strA);
+						}
+
+						//保存在记录附加数据中的iRecNO只需交换1次
+						//ddA = GetItemData(i);
+						//ddB = GetItemData(i + 1);
+						//SetItemData(i, ddB);
+						//SetItemData(i + 1, ddA);
+
+						//m_lcScore.SetItemText(m, 2, itos(ddB));		//测试用，Show Data
+						//m_lcScore.SetItemText(m + 1, 2, itos(ddA));	//测试用，Show Data
+					}
+				}
+				else
+				{
+					if (strB > strA)
+					{
+						for (n = 0; n < listColumns; n++)
+						{
+							m_lcScore.GetItemText(i, n, strA.GetBuffer(255), 255);
+							m_lcScore.GetItemText(i + 1, n, strB.GetBuffer(255), 255);
+							strA.ReleaseBuffer();
+							strB.ReleaseBuffer();
+
+							m_lcScore.SetItemText(i, n, strB);
+							m_lcScore.SetItemText(i + 1, n, strA);
+						}
+
+						//保存在记录附加数据中的iRecNO只需交换1次
+						//ddA = GetItemData(i);
+						//ddB = GetItemData(i + 1);
+						//SetItemData(i, ddB);
+						//SetItemData(i + 1, ddA);
+
+						//m_lcScore.SetItemText(m, 2, itos(ddB));		//测试用，Show Data
+						//m_lcScore.SetItemText(m + 1, 2, itos(ddA));	//测试用，Show Data
+					}
+				}
+			}
+		}
+	}
+
+	//构造函数中m_sortstyl = 1。每次改变目录后初始化排序类型为升序排列m_sortstyl = 1
+	//m_sortstyl == 1 升序排列，m_sortstyl == -1 降序排列。每次排序后都反转排序类型
+	m_sortstyl = m_sortstyl * (-1);
+
+	//每次排序后自动更新序列号
+	//for (j = 0; j < listRows; j++)
+	//	m_lcScore.SetItemText(j, 1, itos(j + 1));	//Set Number
+
+	SetRedraw(TRUE);
+	//CRect rect;
+	//::GetWindowRect(m_lcScore.m_hWnd, &rect);
+	//rect.top -= 8;
+	//InvalidateRect(rect);
+	//m_lcScore.Invalidate();
+	Invalidate();
+
+	//*pResult = 0;
+
+
+	/*
+	EnsureVisible---调用该函数以确保指定的列表视图条目可见，其原型为：
+	BOOL EnsureVisible（int nItem,BOOL bPartialOK）
+	　　 返回值：Nonzero if successful; otherwise zero.
+	   　　 nItem：指定了必须可见的条目索引。
+		  　　 bPartialOK：指定了是否允许部分可见。
+			 　　 列表视图控件将在必要时进行滚动，以确保指定条目可见。如果bPartialOK参数为非零值，
+				则当条目部分可见时，列表视图控件不进行滚动。
+
+				注意：如果ListView指定LVS_NOSCROLL,调用Scroll和EnsureVisible都是FALSE
+				*/
+
+	/*
+	1、设置CListCtrl选中行
+
+	m_list.SetItemState(nIndex, LVIS_FOCUSED | LVIS_SELECTED, LVIS_FOCUSED | LVIS_SELECTED);
+
+	注意：这句代码只是让指定行高亮显示，如果使用后再用GetSelectionMark函数来得到选中行，结果往往是错误的。
+	比如，先用鼠标点击选中第5行，调用GetSelectionMark函数得到的是4(第5行)，再调用SetItemState函数选中第2行，
+	然后调用GetSelectionMark函数得到的还是4(第5行)，所以，需要在设置选中行高亮显示时，一般与SetSelectionMark函数连用：
+	m_list.SetItemState(nIndex, LVIS_FOCUSED | LVIS_SELECTED,LVIS_FOCUSED | LVIS_SELECTED);   //选中行
+	m_list.SetSelectionMark(nIndexs);
+
+	*/
+
+	return 0L;
+}
+
+//-------------------------------------------------------------------
+//单击列表框列表头排序
+//LRESULT CMainFrame::OnLVItemDblclk(int idCtrl, LPNMHDR pnmh, BOOL& bHandled)
+//LRESULT CMainFrame::OnColumnclick(NMHDR* pNMHDR, LRESULT* pResult)
+//LRESULT CRMlistView::OnColumnClick(int/*idCtrl*/, LPNMHDR pnmh, BOOL&/*bHandled*/)
+//{
+//	NM_LISTVIEW* pNMListView = (NM_LISTVIEW*)pnmh;
+//	//NM_LISTVIEW* pNMListView = (NM_LISTVIEW*)pNMHDR;
+//
+//	/*
+//	VC CListCtrl控件单击列排序  2009-09-24 14:26:07|  分类： VC技术 |  标签： |字号大中小 订阅
+//	http://alifens198345.blog.163.com/blog/static/11679917720098242267804/
+//	网上很多都是调用了自己写的回调函数后排序的！我这个是直接响应单击列消息来进行排序，本来也是网上找的一段代码！
+//	但是只能做字符串的排序！如果是字符串数字，比如“10”，“1”“2”“3”“11”按数字大小排序就不正确了！
+//	显示为1，10，11，2，3的顺序！但是实际顺序应该是1，2，3，10，11。我自己修改了一下，
+//	现在字符串和字符串数字都能正确排序了!只要把下面的代码贴到OnColumnclickList()函数里就可以了！
+//
+//	2010-09-03 11:37sd
+//	double dbStrA = atof(strA);//这个地方有问题(其中strA是CString类型)不信，你自己可以试一下，
+//	顺便说一句，我用的是visual studio 2010。谢谢回复
+//	2010-11-14 22:54有个贱人在我身边 回复 sd
+//	atof((LPSTR)(LPCTSTR)strA);
+//	编译器不同,编码也不同,自己转一下就好了.不能凡事靠别人.回复
+//	*/
+//
+//	SetRedraw(FALSE);
+//
+//	int selectCol = pNMListView->iSubItem;
+//	int listRows, listColumns, i, j, m, n;
+//	DWORD ddA, ddB;
+//
+//	//取得控件的行数和列数
+//	listRows = GetItemCount() - m_nTreeRec;
+//	listColumns = GetHeader().GetItemCount();
+//	CString strA, strB;
+//	double dbStrA, dbStrB;
+//	wchar_t *wpSrc, *wpEnd;
+//
+//	m_bSortStatusOfLV = (100 + selectCol) * m_sortstyl;
+//	if (g_pMainFrame->m_bSaveSortStatusOfLV)
+//	{
+//		g_pMainFrame->m_bSaveSortStatusOfLV = m_bSortStatusOfLV;
+//		WritePrivateProfileStringW(L"Main", L"SaveSortStatusOfLV", itos(m_bSortStatusOfLV), g_pMainFrame->m_wzIniName);
+//	}
+//
+//	//构造函数中m_sortstyl = 1。每次改变目录后初始化排序类型为升序排列m_sortstyl = 1
+//	//m_sortstyl == 1 升序排列，m_sortstyl == -1 降序排列。每次排序后都反转排序类型
+//	if (m_sortstyl == 1)
+//	{
+//		for (j = 1; j <= listRows; j++)
+//		{
+//			for (i = 0; i < listRows - j; i++)
+//			{
+//				m = i + m_nTreeRec;
+//				GetItemText(m, selectCol, strA); //m_List2为控件绑定的变量，根据自己的修改
+//				GetItemText(m + 1, selectCol, strB);
+//
+//				wpSrc = strA.GetBuffer(strA.GetLength());	//由于WTL中，GetItemText使用CString最方便，所以这里还是用strA
+//				dbStrA = wcstod(wpSrc, &wpEnd);
+//				strA.ReleaseBuffer();
+//
+//				wpSrc = strB.GetBuffer(strB.GetLength());
+//				dbStrB = wcstod(wpSrc, &wpEnd);
+//				strB.ReleaseBuffer();
+//
+//				//根据返回值判断是字符串还是字符串数字
+//				if (dbStrA != dbStrB && dbStrA != 0 && dbStrB != 0)		//若是字符串数字
+//				{
+//					if (dbStrA > dbStrB)
+//					{
+//						for (n = 0; n < listColumns; n++)
+//						{
+//							GetItemText(m, n, strA);
+//							GetItemText(m + 1, n, strB);
+//							SetItemText(m, n, strB);
+//							SetItemText(m + 1, n, strA);
+//						}
+//						//保存在记录附加数据中的nRecNO只需交换1次
+//						ddA = GetItemData(m);
+//						ddB = GetItemData(m + 1);
+//						SetItemData(m, ddB);
+//						SetItemData(m + 1, ddA);
+//
+//						//SetItemText(m, 2, itos(ddB));		//测试用，Show Data
+//						//SetItemText(m + 1, 2, itos(ddA));	//测试用，Show Data
+//					}
+//				}
+//				else
+//				{
+//					if (strA > strB)							//若是字符串
+//					{
+//						for (n = 0; n < listColumns; n++)		//12为你控件的列的数量，根据自己的实际情况修改
+//						{
+//							GetItemText(m, n, strA);
+//							GetItemText(m + 1, n, strB);
+//							SetItemText(m, n, strB);
+//							SetItemText(m + 1, n, strA);
+//						}
+//						//保存在记录附加数据中的iRecNO只需交换1次
+//						ddA = GetItemData(m);
+//						ddB = GetItemData(m + 1);
+//						SetItemData(m, ddB);
+//						SetItemData(m + 1, ddA);
+//
+//						//SetItemText(m, 2, itos(ddB));		//测试用，Show Data
+//						//SetItemText(m + 1, 2, itos(ddA));	//测试用，Show Data
+//					}
+//				}
+//
+//			}
+//		}
+//	}
+//	//构造函数中m_sortstyl = 1。每次改变目录后初始化排序类型为升序排列m_sortstyl = 1
+//	//m_sortstyl == 1 升序排列，m_sortstyl == -1 降序排列。每次排序后都反转排序类型
+//	else if (m_sortstyl == -1)
+//	{
+//		for (j = 1; j <= listRows; j++)
+//		{
+//			for (i = 0; i < listRows - j; i++)
+//			{
+//				m = i + m_nTreeRec;
+//				GetItemText(m, selectCol, strA);
+//				GetItemText(m + 1, selectCol, strB);
+//
+//				wpSrc = strA.GetBuffer(strA.GetLength());
+//				dbStrA = wcstod(wpSrc, &wpEnd);
+//				strA.ReleaseBuffer();
+//
+//				wpSrc = strB.GetBuffer(strB.GetLength());
+//				dbStrB = wcstod(wpSrc, &wpEnd);
+//				strB.ReleaseBuffer();
+//
+//				if (dbStrA != dbStrB && dbStrA != 0 && dbStrB != 0)
+//				{
+//					if (dbStrB > dbStrA)
+//					{
+//						for (n = 0; n < listColumns; n++)
+//						{
+//							GetItemText(m, n, strA);
+//							GetItemText(m + 1, n, strB);
+//							SetItemText(m, n, strB);
+//							SetItemText(m + 1, n, strA);
+//						}
+//						//保存在记录附加数据中的iRecNO只需交换1次
+//						ddA = GetItemData(m);
+//						ddB = GetItemData(m + 1);
+//						SetItemData(m, ddB);
+//						SetItemData(m + 1, ddA);
+//
+//						//SetItemText(m, 2, itos(ddB));		//测试用，Show Data
+//						//SetItemText(m + 1, 2, itos(ddA));	//测试用，Show Data
+//					}
+//				}
+//				else
+//				{
+//					if (strB > strA)
+//					{
+//						for (n = 0; n < listColumns; n++)
+//						{
+//							GetItemText(m, n, strA);
+//							GetItemText(m + 1, n, strB);
+//							SetItemText(m, n, strB);
+//							SetItemText(m + 1, n, strA);
+//						}
+//						//保存在记录附加数据中的iRecNO只需交换1次
+//						ddA = GetItemData(m);
+//						ddB = GetItemData(m + 1);
+//						SetItemData(m, ddB);
+//						SetItemData(m + 1, ddA);
+//
+//						//SetItemText(m, 2, itos(ddB));		//测试用，Show Data
+//						//SetItemText(m + 1, 2, itos(ddA));	//测试用，Show Data
+//					}
+//				}
+//			}
+//		}
+//	}
+//
+//	//构造函数中m_sortstyl = 1。每次改变目录后初始化排序类型为升序排列m_sortstyl = 1
+//	//m_sortstyl == 1 升序排列，m_sortstyl == -1 降序排列。每次排序后都反转排序类型
+//	m_sortstyl = m_sortstyl * (-1);
+//
+//	//每次排序后自动更新序列号
+//	for (j = 0; j < listRows; j++)
+//		SetItemText(j + m_nTreeRec, 1, itos(j + 1));	//Set Number
+//
+//	SetRedraw(TRUE);
+//
+//	//*pResult = 0;
+//
+//
+//	/*
+//	EnsureVisible---调用该函数以确保指定的列表视图条目可见，其原型为：
+//	BOOL EnsureVisible（int nItem,BOOL bPartialOK）
+//	　　 返回值：Nonzero if successful; otherwise zero.
+//	   　　 nItem：指定了必须可见的条目索引。
+//		  　　 bPartialOK：指定了是否允许部分可见。
+//			 　　 列表视图控件将在必要时进行滚动，以确保指定条目可见。如果bPartialOK参数为非零值，
+//				则当条目部分可见时，列表视图控件不进行滚动。
+//
+//				注意：如果ListView指定LVS_NOSCROLL,调用Scroll和EnsureVisible都是FALSE
+//				*/
+//
+//	/*
+//	1、设置CListCtrl选中行
+//
+//	m_list.SetItemState(nIndex, LVIS_FOCUSED | LVIS_SELECTED, LVIS_FOCUSED | LVIS_SELECTED);
+//
+//	注意：这句代码只是让指定行高亮显示，如果使用后再用GetSelectionMark函数来得到选中行，结果往往是错误的。
+//	比如，先用鼠标点击选中第5行，调用GetSelectionMark函数得到的是4(第5行)，再调用SetItemState函数选中第2行，
+//	然后调用GetSelectionMark函数得到的还是4(第5行)，所以，需要在设置选中行高亮显示时，一般与SetSelectionMark函数连用：
+//	m_list.SetItemState(nIndex, LVIS_FOCUSED | LVIS_SELECTED,LVIS_FOCUSED | LVIS_SELECTED);   //选中行
+//	m_list.SetSelectionMark(nIndexs);
+//
+//	*/
+//
+//	return 0L;
+//}
