@@ -384,7 +384,7 @@ LRESULT CDlgScore::OnColumnClick(int/*idCtrl*/, LPNMHDR pnmh, BOOL&/*bHandled*/)
 	编译器不同,编码也不同,自己转一下就好了.不能凡事靠别人.回复
 	*/
 
-	SetRedraw(FALSE);
+	//SetRedraw(FALSE);
 
 	int selectCol = pNMListView->iSubItem;
 	int listRows, listColumns, i, j, n;
@@ -569,13 +569,13 @@ LRESULT CDlgScore::OnColumnClick(int/*idCtrl*/, LPNMHDR pnmh, BOOL&/*bHandled*/)
 	//for (j = 0; j < listRows; j++)
 	//	m_lcScore.SetItemText(j, 1, itos(j + 1));	//Set Number
 
-	SetRedraw(TRUE);
+	//SetRedraw(TRUE);
 	//CRect rect;
 	//::GetWindowRect(m_lcScore.m_hWnd, &rect);
 	//rect.top -= 8;
 	//InvalidateRect(rect);
 	//m_lcScore.Invalidate();
-	Invalidate();
+	//Invalidate();
 
 	//*pResult = 0;
 
