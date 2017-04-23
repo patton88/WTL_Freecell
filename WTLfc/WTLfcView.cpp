@@ -1175,11 +1175,11 @@ void CWTLfcView::OnLButtonDown(UINT nFlags, CPoint point)
 				//CBrush hBr = TYPE(card) % 2 == 0 ? brBlk : brRed;
 				hBr = TYPE(card) % 2 == 0 ? brBlk : brRed;
 
-				cdc.FrameRect(r, hBr);
+				cdc.FrameRect(r, hBr);	// -V760
 				r.InflateRect(-1, -1);
-				cdc.FrameRect(r, hBr);
+				cdc.FrameRect(r, hBr);	// -V760
 				r.InflateRect(-1, -1);
-				cdc.FrameRect(r, hBr);
+				cdc.FrameRect(r, hBr);	// -V760
 
 				++p;
 			}
@@ -1432,16 +1432,16 @@ LRESULT CWTLfcView::OnHelpNextstep(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hW
 	//CJLView *pView = GetView();
 	CClientDC cdc(g_pView->m_hWnd);
 	//提示过程就是闪烁源列和目列的牌
-	cdc.InvertRect(sR); cdc.InvertRect(dR);//反色
+	cdc.InvertRect(sR); cdc.InvertRect(dR);	//-V761	//反色
 	SendMessage(g_pView->m_hWnd, WM_PAINT, 0, 0);
 	::Sleep(200);
-	cdc.InvertRect(sR); cdc.InvertRect(dR);//还原
+	cdc.InvertRect(sR); cdc.InvertRect(dR);	//还原
 	SendMessage(g_pView->m_hWnd, WM_PAINT, 0, 0);
 	::Sleep(200);
-	cdc.InvertRect(sR); cdc.InvertRect(dR);//反色
+	cdc.InvertRect(sR); cdc.InvertRect(dR);	//反色
 	SendMessage(g_pView->m_hWnd, WM_PAINT, 0, 0);
 	::Sleep(200);
-	cdc.InvertRect(sR); cdc.InvertRect(dR);//还原
+	cdc.InvertRect(sR); cdc.InvertRect(dR);	//还原
 
 	return 0;
 }
@@ -1621,6 +1621,10 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 
 	// Loading
 	FILE* pFile2 = _wfopen(fd.m_szFileName, L"rb");		// 改用C语言的文件访问方式实现串行化
+	if (NULL == pFile2)
+	{
+		return 0;
+	}
 
 	/////////////////////////////////////////////////////////////////
 	//考虑存档文件有可能是一个不完整的自定义牌局
