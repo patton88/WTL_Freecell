@@ -110,7 +110,7 @@ public:
 			int n;	ar >> n;		m_tList.resize(n);
 		}
 
-		for (list<T>::iterator it = m_tList.begin(); it != m_tList.end(); it++)
+		for (list<T>::iterator it = m_tList.begin(); it != m_tList.end(); ++it)
 			(*it).Serialize(ar);
 	}
 };
@@ -135,7 +135,7 @@ public:
 	{
 		list<T>::iterator it = xList.begin();
 		for (unsigned i = 0; i < n; i++)
-			it++;
+			++it;
 
 		return &(*it);
 	}

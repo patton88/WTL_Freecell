@@ -115,7 +115,7 @@ public:
 	{
 		list<T>::iterator it = xList.begin();
 		for (unsigned i = 0; i < n; i++)
-			it++;
+			++it;
 
 		return &(*it);
 	}

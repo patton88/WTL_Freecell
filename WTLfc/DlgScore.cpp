@@ -125,7 +125,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	for (list<CScore>::iterator it = m_score.m_tList.begin(); ; i++)
 	{
 		// m_score.m_tList.begin()存放的最后一局还没有解，所以状态不必显示
-		it++;	//	必须放在这里，否则运行报错终止。跳过 m_score.m_tList.begin()
+		++it;	//	必须放在这里，否则运行报错终止。跳过 m_score.m_tList.begin()
 		if (m_score.m_tList.end() == it)
 			break;
 
@@ -304,7 +304,7 @@ bool CDlgScore::IsOldGameNumber(int gameNum)
 	//for(POSITION pos = m_score.GetHeadPosition(); pos != NULL; )
 	//	if(gameNum == ((CScore*)m_score.GetNext(pos))->gameNumber)
 	//		return true;
-	for (list<CScore>::iterator it = m_score.m_tList.begin(); it != m_score.m_tList.end(); it++)
+	for (list<CScore>::iterator it = m_score.m_tList.begin(); it != m_score.m_tList.end(); ++it)
 	{
 		if (gameNum == (*it).gameNumber)
 			return true;

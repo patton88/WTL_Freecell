@@ -438,7 +438,7 @@ LPTSTR CXArchive::ReadString(LPTSTR lpsz, UINT nMax)
 
 BOOL CXArchive::ReadString(WTL::CString& rString)
 {
-	rString = L"";    // empty wstring without deallocating
+	rString.Empty();    // empty wstring without deallocating
 	const int nMaxSize = 128;
 	LPTSTR lpsz = rString.GetBuffer(nMaxSize);
 	LPTSTR lpszResult;

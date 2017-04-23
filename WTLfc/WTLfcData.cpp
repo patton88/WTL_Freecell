@@ -516,7 +516,7 @@ void CWTLfcData::Undo()
 	//list<CMyObject*>* pOps = pOpsLast->m_pObjlist;
 	list<COperation>& ops = OpsLast.m_opList.m_tList;
 
-	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); it++)
+	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); ++it)
 	{
 		COperation& op = *it;
 		MoveCards(op.src, op.des, op.cnt);
@@ -560,7 +560,7 @@ void CWTLfcData::BackHome()
 		list<COperation>& Ops = pOpsLast->m_opList.m_tList;
 
 		list<COperation>::iterator it = Ops.begin();
-		for (; it != Ops.end(); it++)
+		for (; it != Ops.end(); ++it)
 		{
 			COperation& op = *it;
 			MoveCards(op.src, op.des, op.cnt);
@@ -1611,7 +1611,7 @@ void CWTLfcData::StartGame(int gameNumber)
 
 void CWTLfcData::wtlSetTitle(WTL::CString strTitle)
 {
-	if (L"" == strTitle)
+	if (strTitle.IsEmpty())
 	{
 		strTitle.Format(TEXT("%d"), m_nCurGameNumber);		//设置窗框标题为当前牌局代号
 		//title.TrimLeft();

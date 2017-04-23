@@ -80,7 +80,7 @@ CDGWnd::~CDGWnd()
 LRESULT CDGWnd::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 //void CDGWnd::OnPaint()
 {
-	CRect wr, cr;
+	CRect cr;
 	GetClientRect(cr);
 	g_fcCcs.SetCardSize(cr.Width());		// 放到这里，g_pView->GetClientRect(wr)数值是准确的
 
@@ -288,7 +288,7 @@ CRect CDGWnd::RectOf(UINT pos)
 		ATLASSERT(col <= 8 && col >= 1 && idx >= 1);
 		ATLASSERT(col <= 4 && idx <= 7 || col >= 4 && idx <= 6);
 
-		CPoint p(0, hei * 5);
+		//CPoint p(0, hei * 5);
 		int inter = (cr.Width() - 8 * g_fcCcs.CARD_WID) / 9;
 		int x = (col - 1) * (inter + g_fcCcs.CARD_WID) + inter;
 		int y = (4 + idx) * hei;

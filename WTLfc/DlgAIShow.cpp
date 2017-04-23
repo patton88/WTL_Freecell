@@ -118,7 +118,7 @@ LRESULT CDlgAIShow::OnNext(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	list<COperation>& ops = pOpsCur->m_opList.m_tList;
 	for (list<COperation>::iterator it = ops.end(); it != ops.begin();)
 	{
-		it--;
+		--it;
 		COperation & op = *it;
 		g_fcData.MoveCards(op.des, op.src, op.cnt);
 	}
@@ -178,7 +178,7 @@ LRESULT CDlgAIShow::OnPrev(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	//}
 
 	list<COperation>& ops = pOpsCur->m_opList.m_tList;
-	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); it++)
+	for (list<COperation>::iterator it = ops.begin(); it != ops.end(); ++it)
 	{
 		COperation& op = *it;
 		g_fcData.MoveCards(op.src, op.des, op.cnt);
@@ -307,7 +307,7 @@ void CDlgAIShow::OnTimer(UINT uTimerID)
 		//COperation *pOp = (COperation*)pOps->GetPrev(pos);
 		//COperation *pOp = (COperation*)g_fcData.getAt(g_fcData.m_pOps, m_pCurPos);
 		list<COperation>::iterator it = ops.end();
-		it--;
+		--it;
 		COperation& op = *it;
 
 		//对将要移动的牌进行反色，明确提示玩家下一步的动作

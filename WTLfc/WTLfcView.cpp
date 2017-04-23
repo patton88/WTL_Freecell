@@ -476,7 +476,7 @@ void CWTLfcView::AdjustFrameToFixedSize()
 		m_nFirst = 1;
 }
 
-BOOL CWTLfcView::MyCenterWindow(CRect rcDlg)
+BOOL CWTLfcView::MyCenterWindow(const CRect &rcDlg)
 {
 	CRect rcArea;
 	CRect rcScreen;
@@ -638,7 +638,7 @@ CBitmap* CWTLfcView::replaceColor(CBitmap *pBmpBefore, COLORREF res, COLORREF ai
 	CBitmap bmpMask;
 	BITMAP bitmap;
 	pBmpBefore->GetBitmap(&bitmap);
-	CRect rect(0, 0, bitmap.bmWidth, bitmap.bmHeight);
+	//CRect rect(0, 0, bitmap.bmWidth, bitmap.bmHeight);
 	//创建适配的遮罩层图像,设备,并装入
 	bmpMask.CreateBitmap(bitmap.bmWidth, bitmap.bmHeight, 1, 1, NULL);
 	dcMask.CreateCompatibleDC(*dc);
