@@ -40,7 +40,7 @@
 //	return FALSE;
 //}
 
-CDGWnd::CDGWnd()
+CDGWnd::CDGWnd()		// -V730
 {
 	Init();
 }

@@ -459,7 +459,7 @@ BOOL CXArchive::ReadString(WTL::CString& rString)
 	}
 
 	// Remove '\n' from end of wstring if present
-	lpsz = rString.GetBuffer(0);
+	lpsz = rString.GetBuffer(0);		//-V575
 	nLen = rString.GetLength();
 	if (nLen != 0 && lpsz[nLen-1] == '\n')
 		rString.GetBufferSetLength(nLen-1);

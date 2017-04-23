@@ -41,7 +41,7 @@ public:
 	//                         : CFileDialogImpl<CDlgColorDialog>(bOpenFileDialog, lpszDefExt, lpszFileName, dwFlags, lpszFilter, hWndParent){ }
 
 	CDlgColorDialog(COLORREF clrInit = 0, DWORD dwFlags = 0, HWND hWndParent = NULL)
-		: CColorDialogImpl<CDlgColorDialog>(clrInit, dwFlags, hWndParent)
+		: CColorDialogImpl<CDlgColorDialog>(clrInit, dwFlags, hWndParent), m_bMsgHandled(FALSE)
 	{ }
 
 	// Maps

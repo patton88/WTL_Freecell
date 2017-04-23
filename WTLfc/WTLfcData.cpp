@@ -937,7 +937,7 @@ bool CWTLfcData::CombimeCol(UINT col)
 #endif
 		goto doAI;
 	}
-	return false;
+	// return false;
 doAI:	//有牌可以移动哦
 MoveCards(desCol, srcCol, cntCards);//移动
 //Record(new COperations(desCol, srcCol, cntCards));//记录移动动作

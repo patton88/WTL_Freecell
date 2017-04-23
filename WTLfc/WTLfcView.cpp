@@ -18,7 +18,7 @@ BOOL CWTLfcView::PreTranslateMessage(MSG* pMsg)
 	return FALSE;
 }
 
-CWTLfcView::CWTLfcView()
+CWTLfcView::CWTLfcView() : m_bMsgHandled(FALSE)
 {
 	g_pView = this;
 	//m_bDisableOnSize = false;

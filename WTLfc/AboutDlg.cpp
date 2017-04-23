@@ -7,7 +7,7 @@
 
 #include "aboutdlg.h"
 
-CAboutDlg::CAboutDlg(COLORREF clrText)
+CAboutDlg::CAboutDlg(COLORREF clrText) : m_bMsgHandled(FALSE)
 {
 	//Ä¬ÈÏÑÕÉ«
 	//m_brushBkgnd.CreateSolidBrush(::GetSysColor(COLOR_BTNFACE));

@@ -23,7 +23,7 @@
 
 //CDlgDefGame::CDlgDefGame(CWnd* pParent /*=NULL*/)
 //	: CDialog(CDlgDefGame::IDD, pParent)
-CDlgDefGame::CDlgDefGame()
+CDlgDefGame::CDlgDefGame() : m_bMsgHandled(FALSE)
 {
 	//{{AFX_DATA_INIT(CDlgDefGame)
 		// NOTE: the ClassWizard will add member initialization here

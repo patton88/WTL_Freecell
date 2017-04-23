@@ -23,7 +23,7 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 
 	CMainFrame wndMain;
 
-	g_pMain = &wndMain;
+	g_pMain = &wndMain;	// -V506
 
 	if(wndMain.CreateEx() == NULL)
 	{

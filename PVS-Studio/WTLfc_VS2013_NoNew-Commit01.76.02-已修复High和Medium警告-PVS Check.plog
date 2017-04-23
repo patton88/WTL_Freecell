@@ -1,0 +1,4697 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Solution_Path">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SolutionPath" type="xs:string" minOccurs="0" />
+                <xs:element name="SolutionVersion" type="xs:string" minOccurs="0" />
+                <xs:element name="PlogVersion" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ModificationDate" msdata:DateTimeMode="Utc" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PVS-Studio_Analysis_Log">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FavIcon" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Level" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="DefaultOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="ErrorCode" type="xs:string" minOccurs="0" />
+                <xs:element name="Message" type="xs:string" />
+                <xs:element name="Project" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortFile" type="xs:string" minOccurs="0" />
+                <xs:element name="Line" type="xs:int" />
+                <xs:element name="FalseAlarm" type="xs:boolean" minOccurs="0" />
+                <xs:element name="File" type="xs:string" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="TrialMessage" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Analyzer" type="xs:int" minOccurs="0" />
+                <xs:element name="LineExtension" type="xs:string" minOccurs="0" />
+                <xs:element name="Retired" type="xs:boolean" default="false" minOccurs="0" />
+                <xs:element name="AnalyzedSourceFiles" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PVS-Studio_Analysis_Log" />
+        <xs:field xpath="Line" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="File" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Solution_Path>
+    <SolutionPath>G:\MyVC2017\WTLfc\WTLfc.sln</SolutionPath>
+    <SolutionVersion>15.0</SolutionVersion>
+    <PlogVersion>4</PlogVersion>
+    <ModificationDate>2017-04-23T13:21:58.1551091Z</ModificationDate>
+  </Solution_Path>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>1</DefaultOrder>
+    <ErrorCode>V126</ErrorCode>
+    <Message>Be advised that the size of the type 'long' varies between LLP64/LP64 data models.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>exception.h</ShortFile>
+    <Line>14</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\exception.h</File>
+    <CodePrev>5816</CodePrev>
+    <CodeCurrent>3215899245</CodeCurrent>
+    <CodeNext>1992011090</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>2</DefaultOrder>
+    <ErrorCode>V126</ErrorCode>
+    <Message>Be advised that the size of the type 'long' varies between LLP64/LP64 data models.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>exception.h</ShortFile>
+    <Line>18</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\exception.h</File>
+    <CodePrev>45270</CodePrev>
+    <CodeCurrent>1297942986</CodeCurrent>
+    <CodeNext>2878942812</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>3</DefaultOrder>
+    <ErrorCode>V126</ErrorCode>
+    <Message>Be advised that the size of the type 'long' varies between LLP64/LP64 data models.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>exception.h</ShortFile>
+    <Line>37</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\exception.h</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1475729240</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>4</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.h</ShortFile>
+    <Line>91</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.h</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>495913</CodeCurrent>
+    <CodeNext>93413261</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>5</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.h</ShortFile>
+    <Line>100</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.h</File>
+    <CodePrev>603105</CodePrev>
+    <CodeCurrent>3769683</CodeCurrent>
+    <CodeNext>3769703</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>6</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.h</ShortFile>
+    <Line>101</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.h</File>
+    <CodePrev>3769683</CodePrev>
+    <CodeCurrent>3769703</CodeCurrent>
+    <CodeNext>15078963</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>7</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.h</ShortFile>
+    <Line>102</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.h</File>
+    <CodePrev>3769703</CodePrev>
+    <CodeCurrent>15078963</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>8</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion first argument 'n' of function 'resize' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>datatype.h</ShortFile>
+    <Line>100</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\datatype.h</File>
+    <CodePrev>1245015</CodePrev>
+    <CodeCurrent>306398744</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>9</DefaultOrder>
+    <ErrorCode>V128</ErrorCode>
+    <Message>The 'm_tList.size()' variable of the memsize type is written to a stream. Consider verifying the compatibility of 32 and 64 bit versions of the application in the context of a stored data.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>datatype.h</ShortFile>
+    <Line>106</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\datatype.h</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>22459553</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>10</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion first argument 'n' of function 'resize' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>datatype.h</ShortFile>
+    <Line>110</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\datatype.h</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>4229538629</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>11</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>datatype.h</ShortFile>
+    <Line>113</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\datatype.h</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>4264189153</CodeCurrent>
+    <CodeNext>23039113</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>12</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>datatype.h</ShortFile>
+    <Line>138</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\datatype.h</File>
+    <CodePrev>649998699</CodePrev>
+    <CodeCurrent>1521</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>13</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>datatype.h</ShortFile>
+    <Line>447</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\datatype.h</File>
+    <CodePrev>2815870074</CodePrev>
+    <CodeCurrent>2650125491</CodeCurrent>
+    <CodeNext>3361073633</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>14</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (int) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.h</ShortFile>
+    <Line>131</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.h</File>
+    <CodePrev>25589698</CodePrev>
+    <CodeCurrent>2194957056</CodeCurrent>
+    <CodeNext>522049</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>15</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.h</ShortFile>
+    <Line>118</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.h</File>
+    <CodePrev>649998699</CodePrev>
+    <CodeCurrent>1521</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>16</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.h</ShortFile>
+    <Line>31</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.h</File>
+    <CodePrev>453386187</CodePrev>
+    <CodeCurrent>3324344149</CodeCurrent>
+    <CodeNext>746118249</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>17</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.h</ShortFile>
+    <Line>32</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.h</File>
+    <CodePrev>3324344149</CodePrev>
+    <CodeCurrent>746118249</CodeCurrent>
+    <CodeNext>2194077466</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>18</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.h</ShortFile>
+    <Line>33</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.h</File>
+    <CodePrev>746118249</CodePrev>
+    <CodeCurrent>2194077466</CodeCurrent>
+    <CodeNext>2181577076</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>19</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.h</ShortFile>
+    <Line>34</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.h</File>
+    <CodePrev>2194077466</CodePrev>
+    <CodeCurrent>2181577076</CodeCurrent>
+    <CodeNext>276311145</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>20</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.h</ShortFile>
+    <Line>35</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.h</File>
+    <CodePrev>2181577076</CodePrev>
+    <CodeCurrent>276311145</CodeCurrent>
+    <CodeNext>2164706074</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>21</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.h</ShortFile>
+    <Line>36</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.h</File>
+    <CodePrev>276311145</CodePrev>
+    <CodeCurrent>2164706074</CodeCurrent>
+    <CodeNext>1815423384</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>22</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.h</ShortFile>
+    <Line>100</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.h</File>
+    <CodePrev>342433721</CodePrev>
+    <CodeCurrent>1837635</CodeCurrent>
+    <CodeNext>474771</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>23</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.h</ShortFile>
+    <Line>101</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.h</File>
+    <CodePrev>1837635</CodePrev>
+    <CodeCurrent>474771</CodeCurrent>
+    <CodeNext>7499093</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>24</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...[3][0][1] = 4 * big;...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>cardsize.cpp</ShortFile>
+    <Line>52</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp</File>
+    <CodePrev>3112898748</CodePrev>
+    <CodeCurrent>3112407488</CodeCurrent>
+    <CodeNext>3112341888</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>25</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...[3][1][1] = 4 * big;...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>cardsize.cpp</ShortFile>
+    <Line>53</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp</File>
+    <CodePrev>3112407488</CodePrev>
+    <CodeCurrent>3112341888</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>26</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...CARD_HEI *  4 /  5;.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>cardsize.cpp</ShortFile>
+    <Line>72</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp</File>
+    <CodePrev>7207093</CodePrev>
+    <CodeCurrent>7239821</CodeCurrent>
+    <CodeNext>28012887</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>27</DefaultOrder>
+    <ErrorCode>V730</ErrorCode>
+    <Message>Not all members of a class are initialized inside the constructor. Consider inspecting: m_pFile, m_bDirectBuffer, m_bBlocking, m_nMode, m_bUserBuf, m_nBufSize, ...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.h</ShortFile>
+    <Line>86</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.h</File>
+    <CodePrev>3217683427</CodePrev>
+    <CodeCurrent>1482866178</CodeCurrent>
+    <CodeNext>3496131399</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\cardsize.cpp*g:\myvc2017\wtlfc\wtlfc\aboutdlg.cpp*g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\dlgcolordialog.cpp*g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\dlgpassed.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>28</DefaultOrder>
+    <ErrorCode>V004</ErrorCode>
+    <Message>Diagnostics from the 64-bit rule set are not entirely accurate without the appropriate 64-bit compiler. Consider utilizing 64-bit compiler if possible.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile xml:space="preserve"> </ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File xml:space="preserve"> </File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>0</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>29</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.h</ShortFile>
+    <Line>27</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.h</File>
+    <CodePrev>133809617</CodePrev>
+    <CodeCurrent>746118249</CodeCurrent>
+    <CodeNext>3324344149</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>30</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT) wParam</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.h</ShortFile>
+    <Line>28</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.h</File>
+    <CodePrev>746118249</CodePrev>
+    <CodeCurrent>3324344149</CodeCurrent>
+    <CodeNext>1641375241</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\dgview.cpp*g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp*g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>31</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: UINT m = (i &lt;= 4 ? 7 : 6);.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>125</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>80505517</CodePrev>
+    <CodeCurrent>7331953</CodeCurrent>
+    <CodeNext>165550557</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>32</DefaultOrder>
+    <ErrorCode>V808</ErrorCode>
+    <Message>'wr' object of 'CRect' type was created but was not utilized.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>83</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>125043</CodeCurrent>
+    <CodeNext>13164281</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>33</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: UINT x = i &lt;= 4 ? 7 : 6;...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>258</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>80505517</CodePrev>
+    <CodeCurrent>116594128</CodeCurrent>
+    <CodeNext>165551261</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>34</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...HEI) / (6 + 4 + 1);.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>275</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>75611249</CodePrev>
+    <CodeCurrent>3410654018</CodeCurrent>
+    <CodeNext>87435296</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>35</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...SERT(col &lt;= 4 &amp;&amp; idx &lt;= 7...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>289</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>3578218185</CodePrev>
+    <CodeCurrent>1926610636</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>36</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: int y = (4 + idx) * hei;.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>294</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>382916850</CodePrev>
+    <CodeCurrent>5142205</CodeCurrent>
+    <CodeNext>62212</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>37</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: y + ((col &lt;= 4 &amp;&amp; idx == 7...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>299</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>32350536</CodePrev>
+    <CodeCurrent>2005743294</CodeCurrent>
+    <CodeNext>105</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>38</DefaultOrder>
+    <ErrorCode>V808</ErrorCode>
+    <Message>'p' object of 'CPoint' type was created but was not utilized.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>291</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>7931869</CodeCurrent>
+    <CodeNext>3770425894</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>39</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...SERT(col &lt;= 4 &amp;&amp; idx &lt;= 7...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>315</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>3578218185</CodePrev>
+    <CodeCurrent>1926610636</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>40</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: if (col &lt;= 4) {.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>317</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>91409</CodeCurrent>
+    <CodeNext>1732991334</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>41</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...SERT(col &lt;= 4 &amp;&amp; idx &lt;= 7...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>338</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>3578218185</CodePrev>
+    <CodeCurrent>1926610636</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>42</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: if (col &lt;= 4) {.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>340</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>91409</CodeCurrent>
+    <CodeNext>3308935911</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>43</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>387</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2280070578</CodeCurrent>
+    <CodeNext>1123655308</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>44</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: cols[k].pAddr[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>431</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>3164763544</CodePrev>
+    <CodeCurrent>172384733</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>45</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>467</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2280070578</CodeCurrent>
+    <CodeNext>1123655308</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>46</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>526</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>2491275209</CodePrev>
+    <CodeCurrent>3048518828</CodeCurrent>
+    <CodeNext>969102889</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>47</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: cols[k].pAddr[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>532</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>3164763544</CodePrev>
+    <CodeCurrent>173171165</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>48</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...= 0; col &lt; 4; col++)...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>534</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1329623794</CodeCurrent>
+    <CodeNext>1286797619</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>49</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: for (int col = 4; col &lt; 8; c...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>537</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>4209555102</CodePrev>
+    <CodeCurrent>1313631230</CodeCurrent>
+    <CodeNext>1286797747</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>50</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...28 + (col - 4) * 6 + idx]...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>539</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>1286797747</CodePrev>
+    <CodeCurrent>3773432517</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>51</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>573</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>34691431</CodePrev>
+    <CodeCurrent>260564834</CodeCurrent>
+    <CodeNext>145483965</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>52</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: cols[k].pAddr[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>581</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>3164763544</CodePrev>
+    <CodeCurrent>18450231</CodeCurrent>
+    <CodeNext>54314</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>53</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>588</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>82785517</CodePrev>
+    <CodeCurrent>771825509</CodeCurrent>
+    <CodeNext>557875149</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>54</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>595</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>40252589</CodePrev>
+    <CodeCurrent>771825509</CodeCurrent>
+    <CodeNext>167829468</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>55</DefaultOrder>
+    <ErrorCode>V730</ErrorCode>
+    <Message>It is possible that not all members of a class are initialized inside the constructor. Consider inspecting: m_bMsgHandled, m_nCurGameNumber, m_iCards, m_iBuffer, m_iRecycle.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dgview.cpp</ShortFile>
+    <Line>43</Line>
+    <FalseAlarm>true</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dgview.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>532728394</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>56</DefaultOrder>
+    <ErrorCode>V107</ErrorCode>
+    <Message>Implicit type conversion first argument '(UINT_PTR) wParam' of function 'OnTimer' to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaical.h</ShortFile>
+    <Line>27</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaical.h</File>
+    <CodePrev>592745</CodePrev>
+    <CodeCurrent>125932065</CodeCurrent>
+    <CodeNext>522049</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>57</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaical.h</ShortFile>
+    <Line>53</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaical.h</File>
+    <CodePrev>1294500991</CodePrev>
+    <CodeCurrent>30467199</CodeCurrent>
+    <CodeNext>1156265</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp*g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>58</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaical.cpp</ShortFile>
+    <Line>83</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaical.cpp</File>
+    <CodePrev>3432442772</CodePrev>
+    <CodeCurrent>1931869891</CodeCurrent>
+    <CodeNext>1817595336</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>59</DefaultOrder>
+    <ErrorCode>V107</ErrorCode>
+    <Message>Implicit type conversion first argument '(UINT_PTR) wParam' of function 'OnTimer' to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.h</ShortFile>
+    <Line>53</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.h</File>
+    <CodePrev>592745</CodePrev>
+    <CodeCurrent>125932065</CodeCurrent>
+    <CodeNext>522049</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp*g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>60</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>100</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>1901050747</CodePrev>
+    <CodeCurrent>1932479043</CodeCurrent>
+    <CodeNext>11858041</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>61</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of decrement. Replace iterator-- with --iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>121</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1509</CodeCurrent>
+    <CodeNext>14852407</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>62</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>181</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>2347452908</CodePrev>
+    <CodeCurrent>1501555103</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>63</DefaultOrder>
+    <ErrorCode>V576</ErrorCode>
+    <Message>Incorrect format. Consider checking the second actual argument of the 'Format' function. The SIGNED integer type argument is expected.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>224</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>220270589</CodePrev>
+    <CodeCurrent>2953240377</CodeCurrent>
+    <CodeNext>42934</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>64</DefaultOrder>
+    <ErrorCode>V576</ErrorCode>
+    <Message>Incorrect format. Consider checking the third actual argument of the 'Format' function. The SIGNED integer type argument is expected.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>224</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>220270589</CodePrev>
+    <CodeCurrent>2953240377</CodeCurrent>
+    <CodeNext>42934</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>65</DefaultOrder>
+    <ErrorCode>V111</ErrorCode>
+    <Message>Call of function 'Format' with variable number of arguments. Third argument has memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>224</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>220270589</CodePrev>
+    <CodeCurrent>2953240377</CodeCurrent>
+    <CodeNext>42934</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>66</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'm_pCurPos' to memsize type in an arithmetic expression.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>245</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>3847</CodePrev>
+    <CodeCurrent>1505325716</CodeCurrent>
+    <CodeNext>11235</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>67</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'm_pCurPos' to memsize type in an arithmetic expression.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>285</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>2762905056</CodePrev>
+    <CodeCurrent>3859878889</CodeCurrent>
+    <CodeNext>90108121</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>68</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>295</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>2762905056</CodePrev>
+    <CodeCurrent>1931869891</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>69</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of decrement. Replace iterator-- with --iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgaishow.cpp</ShortFile>
+    <Line>310</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgaishow.cpp</File>
+    <CodePrev>3066807051</CodePrev>
+    <CodeCurrent>1509</CodeCurrent>
+    <CodeNext>14852407</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>70</DefaultOrder>
+    <ErrorCode>V524</ErrorCode>
+    <Message>It is odd that the body of 'OnOKCmd' function is fully equivalent to the body of 'OnCloseCmd' function.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgdefgame.cpp</ShortFile>
+    <Line>199</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgdefgame.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3811736113</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>193,199</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>71</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 2147483647 used: ...eNumber, 1, 2147483647).</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgselgame.h</ShortFile>
+    <Line>37</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgselgame.h</File>
+    <CodePrev>4157717764</CodePrev>
+    <CodeCurrent>389517862</CodeCurrent>
+    <CodeNext>520705</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles>g:\myvc2017\wtlfc\wtlfc\dlgselgame.cpp*g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</AnalyzedSourceFiles>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>72</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...nsertColumn(4, TEXT("耗时...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>98</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>1522130362</CodePrev>
+    <CodeCurrent>3680106976</CodeCurrent>
+    <CodeNext>3680068800</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>73</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>119</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>4903</CodePrev>
+    <CodeCurrent>3325473925</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>74</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>128</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>3765223618</CodePrev>
+    <CodeCurrent>4179009091</CodeCurrent>
+    <CodeNext>2914357880</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>75</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...ItemText(i, 4, s);.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>163</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>3111</CodePrev>
+    <CodeCurrent>803358784</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>76</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ....InsertItem(4, TEXT("放弃...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>194</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>3686768124</CodePrev>
+    <CodeCurrent>3080981854</CodeCurrent>
+    <CodeNext>3082547294</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>77</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...SetItemText(4, 1, s);.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>220</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>3582971990</CodePrev>
+    <CodeCurrent>3229769479</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>78</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>284</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>32360615</CodePrev>
+    <CodeCurrent>1931795547</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>79</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>307</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>184373</CodePrev>
+    <CodeCurrent>2620980712</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>80</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>399</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>3044188471</CodePrev>
+    <CodeCurrent>4210601161</CodeCurrent>
+    <CodeNext>3086727206</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>81</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: dbStrA != dbStrB. It's probably better to use a comparison with defined precision: fabs(A - B) &gt; Epsilon.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>434</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>3990352863</CodePrev>
+    <CodeCurrent>3603460226</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>82</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: dbStrA != 0. It's probably better to use a comparison with defined precision: fabs(A - B) &gt; Epsilon.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>434</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>3990352863</CodePrev>
+    <CodeCurrent>3603460226</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>83</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: dbStrB != 0. It's probably better to use a comparison with defined precision: fabs(A - B) &gt; Epsilon.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>434</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>3990352863</CodePrev>
+    <CodeCurrent>3603460226</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>84</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: dbStrA != dbStrB. It's probably better to use a comparison with defined precision: fabs(A - B) &gt; Epsilon.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>509</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3471536632</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>85</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: dbStrA != 0. It's probably better to use a comparison with defined precision: fabs(A - B) &gt; Epsilon.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>509</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3471536632</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>86</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: dbStrB != 0. It's probably better to use a comparison with defined precision: fabs(A - B) &gt; Epsilon.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>509</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3471536632</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>87</DefaultOrder>
+    <ErrorCode>V730</ErrorCode>
+    <Message>Not all members of a class are initialized inside the constructor. Consider inspecting: m_dScale, m_nInterval, m_sortstyl, m_selectCol, m_bMsgHandled.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>dlgscore.cpp</ShortFile>
+    <Line>25</Line>
+    <FalseAlarm>true</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\dlgscore.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>512481357</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>88</DefaultOrder>
+    <ErrorCode>V506</ErrorCode>
+    <Message>Pointer to local variable 'wndMain' is stored outside the scope of this variable. Such a pointer will become invalid.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfc.cpp</ShortFile>
+    <Line>26</Line>
+    <FalseAlarm>true</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfc.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>752550722</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>89</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: UINT(time(0))</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>30</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>747724933</CodeCurrent>
+    <CodeNext>2825923281</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>90</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>77</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>1282448297</CodePrev>
+    <CodeCurrent>2852751182</CodeCurrent>
+    <CodeNext>1793718</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>91</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>93</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>1674909931</CodePrev>
+    <CodeCurrent>2852771662</CodeCurrent>
+    <CodeNext>39303074</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>92</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>101</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>1282452137</CodePrev>
+    <CodeCurrent>1845567409</CodeCurrent>
+    <CodeNext>1838622</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>93</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>118</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>1674935019</CodePrev>
+    <CodeCurrent>1845579697</CodeCurrent>
+    <CodeNext>39290786</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>94</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'n' to memsize type in an arithmetic expression: pSrc + 1 - n</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>124</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3398307397</CodeCurrent>
+    <CodeNext>82780845</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>95</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>179</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>34691431</CodePrev>
+    <CodeCurrent>260564834</CodeCurrent>
+    <CodeNext>145483965</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>96</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: cols[k].pAddr[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>187</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>3164763544</CodePrev>
+    <CodeCurrent>18450231</CodeCurrent>
+    <CodeNext>123680043</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>97</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>194</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>40252653</CodePrev>
+    <CodeCurrent>771825509</CodeCurrent>
+    <CodeNext>279204813</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>98</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>201</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>40252589</CodePrev>
+    <CodeCurrent>771825509</CodeCurrent>
+    <CodeNext>2233581533</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>99</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion sixth argument 'cardSrc' of function 'LineDDA' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>341</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>3920400668</CodePrev>
+    <CodeCurrent>1062078892</CodeCurrent>
+    <CodeNext>3711602582</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>100</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>381</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>1282449705</CodePrev>
+    <CodeCurrent>2651424587</CodeCurrent>
+    <CodeNext>57769548</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>101</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>444</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>141599012</CodePrev>
+    <CodeCurrent>1695123279</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>102</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>451</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>1138060673</CodePrev>
+    <CodeCurrent>1695143759</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>103</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>519</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1501555103</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>104</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>554</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2099623300</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>105</DefaultOrder>
+    <ErrorCode>V803</ErrorCode>
+    <Message>Decreased performance. In case 'it' is iterator it's more effective to use prefix form of increment. Replace iterator++ with ++iterator.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>563</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>3677227779</CodePrev>
+    <CodeCurrent>615592131</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>106</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: org.x += 4 * g_fcCcs.C...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>611</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>1101</CodePrev>
+    <CodeCurrent>2240348381</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>107</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>634</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>402025399</CodePrev>
+    <CodeCurrent>3560293</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>108</DefaultOrder>
+    <ErrorCode>V636</ErrorCode>
+    <Message>The 'rInter.Width() * rInter.Height()' expression was implicitly cast from 'int' type to 'double' type. Consider utilizing an explicit type cast to avoid overflow. An example: double A = (double)(X) * Y;.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>662</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>38959249</CodePrev>
+    <CodeCurrent>3819818751</CodeCurrent>
+    <CodeNext>1423966</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>109</DefaultOrder>
+    <ErrorCode>V636</ErrorCode>
+    <Message>The 'R.Width() * R.Height()' expression was implicitly cast from 'int' type to 'double' type. Consider utilizing an explicit type cast to avoid overflow. An example: double A = (double)(X) * Y;.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>678</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>828396595</CodePrev>
+    <CodeCurrent>2205564223</CodeCurrent>
+    <CodeNext>2986826512</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>110</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>691</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>141599012</CodePrev>
+    <CodeCurrent>11319729</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>111</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: pTop[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>699</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>1138060673</CodePrev>
+    <CodeCurrent>11319729</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>112</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ....stepFont * 4 / 3;.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1239</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3193591285</CodeCurrent>
+    <CodeNext>4171657805</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>113</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...[8 + 1], rc[4 + 1], *p, i;.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1385</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1157651513</CodeCurrent>
+    <CodeNext>4143904099</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>114</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...b[8 + 1], r[4 + 1];.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1437</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>3015366</CodePrev>
+    <CodeCurrent>9085117</CodeCurrent>
+    <CodeNext>783605</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>115</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'pTop[19]' to memsize type in an arithmetic expression: pTop + pTop[19]</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1444</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>213966019</CodePrev>
+    <CodeCurrent>1689189199</CodeCurrent>
+    <CodeNext>10857873</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>116</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nSeri' to memsize type in an arithmetic expression: pTop + pTop[19] - 1 - nSeri</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1444</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>213966019</CodePrev>
+    <CodeCurrent>1689189199</CodeCurrent>
+    <CodeNext>10857873</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>117</DefaultOrder>
+    <ErrorCode>V127</ErrorCode>
+    <Message>An overflow of the 32-bit 'nAct' variable is possible inside a long cycle which utilizes a memsize-type loop counter.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1449</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>17683</CodePrev>
+    <CodeCurrent>8305350</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension>1445,1449</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>118</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: r[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1500</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>14213529</CodePrev>
+    <CodeCurrent>1816103302</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>119</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: r[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1502</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>730890847</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>120</DefaultOrder>
+    <ErrorCode>V815</ErrorCode>
+    <Message>Decreased performance. Consider replacing the expression 'strTitle == L""' with 'strTitle.IsEmpty()'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1614</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>5924195</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>121</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1644</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>260564834</CodeCurrent>
+    <CodeNext>145483965</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>122</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: cols[k].pAddr[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1656</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>3164763544</CodePrev>
+    <CodeCurrent>89022941</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>123</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: cols[k].pAddr[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>1667</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>3164763544</CodePrev>
+    <CodeCurrent>88236509</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>124</DefaultOrder>
+    <ErrorCode>V730</ErrorCode>
+    <Message>It is possible that not all members of a class are initialized inside the constructor. Consider inspecting: m_iCards, m_iBuffer, m_iRecycle.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcdata.cpp</ShortFile>
+    <Line>23</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcdata.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>946874125</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>125</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion second argument 'nBytes' of function 'IsBadWritePtr' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>17</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>46907</CodePrev>
+    <CodeCurrent>3046715768</CodeCurrent>
+    <CodeNext>539</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>126</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion second argument 'nBytes' of function 'IsBadReadPtr' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>19</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>539</CodePrev>
+    <CodeCurrent>3673993575</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>127</DefaultOrder>
+    <ErrorCode>V121</ErrorCode>
+    <Message>Implicit conversion of the type of 'new' operator's argument to size_t type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>54</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>342445228</CodePrev>
+    <CodeCurrent>1630418788</CodeCurrent>
+    <CodeNext>5616141</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>128</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nBufSize' to memsize type in an arithmetic expression: m_lpBufStart + nBufSize</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>70</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1382817712</CodeCurrent>
+    <CodeNext>1375240406</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>129</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>85</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>718107117</CodeCurrent>
+    <CodeNext>2392631873</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>130</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>87</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2392631873</CodePrev>
+    <CodeCurrent>1253257310</CodeCurrent>
+    <CodeNext>2012412239</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>131</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>123</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1253260979</CodePrev>
+    <CodeCurrent>898308743</CodeCurrent>
+    <CodeNext>2453305583</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>132</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>125</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2453305583</CodePrev>
+    <CodeCurrent>3445795460</CodeCurrent>
+    <CodeNext>2850013603</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>133</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>131</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>14294503</CodePrev>
+    <CodeCurrent>1326788866</CodeCurrent>
+    <CodeNext>338868098</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>134</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nTemp' of function 'memcpy' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>132</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1326788866</CodePrev>
+    <CodeCurrent>338868098</CodeCurrent>
+    <CodeNext>10658823</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>135</DefaultOrder>
+    <ErrorCode>V102</ErrorCode>
+    <Message>Usage of non memsize type for pointer arithmetic.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>133</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>338868098</CodePrev>
+    <CodeCurrent>10658823</CodeCurrent>
+    <CodeNext>1307308551</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>136</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nTemp' to memsize type in an arithmetic expression: (BYTE *) lpBuf + nTemp</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>134</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>10658823</CodePrev>
+    <CodeCurrent>1307308551</CodeCurrent>
+    <CodeNext>2911495</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>137</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nLeft' of function 'fread' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>150</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2984854953</CodePrev>
+    <CodeCurrent>628734110</CodeCurrent>
+    <CodeNext>2614617913</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>138</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>150</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2984854953</CodePrev>
+    <CodeCurrent>628734110</CodeCurrent>
+    <CodeNext>2614617913</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>139</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nBytes' to memsize type in an arithmetic expression: (BYTE *) lpBuf + nBytes</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>151</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>628734110</CodePrev>
+    <CodeCurrent>2614617913</CodeCurrent>
+    <CodeNext>698169</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>140</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nLeft' of function 'fread' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>182</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1674714168</CodePrev>
+    <CodeCurrent>1209122795</CodeCurrent>
+    <CodeNext>76111161</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>141</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>182</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1674714168</CodePrev>
+    <CodeCurrent>1209122795</CodeCurrent>
+    <CodeNext>76111161</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>142</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nBytes' to memsize type in an arithmetic expression: lpTemp + nBytes</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>183</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1209122795</CodePrev>
+    <CodeCurrent>76111161</CodeCurrent>
+    <CodeNext>698169</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>143</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nRead' to memsize type in an arithmetic expression: m_lpBufStart + nRead</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>190</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>682604083</CodePrev>
+    <CodeCurrent>709722741</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>144</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nRead' to memsize type in an arithmetic expression.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>195</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>379389362</CodePrev>
+    <CodeCurrent>4070539808</CodeCurrent>
+    <CodeNext>682604083</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>145</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>200</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2675113122</CodePrev>
+    <CodeCurrent>1107636482</CodeCurrent>
+    <CodeNext>338868098</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>146</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nTemp' of function 'memcpy' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>201</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1107636482</CodePrev>
+    <CodeCurrent>338868098</CodeCurrent>
+    <CodeNext>10658823</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>147</DefaultOrder>
+    <ErrorCode>V102</ErrorCode>
+    <Message>Usage of non memsize type for pointer arithmetic.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>202</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>338868098</CodePrev>
+    <CodeCurrent>10658823</CodeCurrent>
+    <CodeNext>2911495</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>148</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>222</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1253260979</CodePrev>
+    <CodeCurrent>898308743</CodeCurrent>
+    <CodeNext>3930646890</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>149</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>224</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>3930646890</CodePrev>
+    <CodeCurrent>3445795460</CodeCurrent>
+    <CodeNext>3668410255</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>150</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>229</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>269982957</CodePrev>
+    <CodeCurrent>1114690818</CodeCurrent>
+    <CodeNext>447498114</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>151</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nTemp' of function 'memcpy' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>230</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1114690818</CodePrev>
+    <CodeCurrent>447498114</CodeCurrent>
+    <CodeNext>10658823</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>152</DefaultOrder>
+    <ErrorCode>V102</ErrorCode>
+    <Message>Usage of non memsize type for pointer arithmetic.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>231</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>447498114</CodePrev>
+    <CodeCurrent>10658823</CodeCurrent>
+    <CodeNext>1307308551</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>153</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nTemp' to memsize type in an arithmetic expression: (BYTE *) lpBuf + nTemp</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>232</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>10658823</CodePrev>
+    <CodeCurrent>1307308551</CodeCurrent>
+    <CodeNext>191751</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>154</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nTemp' of function 'fwrite' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>242</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2213775252</CodePrev>
+    <CodeCurrent>242938436</CodeCurrent>
+    <CodeNext>3918152007</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>155</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nTemp' to memsize type in an arithmetic expression: (BYTE *) lpBuf + nTemp</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>245</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1307308551</CodeCurrent>
+    <CodeNext>191751</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>156</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>252</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>564567072</CodePrev>
+    <CodeCurrent>2438838039</CodeCurrent>
+    <CodeNext>682604083</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>157</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nMax' of function 'memcpy' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>259</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1655696564</CodePrev>
+    <CodeCurrent>2371232408</CodeCurrent>
+    <CodeNext>5329575</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>158</DefaultOrder>
+    <ErrorCode>V102</ErrorCode>
+    <Message>Usage of non memsize type for pointer arithmetic.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>260</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2371232408</CodePrev>
+    <CodeCurrent>5329575</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>159</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>269</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1253260979</CodePrev>
+    <CodeCurrent>898308743</CodeCurrent>
+    <CodeNext>2392631873</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>160</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>271</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2392631873</CodePrev>
+    <CodeCurrent>3445795460</CodeCurrent>
+    <CodeNext>2012412239</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>161</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: int (m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>279</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1831987844</CodePrev>
+    <CodeCurrent>2773360123</CodeCurrent>
+    <CodeNext>368490956</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>162</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: ULONG(m_lpBufCur - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>290</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>960794362</CodePrev>
+    <CodeCurrent>3212863230</CodeCurrent>
+    <CodeNext>3918152007</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>163</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'ULONG(m_lpBufCur - m_lpBufStart)' of function 'fwrite' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>290</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>960794362</CodePrev>
+    <CodeCurrent>3212863230</CodeCurrent>
+    <CodeNext>3918152007</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>164</DefaultOrder>
+    <ErrorCode>V220</ErrorCode>
+    <Message>Suspicious sequence of types castings: memsize -&gt; 32-bit integer -&gt; memsize. The value being cast: 'm_lpBufCur - m_lpBufStart'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>290</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>960794362</CodePrev>
+    <CodeCurrent>3212863230</CodeCurrent>
+    <CodeNext>3918152007</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>165</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: ULONG(m_lpBufCur - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>298</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>3511744035</CodePrev>
+    <CodeCurrent>1908523299</CodeCurrent>
+    <CodeNext>538880</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>166</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>301</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>564567072</CodePrev>
+    <CodeCurrent>2438838039</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>167</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>316</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>3712779392</CodePrev>
+    <CodeCurrent>898308743</CodeCurrent>
+    <CodeNext>2453305583</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>168</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>318</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2453305583</CodePrev>
+    <CodeCurrent>3445795460</CodeCurrent>
+    <CodeNext>2850013603</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>169</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>321</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3780460848</CodeCurrent>
+    <CodeNext>2860557607</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>170</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nUnused' of function 'memmove' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>336</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>1623888372</CodeCurrent>
+    <CodeNext>682604083</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>171</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nUnused' to memsize type in an arithmetic expression: m_lpBufStart + nUnused</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>338</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>682604083</CodePrev>
+    <CodeCurrent>2838890759</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>172</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nUnused' to memsize type in an arithmetic expression: m_lpBufStart + nUnused</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>352</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1518066991</CodePrev>
+    <CodeCurrent>3308652892</CodeCurrent>
+    <CodeNext>167</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>173</DefaultOrder>
+    <ErrorCode>V106</ErrorCode>
+    <Message>Implicit type conversion third argument 'nLeft' of function 'fread' to memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>356</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1674714168</CodePrev>
+    <CodeCurrent>1209122795</CodeCurrent>
+    <CodeNext>76111161</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>174</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>356</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1674714168</CodePrev>
+    <CodeCurrent>1209122795</CodeCurrent>
+    <CodeNext>76111161</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>175</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nBytes' to memsize type in an arithmetic expression: lpTemp + nBytes</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>357</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1209122795</CodePrev>
+    <CodeCurrent>76111161</CodeCurrent>
+    <CodeNext>698169</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>176</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nRead' to memsize type in an arithmetic expression: m_lpBufStart + nRead</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>364</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>682604083</CodePrev>
+    <CodeCurrent>709722741</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>177</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufStart)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>374</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>3466134962</CodePrev>
+    <CodeCurrent>174170670</CodeCurrent>
+    <CodeNext>682604083</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>178</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (ULONG)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>379</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1000946433</CodePrev>
+    <CodeCurrent>3007736015</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>179</DefaultOrder>
+    <ErrorCode>V107</ErrorCode>
+    <Message>Implicit type conversion second argument 'lstrlenW(lpsz) * sizeof (TCHAR)' of function 'Write' to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>390</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>703175961</CodePrev>
+    <CodeCurrent>2823830507</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>180</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of '(nStop + 1)' to memsize type in an arithmetic expression: (nStop + 1) * sizeof (TCHAR)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>398</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>4185856396</CodePrev>
+    <CodeCurrent>75310599</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>181</DefaultOrder>
+    <ErrorCode>V107</ErrorCode>
+    <Message>Implicit type conversion second argument '(nStop + 1) * sizeof (TCHAR)' of function 'IsValidAddress' to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>398</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>4185856396</CodePrev>
+    <CodeCurrent>75310599</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>182</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: lpsz[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>416</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>42597349</CodePrev>
+    <CodeCurrent>4234239</CodeCurrent>
+    <CodeNext>2337</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>183</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: lpsz[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>419</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>4234239</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>184</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: lpsz[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>435</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>4227525</CodeCurrent>
+    <CodeNext>88451</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>185</DefaultOrder>
+    <ErrorCode>V815</ErrorCode>
+    <Message>Decreased performance. Consider replacing the expression 'rString = L""' with 'rString.Empty()'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>441</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2518865512</CodeCurrent>
+    <CodeNext>71699323</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>186</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: lpsz[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>452</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>3383254045</CodePrev>
+    <CodeCurrent>2405619960</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>187</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'nLen' to memsize type in an arithmetic expression.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>458</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1563699497</CodePrev>
+    <CodeCurrent>2957371395</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>188</DefaultOrder>
+    <ErrorCode>V575</ErrorCode>
+    <Message>The 'GetBuffer' function processes '0' elements. Inspect the first argument.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>462</Line>
+    <FalseAlarm>true</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2336526580</CodePrev>
+    <CodeCurrent>2355649001</CodeCurrent>
+    <CodeNext>1563699497</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>189</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: lpsz[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>464</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1563699497</CodePrev>
+    <CodeCurrent>4287831097</CodeCurrent>
+    <CodeNext>383942327</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>190</DefaultOrder>
+    <ErrorCode>V206</ErrorCode>
+    <Message>Explicit conversion from 'unsigned char *' to '__int64 *'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>533</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2542382159</CodeCurrent>
+    <CodeNext>354824112</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>191</DefaultOrder>
+    <ErrorCode>V206</ErrorCode>
+    <Message>Explicit conversion from 'unsigned char *' to 'unsigned __int64 *'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>544</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1267313336</CodeCurrent>
+    <CodeNext>709639103</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>192</DefaultOrder>
+    <ErrorCode>V206</ErrorCode>
+    <Message>Explicit conversion from 'unsigned char *' to 'long *'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>566</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2771989939</CodeCurrent>
+    <CodeNext>1364353653</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>193</DefaultOrder>
+    <ErrorCode>V206</ErrorCode>
+    <Message>Explicit conversion from 'unsigned char *' to 'unsigned long *'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>577</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2498849791</CodeCurrent>
+    <CodeNext>2728707321</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>194</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>645</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1796279856</CodePrev>
+    <CodeCurrent>266324941</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>195</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>656</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2977722659</CodePrev>
+    <CodeCurrent>1219175098</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>196</DefaultOrder>
+    <ErrorCode>V220</ErrorCode>
+    <Message>Suspicious sequence of types castings: memsize -&gt; 32-bit integer -&gt; memsize. The value being cast: '(m_lpBufMax - m_lpBufCur)'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>656</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2977722659</CodePrev>
+    <CodeCurrent>1219175098</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>197</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of '(UINT)(m_lpBufMax - m_lpBufCur)' to memsize type in an arithmetic expression.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>656</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2977722659</CodePrev>
+    <CodeCurrent>1219175098</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>198</DefaultOrder>
+    <ErrorCode>V107</ErrorCode>
+    <Message>Implicit type conversion first argument of function 'FillBuffer' to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>656</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2977722659</CodePrev>
+    <CodeCurrent>1219175098</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>199</DefaultOrder>
+    <ErrorCode>V206</ErrorCode>
+    <Message>Explicit conversion from 'unsigned char *' to '__int64 *'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>658</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2495367674</CodeCurrent>
+    <CodeNext>354824112</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>200</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type: (UINT)(m_lpBufMax - m_lpBufCur)</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>667</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1641917912</CodePrev>
+    <CodeCurrent>3601541304</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>201</DefaultOrder>
+    <ErrorCode>V220</ErrorCode>
+    <Message>Suspicious sequence of types castings: memsize -&gt; 32-bit integer -&gt; memsize. The value being cast: '(m_lpBufMax - m_lpBufCur)'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>667</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1641917912</CodePrev>
+    <CodeCurrent>3601541304</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>202</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of '(UINT)(m_lpBufMax - m_lpBufCur)' to memsize type in an arithmetic expression.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>667</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1641917912</CodePrev>
+    <CodeCurrent>3601541304</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>203</DefaultOrder>
+    <ErrorCode>V107</ErrorCode>
+    <Message>Implicit type conversion first argument of function 'FillBuffer' to 32-bit type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>667</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1641917912</CodePrev>
+    <CodeCurrent>3601541304</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>204</DefaultOrder>
+    <ErrorCode>V206</ErrorCode>
+    <Message>Explicit conversion from 'unsigned char *' to 'unsigned __int64 *'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>669</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>710689792</CodeCurrent>
+    <CodeNext>709639103</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>205</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>678</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1796124208</CodePrev>
+    <CodeCurrent>3755985858</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>206</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>689</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>3592860671</CodePrev>
+    <CodeCurrent>2017798358</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>207</DefaultOrder>
+    <ErrorCode>V206</ErrorCode>
+    <Message>Explicit conversion from 'unsigned char *' to 'unsigned long *'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>691</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>849227129</CodeCurrent>
+    <CodeNext>2728707321</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>208</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>700</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>3594744831</CodePrev>
+    <CodeCurrent>2554669284</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>209</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>711</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>2896144480</CodePrev>
+    <CodeCurrent>2809196171</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>210</DefaultOrder>
+    <ErrorCode>V202</ErrorCode>
+    <Message>Explicit conversion from memsize type to 32-bit integer type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>722</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>1796394544</CodePrev>
+    <CodeCurrent>4024421324</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>211</DefaultOrder>
+    <ErrorCode>V206</ErrorCode>
+    <Message>Explicit conversion from 'unsigned char *' to 'long *'.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>archive.cpp</ShortFile>
+    <Line>724</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlserialize\archive.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2035174748</CodeCurrent>
+    <CodeNext>1364353653</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>212</DefaultOrder>
+    <ErrorCode>V576</ErrorCode>
+    <Message>Incorrect format. Consider checking the second actual argument of the 'Format' function. The SIGNED integer type argument is expected.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>201</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2954712586</CodeCurrent>
+    <CodeNext>59123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>213</DefaultOrder>
+    <ErrorCode>V111</ErrorCode>
+    <Message>Call of function 'Format' with variable number of arguments. Second argument has memsize type.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>201</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2954712586</CodeCurrent>
+    <CodeNext>59123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>214</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 32 used: ...- 1) * 8 + 32, 0, 8, 12,...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>251</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>66830978</CodePrev>
+    <CodeCurrent>4053538300</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>215</DefaultOrder>
+    <ErrorCode>V813</ErrorCode>
+    <Message>Decreased performance. The 'rcDlg' argument should probably be rendered as a constant reference.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>479</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2068040467</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>216</DefaultOrder>
+    <ErrorCode>V126</ErrorCode>
+    <Message>Be advised that the size of the type 'long' varies between LLP64/LP64 data models.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>511</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>3086370135</CodePrev>
+    <CodeCurrent>1416739778</CodeCurrent>
+    <CodeNext>30572193</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>217</DefaultOrder>
+    <ErrorCode>V808</ErrorCode>
+    <Message>'rect' object of 'CRect' type was created but was not utilized.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>641</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>2433978273</CodePrev>
+    <CodeCurrent>3426012404</CodeCurrent>
+    <CodeNext>1231650151</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>5</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>218</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 32 used: ...idxUL * 8 + 32, 0, 8, 12,...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>725</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>79356191</CodePrev>
+    <CodeCurrent>2688300617</CodeCurrent>
+    <CodeNext>1248088694</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>219</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 32 used: ...idxBR * 8 + 32, 0, 8, 12,...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>726</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>2688300617</CodePrev>
+    <CodeCurrent>1248088694</CodeCurrent>
+    <CodeNext>598187367</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>220</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: p[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>740</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>1217950770</CodePrev>
+    <CodeCurrent>3373227074</CodeCurrent>
+    <CodeNext>3375667772</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>221</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: p[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>741</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>3373227074</CodePrev>
+    <CodeCurrent>3375667772</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>222</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...num - 11) * 4 + type) * 4...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>752</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>4127109310</CodePrev>
+    <CodeCurrent>2599573534</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>223</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 32 used: ...ype) * 47 + 32, 12, 47, 74...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>752</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>4127109310</CodePrev>
+    <CodeCurrent>2599573534</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>224</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 32 used: ...- 1) * 8 + 32, 0, 8, 12,...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1152</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>619923028</CodePrev>
+    <CodeCurrent>1626940167</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>225</DefaultOrder>
+    <ErrorCode>V760</ErrorCode>
+    <Message>Two identical blocks of text were found. The second block begins from line 1180.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1178</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>78581297</CodeCurrent>
+    <CodeNext>132856933</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>1178,1180</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>226</DefaultOrder>
+    <ErrorCode>V761</ErrorCode>
+    <Message>Three identical blocks of text were found.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1435</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>499136200</CodePrev>
+    <CodeCurrent>1848202611</CodeCurrent>
+    <CodeNext>3447494267</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>1435,1438,1441</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>227</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...tLength() - 4) + L"-" + i...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1566</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>43348</CodePrev>
+    <CodeCurrent>2842992555</CodeCurrent>
+    <CodeNext>1331749810</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>228</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...tLength() - 4) + L"-" + i...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1573</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2264276907</CodeCurrent>
+    <CodeNext>526443442</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>229</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...tLength() - 4) + L"-" + i...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1576</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>135276979</CodeCurrent>
+    <CodeNext>941187261</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>230</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...tLength() - 4) + L"-" + i...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1580</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>2868158379</CodeCurrent>
+    <CodeNext>53458618</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>231</DefaultOrder>
+    <ErrorCode>V112</ErrorCode>
+    <Message>Dangerous magic number 4 used: ...tLength() - 4) + L"-" + i...</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1584</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>43348</CodePrev>
+    <CodeCurrent>2842992555</CodeCurrent>
+    <CodeNext>1331749810</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>232</DefaultOrder>
+    <ErrorCode>V575</ErrorCode>
+    <Message>The potential null pointer is passed into 'fread' function. Inspect the fourth argument.</Message>
+    <Project>WTLfc</Project>
+    <ShortFile>wtlfcview.cpp</ShortFile>
+    <Line>1628</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>g:\myvc2017\wtlfc\wtlfc\wtlfcview.cpp</File>
+    <CodePrev>1189931</CodePrev>
+    <CodeCurrent>1370514327</CodeCurrent>
+    <CodeNext>24019911</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+</NewDataSet>

@@ -22,9 +22,8 @@ static const wchar_t * fmtsYMD = TEXT("%Y.%m.%d-%H:%M:%S");
 //	//}}AFX_DATA_INIT
 //}
 
-CDlgScore::CDlgScore()
+CDlgScore::CDlgScore()	// -V730
 {
-
 }
 
 CDlgScore::~CDlgScore()
@@ -115,7 +114,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 
 	//WTL::CString s;	//WTL::CString.Format 不支持 %f
 	ATL::CString s;		//ATL::CString.Format 支持 %f
-	ATL::CString st;	
+	ATL::CString st;
 	int i = 0;
 	int nSize = m_score.m_tList.size();
 
@@ -123,7 +122,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	//for (POSITION pos = m_score.GetTailPosition(); pos != NULL; ++i )
 	//for (list<CScore>::iterator it = m_score.m_tList.end(); it != m_score.m_tList.begin(); i++)
 	//战况从最后一局开始显示
-	for (list<CScore>::iterator it = m_score.m_tList.begin(); ;i++)
+	for (list<CScore>::iterator it = m_score.m_tList.begin(); ; i++)
 	{
 		// m_score.m_tList.begin()存放的最后一局还没有解，所以状态不必显示
 		it++;	//	必须放在这里，否则运行报错终止。跳过 m_score.m_tList.begin()
@@ -156,7 +155,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		//s.Format(TEXT("%2dD%2dh%2dm%2ds"), ts.GetDays(), ts.GetHours(), ts.GetMinutes(), ts.GetSeconds());
 
 		// 必须按照这样的方式才能正确获取，否则不对。可能是ATL::CString.Format函数的毛病
-		s.Format(TEXT("%3dD"), ts.GetDays());
+		s.Format(TEXT("%3dD"), (int)ts.GetDays());
 		st.Format(TEXT("%2dH - "), ts.GetHours());
 		s += st;
 		st.Format(TEXT("%2dm%2ds"), ts.GetMinutes(), ts.GetSeconds());
@@ -305,7 +304,7 @@ bool CDlgScore::IsOldGameNumber(int gameNum)
 	//for(POSITION pos = m_score.GetHeadPosition(); pos != NULL; )
 	//	if(gameNum == ((CScore*)m_score.GetNext(pos))->gameNumber)
 	//		return true;
-	for (list<CScore>::iterator it = m_score.m_tList.begin(); it != m_score.m_tList.begin(); it++)
+	for (list<CScore>::iterator it = m_score.m_tList.begin(); it != m_score.m_tList.end(); it++)
 	{
 		if (gameNum == (*it).gameNumber)
 			return true;
@@ -592,18 +591,18 @@ LRESULT CDlgScore::OnColumnClick(int/*idCtrl*/, LPNMHDR pnmh, BOOL&/*bHandled*/)
 				注意：如果ListView指定LVS_NOSCROLL,调用Scroll和EnsureVisible都是FALSE
 				*/
 
-	/*
-	1、设置CListCtrl选中行
+				/*
+				1、设置CListCtrl选中行
 
-	m_list.SetItemState(nIndex, LVIS_FOCUSED | LVIS_SELECTED, LVIS_FOCUSED | LVIS_SELECTED);
+				m_list.SetItemState(nIndex, LVIS_FOCUSED | LVIS_SELECTED, LVIS_FOCUSED | LVIS_SELECTED);
 
-	注意：这句代码只是让指定行高亮显示，如果使用后再用GetSelectionMark函数来得到选中行，结果往往是错误的。
-	比如，先用鼠标点击选中第5行，调用GetSelectionMark函数得到的是4(第5行)，再调用SetItemState函数选中第2行，
-	然后调用GetSelectionMark函数得到的还是4(第5行)，所以，需要在设置选中行高亮显示时，一般与SetSelectionMark函数连用：
-	m_list.SetItemState(nIndex, LVIS_FOCUSED | LVIS_SELECTED,LVIS_FOCUSED | LVIS_SELECTED);   //选中行
-	m_list.SetSelectionMark(nIndexs);
+				注意：这句代码只是让指定行高亮显示，如果使用后再用GetSelectionMark函数来得到选中行，结果往往是错误的。
+				比如，先用鼠标点击选中第5行，调用GetSelectionMark函数得到的是4(第5行)，再调用SetItemState函数选中第2行，
+				然后调用GetSelectionMark函数得到的还是4(第5行)，所以，需要在设置选中行高亮显示时，一般与SetSelectionMark函数连用：
+				m_list.SetItemState(nIndex, LVIS_FOCUSED | LVIS_SELECTED,LVIS_FOCUSED | LVIS_SELECTED);   //选中行
+				m_list.SetSelectionMark(nIndexs);
 
-	*/
+				*/
 
 	return 0L;
 }
