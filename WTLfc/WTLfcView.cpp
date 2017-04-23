@@ -198,7 +198,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	//	strSteps.Format(TEXT("%d"), g_fcData.m_pOps->size());
 	if (!g_fcData.m_OpsList.m_tList.empty())
 	{
-		strSteps.Format(TEXT("%d"), g_fcData.m_OpsList.m_tList.size());
+		strSteps.Format(TEXT("%d"), (int)g_fcData.m_OpsList.m_tList.size());
 		CFont font;
 		//font.CreatePointFont(ccs.stepFont * 10, "Arial", pDC);
 		font.CreatePointFont(g_fcCcs.stepFont * 6, TEXT("Arial"), dc);

@@ -20,7 +20,7 @@
 
 #define FitTrash(card,x) (TYPE(x)==TYPE(card)&&NUM(x)==NUM(card)-1)
 
-CWTLfcData::CWTLfcData()
+CWTLfcData::CWTLfcData()		// -V730
 {
 	m_nSel = 0;
 	//m_pOps = new CObList;
@@ -531,7 +531,7 @@ void CWTLfcData::Undo()
 	//GetHeadPosition返回的是链表头元素的位置
 	//CObList..GetNext(pos)先返回链表中pos所指元素，然后将pos指向下一个元素。调用GetNext后pos的值就改变了
 	//微软脑壳有包！
-		
+
 
 	////撤销一步
 	//COperations *pOpsLast = (COperations*)m_pOps->GetTail();
@@ -655,7 +655,7 @@ VOID CALLBACK LineDDACallback(int x, int y, LPARAM lparam)
 	//
 	//上次绘制与本次绘制的两个矩形的重叠区域
 
-#define SquareIsOK(a,b) (a*b <= g_fcCcs.CARD_WID*g_fcCcs.CARD_HEI*(1-g_fcData.m_nDDASpeed/100.))
+#define SquareIsOK(a,b) ((double)(a*b) <= (double)(g_fcCcs.CARD_WID*g_fcCcs.CARD_HEI)*(1-g_fcData.m_nDDASpeed/100.))
 	// 很慢死锁的原因是 g_fcData.m_nDDASpeed 没有初始化
 
 	rInter.IntersectRect(r, rbk);//重叠矩形肯定不为空
@@ -939,12 +939,12 @@ bool CWTLfcData::CombimeCol(UINT col)
 	}
 	// return false;
 doAI:	//有牌可以移动哦
-MoveCards(desCol, srcCol, cntCards);//移动
-//Record(new COperations(desCol, srcCol, cntCards));//记录移动动作
-Record(desCol, srcCol, cntCards);//记录移动动作
-AutoThrow();//自动扔牌（自动记录动作）
-if (AICal())return true;//成功解答
-Undo();
+	MoveCards(desCol, srcCol, cntCards);//移动
+	//Record(new COperations(desCol, srcCol, cntCards));//记录移动动作
+	Record(desCol, srcCol, cntCards);//记录移动动作
+	AutoThrow();//自动扔牌（自动记录动作）
+	if (AICal())return true;//成功解答
+	Undo();
 	return false;
 }
 
@@ -1062,7 +1062,7 @@ bool CWTLfcData::SpliteCol(UINT col)
 		}
 		//此列不完全是序列牌
 		//------------------
-		if (nCntCard != nCntSeri){
+		if (nCntCard != nCntSeri) {
 			if (AICal()) return true;
 			while (steps--)Undo();//不成功则全部撤销
 			return false;
@@ -1076,7 +1076,7 @@ bool CWTLfcData::SpliteCol(UINT col)
 			//col列此时为空所以可以被过滤掉
 			if (IsEmptyCol(another))continue;
 			bool isInUse = false;
-			for (int j = 0; j < steps; j++){
+			for (int j = 0; j < steps; j++) {
 				if (another != inUse[j])continue;
 				isInUse = true;
 				break;
@@ -1196,7 +1196,7 @@ choice:	if (IDCANCEL == dlg.DoModal())
 		case PrevGame:	g_pView->OnPrevGame(NULL, NULL, NULL, b); break;
 		case NextGame:	g_pView->OnNextGame(NULL, NULL, NULL, b); break;
 		case ThisGame:  g_pView->OnAgain(NULL, NULL, NULL, b);    break;
-		//case SaveGame:	g_pView->OnSave(NULL, NULL, NULL, b);     goto choice;
+			//case SaveGame:	g_pView->OnSave(NULL, NULL, NULL, b);     goto choice;
 		case PlayShow:
 			//游戏返回到开头但是保留步骤记录
 			BackHome();

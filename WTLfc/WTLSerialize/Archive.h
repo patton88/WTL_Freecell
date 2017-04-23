@@ -83,7 +83,7 @@ public:
 
 protected:
 	// Archive objects can not be copied or assigned
-	CXArchive(const CXArchive& arSrc) {}
+	CXArchive(const CXArchive& arSrc) {}		//-V730
 	void operator=(const CXArchive& arSrc) {}
 
 	void FillBuffer(UINT nBytesNeeded) throw(CXArchiveException);

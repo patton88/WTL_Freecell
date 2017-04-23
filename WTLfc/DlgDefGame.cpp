@@ -196,7 +196,7 @@ LRESULT CDlgDefGame::OnCloseCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/
 	return 0;
 }
 
-LRESULT CDlgDefGame::OnOKCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+LRESULT CDlgDefGame::OnOKCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/) // -V524
 {
 	// First DDX call, hooks up controls to variables.
 	//DoDataExchange(true);

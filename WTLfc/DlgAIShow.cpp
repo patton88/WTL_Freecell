@@ -222,8 +222,8 @@ void CDlgAIShow::ShowStepInfo()
 
 	WTL::CString step_info;
 	step_info.Format(TEXT("½ø¶È¡¾ %d / %d ¡¿"),
-		m_pCurPos,
-		g_fcData.m_OpsList.m_tList.size());
+		(int)m_pCurPos,
+		(int)g_fcData.m_OpsList.m_tList.size());
 	SetWindowText(step_info);
 }
  

@@ -431,7 +431,8 @@ LRESULT CDlgScore::OnColumnClick(int/*idCtrl*/, LPNMHDR pnmh, BOOL&/*bHandled*/)
 				strB.ReleaseBuffer();
 
 				//¸ù¾Ý·µ»ØÖµÅÐ¶ÏÊÇ×Ö·û´®»¹ÊÇ×Ö·û´®Êý×Ö
-				if (dbStrA != dbStrB && dbStrA != 0 && dbStrB != 0)		//ÈôÊÇ×Ö·û´®Êý×Ö
+				//if (dbStrA != dbStrB && dbStrA != 0 && dbStrB != 0)		// ÈôÊÇ×Ö·û´®Êý×Ö
+				if (fabs(dbStrA - dbStrB) > 0 && fabs(dbStrA) > 0 && fabs(dbStrB) > 0)		// ÈôÊÇ×Ö·û´®Êý×Ö
 				{
 					if (dbStrA > dbStrB)
 					{
@@ -506,7 +507,8 @@ LRESULT CDlgScore::OnColumnClick(int/*idCtrl*/, LPNMHDR pnmh, BOOL&/*bHandled*/)
 				dbStrB = wcstod(wpSrc, &wpEnd);
 				strB.ReleaseBuffer();
 
-				if (dbStrA != dbStrB && dbStrA != 0 && dbStrB != 0)
+				//if (dbStrA != dbStrB && dbStrA != 0 && dbStrB != 0)		// ÈôÊÇ×Ö·û´®Êý×Ö
+				if (fabs(dbStrA - dbStrB) > 0 && fabs(dbStrA) > 0 && fabs(dbStrB) > 0)		// ÈôÊÇ×Ö·û´®Êý×Ö
 				{
 					if (dbStrB > dbStrA)
 					{
