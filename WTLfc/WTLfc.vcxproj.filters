@@ -158,5 +158,6 @@
     <None Include="res\bin.bin">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

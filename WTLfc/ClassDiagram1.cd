@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CAboutDlg">
+    <Position X="0.5" Y="19.5" Width="6" />
+    <NestedTypes>
+      <Enum Name="CAboutDlg::__unnamed_enum_0002_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AboutDlg.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABAAAEAAgEAAABAAAAAAAAAAgAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>AboutDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CCardSize">
+    <Position X="14" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IASAAAAAQABOAiBAQAgAQAAAQ2SBRgCAIYhAAACgECQ=</HashCode>
+      <FileName>CardSize.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CTList&lt;T&gt;">
+    <Position X="8" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAgAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CMyObject">
+    <Position X="0.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAEAAIAAAAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COperation">
+    <Position X="4.75" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAQAAAAAgAAAACAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COperations">
+    <Position X="0.5" Y="3.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIICAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HINTS">
+    <Position X="0.5" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAACAAAAAAAAAAAAAAAAAABAAAAAAIAAAgAA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDGWnd">
+    <Position X="17.25" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AkDICAEEAAFBRBhAAQCAACAEAEAAAACQEAECUAAwMAA=</HashCode>
+      <FileName>DGView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgAICal">
+    <Position X="11.25" Y="9.25" Width="4.25" />
+    <NestedTypes>
+      <Enum Name="CDlgAICal::__unnamed_enum_0009_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgAICal.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIAAgAGAAAAAAAAABIAAAAAQAAAAEAAAAGAAAAgAAAA=</HashCode>
+      <FileName>DlgAICal.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgAIShow">
+    <Position X="6.5" Y="9.25" Width="4.25" />
+    <NestedTypes>
+      <Enum Name="CDlgAIShow::__unnamed_enum_000b_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgAIShow.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEBAQAEAYAAAAAAAAIAAAAIAAAAAAAAAAEAAAAAAMCg=</HashCode>
+      <FileName>DlgAIShow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgColorDialog">
+    <Position X="6.5" Y="13.25" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DlgColorDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgDefGame">
+    <Position X="5.75" Y="14.75" Width="5.75" />
+    <NestedTypes>
+      <Enum Name="CDlgDefGame::__unnamed_enum_000f_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgDefGame.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABICAEAAAEgABAAAAAAgAAAACAAAAgAAAIAAIAQEAA=</HashCode>
+      <FileName>DlgDefGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgPassed">
+    <Position X="12.5" Y="18.5" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="CDlgPassed::__unnamed_enum_0011_2">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgPassed.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EABAAgEAAAAACAAAAAAAABAAgAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>DlgPassed.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CScore">
+    <Position X="11" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAiAAAACQAAAAQAAgAAAEACEA=</HashCode>
+      <FileName>DlgScore.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgScore">
+    <Position X="0.5" Y="9.25" Width="5.5" />
+    <NestedTypes>
+      <Enum Name="CDlgScore::__unnamed_enum_0013_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgScore.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AArMAAEAAAMAEgAgAAIAAAAgIAAAAAAAEQAAAAABAgA=</HashCode>
+      <FileName>DlgScore.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgSelGame">
+    <Position X="4.75" Y="0.5" Width="4.25" />
+    <NestedTypes>
+      <Enum Name="CDlgSelGame::__unnamed_enum_0015_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgSelGame.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABIAAEAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>DlgSelGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDlgSettings">
+    <Position X="12.25" Y="13.75" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="CDlgSettings::__unnamed_enum_0017_1">
+        <TypeIdentifier>
+          <NewMemberFileName>DlgSettings.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABIAAEAAAAAACIAAAAAAAAAAAAAAAIAgAAQAAAAABA=</HashCode>
+      <FileName>DlgSettings.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CMainFrame">
+    <Position X="0.5" Y="14.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAAAIAgAAAAAAAAAACAAkAAAAAQBABAAgAA=</HashCode>
+      <FileName>MainFrm.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWndSizeDlg">
+    <Position X="9.5" Y="0.5" Width="4.25" />
+    <NestedTypes>
+      <Enum Name="CWndSizeDlg::__unnamed_enum_001e_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WndSizeDlg.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABIAAEAAAAAAAAAAAAEAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>WndSizeDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWTLfcData">
+    <Position X="17.25" Y="8.25" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>KsAKgABEAAIBzhOAAQCOADVgQCAgJApzBQAR0EEGFJA=</HashCode>
+      <FileName>WTLfcData.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWTLfcView">
+    <Position X="22" Y="0.5" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>FBCwEgEAAAkBOAgAACAAAhBGGjjAEQAEMAgBABAQAAI=</HashCode>
+      <FileName>WTLfcView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CXArchive">
+    <Position X="22.25" Y="10" Width="6" />
+    <NestedTypes>
+      <Enum Name="CXArchive::Mode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WTLSerialize\Archive.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CXArchive::BufferCommand" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WTLSerialize\Archive.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAggAIACAAEgSABgAhAAAAAQAAESIkCAGsAAI=</HashCode>
+      <FileName>WTLSerialize\Archive.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CXException">
+    <Position X="8.75" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQCAAAAABAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>WTLSerialize\Exception.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CXArchiveException">
+    <Position X="3.75" Y="6" Width="4.25" />
+    <NestedTypes>
+      <Enum Name="CXArchiveException::__unnamed_enum_0027_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WTLSerialize\Exception.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AkAAAAAQCAAAAAAAAAAAAAAAAABAAAAAEAIAAAAAAAA=</HashCode>
+      <FileName>WTLSerialize\Exception.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="COL_INF">
+    <Position X="6.75" Y="19.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAAAAAAABAAAAAAAAQAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WTLfcData.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CARD_POS">
+    <Position X="10.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Datatype.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="__unnamed_enum_0025_1">
+    <Position X="8.5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WTLSerialize\Archive.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_enum_0011_1">
+    <Position X="11.5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAQAAAAAAAAAAAAAAAQAAAEEAAAAAAAgAA=</HashCode>
+      <FileName>DlgPassed.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="SimSun" Size="9.26" />
+</ClassDiagram>
