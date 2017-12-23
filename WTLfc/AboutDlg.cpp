@@ -25,12 +25,12 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	wchar_t *msg[] =
 	{
 		TEXT("--------------------------------------------"),
-		TEXT("WTLfc空档接龙4.00版"),
+		TEXT("WTL_freecell v1.0 (WTL空档接龙v1.0) 20180110"),
 		TEXT("--------------------------------------------"),
-		TEXT("作者      ：向海飞"),
-		TEXT("E-mail    ：xianghaifei@sohu.com"),
-		TEXT("blog      ：http://blog.csdn.net/xianghaifei/"),
-		TEXT("Improveed ：ybmj@vip.163.com"),
+		TEXT("By        ：MinJun"),
+		TEXT("E-mail    ：ybmj@vip.163.com"),
+		TEXT("QQ        ：153248043"),
+		TEXT("Blog      ：http://blog.csdn.net/shuren8/"),
 		TEXT("--------------------------------------------"),
 	};
 
