@@ -28,6 +28,7 @@ LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\WTLfc.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
@@ -315,6 +316,7 @@ END
 
 IDCSR_DOWN_ARROW        CURSOR                  "res\\cursor1.cur"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // BIN
@@ -322,14 +324,15 @@ IDCSR_DOWN_ARROW        CURSOR                  "res\\cursor1.cur"
 
 IDR_BIN_ZIP_BMP         BIN                     "res\\bin.bin"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,1
- PRODUCTVERSION 1,0,0,1
+ FILEVERSION 1,0,0,3
+ PRODUCTVERSION 1,0,0,3
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -342,15 +345,16 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "040904B0"
+        BLOCK "040904b0"
         BEGIN
-            VALUE "FileDescription", "WTLfc Module"
-            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "CompanyName", "ybmj@vip.163.com"
+            VALUE "FileDescription", "WTL freecell"
+            VALUE "FileVersion", "1.0.0.3"
             VALUE "InternalName", "WTLfc"
             VALUE "LegalCopyright", "Copyright 2016"
             VALUE "OriginalFilename", "WTLfc.exe"
             VALUE "ProductName", "WTLfc Module"
-            VALUE "ProductVersion", "1, 0, 0, 1"
+            VALUE "ProductVersion", "1.0.0.3"
         END
     END
     BLOCK "VarFileInfo"
@@ -366,6 +370,7 @@ END
 //
 
 IDB_FC_SUB              BITMAP                  "res\\FC_SUB.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
