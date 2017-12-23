@@ -348,7 +348,7 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName", "ybmj@vip.163.com"
-            VALUE "FileDescription", "WTL_freecell"
+            VALUE "FileDescription", "WTL_Freecell"
             VALUE "FileVersion", "1.0.0.3"
             VALUE "InternalName", "WTLfc"
             VALUE "LegalCopyright", "Copyright 2016"

@@ -25,7 +25,7 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	wchar_t *msg[] =
 	{
 		TEXT("--------------------------------------------"),
-		TEXT("WTL_freecell v1.0 (WTL¿Õµµ½ÓÁúv1.0) 20180110"),
+		TEXT("WTL_Freecell v1.0 (WTL¿Õµµ½ÓÁúv1.0) 20180110"),
 		TEXT("--------------------------------------------"),
 		TEXT("By        £ºMinJun"),
 		TEXT("E-mail    £ºybmj@vip.163.com"),
