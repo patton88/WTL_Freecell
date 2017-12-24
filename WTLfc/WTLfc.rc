@@ -112,16 +112,21 @@ END
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 233, 105
+IDD_ABOUTBOX DIALOGEX 0, 0, 233, 117
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "关于..."
 FONT 9, "宋体", 0, 0, 0x0
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,7,7,20,20
-    DEFPUSHBUTTON   "确定",IDOK,173,84,50,14,BS_FLAT | WS_GROUP
-    LISTBOX         IDLB_ABOUT,33,7,190,44,LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | NOT WS_BORDER | WS_TABSTOP
-    LTEXT           "Blog   ：http://blog.csdn.net/shuren8/",IDC_CP_LINK_1,34,67,153,8
-    LTEXT           "E-mail ：ybmj@vip.163.com",IDC_CP_LINK_2,34,56,101,8
+    DEFPUSHBUTTON   "确定",IDOK,160,93,50,14,BS_FLAT | WS_GROUP
+    LISTBOX         IDLB_ABOUT,33,7,190,23,LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | NOT WS_BORDER | WS_TABSTOP
+    LTEXT           "http://blog.csdn.net/shuren8/",IDC_CP_LINK_1,71,67,117,8
+    LTEXT           "ybmj@vip.163.com",IDC_CP_LINK_2,70,56,65,8
+    LTEXT           "E-mail ：",IDC_STATIC,34,56,37,8
+    LTEXT           "Blog   ：",IDC_STATIC,34,67,37,8
+    LTEXT           "--------------------------------------------",IDC_STATIC,34,78,177,8
+    LTEXT           "By     ：MinJun",IDC_STATIC,34,34,61,8
+    LTEXT           "QQ     ：153248043",IDC_STATIC,34,45,73,8
 END
 
 IDD_SELGAME DIALOGEX 0, 0, 153, 55
@@ -251,7 +256,7 @@ BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 223
         TOPMARGIN, 7
-        BOTTOMMARGIN, 98
+        BOTTOMMARGIN, 110
     END
 
     IDD_SELGAME, DIALOG

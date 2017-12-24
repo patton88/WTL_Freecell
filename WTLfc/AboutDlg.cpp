@@ -27,11 +27,11 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		TEXT("--------------------------------------------"),
 		TEXT("WTL_Freecell v1.0 (WTL¿Õµµ½ÓÁúv1.0) 20180110"),
 		TEXT("--------------------------------------------"),
-		TEXT("By     £ºMinJun"),
-		TEXT("QQ     £º153248043"),
+//		TEXT("By     £ºMinJun"),
+//		TEXT("QQ     £º153248043"),
 //		TEXT("E-mail £ºybmj@vip.163.com"),
 //		TEXT("Blog   £ºhttp://blog.csdn.net/shuren8/"),
-		TEXT("--------------------------------------------"),
+//		TEXT("--------------------------------------------"),
 	};
 
 	//CListBox *plb = (CListBox *)GetDlgItem(IDLB_ABOUT);
