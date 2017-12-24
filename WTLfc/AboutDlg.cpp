@@ -40,6 +40,12 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	while (cnt < sizeof(msg) / sizeof(char*))
 		lb.AddString(msg[cnt++]);
 
+	// Set up the hyperlink
+	m_wndLink.SubclassWindow(GetDlgItem(IDC_CP_LINK));
+	DWORD linkStyle = m_wndLink.GetHyperLinkExtendedStyle() | HLINK_COMMANDBUTTON | HLINK_NOTIFYBUTTON;
+	m_wndLink.SetHyperLinkExtendedStyle(linkStyle);
+	m_wndLink.SetHyperLink(L"http://blog.csdn.net/shuren8/");
+
 	return TRUE;		// return TRUE unless you set the focus to a control
 					// EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -87,5 +93,12 @@ LRESULT CAboutDlg::OnCtlColorDlg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 	default:
 		break;
 	}
+	return 0;
+}
+
+LRESULT CAboutDlg::OnLinkIntro(int wParam, LPNMHDR lpNMHdr, BOOL& bHandled)
+{
+	::ShellExecute(NULL, L"open", L"http://blog.csdn.net/shuren8/",
+		NULL, NULL, SW_SHOWNORMAL);
 	return 0;
 }

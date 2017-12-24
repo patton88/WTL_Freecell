@@ -9,8 +9,9 @@ class CAboutDlg : public CDialogImpl<CAboutDlg>
 public:
 	enum { IDD = IDD_ABOUTBOX };
 
-	CBrush      m_brushBkgnd;    //背景色,
-	COLORREF    m_clrText;       //文字颜色
+	CBrush      m_brushBkgnd;	//背景色,
+	COLORREF    m_clrText;		//文字颜色
+	CHyperLink	m_wndLink;		//CHyperLink控件
 
 	CAboutDlg(COLORREF clrText = RGB(218, 218, 218));
 
@@ -26,6 +27,7 @@ public:
 		//MESSAGE_HANDLER(WM_CTLCOLORBTN, OnCtlColorDlg)
 		//MESSAGE_HANDLER(WM_CTLCOLORMSGBOX, OnCtlColorDlg)
 		MESSAGE_HANDLER(WM_CTLCOLORLISTBOX, OnCtlColorDlg)
+		NOTIFY_HANDLER(IDC_CP_LINK, NM_CLICK, OnLinkIntro)
 	END_MSG_MAP()
 
 // Handler prototypes (uncomment arguments if needed):
@@ -38,4 +40,5 @@ public:
 
 	LRESULT OnEraseBkgnd(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled);
 	LRESULT OnCtlColorDlg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	LRESULT OnLinkIntro(int wParam, LPNMHDR lpNMHdr, BOOL& bHandled);
 };

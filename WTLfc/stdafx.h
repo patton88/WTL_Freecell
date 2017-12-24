@@ -24,6 +24,7 @@ extern CAppModule _Module;
 #include <atlcrack.h>
 #include <atlmisc.h>
 #include <atlddx.h>
+#include <atlctrlx.h>	//Ê¹ÓÃCHyperLink¿Ø¼þ
 
 #undef BEGIN_MSG_MAP
 #define BEGIN_MSG_MAP(x) BEGIN_MSG_MAP_EX(x)
