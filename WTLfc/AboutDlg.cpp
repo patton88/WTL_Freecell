@@ -42,9 +42,26 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 
 	// Set up the hyperlink
 	m_wndLink.SubclassWindow(GetDlgItem(IDC_CP_LINK));
-	DWORD linkStyle = m_wndLink.GetHyperLinkExtendedStyle() | HLINK_COMMANDBUTTON | HLINK_NOTIFYBUTTON;
-	m_wndLink.SetHyperLinkExtendedStyle(linkStyle);
+	//DWORD linkStyle = m_wndLink.GetHyperLinkExtendedStyle() | HLINK_COMMANDBUTTON | HLINK_NOTIFYBUTTON;
+	//DWORD linkStyle = m_wndLink.GetHyperLinkExtendedStyle() | HLINK_UNDERLINEHOVER | HLINK_NOTIFYBUTTON;
+	//m_wndLink.SetHyperLinkExtendedStyle(linkStyle);
+	//m_wndLink.SetLabel(L"http://blog.csdn.net/shuren8/");
 	m_wndLink.SetHyperLink(L"http://blog.csdn.net/shuren8/");
+	//m_clrLink(RGB(0, 0, 255)), m_clrVisited(RGB(128, 0, 128)),
+	m_wndLink.m_clrLink = RGB(255, 0, 0);			//设置hyperlink初始颜色
+	m_wndLink.m_clrVisited = RGB(255, 255, 218);		//设置已访问hyperlink颜色
+
+
+//#define HLINK_UNDERLINED           0x00000000
+//#define HLINK_NOTUNDERLINED        0x00000001
+//#define HLINK_UNDERLINEHOVER       0x00000002
+//#define HLINK_COMMANDBUTTON        0x00000004
+//#define HLINK_NOTIFYBUTTON         0x0000000C
+//#define HLINK_USETAGS              0x00000010
+//#define HLINK_USETAGSBOLD          0x00000030
+//#define HLINK_NOTOOLTIP            0x00000040
+//#define HLINK_AUTOCREATELINKFONT   0x00000080
+//#define HLINK_SINGLELINE           0x00000100
 
 	return TRUE;		// return TRUE unless you set the focus to a control
 					// EXCEPTION: OCX Property Pages should return FALSE
