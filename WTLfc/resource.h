@@ -68,7 +68,9 @@
 #define IDC_EDIT_GAMENUMBER2            1068
 #define IDC_EDIT_HEIGHT                 1068
 #define IDC_EDIT_WIDTH                  1069
-#define IDC_CP_LINK                     1071
+#define IDC_CP_LINK_1                   1071
+#define IDC_CP_LINK2                    1072
+#define IDC_CP_LINK_2                   1072
 #define IDM_RESTART                     32771
 #define IDM_AGAIN                       32771
 #define IDM_SCORE                       32772

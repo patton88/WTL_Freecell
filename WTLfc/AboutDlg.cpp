@@ -27,10 +27,10 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		TEXT("--------------------------------------------"),
 		TEXT("WTL_Freecell v1.0 (WTL空档接龙v1.0) 20180110"),
 		TEXT("--------------------------------------------"),
-		TEXT("By        ：MinJun"),
-		TEXT("E-mail    ：ybmj@vip.163.com"),
-		TEXT("QQ        ：153248043"),
-		TEXT("Blog      ：http://blog.csdn.net/shuren8/"),
+		TEXT("By     ：MinJun"),
+		TEXT("QQ     ：153248043"),
+//		TEXT("E-mail ：ybmj@vip.163.com"),
+//		TEXT("Blog   ：http://blog.csdn.net/shuren8/"),
 		TEXT("--------------------------------------------"),
 	};
 
@@ -41,16 +41,20 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 		lb.AddString(msg[cnt++]);
 
 	// Set up the hyperlink
-	m_wndLink.SubclassWindow(GetDlgItem(IDC_CP_LINK));
+	m_wndLink_1.SubclassWindow(GetDlgItem(IDC_CP_LINK_1));
 	//DWORD linkStyle = m_wndLink.GetHyperLinkExtendedStyle() | HLINK_COMMANDBUTTON | HLINK_NOTIFYBUTTON;
 	//DWORD linkStyle = m_wndLink.GetHyperLinkExtendedStyle() | HLINK_UNDERLINEHOVER | HLINK_NOTIFYBUTTON;
 	//m_wndLink.SetHyperLinkExtendedStyle(linkStyle);
 	//m_wndLink.SetLabel(L"http://blog.csdn.net/shuren8/");
-	m_wndLink.SetHyperLink(L"http://blog.csdn.net/shuren8/");
+	m_wndLink_1.SetHyperLink(L"http://blog.csdn.net/shuren8/");
 	//m_clrLink(RGB(0, 0, 255)), m_clrVisited(RGB(128, 0, 128)),
-	m_wndLink.m_clrLink = RGB(255, 0, 0);			//设置hyperlink初始颜色
-	m_wndLink.m_clrVisited = RGB(255, 255, 218);		//设置已访问hyperlink颜色
+	m_wndLink_1.m_clrLink = RGB(255, 0, 0);				//设置hyperlink初始颜色
+	m_wndLink_1.m_clrVisited = RGB(255, 255, 218);		//设置已访问hyperlink颜色
 
+	m_wndLink_2.SubclassWindow(GetDlgItem(IDC_CP_LINK_2));
+	m_wndLink_2.SetHyperLink(L"mailto:ybmj@vip.163.com");
+	m_wndLink_2.m_clrLink = RGB(255, 0, 0);				//设置hyperlink初始颜色
+	m_wndLink_2.m_clrVisited = RGB(255, 255, 218);		//设置已访问hyperlink颜色
 
 //#define HLINK_UNDERLINED           0x00000000
 //#define HLINK_NOTUNDERLINED        0x00000001
@@ -115,7 +119,16 @@ LRESULT CAboutDlg::OnCtlColorDlg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 
 LRESULT CAboutDlg::OnLinkIntro(int wParam, LPNMHDR lpNMHdr, BOOL& bHandled)
 {
-	::ShellExecute(NULL, L"open", L"http://blog.csdn.net/shuren8/",
-		NULL, NULL, SW_SHOWNORMAL);
+	//switch (wParam)
+	//{
+	//case IDC_CP_LINK_1:
+	//	::ShellExecute(NULL, L"open", L"http://blog.csdn.net/shuren8/", NULL, NULL, SW_SHOWNORMAL);
+	//	break;
+	//case IDC_CP_LINK_2:
+	//	::ShellExecute(NULL, L"open", L"mailto:ybmj@vip.163.com", NULL, NULL, SW_SHOWNORMAL);
+	//	break;
+	//default:
+	//	break;
+	//}
 	return 0;
 }

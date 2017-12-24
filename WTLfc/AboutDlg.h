@@ -11,7 +11,8 @@ public:
 
 	CBrush      m_brushBkgnd;	//背景色,
 	COLORREF    m_clrText;		//文字颜色
-	CHyperLink	m_wndLink;		//CHyperLink控件
+	CHyperLink	m_wndLink_1;		//CHyperLink控件
+	CHyperLink	m_wndLink_2;		//CHyperLink控件
 
 	CAboutDlg(COLORREF clrText = RGB(218, 218, 218));
 
@@ -26,7 +27,8 @@ public:
 		//MESSAGE_HANDLER(WM_CTLCOLOREDIT, OnCtlColorDlg)
 		//MESSAGE_HANDLER(WM_CTLCOLORBTN, OnCtlColorDlg)
 		//MESSAGE_HANDLER(WM_CTLCOLORMSGBOX, OnCtlColorDlg)
-		NOTIFY_HANDLER(IDC_CP_LINK, NM_CLICK, OnLinkIntro)
+		NOTIFY_HANDLER(IDC_CP_LINK_1, NM_CLICK, OnLinkIntro)
+		NOTIFY_HANDLER(IDC_CP_LINK_2, NM_CLICK, OnLinkIntro)
 		MESSAGE_HANDLER(WM_CTLCOLORLISTBOX, OnCtlColorDlg)
 		MESSAGE_HANDLER(WM_CTLCOLORSTATIC, OnCtlColorDlg)
 	END_MSG_MAP()
