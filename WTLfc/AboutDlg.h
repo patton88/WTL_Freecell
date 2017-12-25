@@ -4,6 +4,7 @@
 
 #pragma once
 #include "CEditImpl.h"
+#include "CHyperLinkWrapper.h"
 
 class CAboutDlg : public CDialogImpl<CAboutDlg>
 {
@@ -12,10 +13,15 @@ public:
 
 	CBrush      m_brushBkgnd;	//背景色,
 	COLORREF    m_clrText;		//文字颜色
-	CHyperLink	m_wndLink_1;		//CHyperLink控件
-	CHyperLink	m_wndLink_2;		//CHyperLink控件
-	CHyperLink	m_wndLink_3;		//CHyperLink控件
+	//CHyperLink	m_wndLink_1;		//CHyperLink控件
+	//CHyperLink	m_wndLink_2;		//CHyperLink控件
+	//CHyperLink	m_wndLink_3;		//CHyperLink控件
 	CEditImpl	m_edit1;
+
+	CHyperLinkWrapper	m_wndLink_1;		//CHyperLink控件
+	CHyperLinkWrapper	m_wndLink_2;		//CHyperLink控件
+	CHyperLinkWrapper	m_wndLink_3;		//CHyperLink控件
+
 
 	CAboutDlg(COLORREF clrText = RGB(218, 218, 218));
 

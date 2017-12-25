@@ -108,6 +108,7 @@
     <ClCompile Include="AboutDlg.cpp" />
     <ClCompile Include="CardSize.cpp" />
     <ClCompile Include="CEditImpl.cpp" />
+    <ClCompile Include="CHyperLinkWrapper.cpp" />
     <ClCompile Include="DGView.cpp" />
     <ClCompile Include="DlgAICal.cpp" />
     <ClCompile Include="DlgAIShow.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="AboutDlg.h" />
     <ClInclude Include="CardSize.h" />
     <ClInclude Include="CEditImpl.h" />
+    <ClInclude Include="CHyperLinkWrapper.h" />
     <ClInclude Include="Datatype.h" />
     <ClInclude Include="DGView.h" />
     <ClInclude Include="DlgAICal.h" />
