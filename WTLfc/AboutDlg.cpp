@@ -22,23 +22,37 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	CenterWindow(GetParent());
 
 	//将版权信息放入列表框中
-	wchar_t *msg[] =
-	{
-		TEXT("--------------------------------------------"),
-		TEXT("WTL_Freecell v1.0 (WTL空档接龙v1.0) 20180110"),
-		TEXT("--------------------------------------------"),
+	//wchar_t *msg[] =
+	//{
+	//	TEXT("--------------------------------------------"),
+	//	TEXT("WTL_Freecell v1.0 (WTL空档接龙v1.0) 20180110"),
+	//	TEXT("--------------------------------------------"),
 //		TEXT("By     ：MinJun"),
 //		TEXT("QQ     ：153248043"),
 //		TEXT("E-mail ：ybmj@vip.163.com"),
 //		TEXT("Blog   ：http://blog.csdn.net/shuren8/"),
 //		TEXT("--------------------------------------------"),
-	};
+	//};
 
 	//CListBox *plb = (CListBox *)GetDlgItem(IDLB_ABOUT);
-	CListBox lb(::GetDlgItem(m_hWnd, IDLB_ABOUT));
-	int cnt = 0;
-	while (cnt < sizeof(msg) / sizeof(char*))
-		lb.AddString(msg[cnt++]);
+	//CListBox lb(::GetDlgItem(m_hWnd, IDLB_ABOUT));
+	//int cnt = 0;
+	//while (cnt < sizeof(msg) / sizeof(char*))
+	//	lb.AddString(msg[cnt++]);
+
+	m_edit1.SubclassWindow(GetDlgItem(IDC_EDIT3));
+	//::SetWindowTextW(m_edit1.m_hWnd, "This a test.");	
+	//::SetWindowText(m_edit1.m_hWnd, "This a multi test.");
+	::SetWindowText(m_edit1.m_hWnd,
+		L"------------------------------------------------\r\n"
+		L"  WTL_Freecell v1.0 (WTL空档接龙v1.0) 20180110  \r\n"
+		L"------------------------------------------------\r\n"
+		L"  By     ：MinJun\r\n"
+		L"  QQ     ：153248043\r\n"
+		L"  E-mail ：ybmj@vip.163.com\r\n"
+		L"  Blog   ：http://blog.csdn.net/shuren8/\r\n"
+		L"------------------------------------------------"
+	);
 
 	// Set up the hyperlink
 	m_wndLink_1.SubclassWindow(GetDlgItem(IDC_CP_LINK_1));
@@ -101,6 +115,7 @@ LRESULT CAboutDlg::OnCtlColorDlg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 	case WM_CTLCOLORSTATIC:
 	case WM_CTLCOLORBTN:
 	case WM_CTLCOLORMSGBOX:
+	case WM_CTLCOLOREDIT:
 	case WM_CTLCOLORLISTBOX:
 	{
 		::SetBkMode(hDc, TRANSPARENT);
@@ -110,25 +125,9 @@ LRESULT CAboutDlg::OnCtlColorDlg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 	}
 	break;
 	case WM_CTLCOLORDLG:
-	case WM_CTLCOLOREDIT:
 	default:
 		break;
 	}
 	return 0;
 }
 
-LRESULT CAboutDlg::OnLinkIntro(int wParam, LPNMHDR lpNMHdr, BOOL& bHandled)
-{
-	//switch (wParam)
-	//{
-	//case IDC_CP_LINK_1:
-	//	::ShellExecute(NULL, L"open", L"http://blog.csdn.net/shuren8/", NULL, NULL, SW_SHOWNORMAL);
-	//	break;
-	//case IDC_CP_LINK_2:
-	//	::ShellExecute(NULL, L"open", L"mailto:ybmj@vip.163.com", NULL, NULL, SW_SHOWNORMAL);
-	//	break;
-	//default:
-	//	break;
-	//}
-	return 0;
-}

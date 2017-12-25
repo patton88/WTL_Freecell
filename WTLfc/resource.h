@@ -69,8 +69,9 @@
 #define IDC_EDIT_HEIGHT                 1068
 #define IDC_EDIT_WIDTH                  1069
 #define IDC_CP_LINK_1                   1071
-#define IDC_CP_LINK2                    1072
 #define IDC_CP_LINK_2                   1072
+#define IDC_EDIT2                       1074
+#define IDC_EDIT3                       1075
 #define IDM_RESTART                     32771
 #define IDM_AGAIN                       32771
 #define IDM_SCORE                       32772
@@ -110,7 +111,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        206
 #define _APS_NEXT_COMMAND_VALUE         32812
-#define _APS_NEXT_CONTROL_VALUE         1072
+#define _APS_NEXT_CONTROL_VALUE         1076
 #define _APS_NEXT_SYMED_VALUE           103
 #endif
 #endif
