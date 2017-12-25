@@ -110,6 +110,20 @@ LRESULT CAboutDlg::OnCtlColorDlg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	HDC hDc = (HDC)wParam;
+
+	//HWND h3 = GetDlgItem(IDC_EDIT3);
+	//HWND h4 = GetDlgItem(IDC_EDIT4);
+	//if ((HWND)lParam == GetDlgItem(IDC_EDIT3) || (HWND)lParam == GetDlgItem(IDC_EDIT4))
+	//{
+	//	//HDC hdc = (HDC)wParam;
+	//	::SetTextColor(hDc, RGB(0, 0, 255));		//设置字体颜色
+	//	::SetBkColor(hDc, RGB(255, 255, 255));	//设置背景色
+	//											//::SelectObject(hdc, ::GetStockObject(NULL_BRUSH));	//选择NULL_BRUSH，帮助编辑框最下面有灰色条带
+	//	::SelectObject(hDc, ::GetStockObject(WHITE_BRUSH));		//选择WHITE_BRUSH，帮助编辑框最下面便没有灰色条带
+	//	bHandled = TRUE;
+	//	return (HRESULT)::GetCurrentObject(hDc, OBJ_BRUSH);
+	//}
+
 	switch (uMsg)
 	{
 	case WM_CTLCOLORSTATIC:
@@ -128,6 +142,7 @@ LRESULT CAboutDlg::OnCtlColorDlg(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 	default:
 		break;
 	}
+
 	return 0;
 }
 

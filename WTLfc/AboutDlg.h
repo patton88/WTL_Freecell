@@ -30,8 +30,9 @@ public:
 		//MESSAGE_HANDLER(WM_CTLCOLOREDIT, OnCtlColorDlg)
 		//MESSAGE_HANDLER(WM_CTLCOLORBTN, OnCtlColorDlg)
 		//MESSAGE_HANDLER(WM_CTLCOLORMSGBOX, OnCtlColorDlg)
-		MESSAGE_HANDLER(WM_CTLCOLORLISTBOX, OnCtlColorDlg)
-		MESSAGE_HANDLER(WM_CTLCOLORSTATIC, OnCtlColorDlg)
+		//MESSAGE_HANDLER(WM_CTLCOLORLISTBOX, OnCtlColorDlg)
+		MESSAGE_HANDLER(WM_CTLCOLOREDIT, OnCtlColorDlg)		//必须加入该句，才能改变编辑框颜色
+		MESSAGE_HANDLER(WM_CTLCOLORSTATIC, OnCtlColorDlg)	//必须加入该句，才能改变静态文本框颜色
 	END_MSG_MAP()
 
 // Handler prototypes (uncomment arguments if needed):
