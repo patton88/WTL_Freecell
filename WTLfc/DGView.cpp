@@ -410,7 +410,7 @@ void CDGWnd::SaveDefGame()
 	FILE* pFile1 = _wfopen(m_strFile, L"wb");		// 改用C语言的文件访问方式实现串行化
 	
 	CXArchive ar1(pFile1, CXArchive::store);
-	g_fcData.Serialize(ar1);
+	//g_fcData.Serialize(ar1);
 
 	CTList<COperations> ops;
 	CDlgScore dlgScore;
