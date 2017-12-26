@@ -124,7 +124,7 @@ BEGIN
     LTEXT           "E-mail £º",IDC_STATIC,53,75,37,8
     LTEXT           "Blog   £º",IDC_STATIC,53,86,37,8
     LTEXT           "--------------------------------------------",IDC_STATIC,53,97,177,8
-    EDITTEXT        IDC_EDIT3,35,7,211,62,ES_MULTILINE | ES_WANTRETURN
+    EDITTEXT        IDC_EDIT3,35,7,211,62,ES_MULTILINE | ES_READONLY
 END
 
 IDD_SELGAME DIALOGEX 0, 0, 153, 55
