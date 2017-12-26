@@ -44,14 +44,14 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	//::SetWindowTextW(m_edit1.m_hWnd, "This a test.");	
 	//::SetWindowText(m_edit1.m_hWnd, "This a multi test.");
 	::SetWindowText(m_edit1.m_hWnd,
-		L"------------------------------------------------\r\n"
-		L"  WTL_Freecell v1.0 (WTL¿Õµµ½ÓÁúv1.0) 20180110  \r\n"
-		L"------------------------------------------------\r\n"
-		L"  By     £ºMinJun\r\n"
-		L"  QQ     £º153248043\r\n"
-		L"  E-mail £ºybmj@vip.163.com\r\n"
-		L"  Blog   £ºhttp://blog.csdn.net/shuren8/\r\n"
-		L"------------------------------------------------"
+		L"    --------------------------------------------\r\n"
+		L"    WTL_Freecell v1.0 (WTL¿Õµµ½ÓÁúv1.0) 20180110\r\n"
+		L"    --------------------------------------------\r\n"
+		L"    By     £ºMinJun\r\n"
+		L"    QQ     £º153248043\r\n"
+		L"    E-mail £ºybmj@vip.163.com\r\n"
+		L"    Blog   £ºhttp://blog.csdn.net/shuren8/\r\n"
+		L"    --------------------------------------------"
 	);
 
 	// Set up the hyperlink

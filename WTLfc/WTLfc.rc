@@ -112,19 +112,19 @@ END
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 240, 135
+IDD_ABOUTBOX DIALOGEX 0, 0, 256, 135
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "关于..."
 FONT 9, "宋体", 0, 0, 0x0
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,7,7,20,20
     DEFPUSHBUTTON   "确定",IDOK,160,111,50,14,BS_FLAT | WS_GROUP
-    LTEXT           "http://blog.csdn.net/shuren8/",IDC_CP_LINK_1,81,86,117,8
-    LTEXT           "ybmj@vip.163.com",IDC_CP_LINK_2,80,75,65,8
-    LTEXT           "E-mail ：",IDC_STATIC,44,75,37,8
-    LTEXT           "Blog   ：",IDC_STATIC,44,86,37,8
-    LTEXT           "-------------------------------------------------",IDC_STATIC,33,97,197,8
-    EDITTEXT        IDC_EDIT3,34,7,195,62,ES_MULTILINE | ES_WANTRETURN
+    LTEXT           "http://blog.csdn.net/shuren8/",IDC_CP_LINK_1,90,86,117,8
+    LTEXT           "ybmj@vip.163.com",IDC_CP_LINK_2,89,75,65,8
+    LTEXT           "E-mail ：",IDC_STATIC,53,75,37,8
+    LTEXT           "Blog   ：",IDC_STATIC,53,86,37,8
+    LTEXT           "--------------------------------------------",IDC_STATIC,53,97,177,8
+    EDITTEXT        IDC_EDIT3,35,7,211,62,ES_MULTILINE | ES_WANTRETURN
 END
 
 IDD_SELGAME DIALOGEX 0, 0, 153, 55
@@ -252,7 +252,7 @@ BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 230
+        RIGHTMARGIN, 246
         TOPMARGIN, 7
         BOTTOMMARGIN, 128
     END
