@@ -420,13 +420,13 @@ UINT CWTLfcData::CntMaxSuppliment(bool OccupyAnEmptyCol)
 	for (UINT i = 1; i <= 8; i++) {
 		if (m_iCards[i - 1][19] == 0) ++b;
 	}
-	//统计空档数
+	//统计空当数
 	for (int i = 9; i <= 12; i++) {
 		if (m_iBuffer[i - 9] == 0) ++a;
 	}
 	//有一个空列将会被作为目标牌列
 	if (OccupyAnEmptyCol) {
-		//可往空牌列移动的牌数在由人工来玩牌时只与空档有关
+		//可往空牌列移动的牌数在由人工来玩牌时只与空当有关
 		if (!m_bAICalRunning) return a + b;
 		//其他任何情况下都一样
 		ATLASSERT(b);
@@ -732,8 +732,8 @@ UINT CWTLfcData::GetCard(UINT col, UINT idx)
 /*自动解答算法使用全局的递归算法和局部的回溯法算法相结合，步骤如下：
 自动解答算法：
 (1)  对1-4和9-16列中 每一个 有牌可以移动到其他列的 列 执行(2)
-否则（无牌可以移动）看还有没有空档，没有则返回false（此路不通），
-如果有空档则（表示1-4和9-16列全是空的，解答成功）返回true，
+否则（无牌可以移动）看还有没有空当，没有则返回false（此路不通），
+如果有空当则（表示1-4和9-16列全是空的，解答成功）返回true，
 (2)  对此列牌的每一个目标列(目标列可能不止一列)都使用以下算法：
 (3)  如果此列可以合并到其他列，则将此列合并到其他列。如果
 有两个列可以合并它，则
@@ -801,10 +801,10 @@ bool CWTLfcData::AICal()
 
 拆缓存列：	有空牌列就直接拿下来，否则失败
 拆牌列：	此列是非完全序列牌
-先后拆到牌列空列空档，不够不拆。
+先后拆到牌列空列空当，不够不拆。
 否则就是完全序列牌，
-全拆到空档，不够不拆。
-拆完后再拆另一个牌列或空档列（此空档列不能是刚才拆上去的列，不然循环了）
+全拆到空当，不够不拆。
+拆完后再拆另一个牌列或空当列（此空当列不能是刚才拆上去的列，不然循环了）
 如果找不到可以拆动的牌列，如果可以找到缓存列否则失败
 ----------------------------------------------------------------------------------------*/
 //执行合并动作
@@ -858,13 +858,13 @@ bool CWTLfcData::CombimeCol(UINT col)
 		//此列是非空牌列没有目标列
 		if (!ColInBuf(col)) return false;
 		//此列是缓存列没有目标列
-		int a = CntEmptyBufs();//a是空档数
+		int a = CntEmptyBufs();//a是空当数
 		int b = CntEmptyCardCols();//b是空牌列数
 		//如果没有空牌列
 		if (b == 0) return false;
 		//如果有空牌列
 		int c = (2 * a + b)*(b + 1) / 2 + 1;//移动之前的空间
-		++a, --b;//假设空档增加空牌列减少
+		++a, --b;//假设空当增加空牌列减少
 		int d = (2 * a + b)*(b + 1) / 2 + 1;//移动之后的空间
 		if (c >= d) return false;
 		//能增加空间，拿到空牌列，继续解答
@@ -956,7 +956,7 @@ doAI:	//有牌可以移动哦
 3. 缓存牌拿到其他牌列
 4. 缓存牌拿到空列成为责任牌
 
-拆：牌列 ---> 牌列 | 空档
+拆：牌列 ---> 牌列 | 空当
 */
 bool CWTLfcData::SpliteCol(UINT col)
 {
@@ -1008,7 +1008,7 @@ bool CWTLfcData::SpliteCol(UINT col)
 	}
 	else { //分批拆
 
-		//先后拆到牌列，空列及空档，不够不拆。
+		//先后拆到牌列，空列及空当，不够不拆。
 		int inUse[12];//记录使用过的空间
 		int steps = 0;//记录使用了多少空间
 		int nMoved = 0;//记录移动过的牌数
@@ -1027,7 +1027,7 @@ bool CWTLfcData::SpliteCol(UINT col)
 				tarCol = tar[t0 ? 0 : 1];
 			else if ((empCardCol = FindEmptyCardCol()) != 0)//否则如果还有空牌列
 				tarCol = empCardCol;
-			else if ((empBufCol = FindEmptyBuf()) != 0)//否则如果还有空档
+			else if ((empBufCol = FindEmptyBuf()) != 0)//否则如果还有空当
 				tarCol = empBufCol;
 			else//否则（拆不开，看下一列）
 			{
@@ -1037,7 +1037,7 @@ bool CWTLfcData::SpliteCol(UINT col)
 			int n = CntMaxMv(tarCol, col);
 			ATLASSERT(n > 0);
 #ifdef DEBUG_ALERT
-			ShowMessage("拆序列牌到牌列，空列及空档！", col, tarCol, n);
+			ShowMessage("拆序列牌到牌列，空列及空当！", col, tarCol, n);
 #endif
 			MoveCards(tarCol, col, n);//记录移动动作
 			//Record(new COperations(tarCol, col, n));
@@ -1100,7 +1100,7 @@ UINT CWTLfcData::FindEmptyCardCol()
 	return 0;
 }
 
-//找到一个空档
+//找到一个空当
 UINT CWTLfcData::FindEmptyBuf()
 {
 	for (UINT i = 9; i <= 12; i++)
@@ -1117,7 +1117,7 @@ UINT CWTLfcData::CntEmptyCardCols()
 	return cnt;
 }
 
-//统计空档数
+//统计空当数
 UINT CWTLfcData::CntEmptyBufs()
 {
 	int cnt = 0;
@@ -1139,7 +1139,7 @@ void CWTLfcData::GetTarget(int col, int *target)
 	for (UINT i = 1; i <= 12; i++) {
 		if (i > 8) {
 			int d = m_iBuffer[i - 9];
-			if (!IS_CARD(d)) continue;//忽略空档
+			if (!IS_CARD(d)) continue;//忽略空当
 			int s = BottCard(col);
 			int n = NUM(d) - NUM(s);
 			int nSeri = CntSeriIn(col);
@@ -1316,7 +1316,7 @@ void CWTLfcData::GetHints()
 // 拆分兼具合并
 ·对每一非完全序列牌牌列：
 ·按照活牌所占剩余牌的比例由高到低进行排序，对排序后的每一列：
-·如果序列牌能完全移走（通过合并到其他牌列，拆到空牌列，或移动到空档）
+·如果序列牌能完全移走（通过合并到其他牌列，拆到空牌列，或移动到空当）
 ·全拆
 
 ·根据缓存列的牌从大到小的顺序
@@ -1329,11 +1329,11 @@ void CWTLfcData::GetHints()
 
 // 增加空间但减少责任牌
 ·对每一完全序列牌牌列：
-·如果序列牌能完全移到空档和牌列
+·如果序列牌能完全移到空当和牌列
 ·能增加空间
 ·全拆
 ·如果没有空牌列
-·拿到空档以留出一个空牌列
+·拿到空当以留出一个空牌列
 
 ·调用自动解答
 */
@@ -1409,7 +1409,7 @@ UINT* CWTLfcData::SortByActivity(UINT *pCols)
 	while(pCur >= pTop) { //遍历剩余牌以统计活牌数
 	char *pTarg = FindActiveCard(*pCur,b,r);
 	if(pTarg) {
-	*pTarg = *pCur;//模拟此牌被拿开到其他列（拿到其他牌列或空档或回收列）
+	*pTarg = *pCur;//模拟此牌被拿开到其他列（拿到其他牌列或空当或回收列）
 	++nAct;//统计此列的活牌数目
 	}
 	--pCur;

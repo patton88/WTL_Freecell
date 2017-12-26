@@ -159,7 +159,7 @@ BEGIN
     DEFPUSHBUTTON   "确定",IDOK,146,6,50,14,BS_FLAT
     PUSHBUTTON      "取消",IDCANCEL,146,23,50,14,BS_FLAT
     CONTROL         "违规时提醒",IDCHK_CHECKALERT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,29,55,10
-    CONTROL         "双击后纸牌自动移到空档",IDCHK_ENABLELBDCLICK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,6,102,10
+    CONTROL         "双击后纸牌自动移到空当",IDCHK_ENABLELBDCLICK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,6,102,10
     CONTROL         "快速移动(无动画)",IDCHK_CHECKQUICKLY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,41,80,10
     CONTROL         "每次移动尽可能多的牌",IDCHK_MOVEMAX,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,18,102,10
     CONTROL         "Slider1",IDSLI_DDASPEED,"msctls_trackbar32",TBS_AUTOTICKS | WS_TABSTOP,37,67,129,13
@@ -336,8 +336,8 @@ IDR_BIN_ZIP_BMP         BIN                     "res\\bin.bin"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,3
- PRODUCTVERSION 1,0,0,3
+ FILEVERSION 1,1,0,1
+ PRODUCTVERSION 1,1,0,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -354,12 +354,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "ybmj@vip.163.com"
             VALUE "FileDescription", "WTL_Freecell"
-            VALUE "FileVersion", "1.0.0.3"
+            VALUE "FileVersion", "1.1.0.1"
             VALUE "InternalName", "WTLfc"
             VALUE "LegalCopyright", "Copyright 2016"
             VALUE "OriginalFilename", "WTLfc.exe"
             VALUE "ProductName", "WTLfc Module"
-            VALUE "ProductVersion", "1.0.0.3"
+            VALUE "ProductVersion", "1.1.0.1"
         END
     END
     BLOCK "VarFileInfo"

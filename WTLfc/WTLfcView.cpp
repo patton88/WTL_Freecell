@@ -258,7 +258,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	for (UINT i = 1; i <= 16; i++)
 	{
 		UINT nCards = g_fcData.CntCardsIn(i);
-		if (!nCards && i > 8)	//此列没有牌则只绘制方框，只绘制空档列和回收列方框
+		if (!nCards && i > 8)	//此列没有牌则只绘制方框，只绘制空当列和回收列方框
 		{
 			//HPEN penBlack = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
 			CPen penBlack;
@@ -310,7 +310,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 				}
 			}
 		}
-		else		//绘制空档列和回收列
+		else		//绘制空当列和回收列
 		{
 			r = g_fcData.RectOf(i, 1, 1);
 			DrawCard(r.TopLeft(), g_fcData.BottCard(i), &dc);
@@ -380,7 +380,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 //	p.x = p.y = 0;
 //	for (UINT i = 1; i <= 16; i++) {
 //		UINT nCards = pDoc->CntCardsIn(i);
-//		if (!nCards && i > 8) { //此列没有牌则只绘制方框，只绘制空档列和回收列方框
+//		if (!nCards && i > 8) { //此列没有牌则只绘制方框，只绘制空当列和回收列方框
 //			CPen penBlack(PS_SOLID, 1, RGB(0, 255, 0));
 //			CPen *oldPen = pDC->SelectObject(&penBlack);
 //
@@ -421,7 +421,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 //				}
 //			}
 //		}
-//		else { //绘制空档列和回收列
+//		else { //绘制空当列和回收列
 //			r = pDoc->RectOf(i, 1, 1);
 //			DrawCard(r.TopLeft(), pDoc->BottCard(i), pDC);
 //			if (pDoc->m_nSel == i) { //如果此列是被选中状态，则此列牌被反色
@@ -1004,7 +1004,7 @@ void CWTLfcView::OnLButtonDblClk(UINT nFlags, CPoint point)
 	//long nColumn = -1;
 	//POINT ptMouse = { nXPos, nYPos };
 
-	//允许双击功能且有空档则双击有效
+	//允许双击功能且有空当则双击有效
 	if (g_fcData.m_bEnableDbClick)
 	{
 		//取消选中列
@@ -1028,7 +1028,7 @@ void CWTLfcView::OnLButtonDblClk(UINT nFlags, CPoint point)
 			)
 		{
 			HitAt(point);//假设发生两个单击动作，第一个动作击中当前双击的地方
-			HitAt(g_fcData.RectOf(emptyCol, 1, 1).CenterPoint());//第二个单击动作击中某空档中央
+			HitAt(g_fcData.RectOf(emptyCol, 1, 1).CenterPoint());//第二个单击动作击中某空当中央
 		}
 	}
 
@@ -1075,7 +1075,7 @@ void CWTLfcView::HitAt(CPoint point)
 				g_fcData.SelectCardCol(hit);
 			}
 			else {
-				MessageBox(TEXT("可能空档不够或不合规则。"),
+				MessageBox(TEXT("可能空当不够或不合规则。"),
 					TEXT("不能这样移动"), MB_ICONWARNING | MB_OK);
 			}
 			goto ret;
@@ -1229,7 +1229,7 @@ void CWTLfcView::OnMouseMove(UINT nFlags, CPoint point)
 		&& g_fcData.IsCol(curHit)
 		//被选中的牌列不是目前光标所在的列
 		&& g_fcData.m_nSel != curHit
-		//空档足够则设置光标以提示可以移动若干张到目标列
+		//空当足够则设置光标以提示可以移动若干张到目标列
 		&& g_fcData.CntMaxMv(curHit, g_fcData.m_nSel)
 		)
 	{
