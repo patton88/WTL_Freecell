@@ -336,8 +336,8 @@ IDR_BIN_ZIP_BMP         BIN                     "res\\bin.bin"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,1,0,1
- PRODUCTVERSION 1,1,0,1
+ FILEVERSION 1,2,0,1
+ PRODUCTVERSION 1,2,0,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -354,12 +354,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "ybmj@vip.163.com"
             VALUE "FileDescription", "WTL_Freecell"
-            VALUE "FileVersion", "1.1.0.1"
+            VALUE "FileVersion", "1.2.0.1"
             VALUE "InternalName", "WTLfc"
-            VALUE "LegalCopyright", "Copyright 2016"
+            VALUE "LegalCopyright", "Copyright 2017"
             VALUE "OriginalFilename", "WTLfc.exe"
             VALUE "ProductName", "WTLfc Module"
-            VALUE "ProductVersion", "1.1.0.1"
+            VALUE "ProductVersion", "1.2.0.1"
         END
     END
     BLOCK "VarFileInfo"
