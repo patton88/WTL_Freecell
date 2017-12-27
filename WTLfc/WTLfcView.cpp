@@ -1542,7 +1542,9 @@ LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	// Set it to TRUE to construct a File Open dialog box.
 	// Set it to FALSE to construct a File Save As dialog box.
 	// CFileDialog的第二个参数".txt"就是系统当你没输入扩展名时为你自动添加的扩展名。
-	CFileDialog fd(FALSE, L"txt", NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
+	WTL::CString str;
+	str.Format(TEXT("%d"), g_fcData.m_nCurGameNumber);
+	CFileDialog fd(FALSE, L"txt", str, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
 		L"Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0\0", m_hWnd);
 	fd.m_ofn.lpstrTitle = L"SaveFileTest";
 	fd.m_ofn.lpstrInitialDir = L".";
