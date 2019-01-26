@@ -1609,7 +1609,7 @@ void CWTLfcData::StartGame(int gameNumber)
 	m_dlgScore.InitScore();//¼ÇÂ¼Õ½¿ö
 }
 
-void CWTLfcData::wtlSetTitle(WTL::CString strTitle)
+void CWTLfcData::wtlSetTitle(CString strTitle)
 {
 	if (strTitle.IsEmpty())
 	{

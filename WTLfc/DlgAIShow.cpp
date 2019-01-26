@@ -220,7 +220,7 @@ void CDlgAIShow::ShowStepInfo()
 {
 	//CJLDoc* pDoc = AfxGetDocument();
 
-	WTL::CString step_info;
+	CString step_info;
 	step_info.Format(TEXT("½ø¶È¡¾ %d / %d ¡¿"),
 		(int)m_pCurPos,
 		(int)g_fcData.m_OpsList.m_tList.size());

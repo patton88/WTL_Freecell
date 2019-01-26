@@ -436,7 +436,7 @@ LPTSTR CXArchive::ReadString(LPTSTR lpsz, UINT nMax)
 	return lpsz;
 }
 
-BOOL CXArchive::ReadString(WTL::CString& rString)
+BOOL CXArchive::ReadString(CString& rString)
 {
 	rString.Empty();    // empty wstring without deallocating
 	const int nMaxSize = 128;

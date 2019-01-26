@@ -136,5 +136,5 @@ public:
 
 	BOOL MyDrawIcon(CDC& dc, POINT& point, HICON& hIcon);
 
-	WTL::CString itos(int i);		// 将int转换成CString
+	CString itos(int i);		// 将int转换成CString
 };

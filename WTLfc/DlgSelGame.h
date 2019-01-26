@@ -20,7 +20,7 @@ public:
 	enum { IDD = IDD_SELGAME };
 	//UINT m_nGameNumber;
 	int m_nGameNumber;
-	WTL::CString m_strGameNumber;
+	CString m_strGameNumber;
 	//}}AFX_DATA
 
 	BEGIN_MSG_MAP(CWndSizeDlg)

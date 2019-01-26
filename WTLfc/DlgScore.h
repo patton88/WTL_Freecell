@@ -157,12 +157,12 @@ public:
 	LRESULT OnCloseCmd(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
 	// 将int转换成CString
-	WTL::CString itos(int i)
+	CString itos(int i)
 	{
 		//wchar_t str[50];	//不用sstream库函数，编译出的exe文件减小300K
 		//_itow(i, str, 10);
 
-		WTL::CString str;
+		CString str;
 		str.Format(L"%d", i);
 		return str;
 	}

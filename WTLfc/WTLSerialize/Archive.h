@@ -43,7 +43,7 @@ public:
 	//在函数声明前添加加：#pragma warning (disable:4290)，可屏蔽warning C4290，但并不能保证编译器接受异常规范
 	//warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
 
-	BOOL ReadString(WTL::CString& rString);
+	BOOL ReadString(CString& rString);
 
 	// Insertion operations
 	CXArchive& operator<<(BYTE by);

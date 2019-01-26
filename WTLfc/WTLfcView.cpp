@@ -191,7 +191,7 @@ LRESULT CWTLfcView::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	//dcMem.SelectBitmap(hBmpOld);
 
 	// 1、显示步数信息
-	WTL::CString strSteps;
+	CString strSteps;
 	CRect r = g_fcData.RectOfStep();
 	// ...
 	//if (!g_fcData.m_pOps->empty()) {
@@ -1509,12 +1509,12 @@ LRESULT CWTLfcView::OnSetting(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, 
 	return 0;
 }
 
-WTL::CString CWTLfcView::itos(int i)		// 将int转换成CString
+CString CWTLfcView::itos(int i)		// 将int转换成CString
 {
 	//wchar_t str[50];	//不用sstream库函数，编译出的exe文件减小300K
 	//_itow(i, str, 10);
 
-	WTL::CString str;
+	CString str;
 	str.Format(L"%d", i);
 	return str;
 }
@@ -1542,7 +1542,7 @@ LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	// Set it to TRUE to construct a File Open dialog box.
 	// Set it to FALSE to construct a File Save As dialog box.
 	// CFileDialog的第二个参数".txt"就是系统当你没输入扩展名时为你自动添加的扩展名。
-	WTL::CString str;
+	CString str;
 	str.Format(TEXT("%d"), g_fcData.m_nCurGameNumber);
 	CFileDialog fd(FALSE, L"txt", str, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
 		L"Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0\0", m_hWnd);
@@ -1551,7 +1551,7 @@ LRESULT CWTLfcView::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 
 	if (fd.DoModal() == IDCANCEL) return 0;
 
-	WTL::CString strFileName = fd.m_szFileName, strOld, strNew;
+	CString strFileName = fd.m_szFileName, strOld, strNew;
 
 	if (strFileName.IsEmpty()) return 0;
 
@@ -1634,7 +1634,7 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	fread(&nGameNumber, 1, sizeof(int), pFile2);			// 改用C语言的文件访问方式实现串行化
 	if (nGameNumber == -1)
 	{
-		MessageBox(L"请将自定义牌局【" + WTL::CString(fd.m_szFileName) + L"】编辑完整！\n");
+		MessageBox(L"请将自定义牌局【" + CString(fd.m_szFileName) + L"】编辑完整！\n");
 		return 0;
 	}
 	rewind(pFile2);
@@ -1652,7 +1652,7 @@ LRESULT CWTLfcView::OnLoad(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/,
 	g_pView->RedrawWindow();
 	
 	//设置窗框标题为当前牌局代号或自定义牌局的文件名
-	WTL::CString title;
+	CString title;
 	if (g_fcData.m_nCurGameNumber > 0) {
 		title.Format(TEXT("%d"), g_fcData.m_nCurGameNumber);
 		g_fcData.wtlSetTitle();

@@ -58,7 +58,7 @@ public:
 	void NewDefGame();
 	void SaveDefGameAs();
 	//void ClrOpsRecords(CObList *pList);
-	WTL::CString m_strFile;
+	CString m_strFile;
 	BOOL GiveUp();
 	bool GameIsValid();
 	void Shuffle();

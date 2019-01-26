@@ -112,7 +112,7 @@ LRESULT CDlgScore::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	int nDead = 0;
 	int nStepsPassed = 0;
 
-	//WTL::CString s;	//WTL::CString.Format 不支持 %f
+	//CString s;	//CString.Format 不支持 %f
 	ATL::CString s;		//ATL::CString.Format 支持 %f
 	ATL::CString st;
 	int i = 0;
@@ -265,7 +265,7 @@ void CDlgScore::UpdateScore()
 	CScore& cs = m_score.m_tList.front();
 	cs.tmEnd = CTime::GetCurrentTime();
 
-	//WTL::CString str = cs.tmStart.Format(fmts) + TEXT("/") + cs.tmEnd.Format(fmts);
+	//CString str = cs.tmStart.Format(fmts) + TEXT("/") + cs.tmEnd.Format(fmts);
 	//::MessageBox(NULL, str, L"", NULL);
 
 	//十五秒以内解开的局认为是使用了自动解答的帮助，将不予记录
@@ -398,7 +398,7 @@ LRESULT CDlgScore::OnColumnClick(int/*idCtrl*/, LPNMHDR pnmh, BOOL&/*bHandled*/)
 	//listRows = GetItemCount() - m_nTreeRec;
 	listRows = m_score.m_tList.size() - 1;	// 当前一局没有战况信息，所以要多减1
 	listColumns = m_lcScore.GetHeader().GetItemCount();
-	WTL::CString strA, strB;
+	CString strA, strB;
 	double dbStrA, dbStrB;
 	wchar_t *wpSrc, *wpEnd;
 

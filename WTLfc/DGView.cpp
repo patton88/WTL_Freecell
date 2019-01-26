@@ -102,7 +102,7 @@ LRESULT CDGWnd::OnPaint(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOO
 		font.CreatePointFont(20 * 10, TEXT("Arial"), dc);
 		HFONT prevFont = dc.SelectFont(font);
 		int prevMode = dc.SetBkMode(TRANSPARENT);
-		WTL::CString str(TEXT("此局编辑完毕，请存档！"));
+		CString str(TEXT("此局编辑完毕，请存档！"));
 		dc.DrawText(str, str.GetLength(), RectOfBox(), DT_CENTER);
 		dc.SetBkMode(prevMode);
 		dc.SelectFont(prevFont);
@@ -368,7 +368,7 @@ void CDGWnd::NewDefGame()
 
 void CDGWnd::SaveDefGameAs()
 {
-	WTL::CString name = m_strFile;
+	CString name = m_strFile;
 	bool bModi = m_bModified;
 
 	m_strFile.Empty();
@@ -548,7 +548,7 @@ void CDGWnd::LoadDefGame()
 		{
 			ar2.Close();//关闭文件
 			//file.Close();
-			WTL::CString errStr;
+			CString errStr;
 			errStr.LoadString(IDS_RESON_UNEDITABLE);
 			MessageBox(errStr);
 			return;
@@ -644,8 +644,8 @@ void CDGWnd::Init()
 //如果没有存档且已改动则在文件名后加上*号
 void CDGWnd::SetTitle()
 {
-	WTL::CString title = L"自定义牌局";
-	const WTL::CString strModi = "*";
+	CString title = L"自定义牌局";
+	const CString strModi = "*";
 
 	if (!m_strFile.IsEmpty()) {
 		int idx = m_strFile.ReverseFind('\\');
