@@ -45,7 +45,7 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
 	//::SetWindowText(m_edit1.m_hWnd, "This a multi test.");
 	::SetWindowText(m_edit1.m_hWnd,
 		L"    --------------------------------------------\r\n"
-		L"    WTL_Freecell v1.2 (WTL空当接龙v1.2) 20180112\r\n"
+		L"    WTL_Freecell v1.3 (WTL空当接龙v1.3) 20190126\r\n"
 		L"    --------------------------------------------\r\n"
 		L"    By     ：MinJun\r\n"
 		L"    QQ     ：153248043\r\n"
